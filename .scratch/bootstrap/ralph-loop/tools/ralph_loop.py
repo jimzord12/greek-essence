@@ -60,7 +60,9 @@ def _write_runtime_state(state_dir: Path, payload: dict[str, object]) -> None:
     temporary.replace(target)
 
 
-def _extract_session_id(event: dict[str, object]) -> str | None:
+def _extract_session_id(event: object) -> str | None:
+    if not isinstance(event, dict):
+        return None
     if event.get("type") == "thread.started":
         value = event.get("thread_id") or event.get("threadId")
         return str(value) if value else None
@@ -71,6 +73,24 @@ def _extract_session_id(event: dict[str, object]) -> str | None:
     return None
 
 
+def build_codex_command(repo: Path, session_id: str | None, repair_reasons: list[str]) -> list[str]:
+    if session_id:
+        prompt = RESUME_PROMPT
+        if repair_reasons:
+            prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)
+        return ["codex", "exec", "resume", "--json", session_id, prompt]
+    return [
+        "codex",
+        "exec",
+        "-C",
+        str(repo),
+        "--sandbox",
+        "workspace-write",
+        "--json",
+        PROMPT,
+    ]
+
+
 def codex_executor(repo: Path, state_dir: Path, task: str, session_id: str | None, repair_reasons: list[str]) -> str:
     state_dir.mkdir(parents=True, exist_ok=True)
     logs = state_dir / "logs"
@@ -78,36 +98,10 @@ def codex_executor(repo: Path, state_dir: Path, task: str, session_id: str | Non
     stamp = time.strftime("%Y%m%d-%H%M%S")
     event_log = logs / f"{task}-{stamp}.jsonl"
     last_message = logs / f"{task}-{stamp}-last-message.md"
-
-    if session_id:
-        prompt = RESUME_PROMPT
-        if repair_reasons:
-            prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)
-        command = [
-            "codex",
-            "exec",
-            "resume",
-            "--json",
-            "--output-last-message",
-            str(last_message),
-            session_id,
-            prompt,
-        ]
-    else:
-        command = [
-            "codex",
-            "exec",
-            "-C",
-            str(repo),
-            "--sandbox",
-            "workspace-write",
-            "--json",
-            "--output-last-message",
-            str(last_message),
-            PROMPT,
-        ]
+    command = build_codex_command(repo, session_id, repair_reasons)
 
     discovered_session = session_id
+    final_message: str | None = None
     with event_log.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(
             command,
@@ -137,12 +131,20 @@ def codex_executor(repo: Path, state_dir: Path, task: str, session_id: str | Non
                         "last_event_log": str(event_log),
                     },
                 )
+            if isinstance(event, dict) and event.get("type") == "item.completed":
+                item = event.get("item")
+                if isinstance(item, dict) and item.get("type") == "agent_message":
+                    text = item.get("text")
+                    if isinstance(text, str):
+                        final_message = text
         return_code = process.wait()
 
     if return_code != 0:
         raise RuntimeError(f"Codex exited {return_code}; log: {event_log}")
     if not discovered_session:
         raise RuntimeError(f"Codex did not emit a session ID; log: {event_log}")
+    if final_message:
+        last_message.write_text(final_message, encoding="utf-8")
     return discovered_session
 
 

@@ -13,7 +13,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 from check_state import Result, State, inspect_repository  # noqa: E402
-from ralph_loop import LoopOutcome, run_loop  # noqa: E402
+from ralph_loop import LoopOutcome, _extract_session_id, build_codex_command, run_loop  # noqa: E402
 
 
 README = """# Bootstrap
@@ -159,6 +159,13 @@ class CheckStateTests(unittest.TestCase):
 
 
 class RalphLoopTests(unittest.TestCase):
+    def test_non_object_json_event_is_ignored(self) -> None:
+        self.assertIsNone(_extract_session_id(201))
+
+    def test_codex_command_does_not_add_an_external_writable_output(self) -> None:
+        command = build_codex_command(Path("C:/repo"), None, [])
+        self.assertNotIn("--output-last-message", command)
+
     def test_max_tasks_stops_after_two_successful_tasks(self) -> None:
         states = iter(
             [
