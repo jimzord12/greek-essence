@@ -202,7 +202,11 @@ def run_loop(
             return LoopOutcome.COMPLETE
         if result.state == State.BLOCKED:
             return LoopOutcome.BLOCKED
-        if max_tasks is not None and completed_this_run >= max_tasks:
+        if (
+            max_tasks is not None
+            and completed_this_run >= max_tasks
+            and result.state == State.READY
+        ):
             return LoopOutcome.LIMIT_REACHED
 
         runtime = _read_runtime_state(state_dir)

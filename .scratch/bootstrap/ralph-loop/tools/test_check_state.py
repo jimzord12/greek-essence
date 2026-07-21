@@ -210,6 +210,24 @@ class RalphLoopTests(unittest.TestCase):
         self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
         self.assertEqual(["PHASE-00", "B01-01"], executed)
 
+    def test_zero_task_limit_allows_phase_gate_but_not_next_task(self) -> None:
+        states = iter(
+            [
+                Result(State.PHASE_REVIEW, "PHASE-00", 2, 3, True, []),
+                Result(State.READY, "B01-01", 2, 3, True, []),
+            ]
+        )
+        executed: list[str] = []
+        outcome = run_loop(
+            Path.cwd(),
+            max_tasks=0,
+            inspect_fn=lambda: next(states),
+            execute_fn=lambda work, _session, _reasons: executed.append(work) or f"session-{work}",
+            state_dir=Path(tempfile.mkdtemp()),
+        )
+        self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
+        self.assertEqual(["PHASE-00"], executed)
+
     def test_no_progress_stops_instead_of_starting_another_fresh_session(self) -> None:
         states = iter(
             [
