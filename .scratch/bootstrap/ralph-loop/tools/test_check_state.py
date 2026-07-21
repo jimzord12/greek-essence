@@ -248,6 +248,29 @@ class RalphLoopTests(unittest.TestCase):
         self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
         self.assertEqual(["PHASE-00"], executed)
 
+    def test_interrupted_phase_repair_can_transition_from_inconsistent_to_ready(self) -> None:
+        states = iter(
+            [
+                Result(State.INCONSISTENT, "PHASE-00", 2, 3, False, ["dirty phase review"]),
+                Result(State.READY, "B01-01", 2, 3, True, []),
+            ]
+        )
+        state_dir = Path(tempfile.mkdtemp())
+        (state_dir / "state.json").write_text(
+            '{"work_id":"PHASE-00","hermes_session_id":"session-phase"}',
+            encoding="utf-8",
+        )
+        executed: list[str] = []
+        outcome = run_loop(
+            Path.cwd(),
+            max_tasks=0,
+            inspect_fn=lambda: next(states),
+            execute_fn=lambda work, _session, _reasons: executed.append(work) or "session-phase",
+            state_dir=state_dir,
+        )
+        self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
+        self.assertEqual(["PHASE-00"], executed)
+
     def test_no_progress_stops_instead_of_starting_another_fresh_session(self) -> None:
         states = iter(
             [

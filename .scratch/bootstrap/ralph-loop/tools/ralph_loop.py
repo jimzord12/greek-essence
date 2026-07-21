@@ -312,7 +312,10 @@ def run_loop(
                     "last_state": result.state.value,
                 },
             )
-        elif before.state == State.PHASE_REVIEW and result.state == State.READY:
+        elif result.state == State.READY and (
+            before.state == State.PHASE_REVIEW
+            or (before.state == State.INCONSISTENT and work_id.startswith("PHASE-"))
+        ):
             repair_attempts = 0
             _write_runtime_state(
                 state_dir,
