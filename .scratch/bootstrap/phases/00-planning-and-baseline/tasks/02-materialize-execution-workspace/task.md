@@ -1,11 +1,11 @@
 ---
 id: B00-02
-status: Ready
+status: Done
 depends_on: [B00-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: /root/b00_02_implementer
+reviewer_agent: /root/b00_02_reviewer
+started_at: 2026-07-22T00:07:49+03:00
+completed_at: 2026-07-22T00:43:47+03:00
 ---
 
 # Validate and finalize the execution workspace

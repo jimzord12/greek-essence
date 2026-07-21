@@ -6,7 +6,7 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 
 | Phase | State | Tasks done |
 |---|---|---:|
-| 00 — Planning and baseline | Ready | 1/2 |
+| 00 — Planning and baseline | In review | 2/2 |
 | 01 — Agent tooling | Pending | 0/7 |
 | 02 — Application scaffold | Pending | 0/3 |
 | 03 — Code hygiene | Pending | 0/4 |
@@ -15,8 +15,8 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 | 06 — Quality review | Pending | 0/3 |
 | 07 — Final verification | Pending | 0/3 |
 
-**Current task:** `B00-02`
-**Next unblocked task:** `B00-02`
+**Current task:** None
+**Next unblocked task:** None
 **Known external blocker:** Kimi Code is unavailable, so cross-agent validation cannot become fully green.
 
 ## Entry points

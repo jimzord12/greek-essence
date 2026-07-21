@@ -3,7 +3,6 @@
 | Task | State |
 |---|---|
 | B00-01 | Done |
-| B00-02 | Ready |
+| B00-02 | Done |
 
-**Phase state:** Ready
-
+**Phase state:** In review
