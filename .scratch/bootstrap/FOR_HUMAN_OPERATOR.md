@@ -38,7 +38,7 @@ First read:
 3. `.scratch/bootstrap/dependency-map.md`
 4. the current phase `status.md`
 
-Reconcile recorded status with the repository before changing anything. Identify the next `Ready` task whose dependencies are `Done`, briefly tell me the current status and why that task is next, then execute only that task using the implementer/reviewer protocol. Every task must be implemented by a fresh subagent, reviewed by a different fresh subagent, and returned to the implementer for review responses and fixes. Do not begin a later task, commit, push, deploy, change remotes, or perform destructive/overwrite operations without authority and approval from the protocol.
+Reconcile recorded status with the repository before changing anything. Identify the next `Ready` task whose dependencies are `Done`, briefly tell me the current status and why that task is next, then execute only that task using the implementer/reviewer protocol. Every task must use a fresh `.codex/agents/implementer.toml` instance, be reviewed by a different fresh `.codex/agents/reviewer.toml` instance, and return to the implementer for review responses and fixes. Do not begin a later task, commit, push, deploy, change remotes, or perform destructive/overwrite operations without authority and approval from the protocol.
 
 At the end, update all relevant task, phase, and dashboard records and report: task outcome, verification results, review verdict, blockers, and next recommended task. If tracking and repository reality disagree, stop execution and repair or report the discrepancy rather than guessing.
 ```

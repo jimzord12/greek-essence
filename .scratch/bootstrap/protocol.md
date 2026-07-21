@@ -29,7 +29,7 @@ Must:
 
 - read this protocol, the dashboard, dependency map, and current phase status;
 - select only a `Ready` task whose dependencies are `Done`;
-- assign one fresh implementer and a different fresh reviewer, recording their IDs;
+- assign one fresh instance of `.codex/agents/implementer.toml` and a different fresh instance of `.codex/agents/reviewer.toml`, recording their IDs;
 - preserve unrelated and pre-existing work;
 - resolve cross-task conflicts and update task, phase, and dashboard state together;
 - create one task commit after each successful task closure, control phase commits, and surface blockers with exact consequences.
@@ -44,7 +44,7 @@ Must not:
 
 ### Task implementer subagent
 
-The implementer owns exactly one task and its accepted review fixes.
+The implementer owns exactly one task and its accepted review fixes. For every task, the root integrator launches a fresh instance of the repository's `.codex/agents/implementer.toml` profile; it does not substitute ad-hoc implementer instructions.
 
 Must:
 
@@ -67,7 +67,7 @@ Must not:
 
 ### Task reviewer subagent
 
-The reviewer independently determines whether one task satisfies its contract.
+The reviewer independently determines whether one task satisfies its contract. For every task, the root integrator launches a fresh instance of the repository's `.codex/agents/reviewer.toml` profile; it does not substitute ad-hoc reviewer instructions.
 
 Must:
 
@@ -110,7 +110,7 @@ Must not:
 
 1. Root integrator reads the dashboard, dependency map, and phase status.
 2. It selects the first dependency-satisfied `Ready` task.
-3. It records the implementer ID and gives that agent the task path, not a rewritten brief.
+3. It launches a fresh `.codex/agents/implementer.toml` instance, records its canonical ID, and gives it the task path, not a rewritten brief.
 4. Work remains serialized unless non-overlapping write sets are proven and the exception is recorded.
 
 ### 2. Implementation
@@ -122,7 +122,7 @@ Must not:
 
 ### 3. Independent review
 
-1. Root integrator assigns a different reviewer and records its ID.
+1. Root integrator launches a different fresh `.codex/agents/reviewer.toml` instance and records its canonical ID.
 2. Reviewer writes `reviews/01-review.md` using the template.
 3. `Approved` with no blocking/high findings may proceed to closure.
 4. `Blocked` or `Changes requested` returns to the original implementer.
