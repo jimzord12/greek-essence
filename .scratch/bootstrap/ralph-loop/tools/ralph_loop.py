@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import re
+import sqlite3
 import subprocess
 import sys
 import time
@@ -99,6 +100,41 @@ def _extract_hermes_session_id(line: str) -> str | None:
     return match.group(1) if match else None
 
 
+def _normalise_path(value: str | Path) -> str:
+    return str(Path(value).resolve()).replace("\\", "/").rstrip("/").lower()
+
+
+def _discover_hermes_session_id(
+    database: Path,
+    repo: Path,
+    started_after: float,
+    *,
+    timeout: float = 30,
+) -> str | None:
+    """Discover a just-started root session before quiet CLI output is emitted."""
+    deadline = time.monotonic() + timeout
+    expected_repo = _normalise_path(repo)
+    while True:
+        if database.exists():
+            try:
+                connection = sqlite3.connect(database, timeout=1)
+                rows = connection.execute(
+                    "SELECT id, git_repo_root, cwd FROM sessions "
+                    "WHERE source = ? AND started_at >= ? ORDER BY started_at DESC",
+                    ("ralph", started_after),
+                ).fetchall()
+                connection.close()
+                for session, git_root, cwd in rows:
+                    candidates = [value for value in (git_root, cwd) if value]
+                    if any(_normalise_path(value) == expected_repo for value in candidates):
+                        return str(session)
+            except sqlite3.Error:
+                pass
+        if time.monotonic() >= deadline:
+            return None
+        time.sleep(0.1)
+
+
 def build_hermes_command(
     repo: Path,
     work_id: str,
@@ -141,6 +177,7 @@ def hermes_executor(
     command = build_hermes_command(repo, work_id, session_id, repair_reasons)
 
     discovered_session = session_id
+    started_after = time.time()
     with event_log.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(
             command,
@@ -152,6 +189,23 @@ def hermes_executor(
             errors="replace",
         )
         assert process.stdout is not None
+        if not discovered_session:
+            local_app_data = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+            profile_database = local_app_data / "hermes" / "profiles" / ROOT_PROFILE / "state.db"
+            discovered_session = _discover_hermes_session_id(
+                profile_database,
+                repo,
+                started_after,
+            )
+            if discovered_session:
+                _write_runtime_state(
+                    state_dir,
+                    {
+                        "work_id": work_id,
+                        "hermes_session_id": discovered_session,
+                        "last_event_log": str(event_log),
+                    },
+                )
         for line in process.stdout:
             log.write(line)
             log.flush()

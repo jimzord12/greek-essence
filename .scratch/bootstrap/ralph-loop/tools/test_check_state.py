@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import sqlite3
 import sys
 import tempfile
 import unittest
@@ -15,6 +16,7 @@ if str(TOOLS) not in sys.path:
 from check_state import Result, State, inspect_repository  # noqa: E402
 from ralph_loop import (  # noqa: E402
     LoopOutcome,
+    _discover_hermes_session_id,
     _extract_hermes_session_id,
     build_hermes_command,
     run_loop,
@@ -174,6 +176,24 @@ class CheckStateTests(unittest.TestCase):
 
 
 class RalphLoopTests(unittest.TestCase):
+    def test_running_hermes_session_is_discovered_from_profile_database(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            database = Path(temp) / "state.db"
+            connection = sqlite3.connect(database)
+            connection.execute(
+                "CREATE TABLE sessions (id TEXT, source TEXT, started_at REAL, git_repo_root TEXT, cwd TEXT)"
+            )
+            connection.execute(
+                "INSERT INTO sessions VALUES (?, ?, ?, ?, ?)",
+                ("live-session", "ralph", 101.0, "C:/repo", "C:/repo"),
+            )
+            connection.commit()
+            connection.close()
+            self.assertEqual(
+                "live-session",
+                _discover_hermes_session_id(database, Path("C:/repo"), 100.0, timeout=0),
+            )
+
     def test_hermes_session_id_is_extracted_from_quiet_output(self) -> None:
         self.assertEqual("20260722_004901_1d79f6", _extract_hermes_session_id("session_id: 20260722_004901_1d79f6"))
         self.assertIsNone(_extract_hermes_session_id("ordinary output"))
