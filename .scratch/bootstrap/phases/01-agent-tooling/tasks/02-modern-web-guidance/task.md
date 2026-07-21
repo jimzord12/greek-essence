@@ -1,11 +1,13 @@
 ---
 id: B01-02
-status: Ready
+status: Done
 depends_on: [B01-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: greekimpl
+session_id: 20260722_014730_908786
+reviewer_agent: greekreview
+reviewer_session_id: 20260722_020416_c5fa1e
+started_at: 2026-07-21T22:48:01Z
+completed_at: 2026-07-21T23:24:01Z
 ---
 
 # Install Modern Web Guidance

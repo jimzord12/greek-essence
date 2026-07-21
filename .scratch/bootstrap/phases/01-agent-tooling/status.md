@@ -3,8 +3,8 @@
 | Task | State |
 |---|---|
 | B01-01 | Done |
-| B01-02 | Ready |
-| B01-03 | Pending |
+| B01-02 | Done |
+| B01-03 | Ready |
 | B01-04 | Pending |
 | B01-05 | Pending |
 | B01-06 | Pending |
