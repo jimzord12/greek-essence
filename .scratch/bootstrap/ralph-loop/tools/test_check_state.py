@@ -162,10 +162,16 @@ class RalphLoopTests(unittest.TestCase):
     def test_non_object_json_event_is_ignored(self) -> None:
         self.assertIsNone(_extract_session_id(201))
 
-    def test_codex_command_does_not_add_an_external_writable_output(self) -> None:
+    def test_codex_command_uses_explicit_full_access_without_external_output(self) -> None:
         command = build_codex_command(Path("C:/repo"), None, [])
         self.assertNotIn("--output-last-message", command)
-        self.assertIn('windows.sandbox="elevated"', command)
+        self.assertIn("danger-full-access", command)
+        self.assertNotIn('windows.sandbox="elevated"', command)
+
+    def test_resume_command_keeps_explicit_full_access(self) -> None:
+        command = build_codex_command(Path("C:/repo"), "session-1", ["repair"])
+        self.assertIn('sandbox_mode="danger-full-access"', command)
+        self.assertIn('approval_policy="never"', command)
 
     def test_no_progress_stops_instead_of_starting_another_fresh_session(self) -> None:
         states = iter(

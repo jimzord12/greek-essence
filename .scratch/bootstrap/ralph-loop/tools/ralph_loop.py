@@ -18,11 +18,18 @@ sys.dont_write_bytecode = True
 from check_state import Result, State, inspect_repository
 
 
-PROMPT = "Use $bootstrap-next to execute exactly one valid bootstrap task."
+OPERATOR_AUTHORIZATION = (
+    "The operator explicitly authorizes all required creations, edits, and overwrites of "
+    "bootstrap task, report, evidence, review, status, dashboard, handoff, and knowledge files "
+    "for this task. This does not authorize unrelated deletion, pushing, deployment, remote "
+    "changes, or Git history rewriting."
+)
+PROMPT = "Use $bootstrap-next to execute exactly one valid bootstrap task. " + OPERATOR_AUTHORIZATION
 RESUME_PROMPT = (
     "Resume and finish the active bootstrap task according to the protocol. "
     "Preserve the original implementer and reviewer identities, complete all review "
-    "cycles, update handoff and knowledge records, commit the task, and do not start another task."
+    "cycles, update handoff and knowledge records, commit the task, and do not start another task. "
+    + OPERATOR_AUTHORIZATION
 )
 
 
@@ -83,7 +90,9 @@ def build_codex_command(repo: Path, session_id: str | None, repair_reasons: list
             "exec",
             "resume",
             "-c",
-            'windows.sandbox="elevated"',
+            'sandbox_mode="danger-full-access"',
+            "-c",
+            'approval_policy="never"',
             "--json",
             session_id,
             prompt,
@@ -94,9 +103,9 @@ def build_codex_command(repo: Path, session_id: str | None, repair_reasons: list
         "-C",
         str(repo),
         "-c",
-        'windows.sandbox="elevated"',
+        'approval_policy="never"',
         "--sandbox",
-        "workspace-write",
+        "danger-full-access",
         "--json",
         PROMPT,
     ]

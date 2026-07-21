@@ -36,7 +36,9 @@ python .scratch/bootstrap/ralph-loop/tools/test_check_state.py -v
 - A fresh Codex session starts only after the previous task is committed and tracking is consistent.
 - `check_state.py`, not the model's final message, decides whether to continue, resume, stop, or complete.
 - The loop fails closed on `Blocked`, inconsistent tracking, missing session identity, or exhausted repair attempts.
-- It never pushes, deploys, changes remotes, rewrites history, or approves destructive/overwrite operations.
+- It never pushes, deploys, changes remotes, rewrites history, or performs unrelated destructive operations.
+
+The operator has explicitly authorized Codex CLI `danger-full-access` for this loop because the current Windows `workspace-write` sandbox cannot apply patches with split writable roots and the elevated sandbox requires interactive UAC. Repository safety instructions and the one-task scope still apply.
 
 ## Completion
 
