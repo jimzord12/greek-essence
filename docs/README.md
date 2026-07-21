@@ -87,4 +87,4 @@ Each documentation family has its own `index.md` for detailed navigation. Start 
 
 ## Active preparation workspace
 
-The bootstrap-only execution plan, task briefs, review protocol, and progress ledger live in [`.scratch/bootstrap/README.md`](../.scratch/bootstrap/README.md). This workspace prepares the repository and quality tooling; it does not authorize product implementation.
+The bootstrap-only execution plan, task briefs, work protocol, human-operator guide, review records, and progress ledger live in [`.scratch/bootstrap/README.md`](../.scratch/bootstrap/README.md). This workspace prepares the repository and quality tooling; it does not authorize product implementation.
