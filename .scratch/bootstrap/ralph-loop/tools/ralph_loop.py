@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Run the Greek Essence bootstrap one fully reviewed Codex task at a time."""
+"""Run the Greek Essence bootstrap one reviewed work unit at a time with Hermes."""
 
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -18,19 +19,45 @@ sys.dont_write_bytecode = True
 from check_state import Result, State, inspect_repository
 
 
+ROOT_PROFILE = "greekroot"
+ROOT_MODEL = "gpt-5.6-sol"
+ROOT_PROVIDER = "openai-codex"
 OPERATOR_AUTHORIZATION = (
-    "The operator explicitly authorizes all required creations, edits, and overwrites of "
-    "bootstrap task, report, evidence, review, status, dashboard, handoff, and knowledge files "
-    "for this task. This does not authorize unrelated deletion, pushing, deployment, remote "
-    "changes, or Git history rewriting."
+    "The operator pre-authorizes task-owned repository-local creations, edits, overwrites, and "
+    "deletions that are explicitly required by the active bootstrap contract or reviewer findings. "
+    "Stop for changes outside this repository, unrelated deletion, credentials, system changes, "
+    "pushes, deployments, remote changes, or Git history rewriting."
 )
-PROMPT = "Use $bootstrap-next to execute exactly one valid bootstrap task. " + OPERATOR_AUTHORIZATION
-RESUME_PROMPT = (
-    "Resume and finish the active bootstrap task according to the protocol. "
-    "Preserve the original implementer and reviewer identities, complete all review "
-    "cycles, update handoff and knowledge records, commit the task, and do not start another task. "
-    + OPERATOR_AUTHORIZATION
-)
+
+
+def _fresh_prompt(work_id: str) -> str:
+    if work_id.startswith("PHASE-"):
+        phase = work_id.removeprefix("PHASE-")
+        return (
+            f"Execute only the Phase {phase} review gate according to .scratch/bootstrap/protocol.md. "
+            "Use a fresh greekreview Hermes profile session for the independent phase review. "
+            "Complete the phase report, numbered review and any required response/re-review cycle; "
+            "update dashboard, phase status and Ralph handoff; create the dedicated phase-review commit. "
+            "Do not start the next task. " + OPERATOR_AUTHORIZATION
+        )
+    return (
+        f"Execute exactly bootstrap task {work_id} according to .scratch/bootstrap/BOOTSTRAP-AGENTS.md "
+        "and .scratch/bootstrap/protocol.md. Use a fresh greekimpl Hermes profile session for implementation "
+        "and a different fresh greekreview profile session for review. Return corrections to the original "
+        "implementer and re-review to the same reviewer. Complete evidence, closure, tracking, handoff and the "
+        "dedicated Task-ID commit. Do not start another task. " + OPERATOR_AUTHORIZATION
+    )
+
+
+def _resume_prompt(work_id: str, repair_reasons: list[str]) -> str:
+    prompt = (
+        f"Resume and finish only {work_id}. Preserve the existing implementer and reviewer session identities, "
+        "complete all required correction/re-review or phase-review cycles, update closure records and commit. "
+        "Do not start another work unit. " + OPERATOR_AUTHORIZATION
+    )
+    if repair_reasons:
+        prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)
+    return prompt
 
 
 class LoopOutcome(str, Enum):
@@ -67,61 +94,53 @@ def _write_runtime_state(state_dir: Path, payload: dict[str, object]) -> None:
     temporary.replace(target)
 
 
-def _extract_session_id(event: object) -> str | None:
-    if not isinstance(event, dict):
-        return None
-    if event.get("type") == "thread.started":
-        value = event.get("thread_id") or event.get("threadId")
-        return str(value) if value else None
-    thread = event.get("thread")
-    if isinstance(thread, dict) and event.get("type") == "thread.started":
-        value = thread.get("id")
-        return str(value) if value else None
-    return None
+def _extract_hermes_session_id(line: str) -> str | None:
+    match = re.match(r"^session_id:\s*(\S+)\s*$", line.strip())
+    return match.group(1) if match else None
 
 
-def build_codex_command(repo: Path, session_id: str | None, repair_reasons: list[str]) -> list[str]:
-    if session_id:
-        prompt = RESUME_PROMPT
-        if repair_reasons:
-            prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)
-        return [
-            "codex",
-            "exec",
-            "resume",
-            "-c",
-            'sandbox_mode="danger-full-access"',
-            "-c",
-            'approval_policy="never"',
-            "--json",
-            session_id,
-            prompt,
-        ]
-    return [
-        "codex",
-        "exec",
-        "-C",
-        str(repo),
-        "-c",
-        'approval_policy="never"',
-        "--sandbox",
-        "danger-full-access",
-        "--json",
-        PROMPT,
+def build_hermes_command(
+    repo: Path,
+    work_id: str,
+    session_id: str | None,
+    repair_reasons: list[str],
+) -> list[str]:
+    command = [
+        "hermes",
+        "-p",
+        ROOT_PROFILE,
+        "chat",
+        "-Q",
+        "--yolo",
+        "--pass-session-id",
+        "--source",
+        "ralph",
+        "-m",
+        ROOT_MODEL,
+        "--provider",
+        ROOT_PROVIDER,
     ]
+    if session_id:
+        command.extend(["--resume", session_id])
+    command.extend(["-q", _resume_prompt(work_id, repair_reasons) if session_id else _fresh_prompt(work_id)])
+    return command
 
 
-def codex_executor(repo: Path, state_dir: Path, task: str, session_id: str | None, repair_reasons: list[str]) -> str:
+def hermes_executor(
+    repo: Path,
+    state_dir: Path,
+    work_id: str,
+    session_id: str | None,
+    repair_reasons: list[str],
+) -> str:
     state_dir.mkdir(parents=True, exist_ok=True)
     logs = state_dir / "logs"
     logs.mkdir(exist_ok=True)
     stamp = time.strftime("%Y%m%d-%H%M%S")
-    event_log = logs / f"{task}-{stamp}.jsonl"
-    last_message = logs / f"{task}-{stamp}-last-message.md"
-    command = build_codex_command(repo, session_id, repair_reasons)
+    event_log = logs / f"{work_id}-{stamp}.log"
+    command = build_hermes_command(repo, work_id, session_id, repair_reasons)
 
     discovered_session = session_id
-    final_message: str | None = None
     with event_log.open("w", encoding="utf-8") as log:
         process = subprocess.Popen(
             command,
@@ -136,35 +155,23 @@ def codex_executor(repo: Path, state_dir: Path, task: str, session_id: str | Non
         for line in process.stdout:
             log.write(line)
             log.flush()
-            try:
-                event = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            found = _extract_session_id(event)
+            found = _extract_hermes_session_id(line)
             if found and found != discovered_session:
                 discovered_session = found
                 _write_runtime_state(
                     state_dir,
                     {
-                        "task_id": task,
-                        "codex_session_id": discovered_session,
+                        "work_id": work_id,
+                        "hermes_session_id": discovered_session,
                         "last_event_log": str(event_log),
                     },
                 )
-            if isinstance(event, dict) and event.get("type") == "item.completed":
-                item = event.get("item")
-                if isinstance(item, dict) and item.get("type") == "agent_message":
-                    text = item.get("text")
-                    if isinstance(text, str):
-                        final_message = text
         return_code = process.wait()
 
     if return_code != 0:
-        raise RuntimeError(f"Codex exited {return_code}; log: {event_log}")
+        raise RuntimeError(f"Hermes exited {return_code}; log: {event_log}")
     if not discovered_session:
-        raise RuntimeError(f"Codex did not emit a session ID; log: {event_log}")
-    if final_message:
-        last_message.write_text(final_message, encoding="utf-8")
+        raise RuntimeError(f"Hermes did not emit a session ID; log: {event_log}")
     return discovered_session
 
 
@@ -181,8 +188,8 @@ def run_loop(
     state_dir = state_dir or default_state_dir()
     inspect_fn = inspect_fn or (lambda: inspect_repository(repo))
     execute_fn = execute_fn or (
-        lambda task, session_id, reasons: codex_executor(
-            repo, state_dir, task, session_id, reasons
+        lambda work_id, session_id, reasons: hermes_executor(
+            repo, state_dir, work_id, session_id, reasons
         )
     )
 
@@ -199,50 +206,65 @@ def run_loop(
             return LoopOutcome.LIMIT_REACHED
 
         runtime = _read_runtime_state(state_dir)
-        saved_task = runtime.get("task_id")
-        saved_session = runtime.get("codex_session_id")
+        saved_work = runtime.get("work_id")
+        saved_session = runtime.get("hermes_session_id")
 
         if result.state == State.INCONSISTENT:
-            if not saved_task or not saved_session or repair_attempts >= max_repair_attempts:
+            if not saved_work or not saved_session or repair_attempts >= max_repair_attempts:
                 return LoopOutcome.INCONSISTENT
-            task = str(saved_task)
+            work_id = str(saved_work)
             session_id = str(saved_session)
             repair_attempts += 1
         elif result.state == State.RESUMABLE:
-            if saved_task != result.task or not saved_session:
+            if saved_work != result.task or not saved_session:
                 return LoopOutcome.INCONSISTENT
-            task = str(result.task)
+            work_id = str(result.task)
             session_id = str(saved_session)
-        else:
-            task = str(result.task)
+        elif result.state == State.PHASE_REVIEW:
+            work_id = str(result.task)
+            session_id = str(saved_session) if saved_work == work_id and saved_session else None
+            repair_attempts = 0
+        elif result.state == State.READY:
+            work_id = str(result.task)
             session_id = None
             repair_attempts = 0
+        else:
+            return LoopOutcome.INCONSISTENT
 
-        before_done = result.completed_tasks
-        session_id = execute_fn(task, session_id, result.reasons)
+        before = result
+        session_id = execute_fn(work_id, session_id, result.reasons)
         _write_runtime_state(
             state_dir,
             {
-                "task_id": task,
-                "codex_session_id": session_id,
+                "work_id": work_id,
+                "hermes_session_id": session_id,
                 "last_state": result.state.value,
             },
         )
         result = inspect_fn()
 
-        if result.completed_tasks > before_done:
-            completed_this_run += result.completed_tasks - before_done
+        if result.completed_tasks > before.completed_tasks:
+            completed_this_run += result.completed_tasks - before.completed_tasks
             repair_attempts = 0
-            if result.state in {State.READY, State.COMPLETE}:
-                _write_runtime_state(
-                    state_dir,
-                    {
-                        "last_completed_task": task,
-                        "codex_session_id": None,
-                        "last_state": result.state.value,
-                    },
-                )
-        elif result.state == State.READY:
+            _write_runtime_state(
+                state_dir,
+                {
+                    "last_completed_work": work_id,
+                    "hermes_session_id": None,
+                    "last_state": result.state.value,
+                },
+            )
+        elif before.state == State.PHASE_REVIEW and result.state == State.READY:
+            repair_attempts = 0
+            _write_runtime_state(
+                state_dir,
+                {
+                    "last_completed_work": work_id,
+                    "hermes_session_id": None,
+                    "last_state": result.state.value,
+                },
+            )
+        elif result.state in {State.READY, State.PHASE_REVIEW}:
             return LoopOutcome.INCONSISTENT
 
 

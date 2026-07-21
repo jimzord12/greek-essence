@@ -32,9 +32,9 @@ Before delegated work, briefly report the reconciliation result, selected/resume
 
 ## Mandatory task workflow
 
-1. Launch a fresh instance of `.codex/agents/implementer.toml`; record its canonical ID and start time in the task front matter, then set the task to `In progress`.
+1. Launch a fresh `greekimpl` Hermes profile session; record its canonical session ID and start time in the task front matter, then set the task to `In progress`.
 2. Give the implementer the task path and required reading. It performs only that task, runs the required checks, writes `implementation-report.md` and `evidence.md`, and sets the task to `In review`—never `Done`.
-3. Launch a different fresh instance of `.codex/agents/reviewer.toml`; record its canonical ID. It independently inspects the actual repository state, diff, task contract, references, report, and evidence; re-runs proportionate checks; and writes the numbered review.
+3. Launch a different fresh `greekreview` Hermes profile session; record its canonical session ID. It independently inspects the actual repository state, diff, task contract, references, report, and evidence; re-runs proportionate checks; and writes the numbered review.
 4. For every Blocking or High finding, return work to the original implementer. It writes the paired review response, makes accepted corrections, reruns affected checks, and returns work to the same reviewer for the next numbered review cycle.
 5. Only close the task when all required checks pass (or an approved deviation is recorded), reports/evidence are complete, the verdict is `Approved`, no Blocking/High finding remains, completion time is recorded, and task/phase/dashboard status agree.
 6. Update `ralph-loop/HANDOFF.md` for the next eligible task and add only reviewer-validated durable discoveries to `ralph-loop/KNOWLEDGE.md`.

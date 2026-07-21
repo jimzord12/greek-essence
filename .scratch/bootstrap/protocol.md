@@ -29,7 +29,7 @@ Must:
 
 - read this protocol, the dashboard, dependency map, and current phase status;
 - select only a `Ready` task whose dependencies are `Done`;
-- assign one fresh instance of `.codex/agents/implementer.toml` and a different fresh instance of `.codex/agents/reviewer.toml`, recording their IDs;
+- launch one fresh `greekimpl` Hermes profile session and a different fresh `greekreview` session, recording their IDs;
 - preserve unrelated and pre-existing work;
 - resolve cross-task conflicts and update task, phase, and dashboard state together;
 - create one task commit after each successful task closure, control phase commits, and surface blockers with exact consequences.
@@ -45,7 +45,7 @@ Must not:
 
 ### Task implementer subagent
 
-The implementer owns exactly one task and its accepted review fixes. For every task, the root integrator launches a fresh instance of the repository's `.codex/agents/implementer.toml` profile; it does not substitute ad-hoc implementer instructions.
+The implementer owns exactly one task and its accepted review fixes. For every task, the root integrator launches a fresh `greekimpl` Hermes profile session; it does not substitute ad-hoc implementer instructions.
 
 Must:
 
@@ -68,7 +68,7 @@ Must not:
 
 ### Task reviewer subagent
 
-The reviewer independently determines whether one task satisfies its contract. For every task, the root integrator launches a fresh instance of the repository's `.codex/agents/reviewer.toml` profile; it does not substitute ad-hoc reviewer instructions.
+The reviewer independently determines whether one task satisfies its contract. For every task, the root integrator launches a different fresh `greekreview` Hermes profile session; it does not substitute ad-hoc reviewer instructions.
 
 Must:
 
@@ -111,7 +111,7 @@ Must not:
 
 1. Root integrator reads the dashboard, dependency map, and phase status.
 2. It selects the first dependency-satisfied `Ready` task.
-3. It launches a fresh `.codex/agents/implementer.toml` instance, records its canonical ID, and gives it the task path, not a rewritten brief.
+3. It launches a fresh `greekimpl` Hermes session, records its canonical session ID, and gives it the task path, not a rewritten brief.
 4. Work remains serialized unless non-overlapping write sets are proven and the exception is recorded.
 
 ### 2. Implementation
@@ -123,7 +123,7 @@ Must not:
 
 ### 3. Independent review
 
-1. Root integrator launches a different fresh `.codex/agents/reviewer.toml` instance and records its canonical ID.
+1. Root integrator launches a different fresh `greekreview` Hermes session and records its canonical session ID.
 2. Reviewer writes `reviews/01-review.md` using the template.
 3. `Approved` with no blocking/high findings may proceed to closure.
 4. `Blocked` or `Changes requested` returns to the original implementer.
@@ -134,7 +134,7 @@ Must not:
 2. Accepted findings are fixed and affected checks repeated; rejected findings require evidence-based rationale.
 3. Reviewer writes `02-review.md` when another cycle is needed; implementer uses the paired response.
 4. Numbered cycles continue until no blocking/high finding remains or the task becomes `Blocked`.
-5. Automation keeps this ping-pong inside the same Codex root session so corrections return to the original implementer and then the same reviewer.
+5. Automation keeps this ping-pong inside the same Hermes root session so corrections resume the original implementer session and then the same reviewer session.
 
 ### 5. Task closure
 
@@ -152,7 +152,7 @@ Root integrator may mark `Done` only when records are complete, required checks 
 ## Ralph-loop automation contract
 
 - `ralph-loop/tools/check_state.py` is the deterministic authority; model prose is not a completion signal.
-- A fresh Codex root session starts only for a clean `Ready` task. An interrupted `In progress` or `In review` task resumes its saved root session.
+- A fresh `greekroot` Hermes session starts only for a clean `Ready` task or phase-review gate. An interrupted task or phase review resumes its saved root session.
 - The loop stops on `Blocked`, inconsistent tracking, missing session identity, or exhausted repair attempts.
 - `COMPLETE` requires all 28 tasks and all eight phases `Done`, README counts aligned with no current/next task, B07-03 and `completion-report.md` finalized, latest reviews approved, Task-ID commits reachable, and Git clean.
 - When Phase 07 completes, the README must show `28/28` with no current or next task.
@@ -170,7 +170,7 @@ Root integrator may mark `Done` only when records are complete, required checks 
 - Use `Blocked` only when safe/correct progress requires external input or state change.
 - Record the condition, investigation, required decision, and affected tasks.
 - A deviation names the original rule, reason, impact, approval owner, and replacement verification.
-- Before destructive or overwrite operations: stop, name the exact command/targets and consequence, and wait for explicit approval.
+- Ralph execution has standing authorization for task-owned repository-local edits, overwrites, and deletions explicitly required by the active contract or reviewer findings. Stop and request explicit approval for unrelated deletion, out-of-repository changes, credentials, system changes, pushes, deployments, remotes, or history rewriting.
 - Kimi Code remains an external blocker; full cross-agent compatibility cannot be claimed until its controlled validations actually pass.
 
 ## Status integrity

@@ -18,6 +18,7 @@ class State(str, Enum):
     COMPLETE = "COMPLETE"
     READY = "READY"
     RESUMABLE = "RESUMABLE"
+    PHASE_REVIEW = "PHASE_REVIEW"
     BLOCKED = "BLOCKED"
     INCONSISTENT = "INCONSISTENT"
 
@@ -26,6 +27,7 @@ EXIT_CODES = {
     State.COMPLETE: 0,
     State.READY: 10,
     State.RESUMABLE: 11,
+    State.PHASE_REVIEW: 12,
     State.BLOCKED: 20,
     State.INCONSISTENT: 30,
 }
@@ -239,7 +241,12 @@ def inspect_repository(
         state = State.RESUMABLE if len(active) == 1 and not reasons else State.INCONSISTENT
         return Result(state, task.task_id, len(done_tasks), len(tasks), git_clean, reasons)
 
-    all_done = bool(tasks) and len(done_tasks) == len(tasks)
+    all_done = (
+        bool(tasks)
+        and len(done_tasks) == len(tasks)
+        and final_task_id in task_by_id
+        and task_by_id[final_task_id].status == "Done"
+    )
     if all_done:
         if any(state != "Done" for state in phase_states.values()) or len(phase_states) != len(readme_phases):
             reasons.append("Not every phase status file is Done and represented in README.md.")
@@ -256,6 +263,22 @@ def inspect_repository(
             reasons.append("Git working tree is not clean.")
         state = State.COMPLETE if not reasons else State.INCONSISTENT
         return Result(state, None, len(done_tasks), len(tasks), git_clean, reasons)
+
+    phase_reviews = []
+    for phase_number, phase_state in phase_states.items():
+        phase_tasks = [task for task in tasks if task.phase_number == phase_number]
+        if phase_state == "In review" and phase_tasks and all(task.status == "Done" for task in phase_tasks):
+            phase_reviews.append(phase_number)
+    if not ready and not active and phase_reviews:
+        if len(phase_reviews) != 1:
+            reasons.append(f"Expected exactly one phase in review, found {len(phase_reviews)}.")
+        if readme_current or readme_next:
+            reasons.append("README must not name a task while a phase review gate is active.")
+        if not git_clean and not allow_dirty:
+            reasons.append("Git working tree is not clean before starting a phase review.")
+        phase_number = phase_reviews[0]
+        state = State.PHASE_REVIEW if not reasons else State.INCONSISTENT
+        return Result(state, f"PHASE-{phase_number}", len(done_tasks), len(tasks), git_clean, reasons)
 
     if len(ready) != 1:
         reasons.append(f"Expected exactly one Ready task, found {len(ready)}.")

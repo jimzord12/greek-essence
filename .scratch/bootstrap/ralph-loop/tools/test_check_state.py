@@ -13,7 +13,12 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 from check_state import Result, State, inspect_repository  # noqa: E402
-from ralph_loop import LoopOutcome, _extract_session_id, build_codex_command, run_loop  # noqa: E402
+from ralph_loop import (  # noqa: E402
+    LoopOutcome,
+    _extract_hermes_session_id,
+    build_hermes_command,
+    run_loop,
+)
 
 
 README = """# Bootstrap
@@ -157,21 +162,53 @@ class CheckStateTests(unittest.TestCase):
             result = inspect_repository(fx.root, expected_task_count=1, final_task_id="B07-03")
             self.assertEqual(State.INCONSISTENT, result.state)
 
+    def test_completed_phase_waiting_for_review_is_a_phase_review_work_unit(self) -> None:
+        temp, fx = self.fixture()
+        with temp:
+            fx.add_task("B00-01", "Done")
+            fx.write_tracking("In review", 1, 1, "None", "None")
+            fx.init_git(["complete B00-01"])
+            result = inspect_repository(fx.root, expected_task_count=1, final_task_id="B07-03")
+            self.assertEqual(State.PHASE_REVIEW, result.state)
+            self.assertEqual("PHASE-00", result.task)
+
 
 class RalphLoopTests(unittest.TestCase):
-    def test_non_object_json_event_is_ignored(self) -> None:
-        self.assertIsNone(_extract_session_id(201))
+    def test_hermes_session_id_is_extracted_from_quiet_output(self) -> None:
+        self.assertEqual("20260722_004901_1d79f6", _extract_hermes_session_id("session_id: 20260722_004901_1d79f6"))
+        self.assertIsNone(_extract_hermes_session_id("ordinary output"))
 
-    def test_codex_command_uses_explicit_full_access_without_external_output(self) -> None:
-        command = build_codex_command(Path("C:/repo"), None, [])
-        self.assertNotIn("--output-last-message", command)
-        self.assertIn("danger-full-access", command)
-        self.assertNotIn('windows.sandbox="elevated"', command)
+    def test_fresh_hermes_command_is_noninteractive_and_unattended(self) -> None:
+        command = build_hermes_command(Path("C:/repo"), "B01-01", None, [])
+        self.assertEqual("hermes", command[0])
+        self.assertIn("greekroot", command)
+        self.assertIn("--yolo", command)
+        self.assertIn("--pass-session-id", command)
+        self.assertNotIn("codex", command)
 
-    def test_resume_command_keeps_explicit_full_access(self) -> None:
-        command = build_codex_command(Path("C:/repo"), "session-1", ["repair"])
-        self.assertIn('sandbox_mode="danger-full-access"', command)
-        self.assertIn('approval_policy="never"', command)
+    def test_resume_hermes_command_preserves_session(self) -> None:
+        command = build_hermes_command(Path("C:/repo"), "B01-01", "session-1", ["repair"])
+        self.assertIn("--resume", command)
+        self.assertIn("session-1", command)
+
+    def test_phase_review_does_not_consume_task_limit(self) -> None:
+        states = iter(
+            [
+                Result(State.PHASE_REVIEW, "PHASE-00", 2, 3, True, []),
+                Result(State.READY, "B01-01", 2, 3, True, []),
+                Result(State.READY, "B01-02", 3, 3, True, []),
+            ]
+        )
+        executed: list[str] = []
+        outcome = run_loop(
+            Path.cwd(),
+            max_tasks=1,
+            inspect_fn=lambda: next(states),
+            execute_fn=lambda work, _session, _reasons: executed.append(work) or f"session-{work}",
+            state_dir=Path(tempfile.mkdtemp()),
+        )
+        self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
+        self.assertEqual(["PHASE-00", "B01-01"], executed)
 
     def test_no_progress_stops_instead_of_starting_another_fresh_session(self) -> None:
         states = iter(
@@ -220,12 +257,12 @@ class RalphLoopTests(unittest.TestCase):
         self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
         self.assertEqual(["B00-01", "B00-02"], executed)
 
-    def test_complete_stops_without_calling_codex(self) -> None:
+    def test_complete_stops_without_calling_hermes(self) -> None:
         def inspect() -> Result:
             return Result(State.COMPLETE, None, 28, 28, True, [])
 
         def execute(task: str, session_id: str | None, repair_reasons: list[str]) -> str:
-            self.fail("Codex should not run after completion")
+            self.fail("Hermes should not run after completion")
 
         outcome = run_loop(
             Path.cwd(),
