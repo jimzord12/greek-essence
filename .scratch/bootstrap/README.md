@@ -21,6 +21,7 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 
 ## Entry points
 
+- [Bootstrap agent instructions](BOOTSTRAP-AGENTS.md)
 - [Human operator guide](FOR_HUMAN_OPERATOR.md)
 - [Work protocol](protocol.md)
 - [Execution plan](plan.md)

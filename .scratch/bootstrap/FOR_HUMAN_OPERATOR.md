@@ -11,9 +11,9 @@ There are 8 phases and 28 tasks. Each task is implemented by one subagent, revie
 ## Current status
 
 - Current phase: `00 — Planning and baseline`
-- Current task: `B00-01 — Record and protect the initial repository state`
-- Next unblocked task: `B00-01`
-- Completed tasks: `0/28`
+- Current task: `B00-02 — Validate and finalize the execution workspace`
+- Next unblocked task: `B00-02`
+- Completed tasks: `1/28`
 - External blocker: Kimi Code is unavailable, so full cross-agent compatibility cannot be declared green.
 - Hosted CI: intentionally outside this bootstrap.
 
@@ -27,20 +27,34 @@ For detail, open [the dashboard](README.md). For governing rules, open [the prot
 
 You do not need to choose details already settled by task briefs and the verification matrix.
 
+## Short handoff prompt
+
+```text
+Read `.scratch/bootstrap/BOOTSTRAP-AGENTS.md` and execute exactly one next valid bootstrap task.
+```
 ## Copy-paste continuation prompt
 
 ```text
-Resume the Greek Essence bootstrap process from `.scratch/bootstrap/`.
+Resume the Greek Essence bootstrap process from `.scratch/bootstrap/` as the root integrator. Execute no work before reconciling the recorded state with the repository.
 
 First read:
-1. `.scratch/bootstrap/README.md`
-2. `.scratch/bootstrap/protocol.md`
-3. `.scratch/bootstrap/dependency-map.md`
-4. the current phase `status.md`
+1. root `AGENTS.md`, if it exists;
+2. `.scratch/bootstrap/README.md`;
+3. `.scratch/bootstrap/protocol.md`;
+4. `.scratch/bootstrap/plan.md`;
+5. `.scratch/bootstrap/decisions.md`;
+6. `.scratch/bootstrap/dependency-map.md`;
+7. `.scratch/bootstrap/verification-matrix.md`;
+8. the current phase’s `phase.md` and `status.md`;
+9. the active task’s `task.md`, or the selected next-ready task’s `task.md` when no task is active.
 
-Reconcile recorded status with the repository before changing anything. Identify the next `Ready` task whose dependencies are `Done`, briefly tell me the current status and why that task is next, then execute only that task using the implementer/reviewer protocol. Every task must use a fresh `.codex/agents/implementer.toml` instance, be reviewed by a different fresh `.codex/agents/reviewer.toml` instance, and return to the implementer for review responses and fixes. Do not begin a later task, commit, push, deploy, change remotes, or perform destructive/overwrite operations without authority and approval from the protocol.
+Then inspect Git status, branch, remotes, tracked and untracked files, active reports/reviews, task front matter, phase status, dashboard, and the available runtime/tools. Confirm they agree before changing anything. If a task is `In progress` or `In review`, resume that exact task rather than selecting another. Otherwise, select only the next `Ready` task whose dependencies are `Done`. Read only the project documents named in that task’s Required reading section.
 
-At the end, update all relevant task, phase, and dashboard records and report: task outcome, verification results, review verdict, blockers, and next recommended task. If tracking and repository reality disagree, stop execution and repair or report the discrepancy rather than guessing.
+Before delegated work, briefly report whether recorded state matches repository reality, the task selected or resumed, why it is eligible, the implementer/reviewer workflow, and any blocker or approval required. For every task, launch a fresh `.codex/agents/implementer.toml` instance and record its canonical ID; launch a different fresh `.codex/agents/reviewer.toml` instance for independent review and record its canonical ID. Follow the full implementation, review, response, and re-review procedure in `protocol.md`; do not replace it with ad-hoc role instructions.
+
+Execute only that one task. Preserve unrelated work and do not begin a later task, push, deploy, change remotes, rewrite history, or perform destructive/overwrite operations without the authority and approval required by the protocol. After a task is successfully closed, create its required dedicated local commit with the task ID in the commit message before any later task begins.
+
+At the end, update all task, phase, and dashboard records; report the task outcome, files changed, exact verification commands/results, implementer and reviewer identities, review verdict/cycles, unresolved findings or blockers, progress counts, and the next eligible task with its reason. If tracking and repository reality disagree, stop execution and repair or report the discrepancy rather than guessing. Stop after the one task unless I explicitly request continuation.
 ```
 
 ## Status-only prompt
