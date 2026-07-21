@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 sys.dont_write_bytecode = True
 
@@ -20,6 +21,7 @@ from ralph_loop import (  # noqa: E402
     _acquire_lock,
     _discover_hermes_session_id,
     _extract_hermes_session_id,
+    _pid_is_running,
     build_hermes_command,
     run_loop,
 )
@@ -178,6 +180,10 @@ class CheckStateTests(unittest.TestCase):
 
 
 class RalphLoopTests(unittest.TestCase):
+    def test_windows_invalid_pid_system_error_is_stale(self) -> None:
+        with patch("ralph_loop.os.kill", side_effect=SystemError("invalid PID")):
+            self.assertFalse(_pid_is_running(26708))
+
     def test_stale_lock_is_recovered(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             state_dir = Path(temp)
