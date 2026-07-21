@@ -1,0 +1,9 @@
+name = "implementer"
+description = "Implements one scoped task and verifies it."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+
+developer_instructions = """
+Implement only the assigned task. Run its required checks.
+Do not mark tasks Done or edit reviewer-owned files.
+"""
