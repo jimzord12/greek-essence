@@ -46,4 +46,4 @@ Produce a reproducible, bilingual Next.js foundation whose application, automate
 - Reviewer writes `reviews/01-review.md`; implementer writes `01-review-response.md`.
 - Continue numbered review cycles until blockers are cleared.
 - Phase reviewer writes `reviews/01-phase-review.md`; phase owner responds in the paired response file.
-- Update this workspace in the same accepted change that closes a task or phase.
+- Update this workspace in the same accepted change that closes a task or phase. After every successful task closure, the root integrator creates one dedicated commit containing the task ID in its message before starting later work.

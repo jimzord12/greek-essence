@@ -5,7 +5,7 @@
 | BD-001 | Track all textual plans, reports, reviews, and responses under `.scratch/bootstrap`. | Preserve durable, auditable agent handoffs. |
 | BD-002 | Store generated screenshots, traces, reports, coverage, and downloads under ignored `.artifacts/bootstrap`. | Avoid committing heavy or unstable artifacts while retaining a tracked evidence manifest. |
 | BD-003 | Use one fresh implementer and a different fresh reviewer per task. | Separate authorship from verification. |
-| BD-004 | Root integrator controls commits; subagents do not commit or push. | Keep shared-workspace integration predictable. |
+| BD-004 | Root integrator creates one dedicated Task-ID commit immediately after each successful task closure; subagents do not commit or push. | Keep shared-workspace integration predictable and make every accepted task auditable. |
 | BD-005 | Use the prescribed shadcn command exactly and never add `--force` implicitly. | Preserve the selected preset and protect existing files. |
 | BD-006 | Pin Node `24.18.0` and pnpm `10.33.0`; exact-pin resolved packages after generation. | Match the verified environment and technical version policy. |
 | BD-007 | Use Chromium for Playwright compact, medium, and wide projects during bootstrap. | Satisfy representative browser checks without installing an unjustified browser matrix. |

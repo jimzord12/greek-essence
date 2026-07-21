@@ -1,11 +1,11 @@
 ---
 id: B00-01
-status: Ready
+status: Done
 depends_on: []
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: /root/b00_01_implementer
+reviewer_agent: /root/b00_01_reviewer
+started_at: 2026-07-21T20:58:57+03:00
+completed_at: 2026-07-21T21:07:48+03:00
 ---
 
 # Record and protect the initial repository state

@@ -32,7 +32,7 @@ Must:
 - assign one fresh implementer and a different fresh reviewer, recording their IDs;
 - preserve unrelated and pre-existing work;
 - resolve cross-task conflicts and update task, phase, and dashboard state together;
-- control phase commits and surface blockers with exact consequences.
+- create one task commit after each successful task closure, control phase commits, and surface blockers with exact consequences.
 
 Must not:
 
@@ -136,7 +136,7 @@ Must not:
 
 ### 5. Task closure
 
-Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree.
+Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree. Immediately after marking a task `Done`, it must create one dedicated commit containing that task's implementation, evidence, review, and closure tracking updates. The commit message must include the task ID (for example, `B00-01`); no later task may begin before that commit succeeds.
 
 ## Phase procedure
 
