@@ -13,8 +13,9 @@ Before any mutation, read in this order:
 1. Root `AGENTS.md`, if it exists.
 2. This file.
 3. `README.md`, `protocol.md`, `plan.md`, `decisions.md`, `dependency-map.md`, and `verification-matrix.md` in this directory.
-4. The current phase’s `phase.md` and `status.md`.
-5. The active task’s `task.md`, or the selected next-ready task’s `task.md` when no task is active.
+4. `ralph-loop/HANDOFF.md` and relevant entries in `ralph-loop/KNOWLEDGE.md`.
+5. The current phase’s `phase.md` and `status.md`.
+6. The active task’s `task.md`, or the selected next-ready task’s `task.md` when no task is active.
 
 Read only the project documentation named by the selected task’s **Required reading** section. The task contract and verification matrix are binding; `protocol.md` governs roles, state transitions, evidence, reviews, safety, and commits. If sources conflict, follow the project documentation hierarchy and report the conflict instead of guessing.
 
@@ -36,7 +37,8 @@ Before delegated work, briefly report the reconciliation result, selected/resume
 3. Launch a different fresh instance of `.codex/agents/reviewer.toml`; record its canonical ID. It independently inspects the actual repository state, diff, task contract, references, report, and evidence; re-runs proportionate checks; and writes the numbered review.
 4. For every Blocking or High finding, return work to the original implementer. It writes the paired review response, makes accepted corrections, reruns affected checks, and returns work to the same reviewer for the next numbered review cycle.
 5. Only close the task when all required checks pass (or an approved deviation is recorded), reports/evidence are complete, the verdict is `Approved`, no Blocking/High finding remains, completion time is recorded, and task/phase/dashboard status agree.
-6. Immediately create one dedicated local commit containing the accepted task’s implementation, evidence, review, and closure tracking updates. Its message must include the task ID. Do not begin later task work until this commit succeeds.
+6. Update `ralph-loop/HANDOFF.md` for the next eligible task and add only reviewer-validated durable discoveries to `ralph-loop/KNOWLEDGE.md`.
+7. Immediately create one dedicated local commit containing the accepted task’s implementation, evidence, review, closure tracking, and handoff/knowledge updates. Its message must include the task ID. Do not begin later task work until this commit succeeds.
 
 ## Boundaries
 
@@ -46,6 +48,7 @@ Before delegated work, briefly report the reconciliation result, selected/resume
 - Do not weaken acceptance criteria, fabricate evidence, claim unrun validation, or conceal failures, deviations, or external blockers.
 - Keep generated runtime artifacts under `.artifacts/bootstrap/` when that boundary exists; tracked evidence records commands, exit codes, concise results, and artifact paths without secrets or personal data.
 - Respect locked exclusions and decisions. Kimi Code validation remains an external blocker until it is actually run successfully.
+- In Ralph-loop execution, do not return early after implementation or a failed review. Keep Blocking/High correction cycles inside this root session using the original implementer and same reviewer. Return only after the task is committed, genuinely `Blocked`, or cannot continue safely.
 
 ## Completion handoff
 

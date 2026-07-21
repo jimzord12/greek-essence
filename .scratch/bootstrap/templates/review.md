@@ -16,3 +16,7 @@ For each finding record: severity (`Blocking`, `High`, or `Non-blocking`), exact
 ## Verification performed
 
 ## Evidence
+
+## Handoff verification
+
+## Durable knowledge verification

@@ -12,3 +12,7 @@
 
 ## Risks or follow-up
 
+## Handoff information
+
+## Durable knowledge candidates
+

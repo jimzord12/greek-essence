@@ -33,6 +33,7 @@ Must:
 - preserve unrelated and pre-existing work;
 - resolve cross-task conflicts and update task, phase, and dashboard state together;
 - create one task commit after each successful task closure, control phase commits, and surface blockers with exact consequences.
+- update `ralph-loop/HANDOFF.md` before every task commit and promote only reviewed cross-task discoveries to `ralph-loop/KNOWLEDGE.md`.
 
 Must not:
 
@@ -133,19 +134,28 @@ Must not:
 2. Accepted findings are fixed and affected checks repeated; rejected findings require evidence-based rationale.
 3. Reviewer writes `02-review.md` when another cycle is needed; implementer uses the paired response.
 4. Numbered cycles continue until no blocking/high finding remains or the task becomes `Blocked`.
+5. Automation keeps this ping-pong inside the same Codex root session so corrections return to the original implementer and then the same reviewer.
 
 ### 5. Task closure
 
-Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree. Immediately after marking a task `Done`, it must create one dedicated commit containing that task's implementation, evidence, review, and closure tracking updates. The commit message must include the task ID (for example, `B00-01`); no later task may begin before that commit succeeds.
+Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree. Before committing, it updates `ralph-loop/HANDOFF.md` for the next eligible task and adds only reviewed durable discoveries to `ralph-loop/KNOWLEDGE.md`. It then creates one dedicated commit containing the task implementation, evidence, review, closure tracking, and handoff/knowledge updates. The commit message must include the task ID (for example, `B00-01`); no later task may begin before that commit succeeds.
 
 ## Phase procedure
 
 1. When every task is `Done`, root integrator sets the phase `In review`.
 2. A fresh phase reviewer runs integration checks and writes the numbered phase review.
 3. The phase owner responds and coordinates fixes through the owning task where possible.
-4. Phase becomes `Done` only when its exit gate passes and phase review approves it.
-5. Root integrator updates the dashboard and may create the phase Conventional Commit.
+4. Phase becomes `Done` only when its exit gate passes and phase review approves it; set its status file to the exact value `**Phase state:** Done`.
+5. Root integrator sets that phase's README State cell to exact `Done`, updates exact task counts, and may create the phase Conventional Commit.
 6. Only then may the next dependency-satisfied task become `Ready`.
+
+## Ralph-loop automation contract
+
+- `ralph-loop/tools/check_state.py` is the deterministic authority; model prose is not a completion signal.
+- A fresh Codex root session starts only for a clean `Ready` task. An interrupted `In progress` or `In review` task resumes its saved root session.
+- The loop stops on `Blocked`, inconsistent tracking, missing session identity, or exhausted repair attempts.
+- `COMPLETE` requires all 28 tasks and all eight phases `Done`, README counts aligned with no current/next task, B07-03 and `completion-report.md` finalized, latest reviews approved, Task-ID commits reachable, and Git clean.
+- When Phase 07 completes, the README must show `28/28` with no current or next task.
 
 ## Evidence and artifacts
 

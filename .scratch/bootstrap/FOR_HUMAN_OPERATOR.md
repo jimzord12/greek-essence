@@ -19,6 +19,19 @@ There are 8 phases and 28 tasks. Each task is implemented by one subagent, revie
 
 For detail, open [the dashboard](README.md). For governing rules, open [the protocol](protocol.md).
 
+## Ralph-loop commands
+
+```bash
+# Read-only state check
+python .scratch/bootstrap/ralph-loop/tools/ralph_loop.py --dry-run
+
+# Full loop until complete or safely blocked
+python .scratch/bootstrap/ralph-loop/tools/ralph_loop.py
+
+# Test run: stop after at most two completed tasks
+python .scratch/bootstrap/ralph-loop/tools/test_ralph_loop.py
+```
+
 ## What you normally do
 
 1. Paste the continuation prompt below into your primary coding agent.
