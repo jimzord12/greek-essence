@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bootstrap Next Task"
+  short_description: "Resume one valid bootstrap task safely"
+  default_prompt: "Use $bootstrap-next to execute the next valid bootstrap task."
+
+policy:
+  allow_implicit_invocation: false
