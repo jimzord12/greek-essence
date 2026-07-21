@@ -1,11 +1,13 @@
 ---
 id: B01-01
-status: Ready
+status: Done
 depends_on: [B00-02]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: greekimpl
+session_id: 20260722_013444_e20ce0
+reviewer_agent: greekreview
+reviewer_session_id: 20260722_013954_825d49
+started_at: 2026-07-21T22:35:13Z
+completed_at: 2026-07-21T22:43:44Z
 ---
 
 # Create repository-level guidance
