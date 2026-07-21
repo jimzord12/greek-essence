@@ -165,6 +165,26 @@ class RalphLoopTests(unittest.TestCase):
     def test_codex_command_does_not_add_an_external_writable_output(self) -> None:
         command = build_codex_command(Path("C:/repo"), None, [])
         self.assertNotIn("--output-last-message", command)
+        self.assertIn('windows.sandbox="elevated"', command)
+
+    def test_no_progress_stops_instead_of_starting_another_fresh_session(self) -> None:
+        states = iter(
+            [
+                Result(State.READY, "B00-01", 0, 2, True, []),
+                Result(State.READY, "B00-01", 0, 2, True, []),
+            ]
+        )
+        calls: list[str] = []
+
+        outcome = run_loop(
+            Path(tempfile.mkdtemp()),
+            inspect_fn=lambda: next(states),
+            execute_fn=lambda task, _session, _reasons: calls.append(task) or "session-1",
+            state_dir=Path(tempfile.mkdtemp()),
+        )
+
+        self.assertEqual(outcome, LoopOutcome.INCONSISTENT)
+        self.assertEqual(calls, ["B00-01"])
 
     def test_max_tasks_stops_after_two_successful_tasks(self) -> None:
         states = iter(

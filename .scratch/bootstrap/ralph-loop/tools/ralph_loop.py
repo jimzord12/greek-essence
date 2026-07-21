@@ -78,12 +78,23 @@ def build_codex_command(repo: Path, session_id: str | None, repair_reasons: list
         prompt = RESUME_PROMPT
         if repair_reasons:
             prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)
-        return ["codex", "exec", "resume", "--json", session_id, prompt]
+        return [
+            "codex",
+            "exec",
+            "resume",
+            "-c",
+            'windows.sandbox="elevated"',
+            "--json",
+            session_id,
+            prompt,
+        ]
     return [
         "codex",
         "exec",
         "-C",
         str(repo),
+        "-c",
+        'windows.sandbox="elevated"',
         "--sandbox",
         "workspace-write",
         "--json",
@@ -222,6 +233,8 @@ def run_loop(
                         "last_state": result.state.value,
                     },
                 )
+        elif result.state == State.READY:
+            return LoopOutcome.INCONSISTENT
 
 
 def _acquire_lock(state_dir: Path) -> Path:
