@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import subprocess
 import sqlite3
 import sys
@@ -16,6 +17,7 @@ if str(TOOLS) not in sys.path:
 from check_state import Result, State, inspect_repository  # noqa: E402
 from ralph_loop import (  # noqa: E402
     LoopOutcome,
+    _acquire_lock,
     _discover_hermes_session_id,
     _extract_hermes_session_id,
     build_hermes_command,
@@ -176,6 +178,18 @@ class CheckStateTests(unittest.TestCase):
 
 
 class RalphLoopTests(unittest.TestCase):
+    def test_stale_lock_is_recovered(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            state_dir = Path(temp)
+            lock = state_dir / "ralph.lock"
+            lock.write_text("2147483647", encoding="utf-8")
+            acquired = _acquire_lock(state_dir)
+            try:
+                self.assertEqual(lock, acquired)
+                self.assertEqual(str(os.getpid()), lock.read_text(encoding="utf-8"))
+            finally:
+                acquired.unlink(missing_ok=True)
+
     def test_running_hermes_session_is_discovered_from_profile_database(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             database = Path(temp) / "state.db"
