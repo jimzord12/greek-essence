@@ -126,7 +126,9 @@ def _discover_hermes_session_id(
                 connection.close()
                 for session, git_root, cwd in rows:
                     candidates = [value for value in (git_root, cwd) if value]
-                    if any(_normalise_path(value) == expected_repo for value in candidates):
+                    if not candidates or any(
+                        _normalise_path(value) == expected_repo for value in candidates
+                    ):
                         return str(session)
             except sqlite3.Error:
                 pass
@@ -248,6 +250,7 @@ def run_loop(
     )
 
     completed_this_run = 0
+    unconfirmed_completed_this_run = 0
     repair_attempts = 0
     result = inspect_fn()
 
@@ -301,8 +304,16 @@ def run_loop(
         )
         result = inspect_fn()
 
-        if result.completed_tasks > before.completed_tasks:
-            completed_this_run += result.completed_tasks - before.completed_tasks
+        completed_delta = max(0, result.completed_tasks - before.completed_tasks)
+        completion_is_consistent = (
+            result.git_clean
+            and result.state in {State.READY, State.PHASE_REVIEW, State.COMPLETE}
+        )
+        if completed_delta and not completion_is_consistent:
+            unconfirmed_completed_this_run += completed_delta
+        if completion_is_consistent and (completed_delta or unconfirmed_completed_this_run):
+            completed_this_run += completed_delta + unconfirmed_completed_this_run
+            unconfirmed_completed_this_run = 0
             repair_attempts = 0
             _write_runtime_state(
                 state_dir,

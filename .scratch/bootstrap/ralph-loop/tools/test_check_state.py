@@ -214,6 +214,24 @@ class RalphLoopTests(unittest.TestCase):
                 _discover_hermes_session_id(database, Path("C:/repo"), 100.0, timeout=0),
             )
 
+    def test_new_session_is_discovered_before_workspace_metadata_is_written(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            database = Path(temp) / "state.db"
+            connection = sqlite3.connect(database)
+            connection.execute(
+                "CREATE TABLE sessions (id TEXT, source TEXT, started_at REAL, git_repo_root TEXT, cwd TEXT)"
+            )
+            connection.execute(
+                "INSERT INTO sessions VALUES (?, ?, ?, ?, ?)",
+                ("early-session", "ralph", 101.0, None, None),
+            )
+            connection.commit()
+            connection.close()
+            self.assertEqual(
+                "early-session",
+                _discover_hermes_session_id(database, Path("C:/repo"), 100.0, timeout=0),
+            )
+
     def test_hermes_session_id_is_extracted_from_quiet_output(self) -> None:
         self.assertEqual("20260722_004901_1d79f6", _extract_hermes_session_id("session_id: 20260722_004901_1d79f6"))
         self.assertIsNone(_extract_hermes_session_id("ordinary output"))
@@ -337,6 +355,25 @@ class RalphLoopTests(unittest.TestCase):
 
         self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
         self.assertEqual(["B00-01", "B00-02"], executed)
+
+    def test_task_is_not_counted_until_post_completion_checker_is_consistent(self) -> None:
+        states = iter(
+            [
+                Result(State.READY, "B01-01", 1, 3, True, []),
+                Result(State.INCONSISTENT, "B01-02", 2, 3, False, ["missing task commit"]),
+                Result(State.READY, "B01-02", 2, 3, True, []),
+            ]
+        )
+        executed: list[tuple[str, str | None]] = []
+        outcome = run_loop(
+            Path.cwd(),
+            max_tasks=1,
+            inspect_fn=lambda: next(states),
+            execute_fn=lambda work, session, _reasons: executed.append((work, session)) or "session-1",
+            state_dir=Path(tempfile.mkdtemp()),
+        )
+        self.assertEqual(LoopOutcome.LIMIT_REACHED, outcome)
+        self.assertEqual([("B01-01", None), ("B01-01", "session-1")], executed)
 
     def test_complete_stops_without_calling_hermes(self) -> None:
         def inspect() -> Result:
