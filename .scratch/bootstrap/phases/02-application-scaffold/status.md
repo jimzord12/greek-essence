@@ -2,9 +2,9 @@
 
 | Task | State |
 |---|---|
-| B02-01 | Pending |
+| B02-01 | Ready |
 | B02-02 | Pending |
 | B02-03 | Pending |
 
-**Phase state:** Pending
+**Phase state:** Ready
 

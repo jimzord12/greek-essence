@@ -10,5 +10,5 @@
 | B01-06 | Done |
 | B01-07 | Done |
 
-**Phase state:** In review
+**Phase state:** Done
 

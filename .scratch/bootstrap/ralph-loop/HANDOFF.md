@@ -7,16 +7,17 @@
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: pending the dedicated B01-07 task commit
-- Last completed phase: `Phase 00 — Planning and Baseline`
-- Current phase: `Phase 01 — Repository Governance and AI Tooling` (`In review`, 7/7 tasks done)
+- Working tree: pending the dedicated Phase 01 review-gate commit
+- Last completed phase: `Phase 01 — Repository Governance and AI Tooling`
+- Current phase: `Phase 02 — Application Scaffold` (`Ready`, 0/3 tasks done)
 - B01-07 task review: cycle 01 approved with no findings; Hermes `greekreview` session `20260722_043148_cb427a`
-- Phase 01 review cycle 01: changes requested only because the required B01-07 task commit was not yet reachable; substantive exit-gate checks passed. Resume Hermes `greekreview` session `20260722_043629_ab7fa8` after the task commit.
-- Expected task commit subject: `chore(bootstrap): complete B01-07 provenance and discovery`
+- Phase 01 review cycle 02: approved after the required B01-07 task commit and machine-readable review fix became reachable; Hermes `greekreview` session `20260722_043629_ab7fa8`.
+- B01-07 commits: `6066e2b` (`chore(bootstrap): complete B01-07 provenance and discovery`) and `b1545c8` (`fix(bootstrap): make B01-07 verdict machine-readable`).
+- Expected phase commit subject: `chore(bootstrap): complete Phase 01 review gate`
 
 ## Current task
 
-No active task. Complete the Phase 01 gate before readying B02-01.
+`B02-01 — Run the prescribed shadcn bootstrap` is `Ready` because B01-07 and the Phase 01 exit gate are complete and approved. It has not been started.
 
 ## Useful outputs
 
