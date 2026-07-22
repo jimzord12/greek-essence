@@ -29,6 +29,14 @@ OPERATOR_AUTHORIZATION = (
     "Stop for changes outside this repository, unrelated deletion, credentials, system changes, "
     "pushes, deployments, remote changes, or Git history rewriting."
 )
+FAST_BOOTSTRAP_POSTURE = (
+    " This bootstrap is deterministic, mechanical setup of a conventional Next.js repository; do not invent "
+    "or redesign anything. Target about 15 minutes for the complete work unit. Read only the active task contract, "
+    "its explicitly required documents, and verification row; run each decisive check once, keep records concise, "
+    "and stop when acceptance is proven. Require one consolidated review; after corrections, re-review only the "
+    "cited findings and affected checks. Do not repeat broad research or add advisory findings outside the locked "
+    "contract."
+)
 
 
 def _fresh_prompt(work_id: str) -> str:
@@ -39,14 +47,16 @@ def _fresh_prompt(work_id: str) -> str:
             "Use a fresh greekreview Hermes profile session for the independent phase review. "
             "Complete the phase report, numbered review and any required response/re-review cycle; "
             "update dashboard, phase status and Ralph handoff; create the dedicated phase-review commit. "
-            "Do not start the next task. " + OPERATOR_AUTHORIZATION
+            "Do not start the next task. " + OPERATOR_AUTHORIZATION + FAST_BOOTSTRAP_POSTURE
         )
     return (
         f"Execute exactly bootstrap task {work_id} according to .scratch/bootstrap/BOOTSTRAP-AGENTS.md "
         "and .scratch/bootstrap/protocol.md. Use a fresh greekimpl Hermes profile session for implementation "
         "and a different fresh greekreview profile session for review. Return corrections to the original "
         "implementer and re-review to the same reviewer. Complete evidence, closure, tracking, handoff and the "
-        "dedicated Task-ID commit. Do not start another task. " + OPERATOR_AUTHORIZATION
+        "dedicated Task-ID commit. Do not start another task. "
+        + OPERATOR_AUTHORIZATION
+        + FAST_BOOTSTRAP_POSTURE
     )
 
 
@@ -54,7 +64,7 @@ def _resume_prompt(work_id: str, repair_reasons: list[str]) -> str:
     prompt = (
         f"Resume and finish only {work_id}. Preserve the existing implementer and reviewer session identities, "
         "complete all required correction/re-review or phase-review cycles, update closure records and commit. "
-        "Do not start another work unit. " + OPERATOR_AUTHORIZATION
+        "Do not start another work unit. " + OPERATOR_AUTHORIZATION + FAST_BOOTSTRAP_POSTURE
     )
     if repair_reasons:
         prompt += "\n\nDeterministic postcondition failures to repair:\n- " + "\n- ".join(repair_reasons)

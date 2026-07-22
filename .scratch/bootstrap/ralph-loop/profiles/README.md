@@ -4,7 +4,7 @@ These tracked SOUL templates make the external Hermes profile setup reproducible
 
 | Profile | Model | Provider | Reasoning | Template |
 |---|---|---|---|---|
-| `greekroot` | `gpt-5.6-sol` | `openai-codex` | high | [greekroot-SOUL.md](greekroot-SOUL.md) |
+| `greekroot` | `gpt-5.6-sol` | `openai-codex` | medium | [greekroot-SOUL.md](greekroot-SOUL.md) |
 | `greekimpl` | `gpt-5.6-terra` | `openai-codex` | medium | [greekimpl-SOUL.md](greekimpl-SOUL.md) |
 | `greekreview` | `gpt-5.6-sol` | `openai-codex` | medium | [greekreview-SOUL.md](greekreview-SOUL.md) |
 

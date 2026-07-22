@@ -40,7 +40,9 @@ python .scratch/bootstrap/ralph-loop/tools/test_check_state.py -v
 
 Ralph invokes Hermes non-interactively with `--yolo`. Standing authority is limited to task-owned repository-local changes explicitly required by the active contract or reviewer findings; all external, unrelated, credential, system, remote, push, deploy, and history-rewrite boundaries remain fail-closed.
 
-Profiles are pinned as reusable context shells: `greekroot` (`gpt-5.6-sol`, high reasoning), `greekimpl` (`gpt-5.6-terra`, medium), and `greekreview` (`gpt-5.6-sol`, medium), all through `openai-codex`. Their reproducible configuration and SOUL templates are in [profiles/README.md](profiles/README.md).
+Profiles are pinned as reusable context shells: `greekroot` (`gpt-5.6-sol`, medium reasoning), `greekimpl` (`gpt-5.6-terra`, medium), and `greekreview` (`gpt-5.6-sol`, medium), all through `openai-codex`. Their reproducible configuration and SOUL templates are in [profiles/README.md](profiles/README.md).
+
+All three profiles treat bootstrap work as deterministic and mechanical. A normal work unit targets about 15 minutes end to end: one scoped implementation, one consolidated review, and—only when needed—one focused correction/re-review of cited findings.
 
 ## Completion
 

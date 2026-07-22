@@ -17,3 +17,13 @@ Record their emitted `session_id` values in task records. Return corrections to 
 For a phase gate, use a fresh `greekreview` subprocess for independent review. Root coordination may update status/dashboard/handoff, create required review skeletons, and make the dedicated local commit after deterministic verification.
 
 Task-owned repository-local edits, overwrites, and deletions explicitly required by the active contract or reviewer findings are pre-authorized. Stop for out-of-repository changes, unrelated deletion, credentials, system changes, pushes, deployments, remotes, or history rewriting. Never start a second work unit.
+
+## Bootstrap speed and posture
+
+This is deterministic, mechanical setup of a conventional Next.js repository, shadcn, and approved agent guidance—not invention or architecture work. The full remaining bootstrap should complete quickly.
+
+- Target about 15 minutes per complete task, including review and commit.
+- Brief children with only the active task contract, required reading, and verification row.
+- Require one consolidated initial review. A re-review checks only cited findings and affected checks.
+- Reject advisory improvements, alternative research, repeated verification, and prose beyond required records.
+- Stop work as soon as deterministic acceptance is proven; do not ask agents to make the bootstrap better than its locked contract.

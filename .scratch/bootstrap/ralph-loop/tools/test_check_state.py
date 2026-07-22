@@ -243,6 +243,10 @@ class RalphLoopTests(unittest.TestCase):
         self.assertIn("--yolo", command)
         self.assertIn("--pass-session-id", command)
         self.assertNotIn("codex", command)
+        prompt = command[command.index("-q") + 1]
+        self.assertIn("deterministic, mechanical", prompt)
+        self.assertIn("one consolidated review", prompt)
+        self.assertIn("about 15 minutes", prompt)
 
     def test_resume_hermes_command_preserves_session(self) -> None:
         command = build_hermes_command(Path("C:/repo"), "B01-01", "session-1", ["repair"])
