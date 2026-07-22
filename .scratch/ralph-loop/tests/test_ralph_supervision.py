@@ -24,6 +24,7 @@ from ralph_loop import (  # noqa: E402
     load_controller_state,
     parse_diagnosis,
     parse_health_response,
+    run_preflight,
     run_loop,
     run_readonly_assessor,
     save_controller_state,
@@ -261,6 +262,24 @@ class ProcessTreeTests(unittest.TestCase):
 
 
 class RetryBehaviorTests(unittest.TestCase):
+    def test_automatic_retry_preflight_requires_no_warnings(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            payloads = (
+                ({"status": "STRUCTURAL_PASS", "warnings": [], "launch_performed": False}, True),
+                ({
+                    "status": "STRUCTURAL_PASS",
+                    "warnings": [{"code": "DIRTY_WORKTREE", "message": "Changes require attribution."}],
+                    "launch_performed": False,
+                }, False),
+            )
+            for payload, expected in payloads:
+                completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(payload))
+                with self.subTest(warnings=payload["warnings"]), patch(
+                    "ralph_loop.subprocess.run", return_value=completed
+                ):
+                    self.assertIs(expected, run_preflight(root, "B06-02"))
+
     def test_lock_conflict_cannot_create_or_change_controller_state(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); runtime = root / "runtime"; runtime.mkdir()

@@ -418,7 +418,13 @@ def run_preflight(repo: Path, task_id: str) -> bool:
     try:
         result = subprocess.run([sys.executable, str(repo / PREFLIGHT), "--repo", str(repo), "--target", task_id], cwd=repo, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, timeout=60, check=False)
         payload = _strict_json(result.stdout)
-        return result.returncode == 0 and isinstance(payload, dict) and payload.get("status") == "STRUCTURAL_PASS" and payload.get("launch_performed") is False
+        return (
+            result.returncode == 0
+            and isinstance(payload, dict)
+            and payload.get("status") == "STRUCTURAL_PASS"
+            and payload.get("warnings") == []
+            and payload.get("launch_performed") is False
+        )
     except (OSError, subprocess.TimeoutExpired, ValueError):
         return False
 

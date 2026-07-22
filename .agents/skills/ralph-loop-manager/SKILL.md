@@ -207,6 +207,15 @@ python .scratch/ralph-loop/tools/ralph_loop.py \
   --resolved-tier "<resolved tier>"
 ```
 
+For an explicit smoke-test request, use the smoke runner and do not add another `--max-iterations` argument; its two-iteration cap is fixed internally:
+
+```bash
+python .scratch/ralph-loop/tools/smoke_test.py \
+  --campaign-id "<campaign-id>" \
+  --task-id "<task-id>" \
+  --resolved-tier "<resolved tier>"
+```
+
 The default root lease is 60 minutes. At 45 minutes the controller launches one fresh read-only `greekreview` health assessor. Only exact `{"should_extend": true}` renews the lease, with at most three successful renewals per task. Invalid, failed, timed-out, uncertain, completed, or hard-stopped assessments do not renew. Counters and assessor logs live under `%LOCALAPPDATA%\hermes\ralph\greek-essence\`, outside Git.
 
 After timeout, the controller kills only the launched root's Windows process tree, diagnoses the stopped run through a fresh read-only `greekreview`, and permits at most one same-task retry after mandatory preflight. The diagnosis output is exactly `{"should_retry": true, "steering": "..."}` or `{"should_retry": false, "steering": null}`. Invalid diagnosis, failed preflight, a second timeout, completion, ambiguous surviving children, or exhausted limits fail closed. Retry preserves the campaign, task, resolved tier, existing completion signal, and extension count; it may not begin the next task.
