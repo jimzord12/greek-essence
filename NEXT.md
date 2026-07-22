@@ -26,7 +26,7 @@ The active engineering task is to diagnose the repeated Windows lifecycle failur
 
 ### Safety and attribution
 
-- Do not launch another Ralph controller while debugging this issue.
+- Do not launch another Ralph controller except for the separately authorized, single controlled reproduction described below.
 - No live Ralph controller/root or active lock was present when this handoff was written.
 - Preserve the existing B07-01 task-owned modification:
   `.scratch/bootstrap/phases/07-final-verification/tasks/01-clean-room-verification/task.md`.
@@ -49,6 +49,35 @@ Current implementation status on branch `fix/ralph-controller-pid-logging`:
 - Focused supervision tests and the full Ralph suite pass (`63` tests). Lifecycle-log I/O is fail-open so diagnostic failures cannot prevent controller cleanup.
 - Independent review identified post-`Popen` state-write and cleanup-exception orphan boundaries. The executor now establishes cleanup immediately after launch, terminates the root when the initial state write fails, preserves the primary exception when state clearing or process termination also fails, records cleanup failure as an exception note/lifecycle event, and has regression tests for these boundaries and end-to-end lifecycle-log I/O failure.
 
-Implementation and handoff are committed as `d2b14ad` (`fix(ralph): add controller lifecycle diagnostics`). The next action requires separate operator authorization: run one controlled live reproduction, monitor the lifecycle JSONL and Windows process identities independently, and stop fail-closed if the controller disappears or the root survives. Do not include the existing B07-01 task-status modification in follow-up commits and do not claim the underlying lifecycle defect fixed until live evidence identifies the terminating boundary.
+Implementation and handoff are committed as `d2b14ad` (`fix(ralph): add controller lifecycle diagnostics`).
+
+### Recommended next action: one controlled B07-01 reproduction
+
+This action requires separate operator authorization. Do not treat this handoff as authorization to launch it.
+
+1. Stay on `fix/ralph-controller-pid-logging`; do not merge to `main` first.
+2. Preserve the existing B07-01 task-owned modification and use exactly one iteration with:
+   - campaign: `bootstrap-b07-01`
+   - task: `B07-01`
+   - resolved tier: `2`
+3. Use the same Hermes background-launch path that reproduced the failure while independently monitoring:
+   - the tracked Git Bash launcher;
+   - Python controller PID and parent PID;
+   - Hermes root PID and identity;
+   - five-second lifecycle JSONL heartbeats;
+   - `ralph.lock` and `controller-state.json` transitions;
+   - repository status and attributable commits.
+4. Do not trust outer exit code `0` by itself. Confirm the root exited and lock/state cleanup completed.
+5. If controller heartbeats stop while the root survives, stop fail-closed: identity-check and terminate only the controller-owned root tree, archive the runtime evidence, and do not retry.
+
+The reproduction passes only if all of these are true:
+
+- The controller remains alive until the Hermes root exits.
+- The lifecycle log reaches `executor_finally_exit` and `controller_exit`.
+- `current_root_pid` is cleared and `ralph.lock` is removed.
+- No controller-owned Hermes process survives.
+- Any B07-01 repository changes are attributable and reviewable.
+
+Do not include the existing B07-01 task-status modification in unrelated follow-up commits, and do not claim the underlying lifecycle defect fixed until this controlled reproduction supplies live evidence.
 
 Keep this file current with review findings, commits, decisive live evidence, remaining uncertainty, and exact next action. Do not delete or empty project handoff context unless the operator explicitly requests it or all recorded work has been durably reconciled elsewhere.
