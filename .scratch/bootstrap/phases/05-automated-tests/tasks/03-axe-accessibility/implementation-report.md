@@ -1,4 +1,9 @@
-# Implementation Report
+# B05-03 Implementation Report
 
-Not started. The assigned implementer completes this file using `.scratch/bootstrap/templates/implementation-report.md`.
-
+- Session: `20260722_090930_f3cf8d`; started `2026-07-22T06:09:52Z`.
+- Readiness confirmed before mutation: B05-03 was `Ready`; B05-02 is `Done`.
+- Added exact-pinned `@axe-core/playwright` `4.12.1` and `tests/e2e/accessibility.spec.ts`.
+- The gate scans `/en`, `/el`, `/en/quality-lab`, and `/el/quality-lab` in each locked Chromium viewport with WCAG 2.0, 2.1, and 2.2 A/AA tags. It fails on any violation and attaches complete axe JSON only on failure. It has no excluded components, disabled rules, or rule-only filtering.
+- Manual keyboard, zoom/reflow, target-size, and reduced-motion acceptance remains separately covered by B04-02; this axe gate does not replace it.
+- Changed: `package.json`, `pnpm-lock.yaml`, `tests/e2e/accessibility.spec.ts`, and B05-03 task records.
+- No unresolved blockers. `corepack pnpm` could not resolve its installed `corepack.js`; the repository `pnpm` executable completed the scoped dependency installation.
