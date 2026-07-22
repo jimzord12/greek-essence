@@ -2,27 +2,28 @@
 
 ## Last completed task
 
-`B03-03 — Configure Git hooks and Conventional Commits`
+`B03-04 — Define scripts and environment safety`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the B03-03 task commit
+- Working tree: expected clean after the dedicated B03-04 task commit
 - Last completed phase: `Phase 02 — Application Scaffold`
-- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 3/4 tasks done)
-- B03-03 implementation: Hermes `greekimpl` session `20260722_061844_4c3566`.
-- B03-03 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_062534_3a89dc`.
+- Current phase: `Phase 03 — Code Hygiene` (`In review`, 4/4 tasks done)
+- B03-04 implementation and correction: Hermes `greekimpl` session `20260722_063445_1edd12`.
+- B03-04 review: cycle 02 approved after the cycle-01 High evidence finding was resolved, in Hermes `greekreview` session `20260722_063813_af9033`.
 
 ## Current task
 
-`B03-04 — Scripts and environment safety` is `Ready` because B03-03 is complete and approved. It has not been started.
+The fresh independent `PHASE-03` review gate is next because B03-01 through B03-04 are complete and approved. No Phase 04 task is ready until this gate passes.
 
 ## Useful outputs
 
-- Husky is installed through `prepare`; `.husky/pre-commit` runs only lint-staged and `.husky/commit-msg` runs only commitlint.
-- lint-staged applies ESLint/Prettier to supported staged files and preserved controlled unstaged and unrelated content.
-- Conventional Commit validation passed a valid message and rejected an invalid message without creating a commit.
-- Review cycle 01 approved with no findings; no B03-03 durable discovery was promoted to `KNOWLEDGE.md`.
+- `package.json` now contains every locked cross-platform package-script contract, with `check` limited to fast non-browser checks and `check:all` adding build, browser, accessibility, and Unlighthouse work.
+- `.env.example` contains only `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_DEFAULT_LOCALE`; no deferred Resend configuration was added.
+- `.env*` and `.artifacts/bootstrap/` remain ignored while `.env.example` is explicitly trackable; corrected `git check-ignore` evidence was independently approved.
+- Test, browser, and Unlighthouse executables remain owned by later bootstrap tasks; their script smoke invocations currently report those deferred tools as unavailable.
+- No B03-04 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 
