@@ -1,11 +1,11 @@
 ---
 id: B05-02
-status: Ready
+status: Done
 depends_on: [B05-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_084737_f2d7c2
+reviewer_agent: 20260722_085607_f9fa05
+started_at: 2026-07-22T08:47:55+03:00
+completed_at: 2026-07-22T09:05:28+03:00
 ---
 
 # Configure Playwright Test

@@ -2,27 +2,27 @@
 
 ## Last completed work unit
 
-`B05-01 — Configure focused unit and component tests`
+`B05-02 — Configure Playwright browser coverage`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated B05-01 task commit
+- Working tree: expected clean after the dedicated B05-02 task commit
 - Last completed phase: `Phase 04 — Bilingual Fixtures`
-- Current phase: `Phase 05 — Automated Tests` (`In progress`, 1/3 tasks done)
-- B05-01 implementer: Hermes `greekimpl` session `20260722_082947_f3ea6c`.
-- B05-01 reviewer: Hermes `greekreview` session `20260722_083707_aea86f`; cycle 01 requested complete locale-catalog key parity, and focused cycle 02 approved the correction with no remaining findings.
+- Current phase: `Phase 05 — Automated Tests` (`In progress`, 2/3 tasks done)
+- B05-02 implementer: Hermes `greekimpl` session `20260722_084737_f2d7c2`.
+- B05-02 reviewer: Hermes `greekreview` session `20260722_085607_f9fa05`; cycle 01 requested preserved failure artifacts and formatting correction, and focused cycle 02 approved both corrections with no remaining findings.
 
 ## Current task
 
-`B05-02 — Configure Playwright browser coverage` is dependency-satisfied and `Ready` after B05-01 closure. It has not been started.
+`B05-03 — Add axe accessibility gates` is dependency-satisfied and `Ready` after B05-02 closure. It has not been started.
 
 ## Useful outputs
 
-- B05-01 added focused Vitest coverage for explicit locale routing, complete English/Greek message-key structure parity, and the fixture-toggle interaction contract.
-- Required temporary-failure detection passed: the initial failing assertion and the review-correction catalog mismatch both exited nonzero and were removed before final green checks.
-- Task review records are `phases/05-automated-tests/tasks/01-unit-tests/reviews/01-review.md`, its paired response, and `02-review.md`.
-- No B05-01 durable discovery was promoted to `KNOWLEDGE.md`.
+- B05-02 added exact-pinned Playwright Test and Playwright CLI packages, Chromium compact/medium/wide projects, and durable locale, switch, redirect, invalid-locale, metadata, keyboard-focus, console, and critical-request coverage.
+- Required temporary-failure detection exited nonzero and produced screenshot, video, and trace artifacts for all three projects at stable ignored paths under `.artifacts/bootstrap/playwright/failure-policy/`; final `CI=1 pnpm test:e2e` passed 12 tests.
+- Task review records are `phases/05-automated-tests/tasks/02-playwright-e2e/reviews/01-review.md`, its paired response, and `02-review.md`.
+- No B05-02 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 
