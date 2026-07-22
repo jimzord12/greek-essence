@@ -6,5 +6,5 @@
 | B04-02 | Done |
 | B04-03 | Done |
 
-**Phase state:** In review
+**Phase state:** Done
 

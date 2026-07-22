@@ -1,28 +1,28 @@
 # Bootstrap Handoff
 
-## Last completed task
+## Last completed work unit
 
-`B04-03 — Add fixture metadata and indexing safety`
+`Phase 04 — Bilingual Fixtures review gate`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated B04-03 task commit
-- Last completed phase: `Phase 03 — Code Hygiene`
-- Current phase: `Phase 04 — Bilingual Fixtures` (`In review`, 3/3 tasks done)
-- B04-03 implementation: Hermes `greekimpl` session `20260722_075846_a50993`.
-- B04-03 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_080347_d09e15`.
+- Working tree: expected clean after the dedicated Phase 04 review commit
+- Last completed phase: `Phase 04 — Bilingual Fixtures`
+- Current phase: `Phase 05 — Automated Tests` (`Ready`, 0/3 tasks done)
+- Phase 04 review: Hermes `greekreview` session `20260722_081012_dfe398`; cycle 01 requested two High B04-02 corrections and focused cycle 02 approved with no remaining findings.
+- Phase-review corrections: original B04-02 Hermes `greekimpl` session `20260722_072624_1a24a4`.
 
 ## Current task
 
-The fresh independent `PHASE-04` review gate is next because B04-01 through B04-03 are complete and approved. No Phase 05 task is ready until this gate passes.
+`B05-01 — Configure focused unit and component tests` is dependency-satisfied and `Ready`. It has not been started.
 
 ## Useful outputs
 
-- All four fixture variants render unique localized titles and descriptions, route-correct canonical URLs from the configured local site URL, and equivalent `en`, `el`, and `x-default` alternates.
-- Every fixture renders `noindex, nofollow`; rendered verification found zero JSON-LD scripts and the scoped review found no production organization or trust claims.
-- Build, lint, typecheck, format, diff, and one decisive rendered-metadata assertion run passed; the ignored JSON evidence is under `.artifacts/bootstrap/B04-03/`.
-- No B04-03 durable discovery was promoted to `KNOWLEDGE.md`.
+- Phase 04's consolidated gate passed root/invalid-locale behavior, all 16 route/viewport combinations, 200% text reflow, keyboard interaction, localized metadata, equivalent alternates, `noindex, nofollow`, and production-claim/JSON-LD exclusions.
+- The quality-lab locale switch now preserves `/quality-lab` in both directions, and reduced motion disables the fixture toggle transition while preserving focus, Space activation, pressed state, and localized live status.
+- Phase review records are `phases/04-bilingual-fixtures/reviews/01-phase-review.md`, its paired response, and `02-phase-review.md`.
+- No Phase 04 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

@@ -21,7 +21,7 @@ export function FixtureToggle({
     <div className="space-y-3">
       <Button
         aria-pressed={selected}
-        className="min-h-11 px-4 focus:outline-2 focus:outline-offset-2 focus:outline-teal-700"
+        className="min-h-11 px-4 focus:outline-2 focus:outline-offset-2 focus:outline-teal-700 motion-reduce:transition-none motion-reduce:duration-0"
         onClick={() => setSelected((value) => !value)}
         type="button"
         variant={selected ? "secondary" : "outline"}
