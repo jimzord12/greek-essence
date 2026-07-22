@@ -2,27 +2,27 @@
 
 ## Last completed task
 
-`B03-02 — Configure ESLint and Prettier`
+`B03-03 — Configure Git hooks and Conventional Commits`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the B03-02 task commit
+- Working tree: expected clean after the B03-03 task commit
 - Last completed phase: `Phase 02 — Application Scaffold`
-- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 2/4 tasks done)
-- B03-02 implementation: Hermes `greekimpl` session `20260722_060353_341484`.
-- B03-02 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_061206_51b5f6`.
+- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 3/4 tasks done)
+- B03-03 implementation: Hermes `greekimpl` session `20260722_061844_4c3566`.
+- B03-03 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_062534_3a89dc`.
 
 ## Current task
 
-`B03-03 — Configure Git hooks and commit conventions` is `Ready` because B03-02 is complete and approved. It has not been started.
+`B03-04 — Scripts and environment safety` is `Ready` because B03-03 is complete and approved. It has not been started.
 
 ## Useful outputs
 
-- Flat ESLint uses the installed Next.js core-web-vitals and TypeScript presets with focused import-order, floating-promise, and framework-correctness rules.
-- Prettier uses the compatible Tailwind plugin; `lint`, `lint:fix`, `format`, and `format:check` match the locked script composition.
-- Controlled fix fixtures proved lint/format correction while ignored artifact output remained byte-identical; all fixtures were removed.
-- Implementer and reviewer both recorded passing `pnpm format:check` and `pnpm lint`; no B03-02 durable discovery was promoted to `KNOWLEDGE.md`.
+- Husky is installed through `prepare`; `.husky/pre-commit` runs only lint-staged and `.husky/commit-msg` runs only commitlint.
+- lint-staged applies ESLint/Prettier to supported staged files and preserved controlled unstaged and unrelated content.
+- Conventional Commit validation passed a valid message and rejected an invalid message without creating a commit.
+- Review cycle 01 approved with no findings; no B03-03 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

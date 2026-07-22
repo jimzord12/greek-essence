@@ -4,8 +4,8 @@
 |---|---|
 | B03-01 | Done |
 | B03-02 | Done |
-| B03-03 | Ready |
-| B03-04 | Pending |
+| B03-03 | Done |
+| B03-04 | Ready |
 
 **Phase state:** In progress
 
