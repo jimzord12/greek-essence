@@ -13,7 +13,7 @@ Before any mutation, read in this order:
 1. Root `AGENTS.md`, if it exists.
 2. This file.
 3. `README.md`, `protocol.md`, `plan.md`, `decisions.md`, `dependency-map.md`, and `verification-matrix.md` in this directory.
-4. `ralph-loop/HANDOFF.md` and relevant entries in `ralph-loop/KNOWLEDGE.md`.
+4. `.scratch/ralph-loop/HANDOFF.md` and relevant entries in `.scratch/ralph-loop/KNOWLEDGE.md`.
 5. The current phase’s `phase.md` and `status.md`.
 6. The active task’s `task.md`, or the selected next-ready task’s `task.md` when no task is active.
 
@@ -37,7 +37,7 @@ Before delegated work, briefly report the reconciliation result, selected/resume
 3. Launch a different fresh `greekreview` Hermes profile session; record its canonical session ID. It independently inspects the actual repository state, diff, task contract, references, report, and evidence; re-runs proportionate checks; and writes the numbered review.
 4. For every Blocking or High finding, return work to the original implementer. It writes the paired review response, makes accepted corrections, reruns affected checks, and returns work to the same reviewer for the next numbered review cycle.
 5. Only close the task when all required checks pass (or an approved deviation is recorded), reports/evidence are complete, the verdict is `Approved`, no Blocking/High finding remains, completion time is recorded, and task/phase/dashboard status agree.
-6. Update `ralph-loop/HANDOFF.md` for the next eligible task and add only reviewer-validated durable discoveries to `ralph-loop/KNOWLEDGE.md`.
+6. Update `.scratch/ralph-loop/HANDOFF.md` for the next eligible task and add only reviewer-validated durable discoveries to `.scratch/ralph-loop/KNOWLEDGE.md`.
 7. Immediately create one dedicated local commit containing the accepted task’s implementation, evidence, review, closure tracking, and handoff/knowledge updates. Its message must include the task ID. Do not begin later task work until this commit succeeds.
 
 ## Boundaries

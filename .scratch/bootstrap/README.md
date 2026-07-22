@@ -29,9 +29,9 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 - [Locked decisions](decisions.md)
 - [Verification matrix](verification-matrix.md)
 - [Completion report template](completion-report.md)
-- [Ralph-loop automation](ralph-loop/RALPH-LOOP.md)
-- [Current Ralph handoff](ralph-loop/HANDOFF.md)
-- [Durable bootstrap knowledge](ralph-loop/KNOWLEDGE.md)
+- [Ralph-loop automation](../ralph-loop/RALPH_LOOP.md)
+- [Current Ralph handoff](../ralph-loop/HANDOFF.md)
+- [Durable bootstrap knowledge](../ralph-loop/KNOWLEDGE.md)
 - [Artifact templates](templates/)
 - [Phases](phases/)
 
@@ -48,6 +48,6 @@ The normative procedure and role boundaries are in [`protocol.md`](protocol.md).
 
 Every participating agent must read the protocol first.
 
-Ralph-loop completion is deterministic: every phase row must use exact `Done`, the total must be `28/28`, B07-03 and the completion report must be finalized, and no current or next task may remain.
+Ralph-loop completion is controlled only by `.scratch/ralph-loop/completion-signal.json` containing exactly `{ "isEverythingDone": true }`; Sol owns the project-state judgment and must set it only after all managed work and final quality gates succeed.
 
 Allowed states: `Pending`, `Ready`, `In progress`, `In review`, `Blocked`, `Done`, `Deferred`.

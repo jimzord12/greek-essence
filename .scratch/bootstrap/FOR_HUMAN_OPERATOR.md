@@ -21,16 +21,23 @@ For detail, open [the dashboard](README.md). For governing rules, open [the prot
 
 ## Ralph-loop commands
 
+Run these from the repository root:
+
 ```bash
-# Read-only state check
-python .scratch/bootstrap/ralph-loop/tools/ralph_loop.py --dry-run
+# Read-only validation and intended command; no AI execution.
+python .scratch/ralph-loop/tools/ralph_loop.py --dry-run
 
-# Full loop until complete or safely blocked
-python .scratch/bootstrap/ralph-loop/tools/ralph_loop.py
+# Live AI execution until the signal is true or an operational failure occurs.
+python .scratch/ralph-loop/tools/ralph_loop.py
 
-# Test run: stop after at most two completed tasks
-python .scratch/bootstrap/ralph-loop/tools/test_ralph_loop.py
+# Bounded live AI execution.
+python .scratch/ralph-loop/tools/ralph_loop.py --max-iterations 2
+
+# Hermetic tests; never launches Hermes.
+python -B -m unittest discover -s .scratch/ralph-loop/tests -p "test_ralph_loop.py" -v
 ```
+
+The controller never resets the completion signal; a human must explicitly edit it from `true` to `false` for a new campaign.
 
 ## What you normally do
 

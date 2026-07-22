@@ -33,7 +33,7 @@ Must:
 - preserve unrelated and pre-existing work;
 - resolve cross-task conflicts and update task, phase, and dashboard state together;
 - create one task commit after each successful task closure, control phase commits, and surface blockers with exact consequences.
-- update `ralph-loop/HANDOFF.md` before every task commit and promote only reviewed cross-task discoveries to `ralph-loop/KNOWLEDGE.md`.
+- update `.scratch/ralph-loop/HANDOFF.md` before every task commit and promote only reviewed cross-task discoveries to `.scratch/ralph-loop/KNOWLEDGE.md`.
 
 Must not:
 
@@ -138,7 +138,7 @@ Must not:
 
 ### 5. Task closure
 
-Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree. Before committing, it updates `ralph-loop/HANDOFF.md` for the next eligible task and adds only reviewed durable discoveries to `ralph-loop/KNOWLEDGE.md`. It then creates one dedicated commit containing the task implementation, evidence, review, closure tracking, and handoff/knowledge updates. The commit message must include the task ID (for example, `B00-01`); no later task may begin before that commit succeeds.
+Root integrator may mark `Done` only when records are complete, required checks pass or have an approved deviation, reviewer verdict is `Approved`, no blocking/high finding remains, `completed_at` is recorded, and all status views agree. Before committing, it updates `.scratch/ralph-loop/HANDOFF.md` for the next eligible task and adds only reviewed durable discoveries to `.scratch/ralph-loop/KNOWLEDGE.md`. It then creates one dedicated commit containing the task implementation, evidence, review, closure tracking, and handoff/knowledge updates. The commit message must include the task ID (for example, `B00-01`); no later task may begin before that commit succeeds.
 
 ## Phase procedure
 
@@ -151,11 +151,12 @@ Root integrator may mark `Done` only when records are complete, required checks 
 
 ## Ralph-loop automation contract
 
-- `ralph-loop/tools/check_state.py` is the deterministic authority; model prose is not a completion signal.
-- A fresh `greekroot` Hermes session starts only for a clean `Ready` task or phase-review gate. An interrupted task or phase review resumes its saved root session.
-- The loop stops on `Blocked`, inconsistent tracking, missing session identity, or exhausted repair attempts.
-- `COMPLETE` requires all 28 tasks and all eight phases `Done`, README counts aligned with no current/next task, B07-03 and `completion-report.md` finalized, latest reviews approved, Task-ID commits reachable, and Git clean.
-- When Phase 07 completes, the README must show `28/28` with no current or next task.
+- `.scratch/ralph-loop/completion-signal.json` is the only semantic stop signal; it must contain exactly one Boolean property, `isEverythingDone`.
+- The controller reads that Boolean before every iteration. `true` stops successfully; `false` launches one fresh `greekroot` Sol/low session.
+- Missing, unreadable, malformed, schema-invalid, or non-Boolean signal state is an operational error and prevents launch.
+- Python owns only locking, stale-lock recovery, bounded iterations, timeout, child cleanup, logs, nonzero-exit handling, and final process outcome. It does not parse project state, count tasks, inspect reviews, resume sessions, or interpret model prose.
+- Sol owns task selection, orchestration, reconciliation, quality gates, handoff/knowledge updates, and the final decision to set the Boolean true.
+- After Terra reviews substantial Luna work, Sol may apply only narrowly scoped simple fixes when the `.scratch/ralph-loop/RALPH_LOOP.md` policy and objective gates permit; failed or expanding fixes return to Terra and, when needed, Luna.
 
 ## Evidence and artifacts
 
