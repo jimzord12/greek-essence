@@ -32,8 +32,8 @@ This inventory records approved third-party skills vendored into the repository.
 - **Included files:** `SKILL.md`, `agents/openai.yaml`, and the read-only `scripts/preflight.py` structural checker.
 - **Excluded optional disciplines:** no controller fork, email sender copy, daemon, agent-specific duplicate, or generic workflow framework.
 - **Local modifications:** not applicable; this is the canonical project-owned source.
-- **Validation result:** Frontmatter/layout checks, Python compilation and unit tests, live hard-stop controls, a compatible structural-pass control with non-secret placeholder email environment, Ralph controller dry-run, and repository workspace validation must pass before acceptance.
-- **Email dependency:** Loads the separately installed `email-notification` skill at runtime and requires its sender, environment, recipient dry-run, and idempotency contract; no email credentials or sender code are vendored here.
+- **Validation result:** Frontmatter/layout checks, Python compilation and unit tests, live hard-stop controls, a compatible structural-pass control using the configured environment without exposing values, Ralph controller dry-run, and repository workspace validation must pass before acceptance.
+- **Email dependency:** Loads the explicitly approved profile-level `email-notification` exception at runtime and requires its sender, non-secret environment-shape checks, recipient dry-run, and idempotency contract. These checks do not prove provider acceptance or delivery; no email credentials or sender code are vendored here.
 - **Update procedure:** Update the canonical skill, OpenAI metadata, and preflight checker together; rerun both hard-stop and structural-pass controls plus Ralph tests and workspace validation.
 
 ## Modern Web Guidance

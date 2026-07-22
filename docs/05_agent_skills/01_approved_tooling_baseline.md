@@ -21,6 +21,8 @@ Install and version these repository-local skills:
 
 For Next.js-specific reference knowledge, use the documentation bundled with the repository's installed Next.js version under `next/dist/docs/` and its generated agent rules. `next-best-practices` was retired upstream and must not be installed or vendored as a repository-local skill.
 
+The only profile-level skill exception is `email-notification`, and only as a runtime dependency of `ralph-loop-manager`. It may send verified Ralph task/campaign completion or genuine human-escalation notifications. It does not authorize other external skills, does not expand Ralph's repository authority, and must not place credentials or sender code in this repository.
+
 ### 1.3 Approved interactive browser interface
 
 Use:

@@ -146,7 +146,7 @@ If the completion signal is `false` and no campaign identity exists, the explici
 
 Load the installed `email-notification` skill through the current agent's skill mechanism and follow its invocation contract. Then load its `scripts/send_notification.py` support file and run the exact resolved script path with `--dry-run` for the intended recipient and a harmless progress preview.
 
-Do not copy credentials into commands, prompts, repository files, logs, or email content. `RESEND_API_KEY` and `RESEND_FROM_EMAIL` must be present in the executing environment. A valid dry-run proves rendering and recipient validation, not live delivery; readiness still requires the configured sender and API key checked by preflight.
+Do not copy credentials into commands, prompts, repository files, logs, or email content. `RESEND_API_KEY` and `RESEND_FROM_EMAIL` must be present in the executing environment. Preflight checks only non-secret key shape and sender syntax and rejects obvious placeholders. A valid dry-run proves rendering and recipient validation; neither check proves that Resend will accept the key/domain or deliver a future message. Record that limitation and treat only a real event's successful API response as "accepted by Resend."
 
 If the skill, sender script, recipient, sender, or API environment is unavailable, HARD STOP before Ralph launch.
 
@@ -258,7 +258,7 @@ Stop after a genuine escalation. Do not keep launching iterations that cannot ma
 
 ### Operational failure
 
-After reasonable safe diagnosis, use `event: failed` only when the loop cannot proceed and no precise human decision would unblock it. Include the event-log path as a local detail, not as a public artifact URL. Avoid blind retries after ambiguous email outcomes.
+After reasonable safe diagnosis, preserve the event-log path and report the failure in chat and durable handoff state. Do not send an operational-failure email unless the evidence also identifies a genuine escalation requiring precise user action; in that case use `event: blocked` and state the exact decision/input needed. Avoid blind retries after ambiguous email outcomes.
 
 ### Campaign completion
 
@@ -277,7 +277,7 @@ If durable progress exists but no task completed and no escalation occurred, upd
 
 ### Stalled loop
 
-If one iteration produces no attributable task, commit, tracking, handoff, review, evidence, or meaningful gate progress, record one stall observation. If the next iteration also produces no durable progress, HARD STOP as `STALLED_CAMPAIGN`; do not burn unlimited fresh contexts. Use `event: blocked` only when the evidence identifies a precise human decision or input that can unblock the campaign. Otherwise classify the terminal stall as `event: failed` and describe the diagnostic evidence without inventing a user action.
+If one iteration produces no attributable task, commit, tracking, handoff, review, evidence, or meaningful gate progress, record one stall observation. If the next iteration also produces no durable progress, HARD STOP as `STALLED_CAMPAIGN`; do not burn unlimited fresh contexts. Use `event: blocked` only when the evidence identifies a precise human decision or input that can unblock the campaign. Otherwise report the terminal stall in chat and durable handoff state without sending email or inventing a user action.
 
 Completion criterion: the iteration has one evidence-backed classification, any required email was attempted exactly once, and the manager either stops or has a fresh compatible baseline for the next iteration.
 

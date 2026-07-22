@@ -29,6 +29,9 @@ Use the following agent-specific layout unless an already-established compatible
         │       ├── accessibility-review-checklist.md
         │       ├── seo-localization-review-checklist.md
         │       └── form-quality-security-review-checklist.md
+        ├── bootstrap-next/
+        │   ├── SKILL.md
+        │   └── agents/openai.yaml
         └── ralph-loop-manager/
             ├── SKILL.md
             ├── agents/openai.yaml
@@ -45,6 +48,7 @@ Use the following agent-specific layout unless an already-established compatible
 - The root `AGENTS.md` remains authoritative over any third-party skill instruction.
 - Third-party skills may guide implementation but may not override `00_PROJECT_PROTOCOL.md`, `01_PRODUCT_REQUIREMENTS.md`, `02_PROTOTYPE_SPECIFICATION.md`, `03_TECHNICAL_DESIGN.md`, or this document.
 - Next.js reference knowledge is not a repository-local skill. Use the installed package's version-matched `next/dist/docs/` and approved generated agent rules; `.agents/skills/next-best-practices/` must remain absent.
+- `email-notification` is the sole profile-level exception and only a runtime dependency of `ralph-loop-manager`; it is intentionally absent from this repository tree and grants no broader external-skill authority.
 
 ---
 

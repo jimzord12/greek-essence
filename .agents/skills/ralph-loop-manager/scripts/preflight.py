@@ -6,9 +6,11 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
+from email.utils import parseaddr
 from pathlib import Path
 from typing import Any
 
@@ -21,9 +23,9 @@ REQUIRED_FILES = (
     ".scratch/ralph-loop/tools/ralph_loop.py",
 )
 EXPECTED_PROFILES = {
-    "greekroot": ("gpt-5.6-sol", "openai-codex", "'reasoning_effort': 'low'"),
-    "greekimpl": ("gpt-5.6-luna", "openai-codex", "'reasoning_effort': 'high'"),
-    "greekreview": ("gpt-5.6-terra", "openai-codex", "'reasoning_effort': 'high'"),
+    "greekroot": {"model.default": "gpt-5.6-sol", "model.provider": "openai-codex", "model.reasoning_effort": "low"},
+    "greekimpl": {"model.default": "gpt-5.6-luna", "model.provider": "openai-codex", "model.reasoning_effort": "high"},
+    "greekreview": {"model.default": "gpt-5.6-terra", "model.provider": "openai-codex", "model.reasoning_effort": "high"},
 }
 OWNED_REPOSITORY = Path(__file__).resolve().parents[4]
 
@@ -48,6 +50,8 @@ def run(command: list[str], cwd: Path, timeout: float = 20) -> subprocess.Comple
             124,
             stdout=f"{captured}\nTimed out after {timeout} seconds".strip(),
         )
+    except OSError as exc:
+        return subprocess.CompletedProcess(command, 126, stdout=f"Could not start command: {type(exc).__name__}: {exc}")
 
 
 def pid_is_running(pid: int) -> bool:
@@ -93,8 +97,9 @@ def exact_signal(path: Path) -> bool:
     return value
 
 
-def email_skill_candidates(repo: Path) -> list[Path]:
-    candidates = [repo / ".agents" / "skills" / "email-notification"]
+def email_skill_candidates(_repo: Path) -> list[Path]:
+    # This project authorizes only the installed profile-level dependency.
+    candidates: list[Path] = []
     local = os.environ.get("LOCALAPPDATA")
     if local:
         base = Path(local) / "hermes"
@@ -105,6 +110,27 @@ def email_skill_candidates(repo: Path) -> list[Path]:
             ]
         )
     return candidates
+
+
+def validate_email_environment() -> tuple[bool, list[str]]:
+    """Validate non-secret credential shape and sender syntax; never print values."""
+    problems: list[str] = []
+    api_key = os.environ.get("RESEND_API_KEY", "").strip()
+    sender = os.environ.get("RESEND_FROM_EMAIL", "").strip()
+    if not api_key:
+        problems.append("RESEND_API_KEY missing")
+    elif not api_key.startswith("re_") or len(api_key) < 10 or any(character.isspace() for character in api_key):
+        problems.append("RESEND_API_KEY has an invalid shape")
+    if not sender:
+        problems.append("RESEND_FROM_EMAIL missing")
+    else:
+        _, address = parseaddr(sender)
+        valid_address = bool(re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", address))
+        domain = address.rpartition("@")[2].lower()
+        placeholder = domain in {"example.com", "example.org", "example.net"} or domain.endswith((".invalid", ".test"))
+        if not valid_address or placeholder:
+            problems.append("RESEND_FROM_EMAIL is malformed or a placeholder")
+    return not problems, problems
 
 
 def add_check(checks: list[dict[str, Any]], name: str, ok: bool, evidence: str) -> None:
@@ -290,18 +316,35 @@ def main(argv: list[str] | None = None) -> int:
             {"code": "HERMES_MISSING", "problem": "The hermes command is unavailable.", "remediation": "Install/configure Hermes before launch."}
         )
     else:
-        for profile, expected in EXPECTED_PROFILES.items():
+        for profile, expected_values in EXPECTED_PROFILES.items():
             shown = run([hermes, "profile", "show", profile], repo)
-            configured = run([hermes, "--profile", profile, "config"], repo)
-            combined = shown.stdout + "\n" + configured.stdout
-            ok = shown.returncode == 0 and configured.returncode == 0 and all(value in combined for value in expected)
-            add_check(checks, f"profile-{profile}", ok, f"show={shown.returncode}; config={configured.returncode}; expected={expected}")
+            observed: dict[str, str] = {}
+            command_failures: dict[str, int] = {}
+            for key in (*expected_values, "terminal.cwd"):
+                configured = run([hermes, "--profile", profile, "config", "get", key], repo)
+                if configured.returncode == 0:
+                    observed[key] = configured.stdout.strip()
+                else:
+                    command_failures[key] = configured.returncode
+            values_ok = all(observed.get(key) == value for key, value in expected_values.items())
+            cwd_value = observed.get("terminal.cwd", "").strip()
+            cwd_ok = cwd_value == repo.as_posix()
+            ok = shown.returncode == 0 and not command_failures and values_ok and cwd_ok
+            evidence = {
+                "show_exit": shown.returncode,
+                "command_failures": command_failures,
+                "model": observed.get("model.default"),
+                "provider": observed.get("model.provider"),
+                "reasoning": observed.get("model.reasoning_effort"),
+                "cwd_matches_repository": cwd_ok,
+            }
+            add_check(checks, f"profile-{profile}", ok, json.dumps(evidence, sort_keys=True))
             if not ok:
                 hard_stops.append(
                     {
                         "code": "PROFILE_MISMATCH",
-                        "problem": f"Hermes profile {profile} is missing or not pinned to {expected}.",
-                        "remediation": "Repair the profile model/provider/reasoning configuration before launch.",
+                        "problem": f"Hermes profile {profile} is missing or not exactly pinned to its model, provider, reasoning, and repository working directory.",
+                        "remediation": "Repair the exact profile values, including terminal.cwd, before launch.",
                     }
                 )
 
@@ -349,14 +392,14 @@ def main(argv: list[str] | None = None) -> int:
                 "remediation": "Finish/install the email-notification skill before managed Ralph execution.",
             }
         )
-    missing_email_env = [name for name in ("RESEND_API_KEY", "RESEND_FROM_EMAIL") if not os.environ.get(name, "").strip()]
-    add_check(checks, "email-environment", not missing_email_env, "missing=" + json.dumps(missing_email_env))
-    if missing_email_env:
+    email_environment_ok, email_environment_problems = validate_email_environment()
+    add_check(checks, "email-environment-shape", email_environment_ok, "problems=" + json.dumps(email_environment_problems))
+    if not email_environment_ok:
         hard_stops.append(
             {
                 "code": "EMAIL_NOT_READY",
-                "problem": "Email notification environment is incomplete: " + ", ".join(missing_email_env),
-                "remediation": "Configure the missing values and verify the email skill in --dry-run mode before launch.",
+                "problem": "Email notification environment is incomplete or malformed: " + ", ".join(email_environment_problems),
+                "remediation": "Configure non-placeholder values and verify the email skill in --dry-run mode before launch.",
             }
         )
 
@@ -364,7 +407,15 @@ def main(argv: list[str] | None = None) -> int:
         status = run([git, "status", "--porcelain=v1", "--untracked-files=all"], repo)
         dirty = bool(status.stdout.strip())
         add_check(checks, "worktree-observed", status.returncode == 0, status.stdout.strip() or "clean")
-        if dirty:
+        if status.returncode != 0:
+            hard_stops.append(
+                {
+                    "code": "WORKTREE_STATUS_FAILED",
+                    "problem": f"git status exited {status.returncode}; the worktree could not be observed safely.",
+                    "remediation": "Repair Git/worktree access before launch.",
+                }
+            )
+        elif dirty:
             warnings.append(
                 {
                     "code": "DIRTY_WORKTREE",
