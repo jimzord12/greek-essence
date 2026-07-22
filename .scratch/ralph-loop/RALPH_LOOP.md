@@ -30,7 +30,7 @@ python .scratch/ralph-loop/tools/ralph_loop.py --max-iterations 2
 python -B -m unittest discover -s .scratch/ralph-loop/tests -p "test_ralph_loop.py" -v
 ```
 
-`--iteration-timeout SECONDS` bounds each live root process. Runtime locks and event logs remain outside Git at `%LOCALAPPDATA%\hermes\ralph\greek-essence\`.
+`--iteration-timeout SECONDS` bounds the current lease (default 3600 seconds), and `--assessment-threshold SECONDS` selects the read-only health check point (default 2700 seconds). Pass `--campaign-id`, `--task-id`, and `--resolved-tier` for managed execution. A strict `greekreview` health `true` may renew the lease at most three times per task. After timeout, strict read-only diagnosis may authorize one same-task retry, gated by fresh manager preflight. Runtime state, locks, assessor/diagnosis transcripts, and event logs remain outside Git at `%LOCALAPPDATA%\hermes\ralph\greek-essence\`. On Windows, timeout cleanup targets only the launched root PID and its descendants with `taskkill /T`; ambiguous survivors fail closed.
 
 To begin a new managed campaign after successful completion, a human must explicitly edit `completion-signal.json` from `true` to `false`. The controller never resets it.
 
