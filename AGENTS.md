@@ -12,6 +12,48 @@ Support explicit English and Greek routes. Follow the modular [prototype specifi
 
 Do not add or imply a database, CMS, CRM, analytics provider, booking, availability, payments, accounts, dashboards, itinerary management, dynamic inventory, price comparison, customer reviews, marketing automation, or another deferred production capability without explicit approval.
 
+## Proportional implementation
+
+This repository is prototype-stage. Produce modern, maintainable code using established project patterns, but keep engineering effort proportional to the explicit task and current product stage.
+
+Implement the smallest complete solution that satisfies the task contract and acceptance criteria. Prefer one clear code path over speculative flexibility. Reuse existing architecture, dependencies, and conventions before introducing new abstractions.
+
+Do not add unsolicited abstraction layers, generalized frameworks, compatibility shims, fallback systems, migration machinery, production infrastructure, or handling for hypothetical future requirements. Do not broaden a task merely because a more enterprise-grade solution is possible.
+
+An edge case is in scope only when it is named by the task or authoritative documentation, reasonably reachable through supported user behavior, required for security or data integrity, or reproduces an observed failure.
+
+Test the requested behavior, important realistic boundaries, and identified regressions. Do not create exhaustive or combinatorial tests for implausible edge cases unless the task, a documented requirement, or an observed defect requires them.
+
+When acceptance criteria and required verification pass, stop. Do not continue refactoring, polishing, documenting, or expanding adjacent functionality without a concrete task requirement. Material out-of-scope concerns may be reported briefly, but they must not be implemented automatically.
+
+Correctness, accessibility, security, privacy, and explicit repository gates remain mandatory; proportionality must not be used to bypass them.
+
+## Implementation depth
+
+Every task operates at one of four engineering-depth tiers:
+
+1. **Spike** — Temporary feasibility work. Prove the hypothesis with minimal implementation and verification.
+2. **Prototype** — The smallest maintainable, complete implementation covering supported behavior, realistic boundaries, focused tests, and required gates.
+3. **Product** — Production-facing implementation with documented failure handling, broader integration coverage, and justified operational safeguards.
+4. **Critical** — Security-, privacy-, financial-, integrity-, or availability-critical work requiring fail-closed behavior, comprehensive realistic failure coverage, recovery considerations, and independent verification.
+
+The assigned tier controls engineering breadth, defensive depth, and verification effort—not baseline code quality. Correctness, security, privacy, accessibility, maintainability, explicit acceptance criteria, and repository-required gates remain mandatory at every tier.
+
+Use the tier explicitly assigned by the task. If none is assigned, use **Tier 2 — Prototype**. Do not raise the tier based on speculation, hypothetical future requirements, or a desire for completeness. A higher tier requires an explicit task requirement or operator instruction.
+
+Apply stronger treatment narrowly when only one component is sensitive; do not raise the entire task unnecessarily. At every tier, stop when the tier-appropriate acceptance criteria and required verification pass.
+
+### Calibration example
+
+For a task such as “send an email notification after a contact-form submission”:
+
+- **Tier 1 — Spike:** Prove that sample form data can reach the provider and produce a successful response. Implement only what is needed to answer the feasibility question.
+- **Tier 2 — Prototype:** Implement the supported form flow with validation, clear success and failure behavior, realistic provider-error handling, and focused acceptance and regression tests. Do not add queues, delivery tracking, or generalized notification infrastructure.
+- **Tier 3 — Product:** Address documented operational needs such as timeouts, duplicate submissions, abuse controls, provider failures, configuration validation, recovery behavior, and useful operational visibility. Add broader integration coverage where justified.
+- **Tier 4 — Critical:** When delivery participates in a security-sensitive, financial, legal, privacy-sensitive, or similarly critical workflow, require strict authorization and data handling, idempotency, auditability, reconciliation, explicit recovery, fail-closed boundaries where appropriate, and independent verification.
+
+The example illustrates relative depth only. Apply the assigned tier to the actual task contract and supported risks; do not copy example-specific requirements into unrelated work.
+
 ## Approved skills
 
 Use only the repository-local skills approved in [the tooling baseline](docs/05_agent_skills/01_approved_tooling_baseline.md): Google Chrome Modern Web Guidance for modern-web implementation decisions; Vercel `vercel-react-best-practices` for React work; the official Playwright CLI Agent Skill for browser inspection; `greek-essence-quality-review` for structured quality reviews; `bootstrap-next` for one ordinary bootstrap task; and `ralph-loop-manager` for compatibility-gated, monitored use of the project-owned Ralph controller. The sole external-skill exception is the separately installed profile-level `email-notification` skill, which `ralph-loop-manager` may load only to send verified Ralph task/campaign completion or genuine human-escalation events; this exception grants no broader external-skill authority and never permits vendoring credentials. For Next.js-specific work, consult the documentation bundled with the installed Next.js version under `next/dist/docs/` and its approved generated agent rules; do not install the retired `next-best-practices` skill. Guidance complements, and never replaces, required executable checks.
