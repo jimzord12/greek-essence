@@ -2,30 +2,27 @@
 
 ## Last completed task
 
-`B02-03 — Normalize the application skeleton`
+`B03-01 — Strengthen TypeScript`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the Phase 02 closure commit
+- Working tree: expected clean after the B03-01 task commit
 - Last completed phase: `Phase 02 — Application Scaffold`
-- Current phase: `Phase 03 — Code Hygiene` (`Ready`, 0/4 tasks done)
-- B02-03 implementation and corrections: Hermes `greekimpl` session `20260722_051657_af8148`.
-- B02-03 review: cycle 02 approved after both cycle-01 High findings were resolved, in Hermes `greekreview` session `20260722_052515_b199ab`.
-- Phase 02 gate: cycle 02 approved after two tracking corrections, in fresh Hermes `greekreview` session `20260722_054131_8e7137`.
+- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 1/4 tasks done)
+- B03-01 implementation: Hermes `greekimpl` session `20260722_055345_61990f`.
+- B03-01 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_055752_8c1034`.
 
 ## Current task
 
-`B03-01 — Strengthen TypeScript` is `Ready` because B02-03 and the Phase 02 gate are complete and approved. It has not been started.
+`B03-02 — Configure ESLint and Prettier` is `Ready` because B03-01 is complete and approved. It has not been started.
 
 ## Useful outputs
 
-- Root `.node-version` pins Node `24.18.0`; root `package.json` pins `pnpm@10.33.0`, runtime engine ranges, and all 21 direct dependencies exactly.
-- TypeScript is pinned to stable `6.0.3`; Next.js remains `16.2.6`, React/React DOM `19.2.4`, Tailwind CSS `4.3.3`, Base UI `1.6.0`, and shadcn `4.13.1`.
-- Root `.npmrc` requires exact saves, and the Corepack-mediated frozen install passed against root `pnpm-lock.yaml`.
-- The root `app/` skeleton builds and serves with no product implementation; `src/app` and `next-app` are absent, and `@/*` resolves from the repository root.
-- B02-03 used the exact isolated older-version `npx @next/codemod@canary agents-md` path against Next.js 16.2.6 bundled docs; root `AGENTS.md` remains authoritative.
-- No B02-03 durable discovery was promoted to `KNOWLEDGE.md`.
+- Root `tsconfig.json` retains strict mode and Next.js settings, and enables the six B03-01 strictness flags.
+- Root `tsconfig.json` excludes `tests/`; `tsconfig.test.json` scopes Node types and test source patterns to test configuration.
+- The temporary negative fixture produced all six expected diagnostics and was removed; `pnpm typecheck` passed for both implementer and reviewer.
+- No B03-01 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 
