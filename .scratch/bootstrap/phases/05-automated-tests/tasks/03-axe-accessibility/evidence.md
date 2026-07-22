@@ -21,3 +21,13 @@ Artifact paths:
 - `.artifacts/bootstrap/playwright/failure-policy/` (existing B05-02 failure-policy artifacts, unchanged)
 
 The controlled temporary spec was deleted after the expected failure. The permanent gate attaches complete `axe-results` JSON to Playwright output whenever a violation occurs.
+
+## Phase 05 Review 01 H1 correction
+
+| Command | Exit | Result |
+|---|---:|---|
+| `pnpm install --frozen-lockfile` | 0 | Lockfile resolved the exact `@playwright/test` and direct `playwright-core` `1.61.1` set. |
+| `pnpm exec tsc --noEmit --project tsconfig.test.json` | 0 | Strict test-project compilation passed; the former `Page` type mismatch is resolved. |
+| `pnpm exec playwright test --list` | 0 | Listed 24 tests in the two E2E specs across all three locked Chromium projects. |
+| `pnpm test:e2e` | 0 | 24/24 E2E tests passed. |
+| `pnpm test:a11y` | 0 | 12/12 axe scans passed with zero violations. |

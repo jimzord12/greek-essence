@@ -2,27 +2,27 @@
 
 ## Last completed task
 
-`B05-03 — Add axe accessibility gates`
+`B05-03 — Add axe accessibility gates` (reopened correction approved during the Phase 05 gate)
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated B05-03 task commit
-- Last completed phase: `Phase 04 — Bilingual Fixtures`
-- Current phase: `Phase 05 — Automated Tests` (`In review`, 3/3 tasks done)
-- B05-03 implementer: Hermes `greekimpl` session `20260722_090930_f3cf8d`.
-- B05-03 reviewer: Hermes `greekreview` session `20260722_091644_59d0fd`; cycle 01 approved with no findings.
+- Working tree: expected clean after the dedicated Phase 05 review commit
+- Last completed phase: `Phase 05 — Automated Tests` (`Done`, 3/3 tasks done)
+- Current phase: `Phase 06 — Quality Review` (`Pending`, 0/3 tasks done)
+- Phase 05 correction implementer: original Hermes `greekimpl` session `20260722_090930_f3cf8d`.
+- Phase 05 reviewer: fresh Hermes `greekreview` session `20260722_092717_7a5d0b`; cycle 01 requested one High correction and focused cycle 02 approved it with no Blocking or High findings remaining.
 
 ## Current task
 
-The fresh independent `PHASE-05` review gate is next because B05-01 through B05-03 are complete and approved. No Phase 06 task is ready until this gate passes.
+No task is active. `B06-01 — Configure Unlighthouse` is dependency-satisfied and `Ready`; it has not been started.
 
 ## Useful outputs
 
-- B05-03 exact-pins `@axe-core/playwright` 4.12.1 and scans `/en`, `/el`, `/en/quality-lab`, and `/el/quality-lab` in all three configured Chromium viewport projects using supported WCAG 2.0, 2.1, and 2.2 A/AA tags.
-- The permanent gate requires zero violations and attaches complete axe JSON on failure without rule suppression or component exclusion.
-- Controlled missing-alt detection exited nonzero with the critical `image-alt` violation; final `pnpm test:a11y` passed 12/12 scans with zero violations.
-- No B05-03 durable discovery was promoted to `KNOWLEDGE.md`.
+- The initial consolidated Phase 05 gate passed formatting, lint, application typecheck, unit tests, build, responsive E2E, and axe runtime checks, but strict test-project compilation exposed mismatched Playwright `Page` type identities.
+- B05-03 now exact-pins direct `playwright-core` `1.61.1`, aligning `@axe-core/playwright` with exact-pinned `@playwright/test` without casts, suppressions, exclusions, or coverage changes.
+- Focused re-review passed frozen install, strict test-project compilation, 24-test discovery, 24/24 E2E tests, and 12/12 axe scans with zero violations.
+- No Phase 05 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

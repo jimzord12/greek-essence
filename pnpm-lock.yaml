@@ -46,7 +46,7 @@ importers:
     devDependencies:
       "@axe-core/playwright":
         specifier: 4.12.1
-        version: 4.12.1(playwright-core@1.62.0-alpha-1783623505000)
+        version: 4.12.1(playwright-core@1.61.1)
       "@commitlint/cli":
         specifier: 21.2.1
         version: 21.2.1(@types/node@20.19.43)(conventional-commits-parser@7.1.0)(typescript@6.0.3)
@@ -95,6 +95,9 @@ importers:
       lint-staged:
         specifier: 17.1.0
         version: 17.1.0
+      playwright-core:
+        specifier: 1.61.1
+        version: 1.61.1
       prettier:
         specifier: 3.9.6
         version: 3.9.6
@@ -6500,10 +6503,10 @@ snapshots:
 
   "@asamuzakjp/nwsapi@2.3.9": {}
 
-  "@axe-core/playwright@4.12.1(playwright-core@1.62.0-alpha-1783623505000)":
+  "@axe-core/playwright@4.12.1(playwright-core@1.61.1)":
     dependencies:
       axe-core: 4.12.1
-      playwright-core: 1.62.0-alpha-1783623505000
+      playwright-core: 1.61.1
 
   "@babel/code-frame@7.29.7":
     dependencies:

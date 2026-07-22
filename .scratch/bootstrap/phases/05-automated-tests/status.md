@@ -6,5 +6,5 @@
 | B05-02 | Done |
 | B05-03 | Done |
 
-**Phase state:** In review
+**Phase state:** Done
 

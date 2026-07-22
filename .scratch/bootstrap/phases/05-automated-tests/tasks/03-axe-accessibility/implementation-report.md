@@ -7,3 +7,4 @@
 - Manual keyboard, zoom/reflow, target-size, and reduced-motion acceptance remains separately covered by B04-02; this axe gate does not replace it.
 - Changed: `package.json`, `pnpm-lock.yaml`, `tests/e2e/accessibility.spec.ts`, and B05-03 task records.
 - No unresolved blockers. `corepack pnpm` could not resolve its installed `corepack.js`; the repository `pnpm` executable completed the scoped dependency installation.
+- Phase 05 Review 01 H1 correction: added exact-pinned direct `playwright-core` `1.61.1`. `@axe-core/playwright` now resolves its `playwright-core` peer to the same `1.61.1` type identity used by exact-pinned `@playwright/test`; strict test compilation now passes without test edits, casts, suppressions, exclusions, or coverage changes.
