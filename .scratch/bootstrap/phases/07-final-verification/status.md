@@ -2,7 +2,7 @@
 
 | Task | State |
 |---|---|
-| B07-01 | Pending |
+| B07-01 | Ready |
 | B07-02 | Pending |
 | B07-03 | Pending |
 
