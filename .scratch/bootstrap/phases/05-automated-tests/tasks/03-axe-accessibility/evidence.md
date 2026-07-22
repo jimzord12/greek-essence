@@ -31,3 +31,16 @@ The controlled temporary spec was deleted after the expected failure. The perman
 | `pnpm exec playwright test --list` | 0 | Listed 24 tests in the two E2E specs across all three locked Chromium projects. |
 | `pnpm test:e2e` | 0 | 24/24 E2E tests passed. |
 | `pnpm test:a11y` | 0 | 12/12 axe scans passed with zero violations. |
+
+## Post-run protocol remediation
+
+Historical record: the dependency correction was implemented and verified in `ae15ca1`, but that phase-closure commit lacked the required B05-03 task-level response/re-review and dedicated B05-03 correction commit. The historical correction is not recreated or attributed to a new commit here.
+
+| Current focused command | Exit | Result | Artifact path |
+|---|---:|---|---|
+| `pnpm exec tsc --noEmit --project tsconfig.test.json` | 0 | Strict test-project compilation passed; the former incompatible `Page` type error remains absent. | `tsconfig.test.json`; compiler stdout was empty |
+| `CI=1 pnpm test:a11y` | 0 | 12/12 axe scans passed across four localized routes and three Chromium projects with zero violations. | `.artifacts/bootstrap/playwright/test-results/`; `.artifacts/bootstrap/playwright/report/` |
+| `pnpm format:check` | 0 | All tracked files use Prettier formatting. | N/A |
+| `git diff --check` | 0 | No whitespace errors. | N/A |
+
+Residual High finding: protocol/evidence integrity remains open pending the required independent B05-03 task re-review and dedicated local commit containing `B05-03`; no current dependency or runtime defect is claimed.

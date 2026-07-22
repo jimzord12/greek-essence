@@ -1,11 +1,11 @@
 ---
 id: B05-03
-status: In review
+status: Done
 depends_on: [B05-02]
 implementer_agent: 20260722_090930_f3cf8d
 reviewer_agent: 20260722_125220_95d73e
 started_at: 2026-07-22T06:09:52Z
-completed_at: null
+completed_at: 2026-07-22T13:49:25+03:00
 ---
 
 # Add axe accessibility gates

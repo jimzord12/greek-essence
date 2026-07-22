@@ -8,7 +8,7 @@ The Ralph context-refresh refactor was committed as `dc7a7eb`. The prior bootstr
 
 ## Active/resumable work
 
-Post-run remediation is active. B05-02 was corrected by Luna `20260722_130707_6dcbf0`; the same Terra reviewer `20260722_124049_19b52a` approved Review 05 with 0 Blocking/High after 27/27 E2E and 12/12 axe passed. B05-03 remains reopened for one High protocol/evidence-integrity defect; current axe runtime is correct. B06-01 remains reopened because the fresh three-sample median gate scored `/el/quality-lab` performance `0.83 < 0.90`; its fallback origin remains accepted Non-blocking debt. Phase 05 is 2/3 and Phase 06 is 0/3; B06-02 remains Pending. Remediation order is now B05-03 → B06-01.
+Post-run remediation is active. B05-02 is corrected, approved, and committed in `5533be3`. B05-03 now has a truthful original-implementer response and current focused evidence; the same Terra reviewer `20260722_125220_95d73e` approved Review 03 with 0 Blocking/High. B06-01 remains reopened because the fresh three-sample median gate scored `/el/quality-lab` performance `0.83 < 0.90`; its fallback origin remains accepted Non-blocking debt. Phase 05 is restored to Done at 3/3 and Phase 06 is 0/3; B06-02 remains Pending.
 
 ## Current repository/worktree facts
 
@@ -20,7 +20,7 @@ Post-run remediation is active. B05-02 was corrected by Luna `20260722_130707_6d
 
 ## Next recommended action and why
 
-Create the dedicated B05-02 remediation commit, then write the truthful B05-03 retrospective response, run focused verification, and return it to Terra for task-level re-review. Do not begin B06-02.
+Create and verify the dedicated B05-03 remediation commit, then delegate the B06-01 performance-budget investigation and correction to Luna/high. Do not begin B06-02.
 
 ## Child session IDs
 
@@ -31,7 +31,7 @@ Create the dedicated B05-02 remediation commit, then write the truthful B05-03 r
 
 ## Decisive commands/results
 
-See B05-02 Reviews 03–05 and responses: final implementation and evidence are approved. See B05-03 `reviews/02-review.md` and B06-01 `reviews/04-review.md` for remaining work.
+See B05-03 Review 02, its truthful response, and approved Review 03; current strict test typecheck and 12/12 axe pass. See B06-01 `reviews/04-review.md` for the remaining performance-budget failure.
 
 ## Blockers requiring human action
 

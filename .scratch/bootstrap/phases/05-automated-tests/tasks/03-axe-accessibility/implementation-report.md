@@ -8,3 +8,9 @@
 - Changed: `package.json`, `pnpm-lock.yaml`, `tests/e2e/accessibility.spec.ts`, and B05-03 task records.
 - No unresolved blockers. `corepack pnpm` could not resolve its installed `corepack.js`; the repository `pnpm` executable completed the scoped dependency installation.
 - Phase 05 Review 01 H1 correction: added exact-pinned direct `playwright-core` `1.61.1`. `@axe-core/playwright` now resolves its `playwright-core` peer to the same `1.61.1` type identity used by exact-pinned `@playwright/test`; strict test compilation now passes without test edits, casts, suppressions, exclusions, or coverage changes.
+
+## Post-run protocol remediation
+
+- The historical dependency correction and its focused verification were implemented in `ae15ca1` (`chore(bootstrap): close Phase 05 automated tests`), but that phase-closure commit did not contain a B05-03 task-level response/re-review or a dedicated B05-03 correction commit. This record does not rewrite or recast that history.
+- Current B05-03 focused verification after the historical correction: `pnpm exec tsc --noEmit --project tsconfig.test.json` exit 0; `CI=1 pnpm test:a11y` exit 0 with 12/12 scans passing and zero violations. Outputs remain under `.artifacts/bootstrap/playwright/test-results/` and `.artifacts/bootstrap/playwright/report/`.
+- B05-03 remains `In review`; the residual High protocol/evidence-integrity finding is not claimed closed because the required independent task re-review and dedicated Task-ID correction commit are outside this session's authorized actions.
