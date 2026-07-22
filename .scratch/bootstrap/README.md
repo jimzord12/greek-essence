@@ -9,14 +9,14 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 | 00 — Planning and baseline | Done | 2/2 |
 | 01 — Agent tooling | Done | 7/7 |
 | 02 — Application scaffold | Done | 3/3 |
-| 03 — Code hygiene | In review | 4/4 |
-| 04 — Bilingual fixtures | Pending | 0/3 |
+| 03 — Code hygiene | Done | 4/4 |
+| 04 — Bilingual fixtures | Ready | 0/3 |
 | 05 — Automated tests | Pending | 0/3 |
 | 06 — Quality review | Pending | 0/3 |
 | 07 — Final verification | Pending | 0/3 |
 
-**Current task:** `None`
-**Next unblocked task:** `None`
+**Current task:** `B04-01`
+**Next unblocked task:** `B04-01`
 **Known external blockers:** Kimi Code is unavailable, so cross-agent validation cannot become fully green. The former B01-03 source blocker is resolved by BD-015.
 
 ## Entry points
