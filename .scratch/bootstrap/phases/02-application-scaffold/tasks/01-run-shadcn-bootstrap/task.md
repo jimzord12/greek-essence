@@ -1,11 +1,11 @@
 ---
 id: B02-01
-status: Ready
+status: Done
 depends_on: [B01-07]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_044643_6bc8fc
+reviewer_agent: 20260722_045407_040d0f
+started_at: 2026-07-22T01:47:13Z
+completed_at: 2026-07-22T02:01:59Z
 ---
 
 # Run the prescribed shadcn bootstrap
