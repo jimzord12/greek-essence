@@ -2,29 +2,28 @@
 
 ## Last completed task
 
-`B04-01 — Configure next-intl routing`
+`B04-02 — Create minimal quality-fixture pages`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated B04-01 task commit
+- Working tree: expected clean after the dedicated B04-02 task commit
 - Last completed phase: `Phase 03 — Code Hygiene`
-- Current phase: `Phase 04 — Bilingual Fixtures` (`In progress`, 1/3 tasks done)
-- B04-01 implementation and corrections: Hermes `greekimpl` session `20260722_065719_65864e`.
-- B04-01 review: cycle 02 approved after three cycle-01 High findings were resolved, in Hermes `greekreview` session `20260722_070734_7efd1d`.
+- Current phase: `Phase 04 — Bilingual Fixtures` (`In progress`, 2/3 tasks done)
+- B04-02 implementation and corrections: Hermes `greekimpl` session `20260722_072624_1a24a4`.
+- B04-02 review: cycle 02 approved after two cycle-01 High findings were resolved, in Hermes `greekreview` session `20260722_073330_be0233`.
 
 ## Current task
 
-`B04-02 — Create minimal quality-fixture pages` is `Ready` because B04-01 is complete and approved. It has not been started.
+`B04-03 — Add fixture metadata and indexing safety` is `Ready` because B04-02 is complete and approved. It has not been started.
 
 ## Useful outputs
 
-- `next-intl` 4.13.3 now provides exactly `en` and `el` routing, request configuration, navigation helpers, and fixture-only messages.
-- The production build statically prerenders `/en` and `/el`; both set matching document language and expose equivalent locale links.
-- Plain `/`, Greek `Accept-Language` `/`, and `NEXT_LOCALE=el` cookie `/` all redirect deterministically to `/en`; `/fr` returns 404.
-- The exact package operation and frozen install were rerun successfully through the installed Corepack entry point after the Git-Bash Corepack shim failed from path conversion.
-- B04-01 build, focused production requests, lint, and typecheck passed; cycle 02 approved all corrections.
-- No B04-01 durable discovery was promoted to `KNOWLEDGE.md`.
+- Localized `/en`, `/el`, `/en/quality-lab`, and `/el/quality-lab` fixture routes now provide skip links, landmarks, one H1, locale navigation, bootstrap status, and one minimal Base UI-backed toggle client boundary.
+- The locale layout imports the approved global stylesheet; fixture controls render at least 44 px tall with a 2 px teal focus outline and 2 px offset.
+- Production browser verification passed all four routes at 320, 390, 834, and 1440 px with keyboard Space activation, reduced motion, 200% text reflow, matching `lang`, no horizontal overflow, and zero console errors.
+- Format, build, lint, and type checks passed. The broader pre-B05 `pnpm check` reaches the deferred unit step and fails because Vitest is not installed until B05-01; this was recorded and is not a B04-02 contract failure.
+- No B04-02 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

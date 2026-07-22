@@ -1,11 +1,11 @@
 ---
 id: B04-02
-status: Ready
+status: Done
 depends_on: [B04-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_072624_1a24a4
+reviewer_agent: 20260722_073330_be0233
+started_at: 2026-07-22T04:26:59Z
+completed_at: 2026-07-22T04:54:17Z
 ---
 
 # Create minimal quality-fixture pages

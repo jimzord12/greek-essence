@@ -1,6 +1,19 @@
 {
   "Fixture": {
     "title": "Ελληνικό δοκιμαστικό περιβάλλον",
-    "languageNavigation": "Γλώσσα"
+    "languageNavigation": "Γλώσσα",
+    "english": "Αγγλικά",
+    "greek": "Ελληνικά",
+    "skipToContent": "Μετάβαση στο περιεχόμενο",
+    "status": "Κατάσταση εκκίνησης: έτοιμο",
+    "labLink": "Άνοιγμα εργαστηρίου ποιότητας",
+    "primaryNavigation": "Κύρια πλοήγηση",
+    "homeLink": "Αρχική δοκιμαστικού",
+    "switchLocale": "Αλλαγή γλώσσας",
+    "labTitle": "Εργαστήριο ποιότητας",
+    "primitiveHeading": "Διαδραστικό στοιχείο",
+    "toggleLabel": "Δεν έχει επιλεγεί",
+    "toggleSelectedLabel": "Επιλεγμένο",
+    "toggleStatus": "Τρέχουσα κατάσταση"
   }
 }

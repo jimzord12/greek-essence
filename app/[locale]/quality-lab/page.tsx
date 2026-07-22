@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
+import { FixtureToggle } from "@/components/fixture-toggle"
 import { Link } from "@/i18n/navigation"
 
-export default async function LocaleFixturePage({
+export default async function QualityLabPage({
   params,
-}: PageProps<"/[locale]">) {
+}: PageProps<"/[locale]/quality-lab">) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations("Fixture")
@@ -19,36 +20,38 @@ export default async function LocaleFixturePage({
       </a>
       <header className="border-b border-border">
         <nav
-          aria-label={t("languageNavigation")}
+          aria-label={t("primaryNavigation")}
           className="mx-auto flex max-w-3xl flex-wrap gap-3 px-4 py-4"
         >
           <Link
             className="inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             href="/"
-            locale="en"
           >
-            {t("english")}
+            {t("homeLink")}
           </Link>
           <Link
             className="inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             href="/"
-            locale="el"
+            locale={locale === "en" ? "el" : "en"}
           >
-            {t("greek")}
+            {t("switchLocale")}
           </Link>
         </nav>
       </header>
       <main className="mx-auto max-w-3xl px-4 py-12" id="main-content">
         <h1 className="text-3xl font-semibold tracking-tight break-words">
-          {t("title")}
+          {t("labTitle")}
         </h1>
-        <p className="mt-4 text-muted-foreground">{t("status")}</p>
-        <Link
-          className="mt-8 inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-          href="/quality-lab"
-        >
-          {t("labLink")}
-        </Link>
+        <section aria-labelledby="primitive-heading" className="mt-8 space-y-4">
+          <h2 className="text-xl font-semibold" id="primitive-heading">
+            {t("primitiveHeading")}
+          </h2>
+          <FixtureToggle
+            label={t("toggleLabel")}
+            selectedLabel={t("toggleSelectedLabel")}
+            statusLabel={t("toggleStatus")}
+          />
+        </section>
       </main>
     </>
   )

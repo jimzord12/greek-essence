@@ -1,6 +1,19 @@
 {
   "Fixture": {
     "title": "English fixture",
-    "languageNavigation": "Language"
+    "languageNavigation": "Language",
+    "english": "English",
+    "greek": "Greek",
+    "skipToContent": "Skip to content",
+    "status": "Bootstrap status: ready",
+    "labLink": "Open quality lab",
+    "primaryNavigation": "Primary navigation",
+    "homeLink": "Fixture home",
+    "switchLocale": "Switch language",
+    "labTitle": "Quality lab",
+    "primitiveHeading": "Interactive primitive",
+    "toggleLabel": "Not selected",
+    "toggleSelectedLabel": "Selected",
+    "toggleStatus": "Current state"
   }
 }
