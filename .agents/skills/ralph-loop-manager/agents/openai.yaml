@@ -1,0 +1,7 @@
+interface:
+  display_name: "Ralph Loop Manager"
+  short_description: "Preflight, run, monitor, and notify for project Ralph"
+  default_prompt: "Use $ralph-loop-manager to compatibility-check the requested feature or repository directory, HARD STOP on any incompatibility, then run and monitor bounded Ralph iterations with email milestone/escalation notifications."
+
+policy:
+  allow_implicit_invocation: false

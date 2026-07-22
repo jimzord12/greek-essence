@@ -21,14 +21,18 @@ Use the following agent-specific layout unless an already-established compatible
         ├── playwright-cli/
         │   ├── SKILL.md
         │   └── ...required generated files
-        └── greek-essence-quality-review/
+        ├── greek-essence-quality-review/
+        │   ├── SKILL.md
+        │   └── references/
+        │       ├── visual-review-checklist.md
+        │       ├── responsive-review-checklist.md
+        │       ├── accessibility-review-checklist.md
+        │       ├── seo-localization-review-checklist.md
+        │       └── form-quality-security-review-checklist.md
+        └── ralph-loop-manager/
             ├── SKILL.md
-            └── references/
-                ├── visual-review-checklist.md
-                ├── responsive-review-checklist.md
-                ├── accessibility-review-checklist.md
-                ├── seo-localization-review-checklist.md
-                └── form-quality-security-review-checklist.md
+            ├── agents/openai.yaml
+            └── scripts/preflight.py
 ```
 
 ### 3.1 Placement rules

@@ -14,7 +14,7 @@ Do not add or imply a database, CMS, CRM, analytics provider, booking, availabil
 
 ## Approved skills
 
-Use only the repository-local skills approved in [the tooling baseline](docs/05_agent_skills/01_approved_tooling_baseline.md): Google Chrome Modern Web Guidance for modern-web implementation decisions; Vercel `vercel-react-best-practices` for React work; the official Playwright CLI Agent Skill for browser inspection; and `greek-essence-quality-review` for structured quality reviews. For Next.js-specific work, consult the documentation bundled with the installed Next.js version under `next/dist/docs/` and its approved generated agent rules; do not install the retired `next-best-practices` skill. Guidance complements, and never replaces, required executable checks.
+Use only the repository-local skills approved in [the tooling baseline](docs/05_agent_skills/01_approved_tooling_baseline.md): Google Chrome Modern Web Guidance for modern-web implementation decisions; Vercel `vercel-react-best-practices` for React work; the official Playwright CLI Agent Skill for browser inspection; `greek-essence-quality-review` for structured quality reviews; `bootstrap-next` for one ordinary bootstrap task; and `ralph-loop-manager` for compatibility-gated, monitored use of the project-owned Ralph controller. For Next.js-specific work, consult the documentation bundled with the installed Next.js version under `next/dist/docs/` and its approved generated agent rules; do not install the retired `next-best-practices` skill. Guidance complements, and never replaces, required executable checks.
 
 ## Browser inspection
 

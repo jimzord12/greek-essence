@@ -19,6 +19,23 @@ This inventory records approved third-party skills vendored into the repository.
 - **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
 - **Update procedure:** Update the canonical project-owned `SKILL.md` and its `agents/openai.yaml` metadata together when the bootstrap workflow changes; record the resulting project revision and repeat the explicit-load control.
 
+## Ralph Loop Manager
+
+- **Local skill name:** `ralph-loop-manager`.
+- **Local path:** `.agents/skills/ralph-loop-manager/`.
+- **Purpose:** Fail-closed compatibility checking, bounded launch, live monitoring, and meaningful email milestone/escalation notification for the existing Greek Essence Ralph controller.
+- **Upstream source and exact source path:** Project-owned; no upstream source or path.
+- **Installed revision:** Project-owned revision introduced by `feat(skills): add project Ralph loop manager`; use `git log -1 -- .agents/skills/ralph-loop-manager` for the exact local revision.
+- **Installation or generation command:** None; the canonical project-owned skill was authored directly in this repository.
+- **Installation date:** `2026-07-22` (UTC+03:00).
+- **Verified license:** Project-owned content; no third-party license applies.
+- **Included files:** `SKILL.md`, `agents/openai.yaml`, and the read-only `scripts/preflight.py` structural checker.
+- **Excluded optional disciplines:** no controller fork, email sender copy, daemon, agent-specific duplicate, or generic workflow framework.
+- **Local modifications:** not applicable; this is the canonical project-owned source.
+- **Validation result:** Frontmatter/layout checks, Python compilation and unit tests, live hard-stop controls, a compatible structural-pass control with non-secret placeholder email environment, Ralph controller dry-run, and repository workspace validation must pass before acceptance.
+- **Email dependency:** Loads the separately installed `email-notification` skill at runtime and requires its sender, environment, recipient dry-run, and idempotency contract; no email credentials or sender code are vendored here.
+- **Update procedure:** Update the canonical skill, OpenAI metadata, and preflight checker together; rerun both hard-stop and structural-pass controls plus Ralph tests and workspace validation.
+
 ## Modern Web Guidance
 
 - **Local skill name:** `modern-web-guidance`
