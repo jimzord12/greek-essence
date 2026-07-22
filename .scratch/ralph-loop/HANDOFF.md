@@ -8,7 +8,8 @@ B06-03 implementation and evidence were completed by greekimpl session `20260722
 
 ## Current repository/worktree facts
 
-- Branch: `main`; pre-commit HEAD is `416ea22` (`feat(ralph): add explicit two-iteration smoke runner`).
+- Branch: `main`; current HEAD is `8473b0f` (`feat(bootstrap): complete B06-03 quality review`).
+- The worktree was clean after the dedicated B06-03 commit; this handoff reconciliation is the only expected subsequent change.
 - B06-03 is `Done`; Phase 06 is `Done` at 3/3; dashboard count is 25/28.
 - B07-01 is `Ready` and is the sole next dependency-ready task. B07-02 and B07-03 remain `Pending`.
 - Root verification for B06-03: `git diff --check` exit 0 and `pnpm test:e2e` exit 0 with 27/27 passed.
@@ -18,13 +19,15 @@ B06-03 implementation and evidence were completed by greekimpl session `20260722
 
 ## Active campaign
 
-- Completed campaign target: B06-03 — Run the Greek Essence Reviewer Skill.
-- Dedicated B06-03 task commit must contain implementation/evidence/reviews, task and phase closure, B07-01 readiness, dashboard, and this handoff.
+- Campaign target: B07-01 — Verify a clean-room installation.
+- Managed outcome: complete the isolated-copy frozen install and every applicable local gate without relying on the primary dependency tree or caches; obtain independent review; synchronize tracking; and create one dedicated local B07-01 task commit.
+- Acceptance source: `.scratch/bootstrap/phases/07-final-verification/tasks/01-clean-room-verification/task.md` and verification-matrix row B07-01.
 - Resolved tier: Tier 2 — Prototype.
+- Explicit exclusions: B07-02 and later tasks must not begin until B07-01 is approved, closed, and committed. No push, deployment, remote change, history rewrite, credentials, system change, unrelated destructive change, or out-of-repository mutation beyond the task-owned isolated-copy procedure is authorized.
 
 ## Next required action
 
-After confirming the dedicated B06-03 commit exists and the worktree is reconciled, execute only B07-01 through the required fresh `greekimpl` and independent `greekreview` workflow. Acceptance is the isolated clean-room frozen install and all applicable local gates without relying on the primary dependency tree or caches. Do not begin B07-02 before B07-01 is approved, closed, and committed.
+Run the Ralph manager structural preflight and semantic compatibility gate for campaign B07-01. If every gate passes, launch one normal bounded root iteration with explicit `--campaign-id bootstrap-b07-01`, `--task-id B07-01`, and `--resolved-tier 2`. Independently reconcile repository progress after the iteration. Do not reset `completion-signal.json` automatically and do not begin B07-02 before B07-01 is approved, closed, and committed.
 
 ## Child session IDs
 
