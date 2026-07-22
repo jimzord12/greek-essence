@@ -4,7 +4,7 @@
 |---|---|---|
 | `AGENTS.md` | Concise repository-wide rules, authority, required commands, architectural constraints, and definition of done | Before every repository task |
 | Google Chrome Modern Web Guidance | Modern interoperable HTML, CSS, forms, accessibility, browser APIs, compatibility, privacy, security, and Baseline-aware guidance | When selecting or reviewing web-platform capabilities |
-| Vercel `next-best-practices` | Next.js App Router conventions, framework APIs, routing, rendering boundaries, file conventions, and common implementation mistakes | When creating or reviewing Next.js routes, layouts, metadata, Server Components, Client Components, or framework-specific logic |
+| Installed Next.js version-matched documentation and agent rules | Next.js App Router conventions, framework APIs, routing, rendering boundaries, file conventions, and common implementation mistakes | When creating or reviewing Next.js routes, layouts, metadata, Server Components, Client Components, or framework-specific logic |
 | Vercel `vercel-react-best-practices` | React rendering, client-work reduction, waterfall avoidance, bundle impact, and performance-sensitive component patterns | When creating or reviewing React component trees and client interactions |
 | Playwright CLI skill | Correct and efficient use of Playwright CLI by coding agents | Before interactive browser inspection or debugging |
 | `greek-essence-quality-review` | Project-specific visual, responsive, content, trust, accessibility, localization, SEO-presentation, and form-quality review | After implementing or materially changing pages, components, navigation, content presentation, or the trip-request flow |

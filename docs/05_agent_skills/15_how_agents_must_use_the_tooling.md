@@ -6,7 +6,7 @@ Agents must:
 
 1. read `AGENTS.md`;
 2. identify the authoritative project documents and sections relevant to the task;
-3. load the relevant approved external skills;
+3. load the relevant approved external skills and, for Next.js work, consult the installed version's bundled documentation;
 4. load the project-owned quality skill when the task affects user-visible behavior;
 5. avoid loading unrelated skills merely because they exist.
 
@@ -15,7 +15,7 @@ Agents must:
 Agents should:
 
 - use Google guidance for browser-platform choices;
-- use `next-best-practices` for Next.js-specific decisions;
+- use the installed Next.js version's bundled `next/dist/docs/` and approved generated agent rules for Next.js-specific decisions;
 - use `vercel-react-best-practices` for React rendering and client-work decisions;
 - use Playwright CLI to inspect actual browser behavior rather than infer it from code alone;
 - keep findings aligned with the project documents;

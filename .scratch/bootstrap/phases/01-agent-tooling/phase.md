@@ -8,7 +8,7 @@ Install the locked repository-local agent baseline safely and document provenanc
 
 1. [B01-01 — Repository guidance](tasks/01-repository-guidance/task.md)
 2. [B01-02 — Modern Web Guidance](tasks/02-modern-web-guidance/task.md)
-3. [B01-03 — Next.js skill](tasks/03-next-best-practices/task.md)
+3. [B01-03 — Next.js version-matched agent guidance](tasks/03-next-best-practices/task.md)
 4. [B01-04 — React skill](tasks/04-react-best-practices/task.md)
 5. [B01-05 — Playwright CLI skill](tasks/05-playwright-cli/task.md)
 6. [B01-06 — Project reviewer skill](tasks/06-quality-review-skill/task.md)

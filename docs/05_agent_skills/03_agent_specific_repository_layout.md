@@ -15,9 +15,6 @@ Use the following agent-specific layout unless an already-established compatible
         ├── modern-web-guidance/
         │   ├── SKILL.md
         │   └── ...required upstream files
-        ├── next-best-practices/
-        │   ├── SKILL.md
-        │   └── ...required upstream files
         ├── vercel-react-best-practices/
         │   ├── SKILL.md
         │   └── ...required upstream files
@@ -43,6 +40,7 @@ Use the following agent-specific layout unless an already-established compatible
 - Do not commit duplicate copies of the same skill for every supported agent unless a tool cannot operate through a shared canonical copy.
 - The root `AGENTS.md` remains authoritative over any third-party skill instruction.
 - Third-party skills may guide implementation but may not override `00_PROJECT_PROTOCOL.md`, `01_PRODUCT_REQUIREMENTS.md`, `02_PROTOTYPE_SPECIFICATION.md`, `03_TECHNICAL_DESIGN.md`, or this document.
+- Next.js reference knowledge is not a repository-local skill. Use the installed package's version-matched `next/dist/docs/` and approved generated agent rules; `.agents/skills/next-best-practices/` must remain absent.
 
 ---
 

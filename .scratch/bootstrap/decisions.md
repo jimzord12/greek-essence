@@ -16,4 +16,5 @@
 | BD-012 | Kimi validation remains an external blocker. | Kimi Code is not installed; compatibility must not be claimed without execution. |
 | BD-013 | Bootstrap fixtures are not product pages and must be `noindex, nofollow`. | Exercise infrastructure without beginning public product implementation. |
 | BD-014 | Do not preinstall future-only packages such as Resend, React Hook Form, authentication, analytics, or CMS tooling. | Follow the rule that packages need an exercised bootstrap responsibility. |
+| BD-015 | Replace the retired `next-best-practices` skill requirement with the installed Next.js version's bundled `next/dist/docs/` and applicable generated agent rules; do not vendor a legacy or substitute skill. | The official `vercel-labs/next-skills` migration notice states that the reference skill no longer exists and that version-matched knowledge now ships with Next.js. |
 

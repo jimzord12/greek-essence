@@ -37,7 +37,7 @@ The final repository directory must be:
 .agents/skills/vercel-react-best-practices/
 ```
 
-Use the same staging, inspection, license-preservation, normalization, and revision-recording procedure defined for `next-best-practices`.
+Use the staging, inspection, license-preservation, normalization, and revision-recording procedure defined in [Safe Installation and Review Rules](13_safe_installation_and_review_rules.md).
 
 Do not install the complete Vercel collection.
 

@@ -14,13 +14,14 @@ The agent-tooling setup is complete only when all applicable criteria pass.
 ### 16.2 Repository-local skills
 
 - [ ] `modern-web-guidance` exists under `.agents/skills/`.
-- [ ] `next-best-practices` exists under `.agents/skills/`.
+- [ ] `.agents/skills/next-best-practices/` is absent because the skill was retired upstream.
 - [ ] `vercel-react-best-practices` exists under `.agents/skills/`.
 - [ ] the official Playwright CLI skill exists under `.agents/skills/`.
 - [ ] `greek-essence-quality-review` exists under `.agents/skills/`.
 - [ ] every skill has a root `SKILL.md`.
 - [ ] required supporting files are preserved.
 - [ ] no unrelated skill collection or workflow framework was installed.
+- [ ] the installed Next.js version's bundled documentation and applicable generated agent rules are validated during scaffold verification.
 
 ### 16.3 Provenance and maintenance
 

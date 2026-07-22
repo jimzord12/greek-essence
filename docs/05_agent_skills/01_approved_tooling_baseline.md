@@ -8,15 +8,16 @@ Use:
 
 `AGENTS.md` contains concise, durable rules that should apply before every coding task. Detailed knowledge belongs in repository-local skills rather than being duplicated into the root file.
 
-### 1.2 Approved repository-local knowledge skills
+### 1.2 Approved agent knowledge
 
-Install and version:
+Install and version these repository-local skills:
 
 1. **Google Chrome Modern Web Guidance**
-2. **Vercel `next-best-practices`**
-3. **Vercel `vercel-react-best-practices`**
-4. **Official Playwright CLI Agent Skill**
-5. **Project-owned `greek-essence-quality-review` skill**
+2. **Vercel `vercel-react-best-practices`**
+3. **Official Playwright CLI Agent Skill**
+4. **Project-owned `greek-essence-quality-review` skill**
+
+For Next.js-specific reference knowledge, use the documentation bundled with the repository's installed Next.js version under `next/dist/docs/` and its generated agent rules. `next-best-practices` was retired upstream and must not be installed or vendored as a repository-local skill.
 
 ### 1.3 Approved interactive browser interface
 

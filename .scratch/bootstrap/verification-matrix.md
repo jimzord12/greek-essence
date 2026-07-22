@@ -8,14 +8,14 @@ This matrix is authoritative for task-level verification. Tasks may add narrower
 | B00-02 | Validate 28 unique task IDs, required task headings, an acyclic dependency chain, and all relative Markdown links under `.scratch/bootstrap`. |
 | B01-01 | Validate all links in `AGENTS.md`; search it for required package, locale, skill, browser, architecture, checks, and Definition-of-Done statements. |
 | B01-02 | Inspect `npx modern-web-guidance@latest --help`; expected install entry is `npx modern-web-guidance@latest install`; verify canonical `SKILL.md` and recorded revision/license. |
-| B01-03 | Inspect `npx skills --help`; expected install entry is `npx skills add vercel-labs/agent-skills --skill next-best-practices`; verify only the requested canonical skill. |
+| B01-03 | Verify the official `vercel-labs/next-skills` migration notice and current `vercel/next.js` skills tree; confirm the retired `.agents/skills/next-best-practices/` is absent and the tooling contract points to version-matched bundled Next.js docs. |
 | B01-04 | Expected install entry is `npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices`; verify only the requested canonical skill. |
 | B01-05 | `playwright-cli --version`; `playwright-cli --help`; expected generation entry is `playwright-cli install --skills`; verify canonical skill and absence of prohibited browser tools. |
 | B01-06 | Verify the project skill has one `SKILL.md`, five required references, required output ordering, and exact modular documentation links. |
 | B01-07 | Run and record each controlled Codex prompt; confirm Kimi lookup fails and is recorded as blocked. |
 | B02-01 | Run the exact prescribed shadcn command; then `pnpm dev` smoke and inspect the complete repository diff. |
 | B02-02 | `node --version`; `pnpm --version`; `pnpm exec tsc --version`; `pnpm list --depth 0`; `pnpm install --frozen-lockfile`. |
-| B02-03 | `pnpm dev` smoke; `pnpm build`; verify root `app/`, absence of `src/app`, and resolution of `@/*`. |
+| B02-03 | `pnpm dev` smoke; `pnpm build`; verify root `app/`, absence of `src/app`, and resolution of `@/*`; inspect the pinned Next.js version's `next/dist/docs/` and validate its applicable generated agent-rule integration (or the documented older-version codemod path). |
 | B03-01 | `pnpm typecheck`; compile a temporary negative strictness fixture and confirm failure before removing it. |
 | B03-02 | `pnpm format:check`; `pnpm lint`; run fix commands against a controlled temporary fixture and confirm ignored outputs remain untouched. |
 | B03-03 | Run `pnpm exec husky`; exercise lint-staged with controlled staged files; run commitlint against one valid and one invalid message without creating commits. |

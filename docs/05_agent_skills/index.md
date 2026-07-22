@@ -14,7 +14,7 @@ This documentation family defines the approved repository-local AI agent skills,
 ## Approved external guidance and browser tooling
 
 - [Google Chrome Modern Web Guidance](06_google_chrome_modern_web_guidance.md)
-- [Vercel `next-best-practices`](07_vercel_next_best_practices.md)
+- [Next.js version-matched agent guidance](07_nextjs_version_matched_agent_guidance.md)
 - [Vercel `vercel-react-best-practices`](08_vercel_react_best_practices.md)
 - [Playwright CLI and official agent skill](09_playwright_cli_and_official_agent_skill.md)
 
