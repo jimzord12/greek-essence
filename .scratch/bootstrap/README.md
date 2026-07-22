@@ -12,13 +12,13 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 | 03 — Code hygiene | Done | 4/4 |
 | 04 — Bilingual fixtures | Done | 3/3 |
 | 05 — Automated tests | Done | 3/3 |
-| 06 — Quality review | In progress | 1/3 |
+| 06 — Quality review | In progress | 2/3 |
 | 07 — Final verification | Pending | 0/3 |
 
-**Current task:** `B06-02`
-**Next unblocked task:** `B06-02`
+**Current task:** `B06-03`
+**Next unblocked task:** `B06-03`
 
-B06-02 is `Ready` but was not started during post-run remediation.
+B06-02 is `Done` after approved Playwright CLI 0.1.17 evidence and re-review. B06-03 is dependency-ready but has not started.
 
 **Known external blockers:** Kimi Code is unavailable, so cross-agent validation cannot become fully green. The former B01-03 source blocker is resolved by BD-015.
 

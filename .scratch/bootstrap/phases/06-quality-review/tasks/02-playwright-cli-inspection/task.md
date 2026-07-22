@@ -1,11 +1,11 @@
 ---
 id: B06-02
-status: Ready
+status: Done
 depends_on: [B06-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_165408_e78a72
+reviewer_agent: 20260722_171958_b5891d
+started_at: 2026-07-22T16:54:37+03:00
+completed_at: 2026-07-22T17:50:42+03:00
 ---
 
 # Validate interactive Playwright CLI inspection

@@ -4,35 +4,27 @@ This file is mutable working memory for the next fresh Sol context. It is not an
 
 ## Last completed work
 
-Post-run remediation corrected and approved B05-02, B05-03, and B06-01. Dedicated commits include `5533be3` for B05-02 and `c665f78` for B05-03; the synchronized B06-01 closure state belongs to `fix(bootstrap): remediate B06-01 Unlighthouse performance`.
-
-## Active/resumable work
-
-The remediation baseline is restored. B06-01 now defers only the quality-lab client boundary, retains default simulated mobile throttling, and passes the exact four-route three-sample median gate at 0.92–0.93 performance with all other categories 1.00. Terra `20260722_125717_83e18a` approved Review 06 with 0 Blocking/High; fallback-origin behavior remains documented Non-blocking debt. Phase 05 is Done at 3/3, Phase 06 is 1/3, and B06-02 is restored to Ready without being started.
+B06-02 implementation and independent review are complete. Implementer `20260722_165408_e78a72` regenerated the repository-local Playwright skill through pinned local CLI 0.1.17 and reran all eight route/viewport states with stable role locators. Reviewer `20260722_171958_b5891d` requested one High correction, then approved Review 02 with no remaining findings.
 
 ## Current repository/worktree facts
 
-- Branch: `main`.
-- The Ralph namespace is `.scratch/ralph-loop/`.
-- Completion signal is intentionally `false` until a future managed campaign is authorized and all managed work plus final gates have passed.
-- Runtime locks and logs belong outside Git under `%LOCALAPPDATA%\hermes\ralph\greek-essence\`.
-- The tracked remediation audit is `.scratch/bootstrap/audits/2026-07-22-post-run-remediation-audit.md`.
+- Branch: `main`; current HEAD is `f536da3` after the operator's two separate AGENTS.md commits.
+- B06-02 is `Done`; B06-03 is `Ready`; Phase 06 remains `In progress` at 2/3; dashboard count is 24/28.
+- B06-02 task-owned changes and the generated Playwright skill refresh are uncommitted. Workspace validation and `git diff --check` pass.
+- The dedicated B06-02 task commit is still missing because bounded Ralph iteration 1 timed out with exit 5 during closure.
+- Completion signal remains exactly `false` because B06-02 closure is incomplete.
+- The authorized managed campaign is B06-02 only. B06-03 is excluded and must not start or be folded into this campaign.
 
-## Next recommended action and why
+## Next required action
 
-Verify the dedicated B06-01 Task-ID commit, run final bootstrap tracking/worktree consistency checks, and hand back a clean repository. B06-02 is eligible but remains outside this remediation run.
+HARD STOP pending explicit operator consent to rerun the mandatory structural preflight. The approval layer denied the post-timeout preflight and instructed the manager not to retry or use an alternate path without fresh consent. After consent, run preflight; if compatible, launch one bounded root closure iteration to verify the existing approved state, create the dedicated B06-02 commit, set the B06-02 campaign completion signal true, update this handoff, and exit. Do not start B06-03.
 
 ## Child session IDs
 
-- B05-02 remediation reviewer: `20260722_124049_19b52a`
-- B05-02 remediation implementer: `20260722_130707_6dcbf0`
-- B05-03 remediation reviewer: `20260722_125220_95d73e`
-- B06-01 remediation reviewer: `20260722_125717_83e18a`
-
-## Decisive commands/results
-
-See B06-01 Reviews 04–06 and responses. Final independent checks: production build exit 0; default simulated mobile Unlighthouse exit 0; `/el` 0.93, `/el/quality-lab` 0.92, `/en` 0.93, `/en/quality-lab` 0.93 performance; all accessibility, best-practices, and SEO scores 1.00; focused Playwright 15/15.
+- B06-02 implementer: `20260722_165408_e78a72`
+- B06-02 reviewer: `20260722_171958_b5891d`
 
 ## Blockers requiring human action
 
-None. Push, deployment, history rewriting, credentials, system changes, and unrelated destructive work remain unauthorized.
+- Operator must explicitly authorize rerunning the manager preflight and one bounded B06-02 closure iteration after the controller timeout.
+- No push, deployment, history rewrite, credential change, system change, B06-03 work, or unrelated destructive change is authorized.
