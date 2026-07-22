@@ -2,27 +2,27 @@
 
 ## Last completed task
 
-`B03-01 — Strengthen TypeScript`
+`B03-02 — Configure ESLint and Prettier`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the B03-01 task commit
+- Working tree: expected clean after the B03-02 task commit
 - Last completed phase: `Phase 02 — Application Scaffold`
-- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 1/4 tasks done)
-- B03-01 implementation: Hermes `greekimpl` session `20260722_055345_61990f`.
-- B03-01 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_055752_8c1034`.
+- Current phase: `Phase 03 — Code Hygiene` (`In progress`, 2/4 tasks done)
+- B03-02 implementation: Hermes `greekimpl` session `20260722_060353_341484`.
+- B03-02 review: cycle 01 approved with no findings, in Hermes `greekreview` session `20260722_061206_51b5f6`.
 
 ## Current task
 
-`B03-02 — Configure ESLint and Prettier` is `Ready` because B03-01 is complete and approved. It has not been started.
+`B03-03 — Configure Git hooks and commit conventions` is `Ready` because B03-02 is complete and approved. It has not been started.
 
 ## Useful outputs
 
-- Root `tsconfig.json` retains strict mode and Next.js settings, and enables the six B03-01 strictness flags.
-- Root `tsconfig.json` excludes `tests/`; `tsconfig.test.json` scopes Node types and test source patterns to test configuration.
-- The temporary negative fixture produced all six expected diagnostics and was removed; `pnpm typecheck` passed for both implementer and reviewer.
-- No B03-01 durable discovery was promoted to `KNOWLEDGE.md`.
+- Flat ESLint uses the installed Next.js core-web-vitals and TypeScript presets with focused import-order, floating-promise, and framework-correctness rules.
+- Prettier uses the compatible Tailwind plugin; `lint`, `lint:fix`, `format`, and `format:check` match the locked script composition.
+- Controlled fix fixtures proved lint/format correction while ignored artifact output remained byte-identical; all fixtures were removed.
+- Implementer and reviewer both recorded passing `pnpm format:check` and `pnpm lint`; no B03-02 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

@@ -1,18 +1,36 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import { defineConfig, globalIgnores } from "eslint/config"
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals"
+import nextTypeScript from "eslint-config-next/typescript"
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
+export default defineConfig([
+  ...nextCoreWebVitals,
+  ...nextTypeScript,
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      "@next/next/no-html-link-for-pages": "error",
+      "@typescript-eslint/no-floating-promises": "error",
+      "import/order": [
+        "error",
+        {
+          alphabetize: { caseInsensitive: true, order: "asc" },
+          "newlines-between": "always",
+        },
+      ],
+    },
+  },
   globalIgnores([
-    // Default ignores of eslint-config-next:
+    ".artifacts/bootstrap/**",
     ".next/**",
-    "out/**",
     "build/**",
+    "coverage/**",
     "next-env.d.ts",
+    "out/**",
   ]),
-]);
-
-export default eslintConfig;
+])

@@ -1,7 +1,11 @@
-dist/
-node_modules/
+.artifacts/bootstrap/
+.agents/
 .next/
-.turbo/
+.scratch/
+build/
 coverage/
-pnpm-lock.yaml
-.pnpm-store/
+docs/
+node_modules/
+out/
+next-env.d.ts
+.prettierrc
