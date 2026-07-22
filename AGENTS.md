@@ -39,9 +39,25 @@ Every task operates at one of four engineering-depth tiers:
 
 The assigned tier controls engineering breadth, defensive depth, and verification effort—not baseline code quality. Correctness, security, privacy, accessibility, maintainability, explicit acceptance criteria, and repository-required gates remain mandatory at every tier.
 
-Use the tier explicitly assigned by the task. If none is assigned, use **Tier 2 — Prototype**. Do not raise the tier based on speculation, hypothetical future requirements, or a desire for completeness. A higher tier requires an explicit task requirement or operator instruction.
+### Project default and tier resolution
 
-Apply stronger treatment narrowly when only one component is sensitive; do not raise the entire task unnecessarily. At every tier, stop when the tier-appropriate acceptance criteria and required verification pass.
+**Project default engineering depth:** Tier 2 — Prototype
+
+Resolve the engineering-depth tier for each task in this order:
+
+1. A direct operator instruction for the current task.
+2. An explicit `implementation_depth` value in the task contract.
+3. The project default declared in this file.
+
+The first applicable declaration is the **resolved tier**. A task-specific tier overrides the project default. Agents must not raise or lower the resolved tier based on speculation, hypothetical future requirements, perceived importance, or a desire for completeness.
+
+Delegated subtasks inherit the parent task's resolved tier unless their brief explicitly assigns a different tier. The delegating agent must communicate the resolved tier in the subtask brief.
+
+A task may override the project default with `implementation_depth: 3` in its YAML front matter. Accepted values are `1`, `2`, `3`, and `4`, corresponding to Spike, Prototype, Product, and Critical. The front-matter value is authoritative if the task body also displays a human-readable tier label.
+
+When a task contains one sensitive component, apply a stronger tier narrowly to that component rather than raising the entire task. For example: **Implementation depth:** Tier 2 — Prototype; **Narrow exception:** Credential handling uses Tier 4 — Critical.
+
+At every tier, stop when the tier-appropriate acceptance criteria and required verification pass.
 
 ### Calibration example
 
