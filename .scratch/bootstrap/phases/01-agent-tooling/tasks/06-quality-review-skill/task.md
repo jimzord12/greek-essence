@@ -1,11 +1,11 @@
 ---
 id: B01-06
-status: Ready
+status: Done
 depends_on: [B01-05]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_041352_4f1255
+reviewer_agent: 20260722_041657_e87642
+started_at: 2026-07-22T04:14:10+03:00
+completed_at: 2026-07-22T04:18:57+03:00
 ---
 
 # Create the Greek Essence quality-review skill
