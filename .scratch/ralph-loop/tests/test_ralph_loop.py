@@ -28,6 +28,8 @@ from ralph_loop import (  # noqa: E402
     run_loop,
 )
 
+import smoke_test  # noqa: E402
+
 
 class FakeProcess:
     def __init__(self, return_code: int = 0, wait_error: BaseException | None = None) -> None:
@@ -220,6 +222,14 @@ class LoopTests(unittest.TestCase):
 
 
 class CommandAndProcessTests(unittest.TestCase):
+    def test_smoke_runner_explicitly_caps_live_execution_at_two_iterations(self) -> None:
+        with patch("smoke_test.ralph_main", return_value=2) as run:
+            result = smoke_test.main(["--campaign-id", "campaign-smoke"])
+        self.assertEqual(2, result)
+        run.assert_called_once_with([
+            "--max-iterations", "2", "--campaign-id", "campaign-smoke"
+        ])
+
     def test_root_command_is_pinned_and_has_three_entrypoints(self) -> None:
         command = build_hermes_command(Path("C:/repo"), 1)
         self.assertEqual("hermes", command[0])

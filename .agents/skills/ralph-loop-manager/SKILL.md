@@ -62,7 +62,15 @@ The existing controller remains canonical:
 python .scratch/ralph-loop/tools/ralph_loop.py
 ```
 
-This manager normally invokes the same script with `--max-iterations 1` so it can inspect and notify between fresh root iterations. Do not modify the controller merely to make management more convenient.
+**Entrypoint selection is fail-closed and literal:** default to the canonical `ralph_loop.py` command for every run, resume, or monitor request. Use the live smoke runner only when the operator explicitly says **"smoke test"**, **"Ralph smoke test"**, or explicitly names `smoke_test.py`:
+
+```bash
+python .scratch/ralph-loop/tools/smoke_test.py
+```
+
+The smoke runner delegates to the canonical controller with a fixed `--max-iterations 2` cap and otherwise accepts the same campaign, task, tier, timeout, state-directory, and dry-run arguments. It is live AI execution, not the hermetic unit suite. Do not infer smoke mode from words such as "test," "check," "verify," "try," or "bounded run." If the request is ambiguous, stay on `ralph_loop.py` rather than selecting smoke mode.
+
+For normal managed operation, this manager invokes `ralph_loop.py` with `--max-iterations 1` so it can inspect and notify between fresh root iterations. Do not modify the controller merely to make management more convenient.
 
 ## Phase 1 — Normalize the Request Without Mutating State
 
@@ -197,7 +205,7 @@ Completion criterion: a fresh `greekroot` session can identify the exact target 
 
 ## Phase 5 — Run One Observable Iteration
 
-Launch the canonical script as a tracked background process, bounded to one fresh root iteration. Pass the already-resolved campaign identity, task identity, and engineering tier explicitly so controller-owned renewal/retry counters remain bound to the same task across fresh processes:
+Launch the selected entrypoint as a tracked background process. Unless the operator explicitly requested the smoke test, use the canonical script bounded to one fresh root iteration. Pass the already-resolved campaign identity, task identity, and engineering tier explicitly so controller-owned renewal/retry counters remain bound to the same task across fresh processes:
 
 ```bash
 python .scratch/ralph-loop/tools/ralph_loop.py \
@@ -232,6 +240,7 @@ Interpret exit behavior:
 | `TIMEOUT` | Iteration exceeded timeout | Inspect cited log and child cleanup; usually escalate |
 | `INVALID_SIGNAL` | Signal is malformed/missing | HARD STOP |
 | `LOCK_CONFLICT` | Another loop owns the lock | HARD STOP and monitor the existing owner |
+| exit `7`, `HARD_STOP` | Retry was denied, controller state was malformed, or process-tree cleanup was ambiguous | Preserve cited evidence and HARD STOP; do not retry automatically |
 | `INTERRUPTED`/`ERROR` | Controller stopped abnormally | Inspect evidence, preserve state, and escalate when unresolved |
 
 Do not treat expected `LIMIT_REACHED` exit `2` as a failed task. It is the observation boundary between iterations.
@@ -318,6 +327,7 @@ Completion criterion: the iteration has one evidence-backed classification, any 
 8. **Sending duplicate emails.** Use stable idempotency keys and one event per verified transition.
 9. **Claiming email delivery.** An API success means accepted by Resend.
 10. **Claiming monitoring after session loss.** Persist a truthful handoff and disclose the limitation.
+11. **Inferring smoke mode from a generic test request.** Only explicit smoke-test wording or `smoke_test.py` selects the live two-iteration runner; otherwise use `ralph_loop.py`.
 
 ## Verification Checklist
 
@@ -331,6 +341,7 @@ Completion criterion: the iteration has one evidence-backed classification, any 
 - [ ] Required profiles and controller dry-run pass
 - [ ] `email-notification` is loaded and its intended-recipient dry-run passes
 - [ ] Ralph is launched only as one tracked bounded iteration
+- [ ] Entrypoint is `ralph_loop.py` unless the operator explicitly requested the live smoke test
 - [ ] Each iteration outcome is independently reconciled
 - [ ] Completion/escalation email uses a stable idempotency key
 - [ ] Final completion is verified before the completed email

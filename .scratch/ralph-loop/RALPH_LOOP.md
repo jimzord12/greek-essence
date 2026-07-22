@@ -26,9 +26,15 @@ python .scratch/ralph-loop/tools/ralph_loop.py
 # Bounded live AI execution; exits with LIMIT_REACHED after two false iterations.
 python .scratch/ralph-loop/tools/ralph_loop.py --max-iterations 2
 
-# Hermetic unit tests; never launch a live Hermes process.
-python -B -m unittest discover -s .scratch/ralph-loop/tests -p "test_ralph_loop.py" -v
+# Explicit live smoke test; the wrapper fixes the same canonical controller at two iterations.
+# Run this only when smoke-test execution was explicitly requested.
+python .scratch/ralph-loop/tools/smoke_test.py
+
+# Hermetic full unit suite; never launches a live Hermes process.
+python -B -m unittest discover -s .scratch/ralph-loop/tests -p "test_*.py" -v
 ```
+
+The default live entrypoint is always `ralph_loop.py`. Generic requests to test, check, verify, try, run, resume, or monitor Ralph do not select `smoke_test.py`; the operator must explicitly request the smoke test or name that file. The smoke wrapper launches real Hermes agents and is not a unit-test command.
 
 `--iteration-timeout SECONDS` bounds the current lease (default 3600 seconds), and `--assessment-threshold SECONDS` selects the read-only health check point (default 2700 seconds). Pass `--campaign-id`, `--task-id`, and `--resolved-tier` for managed execution. A strict `greekreview` health `true` may renew the lease at most three times per task. After timeout, strict read-only diagnosis may authorize one same-task retry, gated by fresh manager preflight. Runtime state, locks, assessor/diagnosis transcripts, and event logs remain outside Git at `%LOCALAPPDATA%\hermes\ralph\greek-essence\`. On Windows, timeout cleanup targets only the launched root PID and its descendants with `taskkill /T`; ambiguous survivors fail closed.
 
