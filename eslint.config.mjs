@@ -25,6 +25,16 @@ export default defineConfig([
       ],
     },
   },
+  {
+    files: ["tests/**/*.{ts,tsx}"],
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.test.json",
+        projectService: false,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   globalIgnores([
     ".artifacts/bootstrap/**",
     ".next/**",

@@ -1,11 +1,11 @@
 ---
 id: B05-01
-status: Ready
+status: Done
 depends_on: [B04-03]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_082947_f3ea6c
+reviewer_agent: 20260722_083707_aea86f
+started_at: 2026-07-22T08:30:18+03:00
+completed_at: 2026-07-22T08:44:32+03:00
 ---
 
 # Configure focused unit and component tests
