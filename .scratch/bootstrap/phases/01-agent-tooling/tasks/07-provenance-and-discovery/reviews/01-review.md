@@ -2,7 +2,7 @@
 
 Reviewer agent: `20260722_043148_cb427a`
 
-Verdict: Approved
+**Verdict:** Approved
 
 ## 1. Contract reviewed
 
