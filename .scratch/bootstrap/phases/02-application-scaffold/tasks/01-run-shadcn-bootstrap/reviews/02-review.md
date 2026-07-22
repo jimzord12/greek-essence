@@ -17,5 +17,5 @@ The cited `.artifacts/bootstrap/B02-01/next-app-dev-smoke.txt` confirms the gene
 
 - Remaining Blocking findings: 0
 - Remaining High findings: 0
-- Verdict: Approved
+**Verdict:** Approved
 - Reviewer session: `20260722_045407_040d0f`
