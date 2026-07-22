@@ -38,7 +38,7 @@ This tracked audit revalidates previously approved bootstrap tasks whose accepta
 - Is uncaught `pageerror` evidence enforced?
 - Are console/network/critical-request guards sufficient where the contract requires them, including relevant accessibility journeys?
 
-**Disposition:** Corrected and approved. Fresh Terra review `20260722_124049_19b52a` initially wrote Review 03 with five High regression-evidence findings. Luna `20260722_130707_6dcbf0` added exact four-route metadata semantics, localized quality-lab interaction, narrowly scoped invalid-locale handling, shared fail-closed console/network/page-error guards, honest controlled probes, and corrected evidence. Terra Review 04 requested one evidence-integrity correction; Luna responded, and Terra Review 05 approved with 0 Blocking/High. Final gates include 27/27 E2E and 12/12 axe passing. B05-02 is `Done`; its dedicated remediation commit is the immediate closure action.
+**Disposition:** Corrected and approved. Fresh Terra review `20260722_124049_19b52a` initially wrote Review 03 with five High regression-evidence findings. Luna `20260722_130707_6dcbf0` added exact four-route metadata semantics, localized quality-lab interaction, narrowly scoped invalid-locale handling, shared fail-closed console/network/page-error guards, honest controlled probes, and corrected evidence. Terra Review 04 requested one evidence-integrity correction; Luna responded, and Terra Review 05 approved with 0 Blocking/High. Final gates include 27/27 E2E and 12/12 axe passing. B05-02 is `Done` in dedicated remediation commit `5533be3`.
 
 ### B05-03 — Configure axe Accessibility Checks
 
@@ -49,7 +49,7 @@ This tracked audit revalidates previously approved bootstrap tasks whose accepta
 - After B05-03 was reopened for a dependency correction, did Phase Review 02 and the later phase-closure commit improperly substitute for a new task-level correction review and dedicated B05-03 correction commit?
 - If implementation is currently correct, what retrospective task-level records, metadata, focused verification, and dedicated remediation commit are required without fabricating history?
 
-**Disposition:** Corrected and approved. Fresh Terra Review 02 confirmed one High protocol/evidence-integrity defect while current runtime remained correct. Original implementer `20260722_090930_f3cf8d` added a truthful Review 02 response and current focused evidence without changing implementation or history. The same Terra reviewer `20260722_125220_95d73e` approved Review 03 with 0 Blocking/High after strict test typecheck and 12/12 axe passed, while preserving commits `341d816` and `ae15ca1` as historical facts. B05-03 is `Done`; its dedicated Task-ID commit is the immediate closure action.
+**Disposition:** Corrected and approved. Fresh Terra Review 02 confirmed one High protocol/evidence-integrity defect while current runtime remained correct. Original implementer `20260722_090930_f3cf8d` added a truthful Review 02 response and current focused evidence without changing implementation or history. The same Terra reviewer `20260722_125220_95d73e` approved Review 03 with 0 Blocking/High after strict test typecheck and 12/12 axe passed, while preserving commits `341d816` and `ae15ca1` as historical facts. B05-03 is `Done` in dedicated remediation commit `c665f78`.
 
 ### B06-01 — Configure Unlighthouse
 
@@ -61,8 +61,8 @@ This tracked audit revalidates previously approved bootstrap tasks whose accepta
 - Confirm the final gate and Review 03 state from current evidence.
 - Do not repeat the superseded claim that three-sample auditing was disabled; the current implementation ran three Lighthouse samples and used the median.
 
-**Disposition:** The fallback-origin behavior is approved Non-blocking technical debt and does not itself reopen B06-01. However, fresh Terra review `20260722_125717_83e18a` wrote `reviews/04-review.md` with `Changes requested` after the current exact production-build/three-sample gate failed: `/el/quality-lab` median performance was `0.83 < 0.90`. B06-01 is reopened `In review` for this separate High acceptance failure. The correction must retain all four routes, three mobile samples, median scoring, and existing budgets; evidence must come from a passing current run.
+**Disposition:** Corrected and approved. The fallback-origin behavior remains approved Non-blocking technical debt and did not cause reopening. Terra Review 04 reopened B06-01 for a separate High failure when `/el/quality-lab` scored 0.83. Luna `20260722_094928_de39e3` isolated the quality-lab client boundary. Terra Review 05 correctly rejected a temporary `throttlingMethod: "provided"` override as weakening the mobile gate; Luna removed it and recorded two consecutive default simulated-mobile passes. Terra Review 06 approved with 0 Blocking/High: four-route performance medians are 0.92–0.93 and all other categories are 1.00, with three samples and unchanged budgets. B06-01 is `Done`; its dedicated Task-ID commit subject is `fix(bootstrap): remediate B06-01 Unlighthouse performance`.
 
 ## Final reconciliation
 
-Candidate dispositions are complete: B05-02, B05-03, and B06-01 are confirmed reopened tasks. Remediation and dedicated Task-ID commits remain pending in dependency order. B06-02 stays paused.
+All candidate dispositions and corrections are complete. B05-02, B05-03, and B06-01 each received numbered response/re-review cycles, current focused verification, synchronized tracking, and dedicated Task-ID closure commits without history rewriting. B06-02 was paused throughout remediation and is restored to `Ready` only after the baseline became trustworthy; it was not started.

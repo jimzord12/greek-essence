@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
-import { FixtureToggle } from "@/components/fixture-toggle"
+import { QualityLabToggle } from "@/components/quality-lab-toggle"
 import { Link } from "@/i18n/navigation"
 
 export async function generateMetadata({
@@ -68,7 +68,7 @@ export default async function QualityLabPage({
           <h2 className="text-xl font-semibold" id="primitive-heading">
             {t("primitiveHeading")}
           </h2>
-          <FixtureToggle
+          <QualityLabToggle
             label={t("toggleLabel")}
             selectedLabel={t("toggleSelectedLabel")}
             statusLabel={t("toggleStatus")}

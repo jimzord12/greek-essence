@@ -1,19 +1,30 @@
-# Evidence — B06-01
+# Evidence — B06-01 post-run remediation
 
-## Review-02 final correction run
+## Default mobile methodology assertion
 
-- `pnpm exec prettier --check unlighthouse.config.ts 'app/[locale]/layout.tsx' i18n/request.ts app/robots.ts` — exit 0.
-- `pnpm build` — exit 0; generated `/en`, `/el`, `/en/quality-lab`, `/el/quality-lab`, and static `/robots.txt`.
-- `pnpm quality:unlighthouse` — exit 0. Production server started on port 3101; Unlighthouse scanned four routes and passed all configured budgets.
-- In the captured terminal output of that final command, no `NoFallbackError`, `Cannot find module ../messages/robots.txt.json`, other server/console error, or critical request failure occurred.
+Final config `unlighthouse.config.ts` contains `device: "mobile"`, `samples: 3`, and exactly `/en`, `/el`, `/en/quality-lab`, `/el/quality-lab`. It contains no `throttlingMethod` override. The raw Lighthouse reports at `.artifacts/bootstrap/unlighthouse/reports/**/lighthouse.json` assert `formFactor: "mobile"` and `throttlingMethod: "simulate"` for all four routes.
 
-## Exact final report assertion
+Installed `@unlighthouse/core@0.18.0` source at `node_modules/.pnpm/@unlighthouse+core@0.18.0_*/node_modules/@unlighthouse/core/dist/index.mjs` loops over `resolvedConfig.scanner.samples` and calls `computeMedianRun(samples)`. The persisted report is one median result per route, as expected.
 
-Artifact: `.artifacts/bootstrap/unlighthouse/ci-result.json`.
+## Two-run final report assertion
 
-- `/el`: performance 0.93, accessibility 1.00, best practices 1.00, SEO 1.00.
-- `/el/quality-lab`: performance 0.90, accessibility 1.00, best practices 1.00, SEO 1.00.
-- `/en`: performance 0.93, accessibility 1.00, best practices 1.00, SEO 1.00.
-- `/en/quality-lab`: performance 0.91, accessibility 1.00, best practices 1.00, SEO 1.00.
+Artifacts:
 
-The assertion required exactly those four paths and performance >=0.90, accessibility >=1.00, best practices >=0.95, and SEO >=0.95; it passed.
+- `.artifacts/bootstrap/unlighthouse/ci-result.json`
+- `.artifacts/bootstrap/unlighthouse-default-run-1.log`
+- `.artifacts/bootstrap/unlighthouse-default-run-2.log`
+
+Both exact quality commands exited 0 and both captured logs contain `Score assertions have passed.`. Both runs asserted exactly four routes and no `NoFallbackError`, missing `messages/*.json`, server errors, console errors, or critical request errors.
+
+The final median report contains:
+
+| URL | Performance | Accessibility | Best practices | SEO |
+|---|---:|---:|---:|---:|
+| `/el` | 0.93 | 1.00 | 1.00 | 1.00 |
+| `/el/quality-lab` | 0.92 | 1.00 | 1.00 | 1.00 |
+| `/en` | 0.93 | 1.00 | 1.00 | 1.00 |
+| `/en/quality-lab` | 0.93 | 1.00 | 1.00 | 1.00 |
+
+The assertion minimums remain performance 0.90, accessibility 1.00, best practices 0.95, and SEO 0.95.
+
+F-04 fallback-origin behavior remains unchanged and is still documented Non-blocking debt.

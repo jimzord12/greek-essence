@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 
-type FixtureToggleProps = {
+export type FixtureToggleProps = {
   label: string
   selectedLabel: string
   statusLabel: string

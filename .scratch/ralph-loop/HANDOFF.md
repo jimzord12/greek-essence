@@ -4,11 +4,11 @@ This file is mutable working memory for the next fresh Sol context. It is not an
 
 ## Last completed work
 
-The Ralph context-refresh refactor was committed as `dc7a7eb`. The prior bootstrap work last completed was `B06-01 — Configure Unlighthouse`.
+Post-run remediation corrected and approved B05-02, B05-03, and B06-01. Dedicated commits include `5533be3` for B05-02 and `c665f78` for B05-03; the synchronized B06-01 closure state belongs to `fix(bootstrap): remediate B06-01 Unlighthouse performance`.
 
 ## Active/resumable work
 
-Post-run remediation is active. B05-02 is corrected, approved, and committed in `5533be3`. B05-03 now has a truthful original-implementer response and current focused evidence; the same Terra reviewer `20260722_125220_95d73e` approved Review 03 with 0 Blocking/High. B06-01 remains reopened because the fresh three-sample median gate scored `/el/quality-lab` performance `0.83 < 0.90`; its fallback origin remains accepted Non-blocking debt. Phase 05 is restored to Done at 3/3 and Phase 06 is 0/3; B06-02 remains Pending.
+The remediation baseline is restored. B06-01 now defers only the quality-lab client boundary, retains default simulated mobile throttling, and passes the exact four-route three-sample median gate at 0.92–0.93 performance with all other categories 1.00. Terra `20260722_125717_83e18a` approved Review 06 with 0 Blocking/High; fallback-origin behavior remains documented Non-blocking debt. Phase 05 is Done at 3/3, Phase 06 is 1/3, and B06-02 is restored to Ready without being started.
 
 ## Current repository/worktree facts
 
@@ -20,7 +20,7 @@ Post-run remediation is active. B05-02 is corrected, approved, and committed in 
 
 ## Next recommended action and why
 
-Create and verify the dedicated B05-03 remediation commit, then delegate the B06-01 performance-budget investigation and correction to Luna/high. Do not begin B06-02.
+Verify the dedicated B06-01 Task-ID commit, run final bootstrap tracking/worktree consistency checks, and hand back a clean repository. B06-02 is eligible but remains outside this remediation run.
 
 ## Child session IDs
 
@@ -31,7 +31,7 @@ Create and verify the dedicated B05-03 remediation commit, then delegate the B06
 
 ## Decisive commands/results
 
-See B05-03 Review 02, its truthful response, and approved Review 03; current strict test typecheck and 12/12 axe pass. See B06-01 `reviews/04-review.md` for the remaining performance-budget failure.
+See B06-01 Reviews 04–06 and responses. Final independent checks: production build exit 0; default simulated mobile Unlighthouse exit 0; `/el` 0.93, `/el/quality-lab` 0.92, `/en` 0.93, `/en/quality-lab` 0.93 performance; all accessibility, best-practices, and SEO scores 1.00; focused Playwright 15/15.
 
 ## Blockers requiring human action
 
