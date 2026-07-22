@@ -2,30 +2,29 @@
 
 ## Last completed task
 
-`B03-04 — Define scripts and environment safety`
+`B04-01 — Configure next-intl routing`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the Phase 03 closure commit
+- Working tree: expected clean after the dedicated B04-01 task commit
 - Last completed phase: `Phase 03 — Code Hygiene`
-- Current phase: `Phase 04 — Bilingual Fixtures` (`Ready`, 0/3 tasks done)
-- B03-04 implementation and correction: Hermes `greekimpl` session `20260722_063445_1edd12`.
-- B03-04 review: cycle 02 approved after the cycle-01 High evidence finding was resolved, in Hermes `greekreview` session `20260722_063813_af9033`.
-- Phase 03 gate: approved in one cycle with no findings, in fresh Hermes `greekreview` session `20260722_064740_6f11d0`.
+- Current phase: `Phase 04 — Bilingual Fixtures` (`In progress`, 1/3 tasks done)
+- B04-01 implementation and corrections: Hermes `greekimpl` session `20260722_065719_65864e`.
+- B04-01 review: cycle 02 approved after three cycle-01 High findings were resolved, in Hermes `greekreview` session `20260722_070734_7efd1d`.
 
 ## Current task
 
-`B04-01 — Configure next-intl routing` is `Ready` because B03-04 and the Phase 03 gate are complete and approved. It has not been started.
+`B04-02 — Create minimal quality-fixture pages` is `Ready` because B04-01 is complete and approved. It has not been started.
 
 ## Useful outputs
 
-- `package.json` now contains every locked cross-platform package-script contract, with `check` limited to fast non-browser checks and `check:all` adding build, browser, accessibility, and Unlighthouse work.
-- `.env.example` contains only `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_DEFAULT_LOCALE`; no deferred Resend configuration was added.
-- `.env*` and `.artifacts/bootstrap/` remain ignored while `.env.example` is explicitly trackable; corrected `git check-ignore` evidence was independently approved.
-- Test, browser, and Unlighthouse executables remain owned by later bootstrap tasks; their script smoke invocations currently report those deferred tools as unavailable.
-- Phase 03 integration checks passed: format, lint, typecheck, hook scoping, commit-message validation, script contracts, and environment-safety assertions.
-- No B03-04 durable discovery was promoted to `KNOWLEDGE.md`.
+- `next-intl` 4.13.3 now provides exactly `en` and `el` routing, request configuration, navigation helpers, and fixture-only messages.
+- The production build statically prerenders `/en` and `/el`; both set matching document language and expose equivalent locale links.
+- Plain `/`, Greek `Accept-Language` `/`, and `NEXT_LOCALE=el` cookie `/` all redirect deterministically to `/en`; `/fr` returns 404.
+- The exact package operation and frozen install were rerun successfully through the installed Corepack entry point after the Git-Bash Corepack shim failed from path conversion.
+- B04-01 build, focused production requests, lint, and typecheck passed; cycle 02 approved all corrections.
+- No B04-01 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

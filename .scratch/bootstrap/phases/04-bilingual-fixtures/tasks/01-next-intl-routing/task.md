@@ -1,11 +1,11 @@
 ---
 id: B04-01
-status: Ready
+status: Done
 depends_on: [B03-04]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_065719_65864e
+reviewer_agent: 20260722_070734_7efd1d
+started_at: 2026-07-22T03:57:44Z
+completed_at: 2026-07-22T04:22:06Z
 ---
 
 # Configure next-intl routing
