@@ -29,3 +29,20 @@ This inventory records approved third-party skills vendored into the repository.
 - **Playwright CLI:** `0.1.14`.
 - **Repository package added for this setup:** none.
 - **Global tooling required in contributor environments:** Node.js and a pnpm/Corepack-capable environment are required by repository guidance; `playwright-cli` is required by the approved browser-inspection baseline. This task added no global tooling.
+
+## Vercel React Best Practices
+
+- **Local skill name:** `vercel-react-best-practices`
+- **Local path:** `.agents/skills/vercel-react-best-practices/`
+- **Purpose:** React and Next.js rendering, bundle, waterfall, state/effect, and performance guidance.
+- **Upstream repository and exact source path:** `https://github.com/vercel-labs/agent-skills`, `skills/react-best-practices/`.
+- **Installed revision:** `4559f18a20c1691c744b4395194290db6a0df5e9`.
+- **Canonical installer entry:** `npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices`.
+- **Installation method and date:** isolated checkout at the recorded revision, then normalized LF copy to the local path on `2026-07-22` (UTC).
+- **Verified license:** MIT, declared in the unmodified upstream `SKILL.md` front matter; upstream has no standalone license file within this skill or repository tree.
+- **Included files:** complete 76-file upstream skill layout: `SKILL.md`, `AGENTS.md`, `README.md`, `metadata.json`, and `rules/`.
+- **Excluded optional disciplines:** all other Vercel skills; no agent-specific duplicate copies.
+- **Local modifications:** CRLF-to-LF normalization only; otherwise source contents are preserved.
+- **Codex validation result:** not run; controlled agent validation is owned by B01-07.
+- **Kimi validation result:** not run; controlled validation and its known availability blocker are owned by B01-07.
+- **Update procedure:** inspect the source skill and its referenced files in an isolated checkout at an explicit upstream revision; verify its MIT declaration and absence of executable scripts; normalize-copy only `skills/react-best-practices/` to this local path; then update this entry and B01-04 evidence.
