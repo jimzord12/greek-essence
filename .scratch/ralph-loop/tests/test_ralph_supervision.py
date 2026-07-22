@@ -240,6 +240,31 @@ class SupervisionTests(unittest.TestCase):
         self.assertEqual(0, result)
         self.assertEqual(0, state.successful_extensions)
 
+    def test_supervision_emits_poll_wait_and_timeout_diagnostics(self) -> None:
+        clock = FakeClock()
+        process = TimedProcess(clock, exit_at=2)
+        state = ControllerState("campaign", "task", "Tier 2 — Prototype")
+        events: list[tuple[str, dict[str, object]]] = []
+        result = supervise_process(
+            process, lease_seconds=10, assessment_seconds=4, state=state,
+            assess_fn=lambda: False, persist_fn=lambda _: None,
+            completion_or_stop_fn=lambda: False, monotonic_fn=clock.monotonic,
+            terminate_fn=lambda _: None,
+            event_fn=lambda name, fields: events.append((name, fields)),
+            heartbeat_seconds=1,
+        )
+        self.assertEqual(0, result)
+        names = [name for name, _ in events]
+        self.assertIn("supervision_poll", names)
+        self.assertIn("supervision_wait_start", names)
+        self.assertIn("supervision_wait_timeout", names)
+        self.assertIn("supervision_wait_return", names)
+        waits = [fields for name, fields in events if name == "supervision_wait_start"]
+        self.assertTrue(all(float(fields["timeout_seconds"]) <= 1 for fields in waits))
+        wait_return = next(fields for name, fields in events if name == "supervision_wait_return")
+        self.assertEqual(0, wait_return["return_code"])
+        self.assertEqual(43210, wait_return["root_pid"])
+
 
 class ProcessTreeTests(unittest.TestCase):
     def test_windows_tree_kill_is_scoped_to_root_pid(self) -> None:

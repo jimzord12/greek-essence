@@ -18,6 +18,7 @@ from ralph_loop import (  # noqa: E402
     CompletionSignalError,
     HermesProcessError,
     IterationTimeout,
+    LifecycleLogger,
     LockConflict,
     LoopOutcome,
     _acquire_lock,
@@ -32,9 +33,10 @@ import smoke_test  # noqa: E402
 
 
 class FakeProcess:
-    def __init__(self, return_code: int = 0, wait_error: BaseException | None = None) -> None:
+    def __init__(self, return_code: int = 0, wait_error: BaseException | None = None, pid: int | None = None) -> None:
         self.return_code = return_code
         self.wait_error = wait_error
+        self.pid = pid
         self.terminated = False
         self.killed = False
 
@@ -219,6 +221,130 @@ class LoopTests(unittest.TestCase):
     def test_windows_invalid_pid_system_error_is_stale(self) -> None:
         with patch("ralph_loop.os.kill", side_effect=SystemError("invalid PID")):
             self.assertFalse(_pid_is_running(26708))
+
+
+class LifecycleLoggingTests(unittest.TestCase):
+    def read_events(self, path: Path) -> list[dict[str, object]]:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+
+    def test_logger_records_controller_and_parent_identity_as_jsonl(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "lifecycle.jsonl"
+            logger = LifecycleLogger(path, campaign_id="campaign", task_id="task", resolved_tier="2")
+            logger.emit("controller_start", controller_pid=123, parent_pid=456)
+            event = self.read_events(path)[0]
+            self.assertEqual("controller_start", event["event"])
+            self.assertEqual(123, event["controller_pid"])
+            self.assertEqual(456, event["parent_pid"])
+            self.assertEqual("campaign", event["campaign_id"])
+            self.assertEqual("task", event["task_id"])
+            self.assertEqual("2", event["resolved_tier"])
+            self.assertRegex(str(event["timestamp_utc"]), r"Z$")
+
+    def test_logger_write_failure_does_not_change_controller_flow(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            logger = LifecycleLogger(Path(temp) / "lifecycle.jsonl", "campaign", "task", "2")
+            with patch("pathlib.Path.open", side_effect=OSError("disk unavailable")):
+                logger.emit("controller_start", controller_pid=123)
+            self.assertIn("disk unavailable", logger.last_error or "")
+
+    def test_executor_records_root_state_poll_and_finally_boundaries(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            runtime = root / "runtime"
+            logger = LifecycleLogger(runtime / "lifecycle.jsonl", "campaign", "task", "2")
+            fake = FakeProcess(return_code=0, pid=43210)
+            state = __import__("ralph_loop").ControllerState("campaign", "task", "2")
+            with patch("ralph_loop.subprocess.Popen", return_value=fake):
+                hermes_executor(root, runtime, 1, 10, state=state, lifecycle=logger)
+            events = self.read_events(logger.path)
+            names = [event["event"] for event in events]
+            for expected in (
+                "root_launch_start",
+                "root_launched",
+                "controller_state_write_start",
+                "controller_state_write_complete",
+                "root_poll_result",
+                "executor_finally_enter",
+                "root_pid_clear_start",
+                "root_pid_clear_complete",
+                "executor_finally_exit",
+            ):
+                self.assertIn(expected, names)
+            launched = next(event for event in events if event["event"] == "root_launched")
+            self.assertEqual(43210, launched["root_pid"])
+            self.assertEqual("hermes", launched["root_executable"])
+            self.assertEqual("greekroot", launched["root_profile"])
+            self.assertNotIn("command", launched)
+            self.assertNotIn("prompt", launched)
+
+    def test_initial_state_write_failure_terminates_launched_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            fake = FakeProcess(return_code=0)
+            with patch("ralph_loop.subprocess.Popen", return_value=fake), patch(
+                "ralph_loop.save_controller_state", side_effect=OSError("state disk unavailable")
+            ):
+                with self.assertRaisesRegex(OSError, "state disk unavailable"):
+                    hermes_executor(Path(temp), Path(temp) / "runtime", 1, 10)
+            self.assertTrue(fake.terminated)
+
+    def test_executor_continues_when_lifecycle_path_is_unwritable(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            runtime = root / "runtime"
+            blocked_path = runtime / "blocked"
+            blocked_path.mkdir(parents=True)
+            logger = LifecycleLogger(blocked_path, "campaign", "task", "2")
+            fake = FakeProcess(return_code=0)
+            with patch("ralph_loop.subprocess.Popen", return_value=fake):
+                hermes_executor(root, runtime, 1, 10, lifecycle=logger)
+            self.assertIn("Error", logger.last_error or "")
+
+    def test_cleanup_state_failure_does_not_mask_primary_exception(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            fake = FakeProcess(return_code=0)
+            with patch("ralph_loop.subprocess.Popen", return_value=fake), patch(
+                "ralph_loop.supervise_process", side_effect=RuntimeError("primary failure")
+            ), patch(
+                "ralph_loop.save_controller_state", side_effect=[None, OSError("clear failure")]
+            ):
+                with self.assertRaisesRegex(RuntimeError, "primary failure"):
+                    hermes_executor(Path(temp), Path(temp) / "runtime", 1, 10)
+            self.assertTrue(fake.terminated)
+
+    def test_termination_failure_does_not_mask_primary_exception(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            fake = FakeProcess(return_code=0)
+            with patch("ralph_loop.subprocess.Popen", return_value=fake), patch(
+                "ralph_loop.save_controller_state", side_effect=OSError("primary state failure")
+            ), patch(
+                "ralph_loop.terminate_process_tree", side_effect=RuntimeError("termination failure")
+            ):
+                with self.assertRaisesRegex(OSError, "primary state failure") as raised:
+                    hermes_executor(Path(temp), Path(temp) / "runtime", 1, 10)
+            self.assertTrue(any("termination failure" in note for note in raised.exception.__notes__))
+
+    def test_run_loop_records_lock_and_return_lifecycle(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            runtime = root / "runtime"
+            self.write_signal(root, True)
+            result = run_loop(root, state_dir=runtime, campaign_id="campaign", task_id="task", resolved_tier="2")
+            self.assertEqual(LoopOutcome.COMPLETE, result)
+            logs = list((runtime / "logs").glob("controller-lifecycle-*.jsonl"))
+            self.assertEqual(1, len(logs))
+            names = [event["event"] for event in self.read_events(logs[0])]
+            self.assertEqual("controller_start", names[0])
+            for expected in (
+                "lock_acquire_start", "lock_acquired", "loop_return",
+                "lock_release_start", "lock_release_complete", "controller_exit",
+            ):
+                self.assertIn(expected, names)
+
+    def write_signal(self, root: Path, value: bool) -> None:
+        path = root / ".scratch" / "ralph-loop" / "completion-signal.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({"isEverythingDone": value}), encoding="utf-8")
 
 
 class CommandAndProcessTests(unittest.TestCase):

@@ -2,6 +2,8 @@
 
 ## Authority
 
+At the start of every project task, check the repository-root [`NEXT.md`](NEXT.md). If it is non-empty, read it and follow its project handoff instructions before proceeding. Keep `NEXT.md` current when handing project work to another agent. Ralph-specific orchestration state remains in `.scratch/ralph-loop/HANDOFF.md`.
+
 Read [the documentation entry point](docs/README.md) and [the bootstrap workspace](.scratch/bootstrap/README.md) first. Project decisions take precedence in this order: Project Protocol, Product Requirements, Prototype Specification, Technical Design, then Design System. Agent-tooling documents govern tooling only; record and escalate conflicts rather than silently reinterpreting a higher-authority requirement.
 
 ## Architecture
