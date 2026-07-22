@@ -4,11 +4,11 @@ This file is mutable working memory for the next fresh Sol context. It is not an
 
 ## Last completed work
 
-The Ralph context-refresh refactor is implemented, independently approved, and ready for the root integrator's dedicated local commit. The prior bootstrap work last completed was `B06-01 — Configure Unlighthouse`.
+The Ralph context-refresh refactor was committed as `dc7a7eb`. The prior bootstrap work last completed was `B06-01 — Configure Unlighthouse`.
 
 ## Active/resumable work
 
-No Ralph child iteration is active. Implementer session: `20260722_115237_90b6f0`. Reviewer session: `20260722_120723_498b9c`; review 01 requested one High correction and focused review 02 approved it with no Blocking or High findings remaining. Bootstrap `B06-02 — Playwright CLI inspection` remains dependency-satisfied and ready in the bootstrap ledger, but it was intentionally out of scope for this refactor.
+Post-run remediation is active. B05-02 was corrected by Luna `20260722_130707_6dcbf0`; the same Terra reviewer `20260722_124049_19b52a` approved Review 05 with 0 Blocking/High after 27/27 E2E and 12/12 axe passed. B05-03 remains reopened for one High protocol/evidence-integrity defect; current axe runtime is correct. B06-01 remains reopened because the fresh three-sample median gate scored `/el/quality-lab` performance `0.83 < 0.90`; its fallback origin remains accepted Non-blocking debt. Phase 05 is 2/3 and Phase 06 is 0/3; B06-02 remains Pending. Remediation order is now B05-03 → B06-01.
 
 ## Current repository/worktree facts
 
@@ -16,20 +16,23 @@ No Ralph child iteration is active. Implementer session: `20260722_115237_90b6f0
 - The Ralph namespace is `.scratch/ralph-loop/`.
 - Completion signal is intentionally `false` until a future managed campaign is authorized and all managed work plus final gates have passed.
 - Runtime locks and logs belong outside Git under `%LOCALAPPDATA%\hermes\ralph\greek-essence\`.
-- Pre-existing untracked `.hermes/` work is unrelated and must be preserved.
+- The tracked remediation audit is `.scratch/bootstrap/audits/2026-07-22-post-run-remediation-audit.md`.
 
 ## Next recommended action and why
 
-Review this refactor's scoped diff and run the documented hermetic tests, dry-run, stale-reference searches, profile checks, `git diff --check`, and scoped status/diff inspection. Do not launch a real Ralph AI run.
+Create the dedicated B05-02 remediation commit, then write the truthful B05-03 retrospective response, run focused verification, and return it to Terra for task-level re-review. Do not begin B06-02.
 
 ## Child session IDs
 
-None for this implementation iteration; no live child was launched.
+- B05-02 remediation reviewer: `20260722_124049_19b52a`
+- B05-02 remediation implementer: `20260722_130707_6dcbf0`
+- B05-03 remediation reviewer: `20260722_125220_95d73e`
+- B06-01 remediation reviewer: `20260722_125717_83e18a`
 
 ## Decisive commands/results
 
-See `.scratch/ralph-loop/IMPLEMENTATION_REPORT.md` for exact commands, exit codes, and results.
+See B05-02 Reviews 03–05 and responses: final implementation and evidence are approved. See B05-03 `reviews/02-review.md` and B06-01 `reviews/04-review.md` for remaining work.
 
 ## Blockers requiring human action
 
-No implementation blocker. The root integrator must independently review this working tree and create the dedicated local commit after acceptance; this implementer does not commit.
+None. Push, deployment, history rewriting, credentials, system changes, and unrelated destructive work remain unauthorized.

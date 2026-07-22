@@ -1,6 +1,12 @@
 import AxeBuilder from "@axe-core/playwright"
 import { expect, test } from "@playwright/test"
 
+import {
+  assertNoBrowserFailures,
+  installBrowserGuards,
+  type BrowserGuards,
+} from "./browser-guards"
+
 const routes = ["/en", "/el", "/en/quality-lab", "/el/quality-lab"]
 const wcag22Tags = [
   "wcag2a",
@@ -12,6 +18,16 @@ const wcag22Tags = [
 ]
 
 test.describe("WCAG A/AA accessibility", () => {
+  let browserGuards: BrowserGuards
+
+  test.beforeEach(({ page }) => {
+    browserGuards = installBrowserGuards(page)
+  })
+
+  test.afterEach(() => {
+    assertNoBrowserFailures(browserGuards)
+  })
+
   for (const route of routes) {
     test(`${route} has no axe violations`, async ({ page }, testInfo) => {
       await page.goto(route)
