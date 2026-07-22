@@ -1,4 +1,49 @@
-# Evidence
+# Evidence — B01-03 Next.js version-matched agent guidance
 
-Not started. Record exact commands, exit codes, concise results, and ignored artifact paths here.
+## Environment and approved decision
+
+- Implementer session: `20260722_023532_75f390`; started: `2026-07-22T02:36:10+03:00`.
+- BD-015 was authorized in commit `3a042792019ca8a89123598134320a678d309b7f`.
+- Migration-notice revision: `vercel-labs/next-skills` `b76d687cf3e026eac3b1032f610f06b47a56377c`.
+- Current framework-tree revision: `vercel/next.js` canary `c77f3ded55f8a542d440cdd8e86f00fd058e4e2c`.
+- Artifacts: `.artifacts/bootstrap/B01-03-migration/next-skills/` and `.artifacts/bootstrap/B01-03-migration/next-skills-tree.json`; both are ignored by `.gitignore`.
+
+## Commands and results
+
+| Exact command | Exit | Concise result | Artifact path |
+|---|---:|---|---|
+| `git show --stat --oneline --decorate --no-renames 3a04279` | 0 | Confirmed the operator-authorized BD-015/tooling guidance commit. | None |
+| `git ls-remote https://github.com/vercel-labs/next-skills.git HEAD` | 0 | Returned `b76d687cf3e026eac3b1032f610f06b47a56377c`. | None |
+| `git clone --quiet --no-checkout https://github.com/vercel-labs/next-skills.git .artifacts/bootstrap/B01-03-migration/next-skills && git -C .artifacts/bootstrap/B01-03-migration/next-skills checkout --quiet --detach b76d687cf3e026eac3b1032f610f06b47a56377c` | 0 | Staged the migration notice without executing its files. | `.artifacts/bootstrap/B01-03-migration/next-skills/` |
+| `git -C .artifacts/bootstrap/B01-03-migration/next-skills rev-parse HEAD` | 0 | Returned `b76d687cf3e026eac3b1032f610f06b47a56377c`. | `.artifacts/bootstrap/B01-03-migration/next-skills/` |
+| `git ls-remote https://github.com/vercel/next.js.git refs/heads/canary` | 0 | Returned `c77f3ded55f8a542d440cdd8e86f00fd058e4e2c`. | None |
+| `curl -fsSL "https://api.github.com/repos/vercel/next.js/contents/skills?ref=c77f3ded55f8a542d440cdd8e86f00fd058e4e2c" > .artifacts/bootstrap/B01-03-migration/next-skills-tree.json` | 0 | Captured the skills tree at the exact canary revision. | `.artifacts/bootstrap/B01-03-migration/next-skills-tree.json` |
+| `node -e "const x=require('./.artifacts/bootstrap/B01-03-migration/next-skills-tree.json'); console.log(x.map(({name,path,type})=>JSON.stringify({name,path,type})).join('\\n'))"` | 0 | Listed `.claude-plugin`, `next-cache-components-adoption`, `next-cache-components-optimizer`, `next-dev-loop`, and `next-partial-prefetching-adoption`; no retired path. | `.artifacts/bootstrap/B01-03-migration/next-skills-tree.json` |
+| `test ! -e .agents/skills/next-best-practices && test ! -e .agents/skills/next-skills && test ! -e .agents/skills/vercel-next-best-practices` | 0 | Confirmed retired and substitute local skill paths are absent. | None |
+| `test ! -e .claude && test ! -e .hermes && test ! -e .trae && test ! -e skills-lock.json` | 0 | Confirmed no installed broader collection, agent-copy bundle, or Skills CLI lockfile. | None |
+| `python -c "from pathlib import Path; required={'AGENTS.md':['next/dist/docs/','next-best-practices'],'docs/05_agent_skills/01_approved_tooling_baseline.md':['next/dist/docs/','next-best-practices'],'docs/05_agent_skills/03_agent_specific_repository_layout.md':['next/dist/docs/','next-best-practices'],'docs/05_agent_skills/07_nextjs_version_matched_agent_guidance.md':['next/dist/docs/','next-best-practices'],'docs/05_agent_skills/15_how_agents_must_use_the_tooling.md':['next/dist/docs/'],'docs/05_agent_skills/16_acceptance_criteria.md':['next-best-practices','scaffold verification'],'docs/05_agent_skills/19_final_approved_baseline.md':['next-best-practices','installed framework version']}; bad=[f for f,parts in required.items() if not all(p in Path(f).read_text(encoding='utf-8') for p in parts)]; print('tooling_contract=ok' if not bad else bad); raise SystemExit(bool(bad))"` | 0 | Verified each guidance document's applicable bundled-doc, retired-skill, or scaffold-defer statement. | None |
+| `python -c "import pathlib,re,sys; files=[pathlib.Path('AGENTS.md'),pathlib.Path('docs/05_agent_skills/index.md'),pathlib.Path('docs/05_agent_skills/07_nextjs_version_matched_agent_guidance.md'),pathlib.Path('.scratch/bootstrap/phases/01-agent-tooling/tasks/03-next-best-practices/task.md')]; bad=[]; pattern=re.compile(r'\\[[^]]*\\]\\(([^)#]+)(?:#[^)]*)?\\)'); [bad.extend((str(f),m.group(1)) for m in pattern.finditer(f.read_text(encoding='utf-8')) if not m.group(1).startswith(('http://','https://','mailto:')) and not (f.parent/m.group(1)).resolve().exists()) for f in files]; print('local_markdown_links=ok' if not bad else bad); sys.exit(bool(bad))"` | 0 | Verified scoped local Markdown links resolve. | None |
+| `git diff --check` | 0 | No whitespace errors. | None |
+| `git diff -- .agents package.json pnpm-lock.yaml` | 0 | Printed no output: no local-skill, package, or lockfile mutation. | None |
+| `git check-ignore -v .artifacts/bootstrap/B01-03-migration/next-skills/README.md .artifacts/bootstrap/B01-03-migration/next-skills-tree.json` | 0 | Confirmed both source artifacts are ignored. | `.artifacts/bootstrap/B01-03-migration/` |
+
+## Migration and deferred runtime evidence
+
+The staged official migration notice says `next-best-practices` is no longer a skill and that its knowledge is delivered through `next/dist/docs/` and `next dev` generated `AGENTS.md` / `CLAUDE.md` for Next.js 16.3+. It documents `npx @next/codemod@canary agents-md` for older versions. The current `vercel/next.js` tree contains current workflow skills only; none was installed.
+
+No Next.js package is pinned before B02-03, so no installed `next/dist/docs/` or generated rule can be truthfully inspected in B01-03. B02-03 owns that runtime validation, including the version-dependent `next dev` or codemod route, after the scaffold resolves the package.
+
+## Review 03 correction cycle
+
+| Exact command | Exit | Concise result | Artifact path |
+|---|---:|---|---|
+| `git ls-remote https://github.com/vercel-labs/next-skills.git HEAD` | 0 | Still returned migration-notice revision `b76d687cf3e026eac3b1032f610f06b47a56377c`. | None |
+| `git ls-remote https://github.com/vercel/next.js.git refs/heads/canary` | 0 | Returned current canary `1d3bf10cde7b19093222305c4ded5f5948928419`; this is later than the immutable recorded point-in-time tree. | None |
+| `curl -fsSL "https://api.github.com/repos/vercel/next.js/contents/skills?ref=1d3bf10cde7b19093222305c4ded5f5948928419" > .artifacts/bootstrap/B01-03-migration/next-skills-tree-current.json` | 0 | Captured the current tree; it lists five workflow/plugin entries and no `next-best-practices` path. | `.artifacts/bootstrap/B01-03-migration/next-skills-tree-current.json` |
+| `python -c "from pathlib import Path; required={'AGENTS.md':['next/dist/docs/','next-best-practices'],'docs/05_agent_skills/07_nextjs_version_matched_agent_guidance.md':['next/dist/docs/','next-best-practices','agents-md'],'.scratch/bootstrap/phases/01-agent-tooling/phase.md':['four approved repository-local skills','retired Next.js reference skill','provenance','Codex','B02-03','next/dist/docs/','generated-rule','AGENTS.md','exact runtime evidence'],'.scratch/bootstrap/phases/02-application-scaffold/tasks/03-normalize-application-skeleton/task.md':['docs/05_agent_skills/07_nextjs_version_matched_agent_guidance.md','next/dist/docs/','Next.js 16.3 or later','next dev','AGENTS.md','CLAUDE.md','npx @next/codemod@canary agents-md','remains authoritative','exact setup/validation commands']}; bad=[f for f,parts in required.items() if not all(p in Path(f).read_text(encoding='utf-8') for p in parts)]; print('amended_contract_consistency=ok' if not bad else bad); raise SystemExit(bool(bad))"` | 0 | Verified BD-015 guidance, the Phase 01 gate, and B02-03 receiving contract. | None |
+| `python -c "import pathlib,re,sys; files=[pathlib.Path('AGENTS.md'),pathlib.Path('docs/05_agent_skills/index.md'),pathlib.Path('docs/05_agent_skills/07_nextjs_version_matched_agent_guidance.md'),pathlib.Path('.scratch/bootstrap/phases/01-agent-tooling/phase.md'),pathlib.Path('.scratch/bootstrap/phases/01-agent-tooling/tasks/03-next-best-practices/task.md'),pathlib.Path('.scratch/bootstrap/phases/02-application-scaffold/tasks/03-normalize-application-skeleton/task.md')]; bad=[]; pattern=re.compile(r'\\[[^]]*\\]\\(([^)#]+)(?:#[^)]*)?\\)'); [bad.extend((str(f),m.group(1)) for m in pattern.finditer(f.read_text(encoding='utf-8')) if not m.group(1).startswith(('http://','https://','mailto:')) and not (f.parent/m.group(1)).resolve().exists()) for f in files]; print('expanded_local_markdown_links=ok' if not bad else bad); sys.exit(bool(bad))"` | 0 | Verified local links across the amended phase and receiving task. | None |
+| `test ! -e .agents/skills/next-best-practices && test ! -e .agents/skills/next-skills && test ! -e .agents/skills/vercel-next-best-practices && test ! -e .claude && test ! -e .hermes && test ! -e .trae && test ! -e .claude-plugin && test ! -e skills-lock.json` | 0 | Confirmed retired, substitute, broad collection, and plugin-bundle paths remain absent. | None |
+| `git diff -- .agents package.json pnpm-lock.yaml .gitignore .codex .claude && git diff --check` | 0 | No prohibited mutation output and no whitespace errors. | None |
+| `python .scratch/bootstrap/ralph-loop/tools/check_state.py --repo . --expected-task-count 28 --final-task-id B07-03 --allow-dirty` | 11 | Returned `RESUMABLE`, task `B01-03`, `reasons: []` while the correction cycle is `In progress`; this is the expected active-task state. | None |
+| `python .scratch/bootstrap/ralph-loop/tools/check_state.py --repo . --expected-task-count 28 --final-task-id B07-03 --allow-dirty` | 30 | After the task returned to `In review`, returned `INCONSISTENT` solely because root-owned Phase 01 status remains `In progress`. Root must align it before cycle-04 launch; this implementer is not authorized to edit that status. | None |
 

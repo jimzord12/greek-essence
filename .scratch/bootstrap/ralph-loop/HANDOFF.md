@@ -13,9 +13,9 @@
 - B01-02 review: cycle 02 approved with no findings after both cycle-01 High findings were resolved by the original implementer; Hermes `greekreview` session `20260722_020416_c5fa1e`
 - Last task commit subject after closure: `chore(bootstrap): complete B01-02 modern web guidance`
 
-## Next eligible task
+## Current task
 
-`B01-03 — Install Vercel next-best-practices` is `Ready`. Its dependency `B01-02` is `Done`, and Phase 01 remains `In progress`. Do not begin any later task.
+`B01-04 — Install Vercel React best practices` is `Ready`. B01-03 is complete under operator-directed Review 04 after all Review 03 findings were verified as resolved.
 
 ## Useful outputs
 
@@ -25,10 +25,14 @@
 - Exact reproducible verification is tracked in `scripts/verify-review-01.sh`; reviewer cycle 02 reran it successfully and approved the corrected provenance, generated-layout, source comparisons, local exclusions, and cleanup evidence.
 - Implementer: Hermes `greekimpl` session `20260722_014730_908786`. Reviewer: Hermes `greekreview` session `20260722_020416_c5fa1e`. Review cycle 01 requested changes for two High findings; cycle 02 verdict: Approved with no findings.
 - No B01-02 durable discovery was promoted to `KNOWLEDGE.md`.
+- B01-03 implementer Hermes `greekimpl` session `20260722_023532_75f390` reproduced the locked command failure and recorded the task as blocked. Reviewer Hermes `greekreview` session `20260722_023946_4b5f39` independently reproduced the failure in cycle 01 and issued a `Blocked` verdict with one Blocking source-contract finding and one High tracking-consistency finding.
+- The locked-source HEAD inspected for B01-03 is `4559f18a20c1691c744b4395194290db6a0df5e9`. `npx skills add vercel-labs/agent-skills --skill next-best-practices --yes --copy` exits 1 with `No matching skills found for: next-best-practices`; no skill, package, application, plugin, hook, or global configuration was installed.
+- The original implementer accepted both findings in `reviews/01-review-response.md`. At review cycle 02, root tracking consistently kept B01-03 blocked; BD-015 subsequently resolved that blocker and reopened the amended task. No B01-03 durable discovery was promoted to `KNOWLEDGE.md` because upstream availability is time-sensitive.
 
 ## Active blockers
 
-No blocker prevents B01-03. Kimi remains an external cross-agent validation blocker.
+- The former B01-03 source blocker is resolved by operator-approved decision BD-015; no B01-03 blocker remains.
+- Kimi remains an external cross-agent validation blocker.
 
 ## Durable knowledge
 

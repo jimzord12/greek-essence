@@ -4,8 +4,8 @@
 |---|---|
 | B01-01 | Done |
 | B01-02 | Done |
-| B01-03 | Ready |
-| B01-04 | Pending |
+| B01-03 | Done |
+| B01-04 | Ready |
 | B01-05 | Pending |
 | B01-06 | Pending |
 | B01-07 | Pending |
