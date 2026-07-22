@@ -2,27 +2,28 @@
 
 ## Last completed task
 
-`B05-03 — Add axe accessibility gates` (reopened correction approved during the Phase 05 gate)
+`B06-01 — Configure Unlighthouse`
 
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated Phase 05 review commit
+- Working tree: expected clean after the dedicated B06-01 task commit
 - Last completed phase: `Phase 05 — Automated Tests` (`Done`, 3/3 tasks done)
-- Current phase: `Phase 06 — Quality Review` (`Pending`, 0/3 tasks done)
-- Phase 05 correction implementer: original Hermes `greekimpl` session `20260722_090930_f3cf8d`.
-- Phase 05 reviewer: fresh Hermes `greekreview` session `20260722_092717_7a5d0b`; cycle 01 requested one High correction and focused cycle 02 approved it with no Blocking or High findings remaining.
+- Current phase: `Phase 06 — Quality Review` (`In progress`, 1/3 tasks done)
+- B06-01 implementer: Hermes `greekimpl` session `20260722_094928_de39e3`.
+- B06-01 reviewer: fresh Hermes `greekreview` session `20260722_100605_63957e`; consolidated cycle 01 requested three High corrections, focused cycle 02 retained two High corrections, and focused cycle 03 approved with no Blocking or High findings remaining.
 
 ## Current task
 
-No task is active. `B06-01 — Configure Unlighthouse` is dependency-satisfied and `Ready`; it has not been started.
+No task is active. `B06-02 — Playwright CLI inspection` is dependency-satisfied and `Ready`; it has not been started.
 
 ## Useful outputs
 
-- The initial consolidated Phase 05 gate passed formatting, lint, application typecheck, unit tests, build, responsive E2E, and axe runtime checks, but strict test-project compilation exposed mismatched Playwright `Page` type identities.
-- B05-03 now exact-pins direct `playwright-core` `1.61.1`, aligning `@axe-core/playwright` with exact-pinned `@playwright/test` without casts, suppressions, exclusions, or coverage changes.
-- Focused re-review passed frozen install, strict test-project compilation, 24-test discovery, 24/24 E2E tests, and 12/12 axe scans with zero violations.
-- No Phase 05 durable discovery was promoted to `KNOWLEDGE.md`.
+- B06-01 exact-pins `@unlighthouse/cli`, `puppeteer`, and `start-server-and-test`; the locked production gate audits exactly `/en`, `/el`, `/en/quality-lab`, and `/el/quality-lab` with mobile three-sample median scoring.
+- The approved final run passed performance 90, accessibility 100, best practices 95, and SEO 95 on all four routes with no server/console errors or failed critical requests.
+- Generated reports remain ignored under `.artifacts/bootstrap/unlighthouse`; tracked evidence records the decisive scores and commands.
+- One non-blocking review note remains: production builds without `NEXT_PUBLIC_SITE_URL` use the audit origin fallback `http://127.0.0.1:3101`; configured deployments supply their public origin.
+- No B06-01 durable discovery was promoted to `KNOWLEDGE.md`.
 
 ## Active blockers
 

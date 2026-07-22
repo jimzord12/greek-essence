@@ -9,7 +9,10 @@ import "../globals.css"
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.NODE_ENV === "production"
+        ? "http://127.0.0.1:3101"
+        : "http://localhost:3000")
   ),
 }
 
@@ -30,11 +33,14 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale)
+  const messages = (await import(`../../messages/${locale}.json`)).default
 
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   )

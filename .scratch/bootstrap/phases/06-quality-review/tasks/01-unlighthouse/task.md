@@ -1,11 +1,11 @@
 ---
 id: B06-01
-status: Ready
+status: Done
 depends_on: [B05-03]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_094928_de39e3
+reviewer_agent: 20260722_100605_63957e
+started_at: 2026-07-22T06:50:03Z
+completed_at: 2026-07-22T07:48:34Z
 ---
 
 # Configure Unlighthouse

@@ -30,7 +30,7 @@ export default async function QualityLabPage({
 }: PageProps<"/[locale]/quality-lab">) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations("Fixture")
+  const t = await getTranslations({ locale, namespace: "Fixture" })
 
   return (
     <>

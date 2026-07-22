@@ -29,7 +29,7 @@ export default async function LocaleFixturePage({
 }: PageProps<"/[locale]">) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations("Fixture")
+  const t = await getTranslations({ locale, namespace: "Fixture" })
 
   return (
     <>
