@@ -8,7 +8,7 @@
 
 ## 2. Verdict
 
-**Approved**
+**Verdict:** **Approved**
 
 No Blocking, High, or Non-blocking findings.
 
