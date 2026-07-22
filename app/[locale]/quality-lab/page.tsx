@@ -1,7 +1,29 @@
+import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { FixtureToggle } from "@/components/fixture-toggle"
 import { Link } from "@/i18n/navigation"
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/quality-lab">): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "Fixture" })
+
+  return {
+    title: t("metadataLabTitle"),
+    description: t("metadataLabDescription"),
+    alternates: {
+      canonical: `/${locale}/quality-lab`,
+      languages: {
+        en: "/en/quality-lab",
+        el: "/el/quality-lab",
+        "x-default": "/en/quality-lab",
+      },
+    },
+    robots: { index: false, follow: false },
+  }
+}
 
 export default async function QualityLabPage({
   params,

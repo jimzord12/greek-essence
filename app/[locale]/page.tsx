@@ -1,6 +1,28 @@
+import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "Fixture" })
+
+  return {
+    title: t("metadataHomeTitle"),
+    description: t("metadataHomeDescription"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        el: "/el",
+        "x-default": "/en",
+      },
+    },
+    robots: { index: false, follow: false },
+  }
+}
 
 export default async function LocaleFixturePage({
   params,

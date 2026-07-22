@@ -1,6 +1,8 @@
 {
   "Fixture": {
     "title": "English fixture",
+    "metadataHomeTitle": "English fixture | Bootstrap",
+    "metadataHomeDescription": "English-language bootstrap fixture for localized route verification.",
     "languageNavigation": "Language",
     "english": "English",
     "greek": "Greek",
@@ -11,6 +13,8 @@
     "homeLink": "Fixture home",
     "switchLocale": "Switch language",
     "labTitle": "Quality lab",
+    "metadataLabTitle": "Quality lab | English bootstrap fixture",
+    "metadataLabDescription": "English-language bootstrap quality-lab fixture for interaction verification.",
     "primitiveHeading": "Interactive primitive",
     "toggleLabel": "Not selected",
     "toggleSelectedLabel": "Selected",
