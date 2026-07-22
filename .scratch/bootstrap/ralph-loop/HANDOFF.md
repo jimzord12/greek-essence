@@ -7,15 +7,16 @@
 ## Expected repository state
 
 - Branch: `main`
-- Working tree: expected clean after the dedicated B02-03 task commit
-- Last completed phase: `Phase 01 — Repository Governance and AI Tooling`
-- Current phase: `Phase 02 — Application Scaffold` (`In review`, 3/3 tasks done)
+- Working tree: expected clean after the Phase 02 closure commit
+- Last completed phase: `Phase 02 — Application Scaffold`
+- Current phase: `Phase 03 — Code Hygiene` (`Ready`, 0/4 tasks done)
 - B02-03 implementation and corrections: Hermes `greekimpl` session `20260722_051657_af8148`.
 - B02-03 review: cycle 02 approved after both cycle-01 High findings were resolved, in Hermes `greekreview` session `20260722_052515_b199ab`.
+- Phase 02 gate: cycle 02 approved after two tracking corrections, in fresh Hermes `greekreview` session `20260722_054131_8e7137`.
 
 ## Current task
 
-The fresh independent `PHASE-02` review gate is next because B02-01 through B02-03 are complete and approved. No Phase 03 task is ready until this gate passes.
+`B03-01 — Strengthen TypeScript` is `Ready` because B02-03 and the Phase 02 gate are complete and approved. It has not been started.
 
 ## Useful outputs
 

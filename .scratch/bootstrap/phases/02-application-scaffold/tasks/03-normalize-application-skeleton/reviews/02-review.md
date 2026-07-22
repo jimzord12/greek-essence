@@ -2,7 +2,7 @@
 
 Reviewer session: `20260722_052515_b199ab`
 
-Verdict: Approved
+**Verdict:** Approved
 
 ## Finding dispositions
 
