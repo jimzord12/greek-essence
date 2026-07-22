@@ -1,11 +1,13 @@
 ---
 id: B01-05
-status: Ready
+status: Done
 depends_on: [B01-04]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: greekimpl
+reviewer_agent: greekreview
+session_id: 20260722_035747_d38a8d
+reviewer_session_id: 20260722_040242_f5f06b
+started_at: 2026-07-22T00:58:54Z
+completed_at: 2026-07-22T01:09:46Z
 ---
 
 # Pin Playwright CLI and install its official skill
