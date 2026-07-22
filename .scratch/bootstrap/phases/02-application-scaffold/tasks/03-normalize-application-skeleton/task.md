@@ -1,11 +1,11 @@
 ---
 id: B02-03
-status: Ready
+status: Done
 depends_on: [B02-02]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_051657_af8148
+reviewer_agent: 20260722_052515_b199ab
+started_at: 2026-07-22T05:17:13+03:00
+completed_at: 2026-07-22T05:40:11+03:00
 ---
 
 # Normalize the application skeleton
