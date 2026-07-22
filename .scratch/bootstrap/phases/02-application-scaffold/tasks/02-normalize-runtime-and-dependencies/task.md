@@ -1,11 +1,11 @@
 ---
 id: B02-02
-status: Ready
+status: Done
 depends_on: [B02-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_050711_f1cc1c
+reviewer_agent: 20260722_051137_cbd63e
+started_at: 2026-07-22T02:08:35Z
+completed_at: 2026-07-22T02:13:39Z
 ---
 
 # Normalize runtimes and dependencies

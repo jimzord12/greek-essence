@@ -1,6 +1,6 @@
 ---
 id: B02-03
-status: Pending
+status: Ready
 depends_on: [B02-02]
 implementer_agent: null
 reviewer_agent: null
