@@ -41,6 +41,13 @@ Completed and removed or reconciled into durable project history
 
 ## Planned
 
+- [ ] Add a deterministic Ralph campaign-transition command.
+  - **Source:** B07-02 → B07-03 exposed a controller-state lifecycle gap: completed task identity remains in the external runtime state and the next authorized campaign fails closed until that state is rotated.
+  - **Desired outcome:** A project-owned command safely archives completed `controller-state.json` and initializes fresh campaign/task identity and zeroed supervision counters without agent judgment.
+  - **Safety:** Fail closed unless no live lock or owned root exists, the existing state matches the declared completed campaign/task, the new identity is complete, and the archive destination is collision-free. Preserve runtime state outside Git and emit a bounded lifecycle transition event.
+  - **Verification:** Focused tests for successful transition, active lock/root, identity mismatch, malformed state, archive collision, and interrupted/failed atomic writes.
+  - **Scope:** Planning inbox only; this entry does not authorize implementation or automatic completion-signal reset.
+
 <!-- Agreed and prioritized work that is not active yet. Link its plan/task when available. -->
 
 ## Blocked / awaiting decision
