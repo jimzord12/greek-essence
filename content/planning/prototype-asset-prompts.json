@@ -1,0 +1,1219 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Ordered must-have prototype image-generation planning prompts for manual ChatGPT use; no image generation or runtime-media approval.",
+  "source": "C:/Users/jimzord12/Documents/greek-essence-prototype-asset-plan.md (authorized read-only)",
+  "testSetIds": [
+    "home-aegean-human-arrival-01",
+    "destination-athens-primary-01",
+    "paros-antiparos-editorial-culture-food-01",
+    "experience-family-01"
+  ],
+  "assets": [
+    {
+      "sequence": 1,
+      "id": "home-aegean-human-arrival-01",
+      "family": "home",
+      "testSet": true,
+      "status": "test_set_pending_operator_visual_direction_feedback",
+      "routeUse": "/en and /el Home immersive hero",
+      "subject": "A calm Greece arrival and hosting moment with landscape and human scale; the scene and people are illustrative, inferred, and provisional.",
+      "location": "Greece/Aegean context; exact island, venue, and property are intentionally unspecified pending approval.",
+      "visualDirection": "Cinematic editorial landscape in natural Mediterranean light, authentic restrained colour, moderate contrast, controlled highlights, and candid human warmth.",
+      "composition": {
+        "direction": "Place the arrival interaction and landscape in the centre-right, preserve an uncluttered left text-safe zone for either English or Greek DOM hero copy and a crop-dependent scrim, and keep faces and gestures away from crop edges.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "16:9",
+        "allowedDerivativeCropRatios": ["3:2", "4:5"],
+        "requiredDerivativeCropRatios": ["3:2", "4:5"],
+        "targetDimensions": {
+          "width": 2560,
+          "height": 1440,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Use a wide 16:9 hero, medium 3:2 crop, and art-directed compact 4:5 crop; preserve the arrival gesture, sense of place, and left text-safe zone at 320, 390, 834, and 1440 px.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful image: localized alt should identify the approved place and arrival/hosting activity without repeating the hero proposition; the proposition must remain complete if the image fails.",
+      "accuracyConstraints": {
+        "geographic": "Show recognizable Greek/Aegean material and landscape cues only where accurate; do not name or imply a specific island, venue, route, service inclusion, or property.",
+        "brand": "Express the provisional Greek Essence character—calm, authentic, trustworthy, premium boutique, human, and editorial—without logos or unapproved brand claims."
+      },
+      "continuityInstructions": "Keep this home asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "test_set_pending_operator_visual_direction_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “home-aegean-human-arrival-01”. Route/use: /en and /el Home immersive hero. Subject: A calm Greece arrival and hosting moment with landscape and human scale; the scene and people are illustrative, inferred, and provisional. Location: Greece/Aegean context; exact island, venue, and property are intentionally unspecified pending approval. Visual direction: Cinematic editorial landscape in natural Mediterranean light, authentic restrained colour, moderate contrast, controlled highlights, and candid human warmth. Composition direction: Place the arrival interaction and landscape in the centre-right, preserve an uncluttered left text-safe zone for either English or Greek DOM hero copy and a crop-dependent scrim, and keep faces and gestures away from crop edges. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2560 × 1440 px master at 16:9; allowed derivative crop ratios: 3:2, 4:5; required derivative crop ratios: 3:2, 4:5. Responsive intent: Use a wide 16:9 hero, medium 3:2 crop, and art-directed compact 4:5 crop; preserve the arrival gesture, sense of place, and left text-safe zone at 320, 390, 834, and 1440 px. Accessibility intent: Meaningful image: localized alt should identify the approved place and arrival/hosting activity without repeating the hero proposition; the proposition must remain complete if the image fails. Geographic accuracy: Show recognizable Greek/Aegean material and landscape cues only where accurate; do not name or imply a specific island, venue, route, service inclusion, or property. Brand accuracy: Express the provisional Greek Essence character—calm, authentic, trustworthy, premium boutique, human, and editorial—without logos or unapproved brand claims. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=test_set_pending_operator_visual_direction_feedback. Continuity: Keep this home asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: generic sunset, postcard-only seascape, staged luxury welcome, champagne, empty villa, generic stock smiles, crowds manipulated to imply exclusivity, excessive saturation, turquoise-water manipulation, overprocessed HDR, illegible faces or hands, logos, signage, captions, labels, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "generic sunset, postcard-only seascape, staged luxury welcome, champagne, empty villa, generic stock smiles, crowds manipulated to imply exclusivity, excessive saturation, turquoise-water manipulation, overprocessed HDR, illegible faces or hands, logos, signage, captions, labels, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 2,
+      "id": "destination-athens-primary-01",
+      "family": "destination-primary",
+      "testSet": true,
+      "status": "test_set_pending_operator_visual_direction_feedback",
+      "routeUse": "Home featured destination and Destinations index card",
+      "subject": "Lived-in Athens urban and cultural texture with human scale, not a monument-only postcard; exact street and people are inferred and provisional.",
+      "location": "Athens, Greece; exact neighbourhood, street, venue, and property require verification.",
+      "visualDirection": "Calm editorial travel photography with natural daylight, authentic warm stone and urban colour, moderate contrast, candid activity, and layered cultural detail.",
+      "composition": {
+        "direction": "Use a 4:3 card composition with a clear middle-third focal subject, breathing room for responsive crops, no essential detail at the edges, and a quiet upper-left area should optional DOM captioning be used.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:3",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1800,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Maintain a 4:3 card at 640, 960, and 1280 px; preserve the lived-in street context and human-scale focal point without turning the crop into a monument close-up.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful image: localized alt should identify Athens and the visible urban/cultural context; adjacent localized title and summary must distinguish the card independently.",
+      "accuracyConstraints": {
+        "geographic": "Depict only plausibly accurate Athens architecture and street context; do not fabricate identifiable signage, landmarks, neighbourhood claims, access, or named venues.",
+        "brand": "Calm, authentic, specific, trustworthy, premium-boutique editorial Greece; no logo, relationship badge, or implied endorsement."
+      },
+      "continuityInstructions": "Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "test_set_pending_operator_visual_direction_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “destination-athens-primary-01”. Route/use: Home featured destination and Destinations index card. Subject: Lived-in Athens urban and cultural texture with human scale, not a monument-only postcard; exact street and people are inferred and provisional. Location: Athens, Greece; exact neighbourhood, street, venue, and property require verification. Visual direction: Calm editorial travel photography with natural daylight, authentic warm stone and urban colour, moderate contrast, candid activity, and layered cultural detail. Composition direction: Use a 4:3 card composition with a clear middle-third focal subject, breathing room for responsive crops, no essential detail at the edges, and a quiet upper-left area should optional DOM captioning be used. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1800 px master at 4:3; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Maintain a 4:3 card at 640, 960, and 1280 px; preserve the lived-in street context and human-scale focal point without turning the crop into a monument close-up. Accessibility intent: Meaningful image: localized alt should identify Athens and the visible urban/cultural context; adjacent localized title and summary must distinguish the card independently. Geographic accuracy: Depict only plausibly accurate Athens architecture and street context; do not fabricate identifiable signage, landmarks, neighbourhood claims, access, or named venues. Brand accuracy: Calm, authentic, specific, trustworthy, premium-boutique editorial Greece; no logo, relationship badge, or implied endorsement. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=test_set_pending_operator_visual_direction_feedback. Continuity: Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: monument-only postcard, Acropolis pasted into an impossible view, empty luxury rooftop, generic European street, staged stock smiles, party scene, fake signage, distorted architecture, excessive saturation, HDR, logos, labels, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "monument-only postcard, Acropolis pasted into an impossible view, empty luxury rooftop, generic European street, staged stock smiles, party scene, fake signage, distorted architecture, excessive saturation, HDR, logos, labels, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 3,
+      "id": "destination-paros-antiparos-primary-01",
+      "family": "destination-primary",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Home and Destinations cards; Paros and Antiparos detail hero",
+      "subject": "Lived-in island life with harbour or village context and human scale; exact scene and people are inferred and provisional.",
+      "location": "Paros or Antiparos, Cyclades, Greece; choose one geographically coherent context, but exact village, harbour, venue, and property remain pending verification.",
+      "visualDirection": "Natural Mediterranean light, authentic whites and stone without clipping, restrained Aegean colour, candid local rhythm, and cinematic editorial calm.",
+      "composition": {
+        "direction": "Compose a 4:3 card master that also supports 16:9 or 3:2 wide hero and compact 4:5 or 3:4 crops; keep the primary island-life subject central and reserve a calm side zone for DOM hero copy.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:3",
+        "allowedDerivativeCropRatios": ["16:9", "3:2", "4:5", "3:4"],
+        "requiredDerivativeCropRatios": ["16:9", "3:2", "4:5", "3:4"],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1800,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Review 4:3 cards at 640, 960, and 1280 px plus 16:9/3:2 wide and 4:5/3:4 compact hero crops; preserve harbour/village identity, people, and text-safe space.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful localized alt should name the approved island and visible context; adjacent card text and detail-page proposition retain meaning independently.",
+      "accuracyConstraints": {
+        "geographic": "Do not blend Paros and Antiparos landmarks or invent a named harbour/property; exact island and location must be verified before approval.",
+        "brand": "Authentic, calm, human and editorial rather than glossy resort advertising; no logo or implied Greek Essence relationship."
+      },
+      "continuityInstructions": "Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “destination-paros-antiparos-primary-01”. Route/use: Home and Destinations cards; Paros and Antiparos detail hero. Subject: Lived-in island life with harbour or village context and human scale; exact scene and people are inferred and provisional. Location: Paros or Antiparos, Cyclades, Greece; choose one geographically coherent context, but exact village, harbour, venue, and property remain pending verification. Visual direction: Natural Mediterranean light, authentic whites and stone without clipping, restrained Aegean colour, candid local rhythm, and cinematic editorial calm. Composition direction: Compose a 4:3 card master that also supports 16:9 or 3:2 wide hero and compact 4:5 or 3:4 crops; keep the primary island-life subject central and reserve a calm side zone for DOM hero copy. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1800 px master at 4:3; allowed derivative crop ratios: 16:9, 3:2, 4:5, 3:4; required derivative crop ratios: 16:9, 3:2, 4:5, 3:4. Responsive intent: Review 4:3 cards at 640, 960, and 1280 px plus 16:9/3:2 wide and 4:5/3:4 compact hero crops; preserve harbour/village identity, people, and text-safe space. Accessibility intent: Meaningful localized alt should name the approved island and visible context; adjacent card text and detail-page proposition retain meaning independently. Geographic accuracy: Do not blend Paros and Antiparos landmarks or invent a named harbour/property; exact island and location must be verified before approval. Brand accuracy: Authentic, calm, human and editorial rather than glossy resort advertising; no logo or implied Greek Essence relationship. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: generic Cyclades postcard, impossible mixed-island geography, empty luxury villa, repetitive sunset, party scene, staged yacht glamour, crowds cropped for exclusivity, clipped white walls, fake signs, logos, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "generic Cyclades postcard, impossible mixed-island geography, empty luxury villa, repetitive sunset, party scene, staged yacht glamour, crowds cropped for exclusivity, clipped white walls, fake signs, logos, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 4,
+      "id": "destination-mykonos-primary-01",
+      "family": "destination-primary",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Home featured destination and Destinations index card",
+      "subject": "Lived-in Mykonos island and hospitality context with everyday human scale, avoiding party and empty-luxury clichés; exact scene and people are inferred and provisional.",
+      "location": "Mykonos, Cyclades, Greece; exact settlement, street, venue, and property require verification.",
+      "visualDirection": "Editorial natural-light photography with authentic Cycladic materials, restrained colour, moderate contrast, and candid daily-life detail.",
+      "composition": {
+        "direction": "Frame a coherent 4:3 card with the lived-in context as the focal point, generous crop tolerance, and no essential faces or architectural identifiers at the perimeter.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:3",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1800,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Retain a 4:3 card at 640, 960, and 1280 px while preserving human activity and enough settlement context to distinguish Mykonos without relying on text.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful localized alt should identify approved Mykonos context and activity; adjacent localized card title and summary work without the image.",
+      "accuracyConstraints": {
+        "geographic": "Use geographically plausible Mykonos architecture and terrain; do not invent a specific venue, beach, access arrangement, hospitality partner, or property.",
+        "brand": "Premium through care, place, and hospitality rather than status symbols; calm, trustworthy, authentic Greek Essence tone with no marks or claims."
+      },
+      "continuityInstructions": "Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “destination-mykonos-primary-01”. Route/use: Home featured destination and Destinations index card. Subject: Lived-in Mykonos island and hospitality context with everyday human scale, avoiding party and empty-luxury clichés; exact scene and people are inferred and provisional. Location: Mykonos, Cyclades, Greece; exact settlement, street, venue, and property require verification. Visual direction: Editorial natural-light photography with authentic Cycladic materials, restrained colour, moderate contrast, and candid daily-life detail. Composition direction: Frame a coherent 4:3 card with the lived-in context as the focal point, generous crop tolerance, and no essential faces or architectural identifiers at the perimeter. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1800 px master at 4:3; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Retain a 4:3 card at 640, 960, and 1280 px while preserving human activity and enough settlement context to distinguish Mykonos without relying on text. Accessibility intent: Meaningful localized alt should identify approved Mykonos context and activity; adjacent localized card title and summary work without the image. Geographic accuracy: Use geographically plausible Mykonos architecture and terrain; do not invent a specific venue, beach, access arrangement, hospitality partner, or property. Brand accuracy: Premium through care, place, and hospitality rather than status symbols; calm, trustworthy, authentic Greek Essence tone with no marks or claims. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: nightclub, party crowd, influencer pose, champagne, superyacht glamour, empty villa, generic Cyclades composite, misleading landmarks, over-saturation, turquoise manipulation, HDR, logos, labels, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "nightclub, party crowd, influencer pose, champagne, superyacht glamour, empty villa, generic Cyclades composite, misleading landmarks, over-saturation, turquoise manipulation, HDR, logos, labels, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 5,
+      "id": "destination-santorini-primary-01",
+      "family": "destination-primary",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Home featured destination and Destinations index card",
+      "subject": "Accurate Santorini landscape and settlement context with lived-in human scale, not another sunset postcard; exact scene and people are inferred and provisional.",
+      "location": "Santorini, Cyclades, Greece; exact settlement, caldera viewpoint, venue, and property require verification.",
+      "visualDirection": "Controlled natural daylight, authentic volcanic geology and settlement colour, moderate contrast, candid context, and calm editorial framing.",
+      "composition": {
+        "direction": "Build a 4:3 card around a clear settlement-and-landscape relationship, keeping the horizon level and essential subject inside the central safe crop.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:3",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1800,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Preserve 4:3 at 640, 960, and 1280 px with volcanic and settlement context intact; avoid crops that become an anonymous white wall or sunset.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful localized alt should identify Santorini and the visible landscape/settlement context; adjacent title and summary distinguish the card independently.",
+      "accuracyConstraints": {
+        "geographic": "Maintain plausible Santorini geology, architecture, light, and spatial relationships; do not fabricate a viewpoint, named hotel, private access, or unavailable service.",
+        "brand": "Calm, specific, authentic, premium-boutique editorial character without logo, guarantee, or partner implication."
+      },
+      "continuityInstructions": "Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "not_required",
+        "releasesRequired": false,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “destination-santorini-primary-01”. Route/use: Home featured destination and Destinations index card. Subject: Accurate Santorini landscape and settlement context with lived-in human scale, not another sunset postcard; exact scene and people are inferred and provisional. Location: Santorini, Cyclades, Greece; exact settlement, caldera viewpoint, venue, and property require verification. Visual direction: Controlled natural daylight, authentic volcanic geology and settlement colour, moderate contrast, candid context, and calm editorial framing. Composition direction: Build a 4:3 card around a clear settlement-and-landscape relationship, keeping the horizon level and essential subject inside the central safe crop. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1800 px master at 4:3; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Preserve 4:3 at 640, 960, and 1280 px with volcanic and settlement context intact; avoid crops that become an anonymous white wall or sunset. Accessibility intent: Meaningful localized alt should identify Santorini and the visible landscape/settlement context; adjacent title and summary distinguish the card independently. Geographic accuracy: Maintain plausible Santorini geology, architecture, light, and spatial relationships; do not fabricate a viewpoint, named hotel, private access, or unavailable service. Brand accuracy: Calm, specific, authentic, premium-boutique editorial character without logo, guarantee, or partner implication. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=not_required; releasesRequired=false; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this destination-primary asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: repetitive sunset, impossible caldera geometry, generic blue-domed composite, empty infinity pool, champagne, crowds hidden to imply exclusivity, over-saturation, HDR halos, fake signage, logos, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "repetitive sunset, impossible caldera geometry, generic blue-domed composite, empty infinity pool, champagne, crowds hidden to imply exclusivity, over-saturation, HDR halos, fake signage, logos, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 6,
+      "id": "paros-antiparos-editorial-culture-food-01",
+      "family": "paros-antiparos-editorial",
+      "testSet": true,
+      "status": "test_set_pending_operator_visual_direction_feedback",
+      "routeUse": "Paros and Antiparos detail rich-story section and gallery",
+      "subject": "A specific but unnamed Cycladic culture, craft, or gastronomy detail with hands or natural participation; scene, participants, exact activity, and any journey inclusion are inferred and provisional.",
+      "location": "Paros or Antiparos, Greece; exact island, village, maker, kitchen, venue, dish, and property require verification and approval.",
+      "visualDirection": "Intimate editorial documentary style, natural side light, tactile material detail, authentic colour, moderate contrast, and candid interaction rather than styled food advertising.",
+      "composition": {
+        "direction": "Use a 4:5 portrait editorial split with hands/activity in the central area, enough environmental context to establish place, and a calm margin for adjacent DOM copy; avoid cutting hands in compact crops.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:5",
+        "allowedDerivativeCropRatios": ["3:4", "3:2"],
+        "requiredDerivativeCropRatios": ["3:4", "3:2"],
+        "targetDimensions": {
+          "width": 1800,
+          "height": 2250,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Prioritize 4:5 and 3:4 portrait crops on compact screens and permit a controlled 3:2 gallery crop only if the activity, hands, and context survive without subject loss.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful localized alt should identify the approved place, activity, and context; captions may name verified context, while itinerary meaning is expressed in DOM text.",
+      "accuracyConstraints": {
+        "geographic": "Show only a plausible local culture/food/craft context; do not identify a dish, artisan, venue, tradition, island, or access arrangement until verified.",
+        "brand": "Human, tactile, quietly premium, culturally respectful Greek Essence editorial direction; never imply an exclusive partner or guaranteed inclusion."
+      },
+      "continuityInstructions": "Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "test_set_pending_operator_visual_direction_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “paros-antiparos-editorial-culture-food-01”. Route/use: Paros and Antiparos detail rich-story section and gallery. Subject: A specific but unnamed Cycladic culture, craft, or gastronomy detail with hands or natural participation; scene, participants, exact activity, and any journey inclusion are inferred and provisional. Location: Paros or Antiparos, Greece; exact island, village, maker, kitchen, venue, dish, and property require verification and approval. Visual direction: Intimate editorial documentary style, natural side light, tactile material detail, authentic colour, moderate contrast, and candid interaction rather than styled food advertising. Composition direction: Use a 4:5 portrait editorial split with hands/activity in the central area, enough environmental context to establish place, and a calm margin for adjacent DOM copy; avoid cutting hands in compact crops. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 1800 × 2250 px master at 4:5; allowed derivative crop ratios: 3:4, 3:2; required derivative crop ratios: 3:4, 3:2. Responsive intent: Prioritize 4:5 and 3:4 portrait crops on compact screens and permit a controlled 3:2 gallery crop only if the activity, hands, and context survive without subject loss. Accessibility intent: Meaningful localized alt should identify the approved place, activity, and context; captions may name verified context, while itinerary meaning is expressed in DOM text. Geographic accuracy: Show only a plausible local culture/food/craft context; do not identify a dish, artisan, venue, tradition, island, or access arrangement until verified. Brand accuracy: Human, tactile, quietly premium, culturally respectful Greek Essence editorial direction; never imply an exclusive partner or guaranteed inclusion. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=test_set_pending_operator_visual_direction_feedback. Continuity: Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: tourist performance, stereotyped costume, staged toast, glossy food-advertising perfection, generic restaurant, invented traditional claim, branded packaging, identifiable unapproved person, logos, menus, signage, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "tourist performance, stereotyped costume, staged toast, glossy food-advertising perfection, generic restaurant, invented traditional claim, branded packaging, identifiable unapproved person, logos, menus, signage, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 7,
+      "id": "paros-antiparos-editorial-hospitality-01",
+      "family": "paros-antiparos-editorial",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Paros and Antiparos detail rich-story section and gallery",
+      "subject": "Authentic boutique hospitality or interior context without implying a named property, partnership, availability, or inclusion; the scene and property are inferred and provisional.",
+      "location": "Paros or Antiparos, Greece; exact island, building, room, venue, designer, and property remain unspecified pending verification.",
+      "visualDirection": "Natural Mediterranean window light, tactile local materials, restrained styling, inhabited warmth, editorial realism, and controlled highlights.",
+      "composition": {
+        "direction": "Compose a 4:5 or 3:4 editorial split with a strong architectural focal line, human-scale detail, clear depth, and crop-safe centre; no text overlay is needed.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:5",
+        "allowedDerivativeCropRatios": ["3:4", "3:2"],
+        "requiredDerivativeCropRatios": ["3:4", "3:2"],
+        "targetDimensions": {
+          "width": 1800,
+          "height": 2250,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Retain portrait crops on compact screens; allow a controlled landscape gallery crop only where architecture and hospitality meaning survive without distortion.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe the approved hospitality context and visible materials; caption can identify location/property only after verification, and page text carries the offer meaning.",
+      "accuracyConstraints": {
+        "geographic": "Architecture and materials must be plausible for the verified island; do not copy or name an identifiable property, promise access, or imply Greek Essence partnership.",
+        "brand": "Premium through care and authenticity, not ostentation; calm editorial Greek Essence tone with no branding or endorsement cues."
+      },
+      "continuityInstructions": "Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "not_required",
+        "releasesRequired": false,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “paros-antiparos-editorial-hospitality-01”. Route/use: Paros and Antiparos detail rich-story section and gallery. Subject: Authentic boutique hospitality or interior context without implying a named property, partnership, availability, or inclusion; the scene and property are inferred and provisional. Location: Paros or Antiparos, Greece; exact island, building, room, venue, designer, and property remain unspecified pending verification. Visual direction: Natural Mediterranean window light, tactile local materials, restrained styling, inhabited warmth, editorial realism, and controlled highlights. Composition direction: Compose a 4:5 or 3:4 editorial split with a strong architectural focal line, human-scale detail, clear depth, and crop-safe centre; no text overlay is needed. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 1800 × 2250 px master at 4:5; allowed derivative crop ratios: 3:4, 3:2; required derivative crop ratios: 3:4, 3:2. Responsive intent: Retain portrait crops on compact screens; allow a controlled landscape gallery crop only where architecture and hospitality meaning survive without distortion. Accessibility intent: Localized alt should describe the approved hospitality context and visible materials; caption can identify location/property only after verification, and page text carries the offer meaning. Geographic accuracy: Architecture and materials must be plausible for the verified island; do not copy or name an identifiable property, promise access, or imply Greek Essence partnership. Brand accuracy: Premium through care and authenticity, not ostentation; calm editorial Greek Essence tone with no branding or endorsement cues. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=not_required; releasesRequired=false; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: empty-villa luxury cliché, infinity pool, champagne, impossible architecture, generic resort room, copied signature interior, fake amenity, over-staging, HDR, logos, signage, labels, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "empty-villa luxury cliché, infinity pool, champagne, impossible architecture, generic resort room, copied signature interior, fake amenity, over-staging, HDR, logos, signage, labels, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 8,
+      "id": "paros-antiparos-editorial-local-moment-01",
+      "family": "paros-antiparos-editorial",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Paros and Antiparos detail rich-story section and gallery",
+      "subject": "A natural local human moment in island life, with no implication that depicted people are clients, staff, partners, or a guaranteed encounter; scene and people are inferred and provisional.",
+      "location": "Paros or Antiparos, Greece; exact island, village, harbour, people, venue, and property require verification.",
+      "visualDirection": "Candid documentary editorial photography in natural light, respectful observational distance, authentic colour, moderate contrast, and unforced gestures.",
+      "composition": {
+        "direction": "Use a 3:2 landscape gallery frame with people in the central safe area and enough setting to establish context; also preserve a clean 4:5 crop around the interaction.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": ["4:5", "3:4"],
+        "requiredDerivativeCropRatios": ["4:5", "3:4"],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1600,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Review controlled landscape and compact portrait crops; preserve faces, hands, dignity, and setting, with no subject loss or misleading reframing.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should state the approved place and observable activity without guessing identity or relationship; itinerary meaning remains in text.",
+      "accuracyConstraints": {
+        "geographic": "Use only plausible island context and do not infer occupation, identity, ethnicity, client status, private access, or named location from appearance.",
+        "brand": "Warm, respectful, human and understated Greek Essence editorial continuity; no staged endorsement or logo."
+      },
+      "continuityInstructions": "Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “paros-antiparos-editorial-local-moment-01”. Route/use: Paros and Antiparos detail rich-story section and gallery. Subject: A natural local human moment in island life, with no implication that depicted people are clients, staff, partners, or a guaranteed encounter; scene and people are inferred and provisional. Location: Paros or Antiparos, Greece; exact island, village, harbour, people, venue, and property require verification. Visual direction: Candid documentary editorial photography in natural light, respectful observational distance, authentic colour, moderate contrast, and unforced gestures. Composition direction: Use a 3:2 landscape gallery frame with people in the central safe area and enough setting to establish context; also preserve a clean 4:5 crop around the interaction. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1600 px master at 3:2; allowed derivative crop ratios: 4:5, 3:4; required derivative crop ratios: 4:5, 3:4. Responsive intent: Review controlled landscape and compact portrait crops; preserve faces, hands, dignity, and setting, with no subject loss or misleading reframing. Accessibility intent: Localized alt should state the approved place and observable activity without guessing identity or relationship; itinerary meaning remains in text. Geographic accuracy: Use only plausible island context and do not infer occupation, identity, ethnicity, client status, private access, or named location from appearance. Brand accuracy: Warm, respectful, human and understated Greek Essence editorial continuity; no staged endorsement or logo. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this paros-antiparos-editorial asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: voyeuristic framing, generic stock smile, posed client testimonial, staff uniform, fake local stereotype, crowd removal, private-access implication, distorted faces or hands, signage, logos, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "voyeuristic framing, generic stock smile, posed client testimonial, staff uniform, fake local stereotype, crowd removal, private-access implication, distorted faces or hands, signage, logos, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 9,
+      "id": "experience-tailor-made-01",
+      "family": "experience",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Experiences index card",
+      "subject": "A calm collaborative travel-planning consultation showing process and attention, not a transaction; people, materials, office, and service details are inferred and provisional.",
+      "location": "Greece-oriented planning context; exact city, office, people, maps, documents, and property are unspecified pending approval.",
+      "visualDirection": "Natural editorial light, candid interaction, tactile neutral materials, restrained Aegean accents, and trustworthy human focus.",
+      "composition": {
+        "direction": "Create a 3:2 landscape card with participants and planning gestures centred, generous edge room, and no readable documents or screens.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Maintain the 3:2 card at 640, 960, and 1280 px; keep both people and the collaborative gesture legible without revealing document content.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe a travel-planning consultation and visible action; adjacent outcome label and link explain the service independently.",
+      "accuracyConstraints": {
+        "geographic": "Do not show precise routes, customer data, prices, booking systems, partner marks, or assert that the setting or people belong to Greek Essence.",
+        "brand": "Quietly premium, personal, accountable, calm Greek Essence service character without logo or unsupported claim."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-tailor-made-01”. Route/use: Experiences index card. Subject: A calm collaborative travel-planning consultation showing process and attention, not a transaction; people, materials, office, and service details are inferred and provisional. Location: Greece-oriented planning context; exact city, office, people, maps, documents, and property are unspecified pending approval. Visual direction: Natural editorial light, candid interaction, tactile neutral materials, restrained Aegean accents, and trustworthy human focus. Composition direction: Create a 3:2 landscape card with participants and planning gestures centred, generous edge room, and no readable documents or screens. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Maintain the 3:2 card at 640, 960, and 1280 px; keep both people and the collaborative gesture legible without revealing document content. Accessibility intent: Localized alt should describe a travel-planning consultation and visible action; adjacent outcome label and link explain the service independently. Geographic accuracy: Do not show precise routes, customer data, prices, booking systems, partner marks, or assert that the setting or people belong to Greek Essence. Brand accuracy: Quietly premium, personal, accountable, calm Greek Essence service character without logo or unsupported claim. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: corporate boardroom, sales handshake, call-centre headset, readable itinerary, fake map, booking dashboard, money, VIP label, generic stock grin, logos, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "corporate boardroom, sales handshake, call-centre headset, readable itinerary, fake map, booking dashboard, money, VIP label, generic stock grin, logos, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 10,
+      "id": "experience-island-hopping-01",
+      "family": "experience",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Experiences index card",
+      "subject": "A human-scale ferry or island-arrival transition that suggests island hopping without promising a route, schedule, vessel, or inclusion; scene and people are inferred and provisional.",
+      "location": "Greek island transport context; exact island, port, ferry operator, vessel, route, and timetable require verification.",
+      "visualDirection": "Natural daylight, authentic maritime colour, controlled highlights, candid movement, editorial calm, and visible sense of place.",
+      "composition": {
+        "direction": "Use a 3:2 landscape card with travellers and arrival gesture central, contextual harbour depth, crop-safe faces, and no readable operator signage.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Maintain 3:2 at 640, 960, and 1280 px, preserving people, transition, and harbour context without turning the image into a vessel advertisement.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe an island arrival or ferry transition in Greece without asserting a fixed itinerary; card text carries the outcome and link.",
+      "accuracyConstraints": {
+        "geographic": "Keep port and vessel details plausible but non-identifying; do not imply live transport availability, a precise route, private transfer, partnership, or guaranteed service.",
+        "brand": "Human, composed, useful and place-specific Greek Essence editorial direction, not transport advertising."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-island-hopping-01”. Route/use: Experiences index card. Subject: A human-scale ferry or island-arrival transition that suggests island hopping without promising a route, schedule, vessel, or inclusion; scene and people are inferred and provisional. Location: Greek island transport context; exact island, port, ferry operator, vessel, route, and timetable require verification. Visual direction: Natural daylight, authentic maritime colour, controlled highlights, candid movement, editorial calm, and visible sense of place. Composition direction: Use a 3:2 landscape card with travellers and arrival gesture central, contextual harbour depth, crop-safe faces, and no readable operator signage. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Maintain 3:2 at 640, 960, and 1280 px, preserving people, transition, and harbour context without turning the image into a vessel advertisement. Accessibility intent: Localized alt should describe an island arrival or ferry transition in Greece without asserting a fixed itinerary; card text carries the outcome and link. Geographic accuracy: Keep port and vessel details plausible but non-identifying; do not imply live transport availability, a precise route, private transfer, partnership, or guaranteed service. Brand accuracy: Human, composed, useful and place-specific Greek Essence editorial direction, not transport advertising. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: luxury yacht, private jet, branded ferry, readable timetable, fake route map, impossible port, frantic crowd, staged waving, VIP signage, logos, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "luxury yacht, private jet, branded ferry, readable timetable, fake route map, impossible port, frantic crowd, staged waving, VIP signage, logos, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 11,
+      "id": "experience-local-experiences-01",
+      "family": "experience",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Experiences index card",
+      "subject": "A respectful culture, craft, or food encounter with candid participation and a visible local context; activity and people are inferred and provisional, with no guaranteed inclusion or exclusive access.",
+      "location": "Greece; exact region, island, workshop, maker, dish, venue, and participants require verification.",
+      "visualDirection": "Documentary editorial photography, natural light, tactile detail, authentic restrained colour, moderate contrast, and unforced interaction.",
+      "composition": {
+        "direction": "Compose a 3:2 card around hands, shared attention, and environmental context, with safe edges and no readable labels or packaging.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Keep a 3:2 card at 640, 960, and 1280 px; preserve the interaction, hands, and enough context to avoid an anonymous activity crop.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe only the approved observable activity and place; adjacent outcome label and link remain sufficient without the image.",
+      "accuracyConstraints": {
+        "geographic": "Do not invent a tradition, artisan identity, protected process, partner relationship, private access, or exact destination.",
+        "brand": "Culturally respectful, human, authentic and quietly premium Greek Essence continuity with no branding."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-local-experiences-01”. Route/use: Experiences index card. Subject: A respectful culture, craft, or food encounter with candid participation and a visible local context; activity and people are inferred and provisional, with no guaranteed inclusion or exclusive access. Location: Greece; exact region, island, workshop, maker, dish, venue, and participants require verification. Visual direction: Documentary editorial photography, natural light, tactile detail, authentic restrained colour, moderate contrast, and unforced interaction. Composition direction: Compose a 3:2 card around hands, shared attention, and environmental context, with safe edges and no readable labels or packaging. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Keep a 3:2 card at 640, 960, and 1280 px; preserve the interaction, hands, and enough context to avoid an anonymous activity crop. Accessibility intent: Localized alt should describe only the approved observable activity and place; adjacent outcome label and link remain sufficient without the image. Geographic accuracy: Do not invent a tradition, artisan identity, protected process, partner relationship, private access, or exact destination. Brand accuracy: Culturally respectful, human, authentic and quietly premium Greek Essence continuity with no branding. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: costume stereotype, tourist performance, staged toast, generic cooking class, invented heritage claim, branded goods, distorted hands, stock smiles, logos, signage, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "costume stereotype, tourist performance, staged toast, generic cooking class, invented heritage claim, branded goods, distorted hands, stock smiles, logos, signage, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 12,
+      "id": "experience-multi-destination-01",
+      "family": "experience",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Experiences index card",
+      "subject": "A travel transition connecting contrasting Greek settings through people and movement, not a literal composite map or fixed itinerary; journey, scene, and people are inferred and provisional.",
+      "location": "Greece; exact origin, destination, transport mode, route, and stops are pending approved itinerary data.",
+      "visualDirection": "Cinematic but realistic editorial travel photography, natural light, restrained palette, candid movement, and clear spatial coherence.",
+      "composition": {
+        "direction": "Use one coherent 3:2 scene with travellers in transition and layered location context; do not collage destinations or include readable route material.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Maintain the 3:2 card at 640, 960, and 1280 px while keeping movement and context understandable; never crop into a misleading route claim.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe travel transition without naming unapproved stops or implying a fixed itinerary; card text supplies the service outcome.",
+      "accuracyConstraints": {
+        "geographic": "Depict one plausible setting only; do not combine incompatible geography, state a route, show live availability, or imply included transport/property.",
+        "brand": "Calm orchestration and human ease in Greek Essence editorial style, without luxury-status cues or claims."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": "inferred_provisional",
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-multi-destination-01”. Route/use: Experiences index card. Subject: A travel transition connecting contrasting Greek settings through people and movement, not a literal composite map or fixed itinerary; journey, scene, and people are inferred and provisional. Location: Greece; exact origin, destination, transport mode, route, and stops are pending approved itinerary data. Visual direction: Cinematic but realistic editorial travel photography, natural light, restrained palette, candid movement, and clear spatial coherence. Composition direction: Use one coherent 3:2 scene with travellers in transition and layered location context; do not collage destinations or include readable route material. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Maintain the 3:2 card at 640, 960, and 1280 px while keeping movement and context understandable; never crop into a misleading route claim. Accessibility intent: Localized alt should describe travel transition without naming unapproved stops or implying a fixed itinerary; card text supplies the service outcome. Geographic accuracy: Depict one plausible setting only; do not combine incompatible geography, state a route, show live availability, or imply included transport/property. Brand accuracy: Calm orchestration and human ease in Greek Essence editorial style, without luxury-status cues or claims. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=inferred_provisional; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: split-screen collage, fake route map, impossible island skyline, multiple landmarks combined, private jet, yacht glamour, itinerary text, VIP label, logos, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "split-screen collage, fake route map, impossible island skyline, multiple landmarks combined, private jet, yacht glamour, itinerary text, VIP label, logos, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 13,
+      "id": "experience-vip-planning-01",
+      "family": "experience",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Experiences index card",
+      "subject": "Discreet human support and attentive coordination shown through a subtle planning or arrival gesture, without embedded 'VIP' or 'private' claims; service, scene, and people are inferred and provisional.",
+      "location": "Greece-oriented hospitality context; exact place, staff role, client identity, venue, and property are unspecified pending approval.",
+      "visualDirection": "Understated editorial realism, natural light, refined but non-ostentatious materials, candid interaction, and moderate contrast.",
+      "composition": {
+        "direction": "Frame a 3:2 card around a small helpful gesture, keeping participants central, surroundings calm, and all documents, devices, badges, and signs unreadable.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Preserve the subtle interaction in 3:2 crops at 640, 960, and 1280 px; avoid crops that convert support into a status display.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe discreet planning/support and observable context without assigning client/staff identities; adjacent label and link provide meaning.",
+      "accuracyConstraints": {
+        "geographic": "Do not imply depicted people work for or use Greek Essence, promise priority access, name a venue, or represent a partner, client, or guaranteed service.",
+        "brand": "Greek Essence premium means care, calm, trust, and discretion—not wealth signalling; no logo or unsupported relationship."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-vip-planning-01”. Route/use: Experiences index card. Subject: Discreet human support and attentive coordination shown through a subtle planning or arrival gesture, without embedded 'VIP' or 'private' claims; service, scene, and people are inferred and provisional. Location: Greece-oriented hospitality context; exact place, staff role, client identity, venue, and property are unspecified pending approval. Visual direction: Understated editorial realism, natural light, refined but non-ostentatious materials, candid interaction, and moderate contrast. Composition direction: Frame a 3:2 card around a small helpful gesture, keeping participants central, surroundings calm, and all documents, devices, badges, and signs unreadable. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Preserve the subtle interaction in 3:2 crops at 640, 960, and 1280 px; avoid crops that convert support into a status display. Accessibility intent: Localized alt should describe discreet planning/support and observable context without assigning client/staff identities; adjacent label and link provide meaning. Geographic accuracy: Do not imply depicted people work for or use Greek Essence, promise priority access, name a venue, or represent a partner, client, or guaranteed service. Brand accuracy: Greek Essence premium means care, calm, trust, and discretion—not wealth signalling; no logo or unsupported relationship. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: red carpet, velvet rope, bodyguard, celebrity, limousine, champagne, private jet, VIP text, staff badge, luxury-logo display, staged handshake, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "red carpet, velvet rope, bodyguard, celebrity, limousine, champagne, private jet, VIP text, staff badge, luxury-logo display, staged handshake, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 14,
+      "id": "experience-family-01",
+      "family": "experience",
+      "testSet": true,
+      "status": "test_set_pending_operator_visual_direction_feedback",
+      "routeUse": "Experiences card and mobile Family Travel detail hero in Flow B",
+      "subject": "A varied-age family sharing a relaxed, age-inclusive Greek experience with genuine connection and no staged perfection; family, activity, and scene are inferred and provisional.",
+      "location": "Greece; exact island or mainland place, activity, venue, accommodation, and property require verification.",
+      "visualDirection": "Warm natural Mediterranean light, candid editorial interaction, authentic colour, moderate contrast, varied ages, and practical human-scale detail.",
+      "composition": {
+        "direction": "Create a 3:2 landscape master that supports 16:9 or 3:2 detail hero and compact 4:5 or 3:4 crop; cluster the family centrally, protect faces and mobility needs, and leave a calm side text-safe zone for DOM copy.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": ["16:9", "4:5", "3:4"],
+        "requiredDerivativeCropRatios": ["16:9", "4:5", "3:4"],
+        "targetDimensions": {
+          "width": 2100,
+          "height": 1400,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Review 3:2 cards at 640, 960, and 1280 px plus wide hero and 4:5/3:4 compact crops at 320, 390, 834, and 1440 px; retain all key family members, activity, and text-safe area.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Meaningful localized alt should describe the approved family activity and place without assumptions about relationships or abilities; page title, outcomes, and links work independently.",
+      "accuracyConstraints": {
+        "geographic": "Use a plausible and safe Greek context; do not identify the people as clients, promise childcare/accessibility, name a property, or imply guaranteed itinerary content.",
+        "brand": "Welcoming, inclusive, calm, authentic and personal Greek Essence editorial direction; premium through thoughtful care, never status."
+      },
+      "continuityInstructions": "Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "test_set_pending_operator_visual_direction_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “experience-family-01”. Route/use: Experiences card and mobile Family Travel detail hero in Flow B. Subject: A varied-age family sharing a relaxed, age-inclusive Greek experience with genuine connection and no staged perfection; family, activity, and scene are inferred and provisional. Location: Greece; exact island or mainland place, activity, venue, accommodation, and property require verification. Visual direction: Warm natural Mediterranean light, candid editorial interaction, authentic colour, moderate contrast, varied ages, and practical human-scale detail. Composition direction: Create a 3:2 landscape master that supports 16:9 or 3:2 detail hero and compact 4:5 or 3:4 crop; cluster the family centrally, protect faces and mobility needs, and leave a calm side text-safe zone for DOM copy. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2100 × 1400 px master at 3:2; allowed derivative crop ratios: 16:9, 4:5, 3:4; required derivative crop ratios: 16:9, 4:5, 3:4. Responsive intent: Review 3:2 cards at 640, 960, and 1280 px plus wide hero and 4:5/3:4 compact crops at 320, 390, 834, and 1440 px; retain all key family members, activity, and text-safe area. Accessibility intent: Meaningful localized alt should describe the approved family activity and place without assumptions about relationships or abilities; page title, outcomes, and links work independently. Geographic accuracy: Use a plausible and safe Greek context; do not identify the people as clients, promise childcare/accessibility, name a property, or imply guaranteed itinerary content. Brand accuracy: Welcoming, inclusive, calm, authentic and personal Greek Essence editorial direction; premium through thoughtful care, never status. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=test_set_pending_operator_visual_direction_feedback. Continuity: Keep this experience asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: matching-outfit stock family, forced smiles, unsafe child placement, tokenistic disability portrayal, isolated child, luxury-resort cliché, staged toast, logos, signage, captions, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "matching-outfit stock family, forced smiles, unsafe child placement, tokenistic disability portrayal, isolated child, luxury-resort cliché, staged toast, logos, signage, captions, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 15,
+      "id": "journey-cyclades-romance-01",
+      "family": "journey",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Journey card and selected provisional journey detail-hero candidate",
+      "subject": "A restrained adult couple experiencing a calm Cycladic transition or shared local moment; journey name, route, scene, people, and romance framing are inferred and provisional.",
+      "location": "Cyclades, Greece; exact island, route, stop, venue, and property await approved itinerary data and geographic verification.",
+      "visualDirection": "Cinematic editorial natural light, restrained Aegean colour, candid intimacy, human scale, and authentic place context.",
+      "composition": {
+        "direction": "Compose a selected provisional 16:9 detail-hero candidate around the couple and Cycladic setting, with central crop safety, a calm DOM-copy zone, and enough subject integrity for the required 3:2 card and 4:5/3:4 compact crops.",
+        "textSafeArea": "explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": ["16:9", "4:5", "3:4"],
+        "requiredDerivativeCropRatios": ["16:9", "4:5", "3:4"],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1600,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Use the selected provisional 16:9 detail-hero candidate, preserve a 3:2 journey card, and art-direct required 4:5/3:4 compact crops; keep both people, the shared gesture, setting, and DOM-copy space intact.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should identify only the approved place and observable shared experience, explicitly avoiding fixed-itinerary implications; route, duration, fit, and customization remain DOM text.",
+      "accuracyConstraints": {
+        "geographic": "Keep Cycladic geography coherent; do not name or combine islands, show an unavailable property/service, or imply a guaranteed romantic itinerary.",
+        "brand": "Understated, intimate, authentic Greek Essence editorial continuity without honeymoon clichés, logos, or promises."
+      },
+      "continuityInstructions": "Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": "inferred_provisional",
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “journey-cyclades-romance-01”. Route/use: Journey card and selected provisional journey detail-hero candidate. Subject: A restrained adult couple experiencing a calm Cycladic transition or shared local moment; journey name, route, scene, people, and romance framing are inferred and provisional. Location: Cyclades, Greece; exact island, route, stop, venue, and property await approved itinerary data and geographic verification. Visual direction: Cinematic editorial natural light, restrained Aegean colour, candid intimacy, human scale, and authentic place context. Composition direction: Compose a selected provisional 16:9 detail-hero candidate around the couple and Cycladic setting, with central crop safety, a calm DOM-copy zone, and enough subject integrity for the required 3:2 card and 4:5/3:4 compact crops. Text-safe area: explicit crop-safe DOM-copy zone; contrast must be tested independently in English and Greek. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1600 px master at 3:2; allowed derivative crop ratios: 16:9, 4:5, 3:4; required derivative crop ratios: 16:9, 4:5, 3:4. Responsive intent: Use the selected provisional 16:9 detail-hero candidate, preserve a 3:2 journey card, and art-direct required 4:5/3:4 compact crops; keep both people, the shared gesture, setting, and DOM-copy space intact. Accessibility intent: Localized alt should identify only the approved place and observable shared experience, explicitly avoiding fixed-itinerary implications; route, duration, fit, and customization remain DOM text. Geographic accuracy: Keep Cycladic geography coherent; do not name or combine islands, show an unavailable property/service, or imply a guaranteed romantic itinerary. Brand accuracy: Understated, intimate, authentic Greek Essence editorial continuity without honeymoon clichés, logos, or promises. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=inferred_provisional; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: proposal pose, champagne, heart props, empty infinity pool, yacht glamour, impossible island composite, fixed route map, staged stock couple, logos, signage, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "proposal pose, champagne, heart props, empty infinity pool, yacht glamour, impossible island composite, fixed route map, staged stock couple, logos, signage, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 16,
+      "id": "journey-athens-islands-01",
+      "family": "journey",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Journey card",
+      "subject": "A coherent transition mood between urban Athens context and island travel, represented in one plausible scene rather than a composite route; journey name, route, scene, and people are inferred and provisional.",
+      "location": "Athens or a Greek island transport context; exact origin, destination, port, route, stops, and property await approved itinerary data.",
+      "visualDirection": "Editorial travel documentary style, natural light, realistic transport context, restrained colour, candid movement, and clear human scale.",
+      "composition": {
+        "direction": "Compose a 3:2 card around travellers in one transition setting, with contextual depth, central crop safety, and no readable route, timetable, or operator information.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1600,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Deliver only the 3:2 journey card at 640, 960, and 1280 px; preserve the transition and single-place coherence without inventing a route through reframing.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should describe the approved transition/place without stating fixed stops; route, duration, traveller fit, and customization are independent DOM text.",
+      "accuracyConstraints": {
+        "geographic": "Do not combine Athens landmarks with island scenery, invent transport availability, identify an operator, or portray a property/service as included.",
+        "brand": "Organized, calm, human Greek Essence journey mood; no booking, timetable, or guarantee cues."
+      },
+      "continuityInstructions": "Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": "inferred_provisional",
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “journey-athens-islands-01”. Route/use: Journey card. Subject: A coherent transition mood between urban Athens context and island travel, represented in one plausible scene rather than a composite route; journey name, route, scene, and people are inferred and provisional. Location: Athens or a Greek island transport context; exact origin, destination, port, route, stops, and property await approved itinerary data. Visual direction: Editorial travel documentary style, natural light, realistic transport context, restrained colour, candid movement, and clear human scale. Composition direction: Compose a 3:2 card around travellers in one transition setting, with contextual depth, central crop safety, and no readable route, timetable, or operator information. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1600 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Deliver only the 3:2 journey card at 640, 960, and 1280 px; preserve the transition and single-place coherence without inventing a route through reframing. Accessibility intent: Localized alt should describe the approved transition/place without stating fixed stops; route, duration, traveller fit, and customization are independent DOM text. Geographic accuracy: Do not combine Athens landmarks with island scenery, invent transport availability, identify an operator, or portray a property/service as included. Brand accuracy: Organized, calm, human Greek Essence journey mood; no booking, timetable, or guarantee cues. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=inferred_provisional; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: split composite skyline, Acropolis beside island harbour, fake map, readable ticket, branded ferry, private jet, fixed itinerary, impossible geography, logos, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "split composite skyline, Acropolis beside island harbour, fake map, readable ticket, branded ferry, private jet, fixed itinerary, impossible geography, logos, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 17,
+      "id": "journey-culture-gastronomy-01",
+      "family": "journey",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "Journey card",
+      "subject": "A culture-and-gastronomy journey mood grounded in one respectful food, craft, market, or table context; route, exact activity, people, and journey inclusion are inferred and provisional.",
+      "location": "Greece; exact region, island, market, maker, restaurant, dish, route, and stops require approved itinerary data and verification.",
+      "visualDirection": "Tactile documentary editorial photography, natural light, authentic food/material colour, candid participation, restrained styling, and sense of place.",
+      "composition": {
+        "direction": "Use a 3:2 card focused on hands, ingredients or craft and surrounding context, keeping essential details central and all signs, menus, packaging, and labels unreadable.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "3:2",
+        "allowedDerivativeCropRatios": [],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 2400,
+          "height": 1600,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Deliver only the 3:2 journey card at 640, 960, and 1280 px; retain activity and setting without turning the image into a generic food close-up.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Localized alt should name only verified place/context and observable activity, without promising a fixed culinary itinerary; route and customization remain text.",
+      "accuracyConstraints": {
+        "geographic": "Do not invent provenance, dish identity, tradition, chef/artisan, partner venue, exclusive access, route, or included service.",
+        "brand": "Specific, respectful, sensorial and quietly premium Greek Essence journey continuity without advertising gloss."
+      },
+      "continuityInstructions": "Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": "inferred_provisional",
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “journey-culture-gastronomy-01”. Route/use: Journey card. Subject: A culture-and-gastronomy journey mood grounded in one respectful food, craft, market, or table context; route, exact activity, people, and journey inclusion are inferred and provisional. Location: Greece; exact region, island, market, maker, restaurant, dish, route, and stops require approved itinerary data and verification. Visual direction: Tactile documentary editorial photography, natural light, authentic food/material colour, candid participation, restrained styling, and sense of place. Composition direction: Use a 3:2 card focused on hands, ingredients or craft and surrounding context, keeping essential details central and all signs, menus, packaging, and labels unreadable. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 2400 × 1600 px master at 3:2; allowed derivative crop ratios: none; required derivative crop ratios: none. Responsive intent: Deliver only the 3:2 journey card at 640, 960, and 1280 px; retain activity and setting without turning the image into a generic food close-up. Accessibility intent: Localized alt should name only verified place/context and observable activity, without promising a fixed culinary itinerary; route and customization remain text. Geographic accuracy: Do not invent provenance, dish identity, tradition, chef/artisan, partner venue, exclusive access, route, or included service. Brand accuracy: Specific, respectful, sensorial and quietly premium Greek Essence journey continuity without advertising gloss. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=inferred_provisional; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this journey asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: food-porn styling, staged toast, stereotyped costume, invented tradition, generic buffet, branded packaging, menu text, fixed route, distorted hands, logos, watermarks, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "food-porn styling, staged toast, stereotyped costume, invented tradition, generic buffet, branded packaging, menu text, fixed route, distorted hands, logos, watermarks, English text, Greek text"
+      }
+    },
+    {
+      "sequence": 18,
+      "id": "person-founder-profile-01",
+      "family": "people",
+      "testSet": false,
+      "status": "draft_pending_test_feedback",
+      "routeUse": "About founder/team profile and Home trust narrative",
+      "subject": "A natural hospitality-oriented portrait of an approved representative; no actual identity, likeness, role, biography, or employment relationship is authorized yet, so the person and scene are provisional placeholders pending approval.",
+      "location": "Greece-oriented hospitality/planning context; exact person, setting, workplace, venue, and property are pending explicit approval.",
+      "visualDirection": "Responsible environmental portraiture, soft natural light, authentic skin tone, restrained background, direct but unforced presence, moderate contrast, and no glamour retouching.",
+      "composition": {
+        "direction": "Create a 4:5 portrait with head and torso inside a generous central safe area, natural eye line, contextual but non-identifying background, and enough room for an optional independently reviewed 1:1 crop; no overlay text.",
+        "textSafeArea": "no baked copy; preserve crop-safe breathing room for adjacent DOM content",
+        "focalPoint": "provisional; set and review after generation so the named subject survives every required crop"
+      },
+      "delivery": {
+        "masterAspectRatio": "4:5",
+        "allowedDerivativeCropRatios": ["1:1"],
+        "requiredDerivativeCropRatios": [],
+        "targetDimensions": {
+          "width": 1600,
+          "height": 2000,
+          "unit": "px",
+          "minimum": true
+        }
+      },
+      "responsiveCropIntent": "Use the 4:5 master across responsive layouts; make a 1:1 crop only after separate review confirms face, posture, and context remain respectful and complete.",
+      "textOverlay": {
+        "embeddedTextAllowed": false,
+        "english": "prohibited_in_pixels_use_localized_DOM_text_only",
+        "greek": "prohibited_in_pixels_use_localized_DOM_text_only"
+      },
+      "accessibilityIntent": "Once an actual approved person exists, localized alt should identify that person and approved role unless adjacent text makes the portrait decorative; until then label this asset provisional and do not present it as a real founder.",
+      "accuracyConstraints": {
+        "geographic": "Do not generate or imitate a real unapproved person, infer protected traits, fabricate a workplace or property, or represent the subject as founder, staff, client, or partner before approval.",
+        "brand": "Accountable, warm, calm and trustworthy Greek Essence trust direction without status symbols, logo, credentials, or unsupported biography."
+      },
+      "continuityInstructions": "Keep this people asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset.",
+      "review": {
+        "sceneStatus": "inferred_provisional",
+        "peopleContentStatus": "inferred_provisional",
+        "releasesRequired": true,
+        "journeyContentStatus": null,
+        "licensingStatus": "unlicensed_planning_only",
+        "requiredRights": [
+          "generation_source_and_creator_record",
+          "web_and_prototype_use",
+          "localized_public_demo_use",
+          "resizing_and_derivative_crops"
+        ],
+        "provenanceStatus": "planned_from_authorized_source_output_not_generated",
+        "exactLocationOrPropertyStatus": "unverified_provisional",
+        "approvalStatus": "draft_pending_test_feedback"
+      },
+      "prompt": "Create a high-quality image for Greek Essence asset “person-founder-profile-01”. Route/use: About founder/team profile and Home trust narrative. Subject: A natural hospitality-oriented portrait of an approved representative; no actual identity, likeness, role, biography, or employment relationship is authorized yet, so the person and scene are provisional placeholders pending approval. Location: Greece-oriented hospitality/planning context; exact person, setting, workplace, venue, and property are pending explicit approval. Visual direction: Responsible environmental portraiture, soft natural light, authentic skin tone, restrained background, direct but unforced presence, moderate contrast, and no glamour retouching. Composition direction: Create a 4:5 portrait with head and torso inside a generous central safe area, natural eye line, contextual but non-identifying background, and enough room for an optional independently reviewed 1:1 crop; no overlay text. Text-safe area: no baked copy; preserve crop-safe breathing room for adjacent DOM content. Focal point: provisional; set and review after generation so the named subject survives every required crop. Deliver a minimum 1600 × 2000 px master at 4:5; allowed derivative crop ratios: 1:1; required derivative crop ratios: none. Responsive intent: Use the 4:5 master across responsive layouts; make a 1:1 crop only after separate review confirms face, posture, and context remain respectful and complete. Accessibility intent: Once an actual approved person exists, localized alt should identify that person and approved role unless adjacent text makes the portrait decorative; until then label this asset provisional and do not present it as a real founder. Geographic accuracy: Do not generate or imitate a real unapproved person, infer protected traits, fabricate a workplace or property, or represent the subject as founder, staff, client, or partner before approval. Brand accuracy: Accountable, warm, calm and trustworthy Greek Essence trust direction without status symbols, logo, credentials, or unsupported biography. Text overlay: embeddedTextAllowed=false; English=prohibited_in_pixels_use_localized_DOM_text_only; Greek=prohibited_in_pixels_use_localized_DOM_text_only. Review semantics: sceneStatus=inferred_provisional; peopleContentStatus=inferred_provisional; releasesRequired=true; journeyContentStatus=null; licensingStatus=unlicensed_planning_only; requiredRights=generation_source_and_creator_record, web_and_prototype_use, localized_public_demo_use, resizing_and_derivative_crops; provenanceStatus=planned_from_authorized_source_output_not_generated; exactLocationOrPropertyStatus=unverified_provisional; approvalStatus=draft_pending_test_feedback. Continuity: Keep this people asset visually continuous with its family through natural Mediterranean light, authentic restrained colour, moderate contrast, calm editorial framing, human texture, and differentiated subject matter; do not reuse an identical postcard composition or imply facts established only by another asset. Negative constraints: booking: no booking flow, booking confirmation, reservation state, or transaction claim; offerTerms: no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim; partnershipOrIdentity: no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim; transportOrRoute: no live transport, timetable, operator, fixed route, stop, or transfer claim; reviewsOrAwards: no customer review, testimonial, rating, award, badge, or accolade claim; embeddedText: no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks; stockLuxuryOrProcessing: no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR; locationRepresentation: no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship; assetSpecific: celebrity likeness, invented founder, corporate headshot, beauty retouching, glamour pose, crossed-arm executive cliché, fake office, staff badge, credential, partner logo, signage, caption, watermark, English text, Greek text.",
+      "negativeConstraints": {
+        "booking": "no booking flow, booking confirmation, reservation state, or transaction claim",
+        "offerTerms": "no availability, pricing, guaranteed inclusion, amenity, or exclusive-access claim",
+        "partnershipOrIdentity": "no partnership, endorsement, client, staff, founder, operator, or other identity/relationship claim",
+        "transportOrRoute": "no live transport, timetable, operator, fixed route, stop, or transfer claim",
+        "reviewsOrAwards": "no customer review, testimonial, rating, award, badge, or accolade claim",
+        "embeddedText": "no embedded English or Greek words, letters, captions, labels, signage, logos, marks, or watermarks",
+        "stockLuxuryOrProcessing": "no generic stock staging, empty-luxury cliché, status-symbol glamour, excessive saturation, colour manipulation, or overprocessed HDR",
+        "locationRepresentation": "no invented, composite, copied, or otherwise misleading location, landmark, venue, property, access, or geographic relationship",
+        "assetSpecific": "celebrity likeness, invented founder, corporate headshot, beauty retouching, glamour pose, crossed-arm executive cliché, fake office, staff badge, credential, partner logo, signage, caption, watermark, English text, Greek text"
+      }
+    }
+  ]
+}

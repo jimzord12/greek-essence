@@ -21,6 +21,7 @@
     "test:unit:watch": "vitest",
     "test:e2e": "playwright test",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "validate:prototype-asset-prompts": "node scripts/validate-prototype-asset-prompts.mjs",
     "quality:unlighthouse": "start-server-and-test \"pnpm start --port 3101\" http://127.0.0.1:3101 \"unlighthouse-ci --config-file unlighthouse.config.ts\"",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:unit",
     "check:all": "pnpm check && pnpm build && pnpm test:e2e && pnpm test:a11y && pnpm quality:unlighthouse",
