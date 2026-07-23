@@ -36,13 +36,6 @@ Completed and removed or reconciled into durable project history
 
 ## Planned
 
-- [ ] Add a deterministic Ralph campaign-transition command.
-  - **Source:** B07-02 → B07-03 exposed a controller-state lifecycle gap: completed task identity remains in the external runtime state and the next authorized campaign fails closed until that state is rotated.
-  - **Desired outcome:** A project-owned command safely archives completed `controller-state.json` and initializes fresh campaign/task identity and zeroed supervision counters without agent judgment.
-  - **Safety:** Fail closed unless no live lock or owned root exists, the existing state matches the declared completed campaign/task, the new identity is complete, and the archive destination is collision-free. Preserve runtime state outside Git and emit a bounded lifecycle transition event.
-  - **Verification:** Focused tests for successful transition, active lock/root, identity mismatch, malformed state, archive collision, and interrupted/failed atomic writes.
-  - **Scope:** Selected as the immediate continuation in `NEXT.md`. This authorizes bounded repository-local planning and implementation, but not automatic completion-signal reset, deployment, credentials, destructive recovery, or unrelated product work.
-
 - [ ] Turn the Terra prototype asset report into a reviewed, sequential ChatGPT image-generation prompt pack for manual use.
   - **Depends on:** Deterministic Ralph campaign transition.
   - **Source:** `C:\Users\jimzord12\Documents\greek-essence-prototype-asset-plan.md`

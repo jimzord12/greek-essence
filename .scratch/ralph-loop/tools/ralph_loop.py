@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
+import tempfile
 import time
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -81,6 +83,19 @@ class ControllerState:
     current_root_pid: int | None = None
     assessment_log: str | None = None
     diagnosis_log: str | None = None
+
+
+@dataclass(frozen=True)
+class CampaignIdentity:
+    campaign_id: str
+    task_id: str
+    resolved_tier: str
+
+
+@dataclass(frozen=True)
+class TransitionResult:
+    archive_path: Path
+    state_path: Path
 
 
 class LifecycleLogger:
@@ -260,6 +275,194 @@ def load_controller_state(
     return state
 
 
+def _pid_is_running(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except (OSError, SystemError):
+        return False
+    return True
+
+
+def _validate_transition_identity(identity: CampaignIdentity, label: str) -> None:
+    if not isinstance(identity, CampaignIdentity):
+        raise TypeError(f"{label} identity has an invalid type")
+    for field in ("campaign_id", "task_id", "resolved_tier"):
+        value = getattr(identity, field)
+        if not isinstance(value, str) or not value or value != value.strip():
+            raise ValueError(f"{label} {field} must be a trimmed non-empty string")
+
+
+def _load_existing_controller_state(state_dir: Path) -> tuple[bytes, ControllerState]:
+    target = state_dir / "controller-state.json"
+    original = target.read_bytes()
+    try:
+        payload = _strict_json(original.decode("utf-8"))
+        return original, _validated_controller_state(payload)
+    except (UnicodeError, TypeError, ValueError) as exc:
+        raise ValueError(f"controller state is unreadable or malformed: {target}: {exc}") from exc
+
+
+def _sanitize_archive_component(value: str) -> str:
+    sanitized = re.sub(r"[^A-Za-z0-9._-]+", "_", value).strip("._")
+    return sanitized or "identity"
+
+
+def _transition_timestamp(timestamp_utc: str | None) -> str:
+    value = timestamp_utc or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    if not re.fullmatch(r"\d{8}T\d{12}Z", value):
+        raise ValueError("archive timestamp must be YYYYMMDDTHHMMSSffffffZ")
+    try:
+        datetime.strptime(value, "%Y%m%dT%H%M%S%fZ")
+    except ValueError as exc:
+        raise ValueError("archive timestamp is not a valid UTC timestamp") from exc
+    return value
+
+
+def _write_fsync_exclusive(path: Path, content: bytes) -> None:
+    flags = os.O_CREAT | os.O_EXCL | os.O_WRONLY
+    binary_flag = getattr(os, "O_BINARY", 0)
+    descriptor = os.open(path, flags | binary_flag)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            descriptor = -1
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+    finally:
+        if descriptor != -1:
+            os.close(descriptor)
+
+
+def _write_prepared_state(state_dir: Path, content: bytes) -> Path:
+    descriptor, temporary_name = tempfile.mkstemp(prefix="controller-state.json.", dir=str(state_dir))
+    temporary = Path(temporary_name)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            descriptor = -1
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        return temporary
+    except Exception:
+        temporary.unlink(missing_ok=True)
+        raise
+    finally:
+        if descriptor != -1:
+            os.close(descriptor)
+
+
+def _best_effort_fsync_directory(state_dir: Path) -> None:
+    try:
+        descriptor = os.open(state_dir, os.O_RDONLY)
+    except OSError:
+        return
+    try:
+        try:
+            os.fsync(descriptor)
+        except OSError:
+            pass
+    finally:
+        os.close(descriptor)
+
+
+def transition_campaign_state(
+    state_dir: Path,
+    completed: CampaignIdentity,
+    new: CampaignIdentity,
+    *,
+    timestamp_utc: str | None = None,
+    pid_is_running_fn: Callable[[int], bool] = _pid_is_running,
+    replace_fn: Callable[[Path, Path], None] = os.replace,
+) -> TransitionResult:
+    """Safely archive one completed controller identity and initialize the next one."""
+    _validate_transition_identity(completed, "completed")
+    _validate_transition_identity(new, "new")
+    if completed.campaign_id == new.campaign_id:
+        raise ValueError("completed and new campaign IDs must differ")
+    if completed.task_id == new.task_id:
+        raise ValueError("completed and new task IDs must differ")
+
+    state_dir = Path(state_dir)
+    timestamp = _transition_timestamp(timestamp_utc)
+    archive_path = state_dir / "archive" / (
+        "controller-state-"
+        f"{_sanitize_archive_component(completed.campaign_id)}-"
+        f"{_sanitize_archive_component(completed.task_id)}-{timestamp}.json"
+    )
+    state_path = state_dir / "controller-state.json"
+    lifecycle = LifecycleLogger(_lifecycle_log(state_dir), completed.campaign_id, completed.task_id, completed.resolved_tier)
+    lock: Path | None = None
+    temporary: Path | None = None
+    try:
+        lifecycle.emit(
+            "campaign_transition_start",
+            new_campaign_id=new.campaign_id,
+            new_task_id=new.task_id,
+            new_resolved_tier=new.resolved_tier,
+            archive_path=str(archive_path),
+        )
+        lock = _acquire_lock(state_dir, lifecycle)
+        original, current = _load_existing_controller_state(state_dir)
+        if (current.campaign_id, current.task_id, current.resolved_tier) != (
+            completed.campaign_id,
+            completed.task_id,
+            completed.resolved_tier,
+        ):
+            raise ValueError("controller state does not match the declared completed identity")
+        if current.current_root_pid is not None:
+            root_pid_live = pid_is_running_fn(current.current_root_pid)
+            lifecycle.emit(
+                "campaign_transition_recorded_root_present",
+                current_root_pid=current.current_root_pid,
+                root_pid_live=root_pid_live,
+            )
+            raise RalphError(
+                f"recorded root PID {current.current_root_pid} prevents campaign transition "
+                f"(live={root_pid_live})"
+            )
+        lifecycle.emit(
+            "campaign_transition_validation_complete",
+            state_path=str(state_path),
+            current_root_pid=None,
+        )
+
+        archive_path.parent.mkdir(parents=True, exist_ok=True)
+        if archive_path.exists():
+            raise ValueError(f"archive already exists: {archive_path}")
+
+        new_state = ControllerState(new.campaign_id, new.task_id, new.resolved_tier)
+        new_bytes = (json.dumps(asdict(new_state), indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        temporary = _write_prepared_state(state_dir, new_bytes)
+        _write_fsync_exclusive(archive_path, original)
+        lifecycle.emit("campaign_transition_archive_complete", archive_path=str(archive_path))
+        replace_fn(temporary, state_path)
+        temporary = None
+        lifecycle.emit("campaign_transition_state_replace_complete", state_path=str(state_path))
+        _best_effort_fsync_directory(state_dir)
+        lifecycle.emit(
+            "campaign_transition_complete",
+            archive_path=str(archive_path),
+            state_path=str(state_path),
+        )
+        return TransitionResult(archive_path=archive_path, state_path=state_path)
+    except Exception as exc:
+        lifecycle.emit("campaign_transition_failed", exception_type=type(exc).__name__)
+        raise
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+        if lock is not None:
+            lifecycle.emit("lock_release_start", lock_path=str(lock), controller_pid=os.getpid())
+            lock.unlink(missing_ok=True)
+            lifecycle.emit("lock_release_complete", lock_path=str(lock), controller_pid=os.getpid(), lock_exists=lock.exists())
+
+
 def root_prompt(extra: str | None = None) -> str:
     base = """You are the Greek Essence Ralph root orchestrator.
 
@@ -418,20 +621,6 @@ def supervise_process(process: subprocess.Popen[str], *, lease_seconds: float, a
         except subprocess.TimeoutExpired:
             emit("supervision_wait_timeout", root_pid=getattr(process, "pid", None), timeout_seconds=wait_seconds, poll_result=process.poll())
             continue
-
-
-def _pid_is_running(pid: int) -> bool:
-    if pid <= 0:
-        return False
-    try:
-        os.kill(pid, 0)
-    except ProcessLookupError:
-        return False
-    except PermissionError:
-        return True
-    except (OSError, SystemError):
-        return False
-    return True
 
 
 def _acquire_lock(state_dir: Path, lifecycle: LifecycleLogger | None = None) -> Path:
