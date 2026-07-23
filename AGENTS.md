@@ -4,6 +4,8 @@
 
 At the start of every project task, check the repository-root [`NEXT.md`](NEXT.md). If it is non-empty, read it and follow its project handoff instructions before proceeding. Keep `NEXT.md` current when handing project work to another agent. Ralph-specific orchestration state remains in `.scratch/ralph-loop/HANDOFF.md`.
 
+[`TODO.md`](TODO.md) is the operator-managed backlog and idea inbox for pending work that is not active. It is not an execution queue, task contract, project-status ledger, or handoff, and an item appearing there does not authorize implementation. Agents may add clearly attributable pending work or clarify an item without changing its intent, but must not implement, delegate, schedule, or promote an item unless the operator or an authorized planning task selects it. Before execution, move the selected work into the appropriate plan, issue, or task contract and put only its immediate continuation in `NEXT.md`. Do not store runtime state, process IDs, session IDs, raw logs, secrets, credentials, or detailed execution evidence in `TODO.md`; remove completed entries after their outcomes are reconciled into durable project history.
+
 Read [the documentation entry point](docs/README.md) and [the bootstrap workspace](.scratch/bootstrap/README.md) first. Project decisions take precedence in this order: Project Protocol, Product Requirements, Prototype Specification, Technical Design, then Design System. Agent-tooling documents govern tooling only; record and escalate conflicts rather than silently reinterpreting a higher-authority requirement.
 
 ## Architecture
