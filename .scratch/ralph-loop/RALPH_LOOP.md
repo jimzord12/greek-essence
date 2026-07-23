@@ -20,6 +20,17 @@ Run these from the repository root:
 # Read-only validation and intended command; does not launch Hermes or mutate files.
 python .scratch/ralph-loop/tools/ralph_loop.py --dry-run
 
+# Explicitly transition one human-declared completed identity to a new identity.
+# This archives controller state outside Git, initializes zeroed supervision state,
+# does not launch Hermes, and never reads or resets completion-signal.json.
+python .scratch/ralph-loop/tools/transition_campaign.py \
+  --completed-campaign-id bootstrap-b07-03 \
+  --completed-task-id B07-03 \
+  --completed-resolved-tier 2 \
+  --new-campaign-id <explicit-new-campaign> \
+  --new-task-id <explicit-new-task> \
+  --new-resolved-tier <explicit-resolved-tier>
+
 # Live AI execution until the completion signal is true or an operational failure occurs.
 python .scratch/ralph-loop/tools/ralph_loop.py
 
@@ -39,6 +50,8 @@ The default live entrypoint is always `ralph_loop.py`. Generic requests to test,
 `--iteration-timeout SECONDS` bounds the current lease (default 3600 seconds), `--assessment-threshold SECONDS` selects the Diagnosis A Check point (default 2700 seconds), and `--assessor-timeout SECONDS` bounds each Diagnosis A or Diagnosis B Check (default 1200 seconds / 20 minutes). Pass `--campaign-id`, `--task-id`, and `--resolved-tier` for managed execution. A strict Diagnosis A `true` may renew the lease at most three times per task. After timeout, strict read-only Diagnosis B may authorize one same-task retry, gated by fresh manager preflight. Both checks use bounded evidence-first prompts and stop once decisive evidence is clear. Their stdout is reserved for exactly one JSON object; session-ID trailers are disabled because they invalidate the strict response contract. Runtime state, locks, assessor/diagnosis transcripts, and event logs remain outside Git at `%LOCALAPPDATA%\hermes\ralph\greek-essence\`. On Windows, timeout cleanup targets only the launched root PID and its descendants with `taskkill /T`; ambiguous survivors fail closed.
 
 To begin a new managed campaign after successful completion, a human must explicitly edit `completion-signal.json` from `true` to `false`. The controller never resets it.
+
+The transition command requires all six identity values to be explicitly human-declared; it does not infer campaign/task values from prose, Git, or TODO state, and it does not launch Hermes. It fails closed unless the existing lock is available, the existing controller state is valid and exactly matches the declared completed campaign/task/tier, no root PID is recorded, and the new campaign/task identity is complete and differs in both campaign and task IDs. It writes archives outside Git as `archive/controller-state-<sanitized-completed-campaign>-<sanitized-completed-task>-<UTC timestamp>.json`, then atomically installs fresh zeroed supervision state. A non-null recorded root requires separate authorized recovery; transition never kills it. K-002 orphan recovery and Job Object work remain out of scope.
 
 ## Root orchestration contract
 

@@ -4,17 +4,14 @@ This file is mutable working memory for the next fresh Sol context. It is not an
 
 ## Last completed work
 
-B07-03 and the final Phase 07 gate are approved and reconciled. All 28 bootstrap tasks and all 8 phases are `Done`; the dedicated B07-03 local commit is the final action of this root iteration.
+The deterministic Ralph campaign-transition command is implemented and independently approved. Focused transition tests, the complete Ralph unit suite, isolated real-CLI acceptance, repository quality gates, and diff checks passed. The tracked completion signal and external live Ralph controller state remained unchanged.
 
 ## Current repository/worktree facts
 
-- Branch: `task/B07-03-completion-report`; starting HEAD: `0caf16c` (`chore(bootstrap): complete B07-02 aggregate gate`).
-- B07-03 implementer session: `20260723_132601_75c866`.
-- B07-03 task reviewer session: `20260723_134207_4d9116`; verdict `Approved`, no findings.
-- Phase 07 reviewer session: `20260723_134603_b3b304`; verdict `Approved`, no findings.
-- Fresh B07-03 `pnpm check:all` exited 0. Final phase validation confirmed 28/28 tasks Done, all links/status views consistent, current Unlighthouse evidence valid, and `git diff --check` clean.
-- Kimi Code remains unavailable and is the sole accepted external compatibility blocker; it is not green.
-- Completion signal is true because all managed bootstrap work and final quality gates succeeded.
+- The transition work is on `task/ralph-campaign-transition` for normal PR merge.
+- Independent review verdict: `Approved`, with no findings.
+- The command requires explicit completed/new campaign, task, and tier identities; it never reads or resets the completion signal and never performs stale-root recovery.
+- K-002 remains open and out of scope.
 
 ## Active campaign
 
@@ -22,7 +19,7 @@ None. The bootstrap campaign is complete. Do not reset `.scratch/ralph-loop/comp
 
 ## Next required action
 
-No further Ralph bootstrap action. Product implementation may begin from `.scratch/bootstrap/completion-report.md`, subject to the documented production-readiness gaps and unresolved Kimi compatibility blocker.
+Complete the authorized normal PR merge and final main-state verification for the transition task. The reviewed sequential asset prompt pack remains only the next planned dependency and is not authorized automatically.
 
 ## Blockers requiring human action
 
