@@ -32,6 +32,12 @@ Completed and removed or reconciled into durable project history
 
 ## Inbox
 
+- [ ] Stabilize Unlighthouse performance at or above the 90 budget across repeated clean runs.
+  - **Observed:** Current scaffold usually passes, but `/el/quality-lab` produced one 84 performance outlier before a clean retry passed.
+  - **Desired outcome:** Identify the slow audit or source of variance and keep performance ≥90 without lowering budgets; preserve accessibility 100, best practices 95, and SEO 95.
+  - **Likely focus:** Font loading, client JavaScript, responsive image handling, layout shifts, critical-path work, and future third-party scripts.
+  - **Timing:** Address during relevant product/visual implementation rather than as an isolated bootstrap task.
+
 <!-- New unprioritized items go here before entering the planned dependency graph. -->
 
 ## Planned
