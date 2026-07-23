@@ -32,12 +32,7 @@ Completed and removed or reconciled into durable project history
 
 ## Inbox
 
-- [ ] Turn the Terra prototype asset report into a reviewed, sequential ChatGPT image-generation prompt pack for manual use.
-  - **Source:** `C:\Users\jimzord12\Documents\greek-essence-prototype-asset-plan.md`
-  - **Desired outcome:** One self-contained, copy-ready prompt per must-have image, ordered so the operator can paste prompts manually into the ChatGPT app one by one.
-  - **Prompt contents:** Asset ID, subject/location, photographic direction, composition and text-safe area, aspect ratio and target dimensions, responsive crop intent, EN/EL text-overlay prohibition, accessibility intent, geographic/brand accuracy constraints, negative prompt, and any continuity instructions shared with the asset family.
-  - **Workflow:** Begin with a small visual-direction test set; record operator feedback; revise the shared style guidance; then prepare the remaining prompts without generating or submitting images automatically.
-  - **Notes:** Preserve licensing review requirements and clearly label inferred scenes or provisional people/journey content. The deliverable is the prompt list only; the operator performs every ChatGPT submission manually.
+<!-- New unprioritized items go here before entering the planned dependency graph. -->
 
 ## Planned
 
@@ -46,7 +41,39 @@ Completed and removed or reconciled into durable project history
   - **Desired outcome:** A project-owned command safely archives completed `controller-state.json` and initializes fresh campaign/task identity and zeroed supervision counters without agent judgment.
   - **Safety:** Fail closed unless no live lock or owned root exists, the existing state matches the declared completed campaign/task, the new identity is complete, and the archive destination is collision-free. Preserve runtime state outside Git and emit a bounded lifecycle transition event.
   - **Verification:** Focused tests for successful transition, active lock/root, identity mismatch, malformed state, archive collision, and interrupted/failed atomic writes.
-  - **Scope:** Planning inbox only; this entry does not authorize implementation or automatic completion-signal reset.
+  - **Scope:** Selected as the immediate continuation in `NEXT.md`. This authorizes bounded repository-local planning and implementation, but not automatic completion-signal reset, deployment, credentials, destructive recovery, or unrelated product work.
+
+- [ ] Turn the Terra prototype asset report into a reviewed, sequential ChatGPT image-generation prompt pack for manual use.
+  - **Depends on:** Deterministic Ralph campaign transition.
+  - **Source:** `C:\Users\jimzord12\Documents\greek-essence-prototype-asset-plan.md`
+  - **Desired outcome:** One self-contained, copy-ready prompt per must-have image, ordered so the operator can paste prompts manually into the ChatGPT app one by one.
+  - **Prompt contents:** Asset ID, subject/location, photographic direction, composition and text-safe area, aspect ratio and target dimensions, responsive crop intent, EN/EL text-overlay prohibition, accessibility intent, geographic/brand accuracy constraints, negative prompt, and any continuity instructions shared with the asset family.
+  - **Workflow:** Begin with a small visual-direction test set; record operator feedback; revise the shared style guidance; then prepare the remaining prompts without generating or submitting images automatically.
+  - **Notes:** Preserve licensing review requirements and clearly label inferred scenes or provisional people/journey content. The deliverable is the prompt list only; the operator performs every ChatGPT submission manually. Reading the source outside the repository requires explicit authority at execution time.
+
+- [ ] Review and update authoritative project documentation after the asset prompt pack.
+  - **Depends on:** Reviewed asset prompt pack and operator visual-direction feedback.
+  - **Desired outcome:** Reconcile approved asset/visual decisions into the correct documentation owners, repair affected traceability, and leave an implementation-ready P1 baseline without silently changing product scope.
+  - **Scope:** Documentation review and approved updates only; do not begin product implementation in this task.
+
+- [ ] Plan the first product implementation phase (P1 — Visual and content foundation).
+  - **Depends on:** Documentation review and update.
+  - **Desired outcome:** A bounded, dependency-ordered implementation plan and task contracts grounded in the PRD, prototype specification, technical design, design system, and reconciled asset direction.
+  - **Scope:** Planning only unless the operator separately authorizes implementation tasks.
+
+## Dependency graph
+
+```text
+Deterministic Ralph campaign transition
+        ↓
+Reviewed sequential asset prompt pack
+        ↓
+Authoritative documentation review and update
+        ↓
+P1 visual and content foundation planning
+```
+
+Only the first node is active through `NEXT.md`. Completion of one node does not automatically authorize its successor; reconcile evidence and explicitly promote the next node first.
 
 <!-- Agreed and prioritized work that is not active yet. Link its plan/task when available. -->
 
