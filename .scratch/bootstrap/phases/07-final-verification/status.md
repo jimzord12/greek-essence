@@ -4,7 +4,7 @@
 |---|---|
 | B07-01 | Done |
 | B07-02 | Done |
-| B07-03 | Ready |
+| B07-03 | Done |
 
-**Phase state:** In progress
+**Phase state:** Done
 
