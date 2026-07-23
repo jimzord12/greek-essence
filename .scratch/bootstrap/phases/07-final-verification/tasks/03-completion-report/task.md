@@ -1,11 +1,11 @@
 ---
 id: B07-03
-status: Pending
+status: Done
 depends_on: [B07-02]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260723_132601_75c866
+reviewer_agent: 20260723_134207_4d9116
+started_at: 2026-07-23T13:26:33+03:00
+completed_at: 2026-07-23T13:45:20+03:00
 ---
 
 # Publish the bootstrap completion report
