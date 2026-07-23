@@ -2,10 +2,12 @@
 
 ## Current state
 
-The bootstrap campaign is complete and merged to `main`: all 28 tasks and all 8 phases are `Done`, final task/phase reviews are approved, and local quality gates are green. Kimi Code remains unavailable and must not be represented as green.
+The bootstrap campaign and deterministic Ralph campaign-transition mechanism are complete and merged to `main`. All 28 bootstrap tasks and all 8 phases are `Done`; transition-focused tests, the complete Ralph unit suite, isolated CLI verification, independent Terra review, PR checks, and normal merge passed. Kimi Code remains unavailable and must not be represented as green.
 
-During the B07-02 → B07-03 handoff, the next controller launch failed closed because external `controller-state.json` still retained the completed B07-02 campaign/task identity. There was no live lock or surviving root; the completed state was archived manually and B07-03 then ran successfully. This exposed a deterministic campaign-transition gap rather than a task or process-cleanup failure.
+The transition mechanism is available through the explicit project-owned command documented in `.scratch/ralph-loop/RALPH_LOOP.md`. It preserves completed controller state outside Git, initializes zeroed new controller state, fails closed on incompatible lock/root/state conditions, and never reads or resets the semantic completion signal.
 
-The deterministic Ralph campaign-transition command is implemented, independently approved, and awaiting normal PR merge under the authorized task workflow.
+## Current continuation
 
-The next planned dependency is the reviewed sequential asset prompt pack. It is not active or authorized for execution; the operator must promote it separately after this transition task is merged and verified.
+No project work is currently active. The next planned dependency is the reviewed sequential asset prompt pack, but it is not authorized automatically. The operator must separately promote it before any agent reads the external asset-plan file or begins planning, delegation, or execution.
+
+K-002 remains open and out of scope. Do not launch a managed Ralph campaign or reset `.scratch/ralph-loop/completion-signal.json` without separate human authorization.

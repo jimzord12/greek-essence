@@ -66,7 +66,7 @@ Authoritative documentation review and update
 P1 visual and content foundation planning
 ```
 
-Only the first node is active through `NEXT.md`. Completion of one node does not automatically authorize its successor; reconcile evidence and explicitly promote the next node first.
+The deterministic transition node is complete. The reviewed sequential asset prompt pack is the next planned node, but it is not active or authorized until the operator explicitly promotes it through `NEXT.md`. Completion of one node never authorizes its successor automatically.
 
 <!-- Agreed and prioritized work that is not active yet. Link its plan/task when available. -->
 
