@@ -78,13 +78,13 @@ Lifecycle result:
 - Live process reconciliation found no surviving controller, root, or B07-01 child process.
 - The controller then exited `7` with `HARD_STOP` because the read-only timeout diagnosis itself exceeded its 180-second budget and did not authorize a retry. This is not a lifecycle-cleanup failure, and no retry is authorized.
 
-### Recommended next action: manually reconcile B07-01
+### Recommended next action: managed B07-03 completion report
 
-1. Do not launch another Ralph controller for this reproduction.
-2. Preserve the current attributable B07-01 worktree changes and review records.
-3. Correct the narrow Windows/MSYS path issue in the final clean-room pre-install absence/EOL evidence probe, rerun only the missing evidence procedure, then obtain same-reviewer re-review.
-4. If approved, synchronize B07-01 tracking and create its dedicated local task commit. Do not begin B07-02 before B07-01 closure.
-5. Treat the abrupt controller-death/orphan defect as not reproduced in this controlled run. The instrumentation and timeout cleanup path behaved correctly, but this single successful lifecycle run does not prove that an unknown external abrupt-kill cause can never recur.
+1. B07-01 is approved and committed as `ee4843b`.
+2. Ralph controller hardening is committed and pushed as `05884bb` on `fix/ralph-controller-pid-logging`; 66/66 Ralph unit tests passed.
+3. B07-02 passed every authoritative aggregate gate, received task-review approval after one status-integrity correction cycle, and is ready for its dedicated local commit.
+4. After that commit, B07-03 is the sole dependency-ready task. Run one managed bounded iteration for campaign `bootstrap-b07-03`, task `B07-03`, resolved tier `2`.
+5. Complete the authoritative completion report, final phase review/gates, tracking reconciliation, and completion-signal decision. Do not make another remote change without explicit authorization.
 
 Do not include the existing B07-01 task-status modification in unrelated follow-up commits. Report the controlled run precisely: the prior orphan pattern was not reproduced and normal timeout cleanup succeeded, but the unknown external abrupt-termination cause is not proven eliminated.
 

@@ -13,12 +13,12 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 | 04 — Bilingual fixtures | Done | 3/3 |
 | 05 — Automated tests | Done | 3/3 |
 | 06 — Quality review | Done | 3/3 |
-| 07 — Final verification | In progress | 1/3 |
+| 07 — Final verification | In progress | 2/3 |
 
-**Current task:** `B07-02`
-**Next unblocked task:** `B07-02`
+**Current task:** `B07-03`
+**Next unblocked task:** `B07-03`
 
-B07-01 is `Done` after approved clean-room verification under the operator-clarified Tier 2 contract: a fresh copy without project dependencies/build output installed the unchanged frozen lockfile and passed `pnpm check:all`; normal pnpm content-addressed cache reuse was allowed. B07-02 is dependency-ready and has not started.
+B07-01 is `Done` after approved clean-room verification under the operator-clarified Tier 2 contract: a fresh copy without project dependencies/build output installed the unchanged frozen lockfile and passed `pnpm check:all`; normal pnpm content-addressed cache reuse was allowed. B07-02 is `Done` after all aggregate gates passed and independent review approved the reconciled evidence. B07-03 is now dependency-ready.
 
 **Known external blockers:** Kimi Code is unavailable, so cross-agent validation cannot become fully green. The former B01-03 source blocker is resolved by BD-015.
 
