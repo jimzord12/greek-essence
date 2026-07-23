@@ -32,10 +32,12 @@ Completed and removed or reconciled into durable project history
 
 ## Inbox
 
-- [ ] Convert the Terra prototype asset inventory into a reviewed ChatGPT image-generation prompt pack.
+- [ ] Turn the Terra prototype asset report into a reviewed, sequential ChatGPT image-generation prompt pack for manual use.
   - **Source:** `C:\Users\jimzord12\Documents\greek-essence-prototype-asset-plan.md`
-  - **Desired outcome:** Detailed prompts for the 18 must-have prototype images, followed by a small visual-direction test set before full generation.
-  - **Notes:** Preserve geographic accuracy, responsive crop requirements, text-safe composition, accessibility intent, licensing review, and the report's negative constraints.
+  - **Desired outcome:** One self-contained, copy-ready prompt per must-have image, ordered so the operator can paste prompts manually into the ChatGPT app one by one.
+  - **Prompt contents:** Asset ID, subject/location, photographic direction, composition and text-safe area, aspect ratio and target dimensions, responsive crop intent, EN/EL text-overlay prohibition, accessibility intent, geographic/brand accuracy constraints, negative prompt, and any continuity instructions shared with the asset family.
+  - **Workflow:** Begin with a small visual-direction test set; record operator feedback; revise the shared style guidance; then prepare the remaining prompts without generating or submitting images automatically.
+  - **Notes:** Preserve licensing review requirements and clearly label inferred scenes or provisional people/journey content. The deliverable is the prompt list only; the operator performs every ChatGPT submission manually.
 
 ## Planned
 
