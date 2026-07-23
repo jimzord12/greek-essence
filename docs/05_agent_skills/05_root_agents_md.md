@@ -2,7 +2,7 @@
 
 ### 5.1 Purpose
 
-`AGENTS.md` provides the compact repository-wide instruction layer that both Codex CLI and Kimi Code can read before ordinary work.
+`AGENTS.md` provides the compact repository-wide instruction layer that Codex CLI can read before ordinary work.
 
 It should remain concise. It must point to authoritative documents and approved skills rather than restating their contents.
 

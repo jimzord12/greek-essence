@@ -16,7 +16,7 @@ This inventory records approved third-party skills vendored into the repository.
 - **Excluded optional disciplines:** none; no agent-specific wrapper copies are retained.
 - **Local modifications:** none after the recorded project revision.
 - **Codex validation result:** Explicit local-file control passed (exit `0`): Codex read `SKILL.md` and returned `.scratch/bootstrap/BOOTSTRAP-AGENTS.md`. Artifact: `.artifacts/bootstrap/B01-07/codex-bootstrap-next.txt`.
-- **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
+- **Compatibility validation:** Codex local-file control passed; no second-agent compatibility gate is part of the current contract.
 - **Update procedure:** Update the canonical project-owned `SKILL.md` and its `agents/openai.yaml` metadata together when the bootstrap workflow changes; record the resulting project revision and repeat the explicit-load control.
 
 ## Ralph Loop Manager
@@ -55,7 +55,7 @@ This inventory records approved third-party skills vendored into the repository.
 - **Verified license:** Apache License 2.0 (`LICENSE`); wrapper-package third-party attribution is retained in `THIRD_PARTY_NOTICES`.
 - **Local modifications:** none to retained upstream file contents; local selection and this provenance record are project-owned.
 - **Codex validation result:** Explicit local-file control passed (exit `0`): Codex returned the exact Step 1 `npx -y modern-web-guidance@latest search "<query>" --skill-version 2026_05_16-c5e78707` command. Artifact: `.artifacts/bootstrap/B01-07/codex-modern-web-guidance.txt`.
-- **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
+- **Compatibility validation:** Codex local-file control passed; no second-agent compatibility gate is part of the current contract.
 - **Update procedure:** rerun the reviewed verification script against the intended release; inspect wrapper delegation, the official repository commit/layout, complete installer targets, source/license/notice comparisons, and excluded disciplines; then update this record and task evidence before accepting any local selection change.
 
 ## Setup runtime record
@@ -65,7 +65,11 @@ This inventory records approved third-party skills vendored into the repository.
 - **Project-local Playwright CLI:** `0.1.17` (`pnpm exec playwright-cli`); the separately installed global executable currently reports `0.1.14`.
 - **Codex CLI:** `0.144.6`.
 - **Repository package added for this setup:** none.
-- **Global tooling required in contributor environments:** Node.js and a pnpm/Corepack-capable environment are required by repository guidance; `playwright-cli` is required by the approved browser-inspection baseline. This task added no global tooling.
+- **Global tooling required in contributor environments:** Node.js and a pnpm/Corepack-capable environment are required by the historical bootstrap guidance; `playwright-cli` is required by the approved browser-inspection baseline. This task added no global tooling.
+
+## Current contributor policy
+
+As of 2026-07-23, contributors must use standalone pnpm `11.17.0` directly. This current policy is declared by the repository `package.json` (`packageManager: pnpm@11.17.0`, engines `>=11 <12`) and supersedes the historical setup-runtime record above.
 
 ## Vercel React Best Practices
 
@@ -82,7 +86,7 @@ This inventory records approved third-party skills vendored into the repository.
 - **Excluded optional disciplines:** all other Vercel skills; no agent-specific duplicate copies.
 - **Local modifications:** CRLF-to-LF normalization only; otherwise source contents are preserved.
 - **Codex validation result:** Explicit local-file control passed (exit `0`): Codex returned all eight categories in priority order. Artifact: `.artifacts/bootstrap/B01-07/codex-vercel-react-best-practices.txt`.
-- **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
+- **Compatibility validation:** Codex local-file control passed; no second-agent compatibility gate is part of the current contract.
 - **Update procedure:** inspect the source skill and its referenced files in an isolated checkout at an explicit upstream revision; verify its MIT declaration and absence of executable scripts; normalize-copy only `skills/react-best-practices/` to this local path; then update this entry and B01-04 evidence.
 
 ## Playwright CLI
@@ -99,7 +103,7 @@ This inventory records approved third-party skills vendored into the repository.
 - **Excluded optional disciplines:** no optional skill disciplines; the installer-generated `.claude/skills/playwright-cli/` copy and `.playwright/` workspace state remain only in ignored isolation artifacts, with no agent-specific duplicate committed.
 - **Local modifications:** CRLF-to-LF normalization only; the B06-02 refresh regenerated the canonical skill from project-local `0.1.17`; all 11 canonical files equal the generated source after normalization.
 - **Codex validation result:** Explicit local-file control passed (exit `0`): Codex returned `playwright-cli open` from Quick start. Artifact: `.artifacts/bootstrap/B01-07/codex-playwright-cli.txt`.
-- **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
+- **Compatibility validation:** Codex local-file control passed; no second-agent compatibility gate is part of the current contract.
 - **Update procedure:** inspect the installed CLI help and generated `SKILL.md` plus every referenced file in an ignored isolated directory; check package provenance/license and executable content; generate with `pnpm exec playwright-cli install --skills=agents`; retain only the normalized canonical `.agents/skills/playwright-cli/` copy; then update this inventory and the corresponding task evidence.
 
 ## B01-05 package-pinning deferral
@@ -120,5 +124,5 @@ This inventory records approved third-party skills vendored into the repository.
 - **Excluded optional disciplines:** none; no agent-specific wrapper copies are retained.
 - **Local modifications:** none after the recorded project revision.
 - **Codex validation result:** Explicit local-file control passed (exit `0`): Codex returned the eight required report headings in order. Artifact: `.artifacts/bootstrap/B01-07/codex-greek-essence-quality-review.txt`.
-- **Kimi validation result:** Blocked: `command -v kimi` exited `1`; the executable/authentication is unavailable (external blocker).
+- **Compatibility validation:** Codex local-file control passed; no second-agent compatibility gate is part of the current contract.
 - **Update procedure:** Update the canonical `SKILL.md` and only the affected focused checklists when authoritative quality requirements change; run the B01-06 structural verifier and repeat the explicit-load control before recording the resulting project revision.

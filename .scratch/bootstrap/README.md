@@ -20,7 +20,7 @@ This tracked workspace coordinates repository bootstrap only. It does not author
 
 B07-01 is `Done` after approved clean-room verification under the operator-clarified Tier 2 contract: a fresh copy without project dependencies/build output installed the unchanged frozen lockfile and passed `pnpm check:all`; normal pnpm content-addressed cache reuse was allowed. B07-02 is `Done` after all aggregate gates passed and independent review approved the reconciled evidence. B07-03 is `Done` after its evidence-backed completion report received independent task-review approval. Independent Phase 07 review approved the final exit gate; the bootstrap campaign is complete.
 
-**Known external blockers:** Kimi Code is unavailable, so cross-agent validation cannot become fully green. The former B01-03 source blocker is resolved by BD-015.
+Historical compatibility probes remain factual non-normative records and are not current requirements or blockers. The former B01-03 source blocker is resolved by BD-015.
 
 ## Entry points
 

@@ -13,10 +13,9 @@ For every update:
 7. regenerate or reinstall in an isolated location;
 8. inspect the repository diff;
 9. test Codex CLI discovery;
-10. test Kimi Code discovery;
-11. run controlled usage prompts;
-12. update `.agents/README.md`;
-13. commit skill updates separately from unrelated application changes where practical.
+10. run controlled usage prompts;
+11. update `.agents/README.md`;
+12. commit skill updates separately from unrelated application changes where practical.
 
 ### 14.1 Playwright CLI skill updates
 

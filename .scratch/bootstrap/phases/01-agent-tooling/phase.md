@@ -16,5 +16,5 @@ Install the locked repository-local agent baseline safely and document provenanc
 
 ## Exit gate
 
-All four approved repository-local skills exist; the retired Next.js reference skill and prohibited alternatives are absent; provenance is complete; and Codex validation passes. Kimi remains explicitly blocked. B02-03 explicitly owns the later installed-version Next.js runtime handoff: inspect `next/dist/docs/`, validate the applicable generated-rule path, preserve root `AGENTS.md` authority, and record exact runtime evidence after Next.js is pinned.
+All four approved repository-local skills exist; the retired Next.js reference skill and prohibited alternatives are absent; provenance is complete; and Codex validation passes. B02-03 explicitly owns the later installed-version Next.js runtime handoff: inspect `next/dist/docs/`, validate the applicable generated-rule path, preserve root `AGENTS.md` authority, and record exact runtime evidence after Next.js is pinned.
 

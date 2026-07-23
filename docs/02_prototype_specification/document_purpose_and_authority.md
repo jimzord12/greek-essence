@@ -25,6 +25,7 @@ The project documentation hierarchy is:
 2. `01_PRODUCT_REQUIREMENTS.md` — product and business truth.
 3. This document — UX, UI, interaction, and prototype decisions.
 4. `03_TECHNICAL_DESIGN.md` — implementation decisions.
+5. `04_DESIGN_SYSTEM.md` — visual-system decisions.
 
 If this document conflicts with the PRD, the PRD governs. The original UX Strategy and Website Requirements Brief supplies supplementary visual and interaction evidence only. Unknown business facts are not resolved here.
 

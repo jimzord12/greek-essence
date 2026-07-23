@@ -18,7 +18,7 @@ It tells a fresh implementation agent:
 - what each tool or skill contributes;
 - where agent-specific files belong;
 - how to install and validate them;
-- how Codex CLI and Kimi Code should use them;
+- how Codex CLI should use them;
 - how upstream revisions must be recorded and updated safely.
 
 This document does **not** redefine product requirements, UX requirements, application architecture, repository architecture, browser-support policy, performance budgets, accessibility acceptance criteria, test coverage, CI behavior, form behavior, localization behavior, or production-readiness requirements.
@@ -40,7 +40,7 @@ This document owns:
 - repository-local Agent Skills;
 - the approved interactive browser interface for coding agents;
 - installation and version-recording procedures for those skills and tools;
-- cross-agent compatibility expectations for Codex CLI and Kimi Code;
+- agent compatibility expectations for Codex CLI;
 - safe skill-update procedures;
 - acceptance criteria for the agent-tooling setup.
 

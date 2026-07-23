@@ -6,12 +6,6 @@
 - `https://developers.openai.com/codex/build-skills`
 - `https://developers.openai.com/codex/customization/overview`
 
-### Kimi Code
-
-- `https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html`
-- `https://www.kimi.com/code/docs/en/kimi-code-cli/customization/agents.html`
-- `https://www.kimi.com/code/docs/en/kimi-code-cli/reference/slash-commands.html`
-
 ### Google Chrome Modern Web Guidance
 
 - `https://developer.chrome.com/docs/modern-web-guidance`

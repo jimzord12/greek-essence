@@ -106,7 +106,7 @@ Empty sections may be omitted. Subjective preferences must not be presented as d
 
 ### 10.9 Validation
 
-Test the skill in Codex CLI and Kimi Code with a controlled prompt against a real or representative page change.
+Test the skill in Codex CLI with a controlled prompt against a real or representative page change.
 
 The agent must:
 

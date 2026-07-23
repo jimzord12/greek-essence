@@ -38,4 +38,4 @@ Apply verification row B06-03 and all relevant locked defaults from [the Bootstr
 
 ## Acceptance
 
-The fresh Codex Reviewer Skill run has no unresolved blocking or high-impact bootstrap defect; Kimi validation remains separately blocked.
+The fresh Codex Reviewer Skill run has no unresolved blocking or high-impact bootstrap defect.

@@ -21,9 +21,9 @@ It does not alter the product decisions in the governing PRD or the UX decisions
 2. `01_PRODUCT_REQUIREMENTS.md` (PRD) — product, business, and production-MVP truth.
 3. `02_PROTOTYPE_SPECIFICATION.md` (Prototype) — UX, UI, responsive, states, and interactions.
 4. This document — implementation decisions for the prototype build.
-5. The UX Strategy brief — supplementary historical evidence.
+5. `04_DESIGN_SYSTEM.md` (Design System) — visual-system decisions.
 
-When documents conflict, the higher-ranked document governs. A production requirement intentionally deferred from this prototype is listed in §22 rather than silently removed.
+When documents conflict, the higher-ranked document governs. UX Strategy material remains supplementary historical evidence, not a ranked authority level. A production requirement intentionally deferred from this prototype is listed in §22 rather than silently removed.
 
 ### 0.2 Prototype build versus production MVP
 

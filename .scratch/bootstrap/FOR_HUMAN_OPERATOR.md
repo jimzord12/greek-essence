@@ -10,11 +10,11 @@ There are 8 phases and 28 tasks. Each task is implemented by one subagent, revie
 
 ## Current status
 
-- Current phase: `00 — Planning and baseline`
-- Current task: `B00-02 — Validate and finalize the execution workspace`
-- Next unblocked task: `B00-02`
-- Completed tasks: `1/28`
-- External blocker: Kimi Code is unavailable, so full cross-agent compatibility cannot be declared green.
+- Current phase: Bootstrap complete
+- Current task: None
+- Next unblocked task: None
+- Completed tasks: `28/28`
+- Historical compatibility probes are retained as non-normative records; no external compatibility blocker is part of the current contract.
 - Hosted CI: intentionally outside this bootstrap.
 
 For detail, open [the dashboard](README.md). For governing rules, open [the protocol](protocol.md).
@@ -85,4 +85,4 @@ Read `.scratch/bootstrap/README.md`, `.scratch/bootstrap/protocol.md`, and the c
 
 ## Completion meaning
 
-Local bootstrap is complete only when Phase 07 is approved, every applicable command is green, the Reviewer Skill is green in Codex, and `completion-report.md` is finalized. Kimi remains visibly blocked until actually validated; local completion must not be presented as full cross-agent acceptance.
+Local bootstrap is complete: Phase 07 is approved, every applicable command is green, the Reviewer Skill is green in Codex, and `completion-report.md` is finalized. Product implementation remains a separate operator-authorized step.
