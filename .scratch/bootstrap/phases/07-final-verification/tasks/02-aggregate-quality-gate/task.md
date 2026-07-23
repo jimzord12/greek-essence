@@ -1,11 +1,11 @@
 ---
 id: B07-02
-status: Pending
+status: Done
 depends_on: [B07-01]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260723_123245_7b0dbd
+reviewer_agent: 20260723_125017_a99633
+started_at: 2026-07-23T12:33:52+03:00
+completed_at: 2026-07-23T12:59:11+03:00
 ---
 
 # Run the aggregate quality gate

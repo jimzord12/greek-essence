@@ -29,7 +29,7 @@ This matrix is authoritative for task-level verification. Tasks may add narrower
 | B06-01 | `pnpm build`; `pnpm quality:unlighthouse`; verify all four URLs and category budgets in the report. |
 | B06-02 | Use the canonical Playwright CLI skill on both routes/locales at compact and wide viewports; record route, viewport, console/network, and artifact evidence. |
 | B06-03 | Run the canonical quality-review skill in a fresh Codex subagent; complete response/re-review until no blockers/high findings remain. |
-| B07-01 | In an isolated copy: `pnpm install --frozen-lockfile`; `pnpm check:all`; verify no reliance on primary dependencies or caches. |
+| B07-01 | In a fresh isolated copy with no `node_modules` or `.next`: `pnpm install --frozen-lockfile`; verify the lockfile is unchanged; run `pnpm check:all`. Normal pnpm content-addressed cache reuse is allowed because lockfile versions and integrity remain authoritative. |
 | B07-02 | Run frozen install, format, lint, typecheck, unit, build, E2E, axe, Unlighthouse, and aggregate gates; all exit zero. |
 | B07-03 | Validate every completion-report field, all links, exact task counts, and explicit Kimi blocker wording. |
 

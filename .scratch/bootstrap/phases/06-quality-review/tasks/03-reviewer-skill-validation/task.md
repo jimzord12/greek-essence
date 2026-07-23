@@ -1,11 +1,11 @@
 ---
 id: B06-03
-status: Ready
+status: Done
 depends_on: [B06-02]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_220810_753758
+reviewer_agent: 20260722_222717_a20788
+started_at: 2026-07-22T22:09:15+03:00
+completed_at: 2026-07-22T22:40:08+03:00
 ---
 
 # Run the Greek Essence Reviewer Skill

@@ -4,27 +4,38 @@ This file is mutable working memory for the next fresh Sol context. It is not an
 
 ## Last completed work
 
-B06-02 implementation and independent review are complete. Implementer `20260722_165408_e78a72` regenerated the repository-local Playwright skill through pinned local CLI 0.1.17 and reran all eight route/viewport states with stable role locators. Reviewer `20260722_171958_b5891d` requested one High correction, then approved Review 02 with no remaining findings.
+B07-02 aggregate quality-gate work is approved and reconciled. Its dedicated local commit is the final action of the current root iteration.
 
 ## Current repository/worktree facts
 
-- Branch: `main`; current HEAD is `f536da3` after the operator's two separate AGENTS.md commits.
-- B06-02 is `Done`; B06-03 is `Ready`; Phase 06 remains `In progress` at 2/3; dashboard count is 24/28.
-- B06-02 task-owned changes and the generated Playwright skill refresh are uncommitted. Workspace validation and `git diff --check` pass.
-- The dedicated B06-02 task commit is still missing because bounded Ralph iteration 1 timed out with exit 5 during closure.
-- Completion signal remains exactly `false` because B06-02 closure is incomplete.
-- The authorized managed campaign is B06-02 only. B06-03 is excluded and must not start or be folded into this campaign.
+- Branch: `fix/ralph-controller-pid-logging`; current HEAD is `05884bb` (`fix(ralph): harden timeout diagnosis checks`) and the branch is pushed to `origin/fix/ralph-controller-pid-logging`.
+- The worktree contains only the B07-02 task records/reviews, synchronized bootstrap tracking, and campaign handoff updates intended for the dedicated B07-02 commit.
+- B07-01 and B07-02 are `Done`; B07-03 is `Ready` and is the sole dependency-ready task.
+- Ralph controller unit suite passed 66/66 before the controller-hardening commit and push.
+- Kimi Code validation remains the known external blocker and must not be described as green.
+- Completion signal remains exactly `false`; all managed work is not complete because B07-03 and the Phase 07 final gate remain.
+
+## Active campaign
+
+- Campaign target: B07-03 — Completion report.
+- Managed outcome: validate and complete the final report, resolve required task and phase review, synchronize tracking, and decide the completion signal only after every final gate succeeds.
+- Acceptance source: `.scratch/bootstrap/phases/07-final-verification/tasks/03-completion-report/task.md` and verification-matrix row B07-03.
+- Resolved tier: Tier 2 — Prototype.
+- Explicit exclusions: B07-03 must not begin until the dedicated B07-02 commit succeeds. No additional push, deployment, remote change, history rewrite, credentials, system change, unrelated destructive change, or out-of-repository mutation is authorized.
 
 ## Next required action
 
-HARD STOP pending explicit operator consent to rerun the mandatory structural preflight. The approval layer denied the post-timeout preflight and instructed the manager not to retry or use an alternate path without fresh consent. After consent, run preflight; if compatible, launch one bounded root closure iteration to verify the existing approved state, create the dedicated B06-02 commit, set the B06-02 campaign completion signal true, update this handoff, and exit. Do not start B06-03.
+B07-03 is structurally and semantically compatible with the active false completion signal after the B07-02 commit succeeds. Run one bounded Ralph iteration for campaign `bootstrap-b07-03`, task `B07-03`, resolved tier `2`. Complete the authoritative report checks, task review, final Phase 07 review/gates, tracking reconciliation, and completion-signal decision.
 
 ## Child session IDs
 
-- B06-02 implementer: `20260722_165408_e78a72`
-- B06-02 reviewer: `20260722_171958_b5891d`
+- B06-03 implementer: `20260722_220810_753758`
+- B06-03 Codex quality-review child: `019f8b3c-49ef-7360-93a7-688532a58760`
+- B06-03 task reviewer: `20260722_222717_a20788`
+- Phase 06 reviewer: `20260722_224040_ca8127`
+- B07-02 implementer: `20260723_123245_7b0dbd`
+- B07-02 reviewer: `20260723_125017_a99633`
 
 ## Blockers requiring human action
 
-- Operator must explicitly authorize rerunning the manager preflight and one bounded B06-02 closure iteration after the controller timeout.
-- No push, deployment, history rewrite, credential change, system change, B06-03 work, or unrelated destructive change is authorized.
+None currently recorded. Stop only at repository safety boundaries or if clean-room verification requires credentials, system changes, out-of-repository mutation beyond the task-owned isolated-copy procedure, or another unauthorized action.

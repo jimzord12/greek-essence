@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { NextIntlClientProvider } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
+import type { ReactNode } from "react"
 
 import { routing, type Locale } from "@/i18n/routing"
 
@@ -22,10 +23,15 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
+type LocaleLayoutProps = {
+  children: ReactNode
+  params: Promise<{ locale: string }>
+}
+
 export default async function LocaleLayout({
   children,
   params,
-}: LayoutProps<"/[locale]">) {
+}: LocaleLayoutProps) {
   const { locale } = await params
 
   if (!routing.locales.includes(locale as Locale)) {

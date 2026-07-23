@@ -9,6 +9,7 @@ import subprocess
 import sys
 import time
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
 from typing import Callable
@@ -25,7 +26,7 @@ HANDOFF = Path(".scratch") / "ralph-loop" / "HANDOFF.md"
 PREFLIGHT = Path(".agents") / "skills" / "ralph-loop-manager" / "scripts" / "preflight.py"
 DEFAULT_ITERATION_TIMEOUT = 3600.0
 DEFAULT_ASSESSMENT_THRESHOLD = 2700.0
-DEFAULT_ASSESSOR_TIMEOUT = 180.0
+DEFAULT_ASSESSOR_TIMEOUT = 1200.0
 MAX_EXTENSIONS = 3
 MAX_TIMEOUT_RETRIES = 1
 
@@ -80,6 +81,42 @@ class ControllerState:
     current_root_pid: int | None = None
     assessment_log: str | None = None
     diagnosis_log: str | None = None
+
+
+class LifecycleLogger:
+    """Append privacy-bounded controller lifecycle events as durable JSONL."""
+
+    def __init__(self, path: Path, campaign_id: str, task_id: str, resolved_tier: str) -> None:
+        self.path = path
+        self.campaign_id = campaign_id
+        self.task_id = task_id
+        self.resolved_tier = resolved_tier
+        self.last_error: str | None = None
+        try:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+        except OSError as exc:
+            self.last_error = f"{type(exc).__name__}: {exc}"
+
+    def emit(self, event: str, **fields: object) -> None:
+        payload = {
+            "timestamp_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "event": event,
+            "campaign_id": self.campaign_id,
+            "task_id": self.task_id,
+            "resolved_tier": self.resolved_tier,
+            **fields,
+        }
+        try:
+            with self.path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+                handle.flush()
+            self.last_error = None
+        except (OSError, TypeError, ValueError) as exc:
+            self.last_error = f"{type(exc).__name__}: {exc}"
+
+
+def _lifecycle_log(state_dir: Path) -> Path:
+    return state_dir / "logs" / f"controller-lifecycle-{time.strftime('%Y%m%d-%H%M%S')}-pid-{os.getpid()}.jsonl"
 
 
 def default_state_dir() -> Path:
@@ -146,12 +183,33 @@ def read_completion_signal(repo: Path) -> bool:
     return value
 
 
-def save_controller_state(state_dir: Path, state: ControllerState) -> None:
+def save_controller_state(
+    state_dir: Path,
+    state: ControllerState,
+    lifecycle: LifecycleLogger | None = None,
+    *,
+    reason: str = "state_update",
+) -> None:
+    if lifecycle is not None:
+        lifecycle.emit(
+            "controller_state_write_start",
+            reason=reason,
+            current_iteration=state.current_iteration,
+            current_root_pid=state.current_root_pid,
+        )
     state_dir.mkdir(parents=True, exist_ok=True)
     target = state_dir / "controller-state.json"
     temporary = state_dir / "controller-state.json.tmp"
     temporary.write_text(json.dumps(asdict(state), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     os.replace(temporary, target)
+    if lifecycle is not None:
+        lifecycle.emit(
+            "controller_state_write_complete",
+            reason=reason,
+            state_path=str(target),
+            current_iteration=state.current_iteration,
+            current_root_pid=state.current_root_pid,
+        )
 
 
 def _validated_controller_state(payload: object) -> ControllerState:
@@ -180,11 +238,17 @@ def _validated_controller_state(payload: object) -> ControllerState:
     return ControllerState(**payload)  # type: ignore[arg-type]
 
 
-def load_controller_state(state_dir: Path, campaign_id: str, task_id: str, resolved_tier: str) -> ControllerState:
+def load_controller_state(
+    state_dir: Path,
+    campaign_id: str,
+    task_id: str,
+    resolved_tier: str,
+    lifecycle: LifecycleLogger | None = None,
+) -> ControllerState:
     target = state_dir / "controller-state.json"
     if not target.exists():
         state = ControllerState(campaign_id, task_id, resolved_tier)
-        save_controller_state(state_dir, state)
+        save_controller_state(state_dir, state, lifecycle, reason="initial_state")
         return state
     try:
         payload = _strict_json(target.read_text(encoding="utf-8"))
@@ -214,7 +278,9 @@ def build_hermes_command(repo: Path, iteration: int, prompt: str | None = None) 
 
 
 def _readonly_command(prompt: str) -> list[str]:
-    return ["hermes", "-p", ASSESSOR_PROFILE, "chat", "-Q", "--pass-session-id", "--source", "ralph-supervisor", "-m", ASSESSOR_MODEL, "--provider", ROOT_PROVIDER, "-q", prompt]
+    # The strict parser consumes stdout verbatim. Do not request a session-id
+    # trailer here because it would make an otherwise valid JSON decision fail.
+    return ["hermes", "-p", ASSESSOR_PROFILE, "chat", "-Q", "--source", "ralph-supervisor", "-m", ASSESSOR_MODEL, "--provider", ROOT_PROVIDER, "-q", prompt]
 
 
 def health_prompt(state: ControllerState) -> str:
@@ -225,7 +291,9 @@ Resolved engineering tier: {state.resolved_tier}
 
 Inspect repository evidence only: the active task contract/status and task-owned diff; report/evidence; review and correction state; recent Ralph/root/child activity; unresolved acceptance criteria, required gates, Blocking/High findings, handoff, dedicated commit, and completion reconciliation. Healthy means recent durable task-attributable progress on necessary unresolved work, including a finite changed recovery strategy or required closure. Evidence against extension includes optional/repeated tests, untied research, repeated reads or failed calls, unnecessary refactoring, speculative abstractions, enterprise-depth expansion, implausible edges, unrelated docs, scope expansion, claimed effort without durable evidence, accepted work with stalled closure, or work beyond the resolved tier.
 
-Do not modify files, implement, create review files, commit, email, or control processes. Return exactly one JSON object and no prose: {{"should_extend": true}} or {{"should_extend": false}}. Uncertainty means false."""
+Do not perform broad repository exploration. Read the smallest authoritative evidence set needed for this decision, prioritize current task status, latest review/evidence, HANDOFF, relevant diff/commit state, and recent runtime events, and avoid repeating searches or checks. Decide promptly once the decisive evidence is clear.
+
+Do not modify files, implement, create review files, commit, email, or control processes. Return exactly one JSON object and no prose, markdown, session ID, or explanation: {{"should_extend": true}} or {{"should_extend": false}}. Uncertainty means false."""
 
 
 def diagnosis_prompt(state: ControllerState) -> str:
@@ -237,7 +305,9 @@ Health renewal already existed, so timeout is evidence that the root exceeded it
 
 Inspect what is already complete in task status, diff, evidence/reports, reviews, HANDOFF, completion signal, commits, and runtime logs before recommending repetition. Classify closure incomplete, overengineering, review correction incomplete, tool/process stall, scope conflict, human decision required, or unknown failure. Recommend at most one same-task retry only when a narrow safe remaining action exists. Prefer the smallest recovery; preserve task and tier; do not rerun approved implementation/review. Human decision, conflict, or uncertainty means no retry.
 
-Do not mutate files, implement, create reviews, commit, email, or control processes. Return only exactly one of:
+Do not perform broad repository exploration. Read the smallest authoritative evidence set needed for this decision, prioritize current task status, latest review/evidence, HANDOFF, relevant diff/commit state, and recent runtime events, and avoid repeating searches or checks. Decide promptly once the decisive evidence is clear.
+
+Do not mutate files, implement, create reviews, commit, email, or control processes. Return only exactly one JSON object with no prose, markdown, session ID, or explanation:
 {{"should_retry": true, "steering": "Non-empty bounded instruction."}}
 {{"should_retry": false, "steering": null}}"""
 
@@ -296,34 +366,57 @@ def terminate_process_tree(process: subprocess.Popen[str]) -> None:
         process.wait(timeout=5)
 
 
-def supervise_process(process: subprocess.Popen[str], *, lease_seconds: float, assessment_seconds: float, state: ControllerState, assess_fn: Callable[[], bool], persist_fn: Callable[[ControllerState], None], completion_or_stop_fn: Callable[[], bool], monotonic_fn: Callable[[], float] = time.monotonic, terminate_fn: Callable[[subprocess.Popen[str]], None] = terminate_process_tree) -> int:
+def supervise_process(process: subprocess.Popen[str], *, lease_seconds: float, assessment_seconds: float, state: ControllerState, assess_fn: Callable[[], bool], persist_fn: Callable[[ControllerState], None], completion_or_stop_fn: Callable[[], bool], monotonic_fn: Callable[[], float] = time.monotonic, terminate_fn: Callable[[subprocess.Popen[str]], None] = terminate_process_tree, event_fn: Callable[[str, dict[str, object]], None] | None = None, heartbeat_seconds: float = 5.0) -> int:
+    def emit(event: str, **fields: object) -> None:
+        if event_fn is not None:
+            event_fn(event, fields)
+
     lease_start = monotonic_fn()
     assessed_this_lease = False
     while True:
-        if process.poll() is not None:
-            return process.poll() or 0
+        poll_result = process.poll()
+        emit(
+            "supervision_poll",
+            root_pid=getattr(process, "pid", None),
+            poll_result=poll_result,
+            elapsed_seconds=monotonic_fn() - lease_start,
+        )
+        if poll_result is not None:
+            return poll_result or 0
         now = monotonic_fn()
         if state.successful_extensions < MAX_EXTENSIONS and not assessed_this_lease and now - lease_start >= assessment_seconds:
             assessed_this_lease = True
+            emit("assessment_start", root_pid=getattr(process, "pid", None), elapsed_seconds=now - lease_start)
             extend = assess_fn()
-            if process.poll() is not None:
-                return process.poll() or 0
+            poll_result = process.poll()
+            emit("assessment_complete", root_pid=getattr(process, "pid", None), poll_result=poll_result, should_extend=extend)
+            if poll_result is not None:
+                return poll_result or 0
             if extend and not completion_or_stop_fn() and state.successful_extensions < MAX_EXTENSIONS:
                 state.successful_extensions += 1
                 persist_fn(state)
+                emit("lease_extended", root_pid=getattr(process, "pid", None), successful_extensions=state.successful_extensions)
                 lease_start = monotonic_fn()
                 assessed_this_lease = False
                 continue
         remaining = lease_seconds - (monotonic_fn() - lease_start)
         if remaining <= 0:
+            emit("lease_expired", root_pid=getattr(process, "pid", None), poll_result=process.poll())
             terminate_fn(process)
             raise IterationTimeout("Ralph iteration lease expired")
         until_assessment = remaining
         if state.successful_extensions < MAX_EXTENSIONS and not assessed_this_lease:
             until_assessment = max(0.001, assessment_seconds - (monotonic_fn() - lease_start))
+        wait_seconds = min(remaining, until_assessment)
+        if event_fn is not None:
+            wait_seconds = min(wait_seconds, heartbeat_seconds)
+        emit("supervision_wait_start", root_pid=getattr(process, "pid", None), timeout_seconds=wait_seconds)
         try:
-            return process.wait(timeout=min(remaining, until_assessment))
+            code = process.wait(timeout=wait_seconds)
+            emit("supervision_wait_return", root_pid=getattr(process, "pid", None), return_code=code)
+            return code
         except subprocess.TimeoutExpired:
+            emit("supervision_wait_timeout", root_pid=getattr(process, "pid", None), timeout_seconds=wait_seconds, poll_result=process.poll())
             continue
 
 
@@ -341,9 +434,11 @@ def _pid_is_running(pid: int) -> bool:
     return True
 
 
-def _acquire_lock(state_dir: Path) -> Path:
+def _acquire_lock(state_dir: Path, lifecycle: LifecycleLogger | None = None) -> Path:
     state_dir.mkdir(parents=True, exist_ok=True)
     lock = state_dir / "ralph.lock"
+    if lifecycle is not None:
+        lifecycle.emit("lock_acquire_start", lock_path=str(lock), controller_pid=os.getpid())
     for attempt in range(2):
         try:
             descriptor = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
@@ -352,14 +447,25 @@ def _acquire_lock(state_dir: Path) -> Path:
             try:
                 owner_pid = int(lock.read_text(encoding="utf-8").strip())
             except (OSError, ValueError) as read_exc:
+                if lifecycle is not None:
+                    lifecycle.emit("lock_conflict", lock_path=str(lock), reason="unreadable")
                 raise LockConflict(f"Ralph loop has an unreadable lock: {lock}") from read_exc
             if attempt or _pid_is_running(owner_pid):
+                if lifecycle is not None:
+                    lifecycle.emit("lock_conflict", lock_path=str(lock), owner_pid=owner_pid)
                 raise LockConflict(f"Ralph loop is already locked by PID {owner_pid}: {lock}") from exc
+            if lifecycle is not None:
+                lifecycle.emit("stale_lock_remove_start", lock_path=str(lock), owner_pid=owner_pid)
             lock.unlink(missing_ok=True)
+            if lifecycle is not None:
+                lifecycle.emit("stale_lock_remove_complete", lock_path=str(lock), owner_pid=owner_pid)
     else:
         raise LockConflict(f"Ralph loop could not acquire lock: {lock}")
     with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
         handle.write(str(os.getpid()))
+        handle.flush()
+    if lifecycle is not None:
+        lifecycle.emit("lock_acquired", lock_path=str(lock), controller_pid=os.getpid())
     return lock
 
 
@@ -370,7 +476,7 @@ def _hard_stop_present(repo: Path) -> bool:
         return True
 
 
-def hermes_executor(repo: Path, state_dir: Path, iteration: int, timeout: float | None, *, assessment_threshold: float = DEFAULT_ASSESSMENT_THRESHOLD, assessor_timeout: float = DEFAULT_ASSESSOR_TIMEOUT, state: ControllerState | None = None, prompt: str | None = None) -> Path:
+def hermes_executor(repo: Path, state_dir: Path, iteration: int, timeout: float | None, *, assessment_threshold: float = DEFAULT_ASSESSMENT_THRESHOLD, assessor_timeout: float = DEFAULT_ASSESSOR_TIMEOUT, state: ControllerState | None = None, prompt: str | None = None, lifecycle: LifecycleLogger | None = None) -> Path:
     if timeout is None:
         timeout = DEFAULT_ITERATION_TIMEOUT
     state = state or ControllerState("legacy", "active-task", "Tier 2 — Prototype")
@@ -378,37 +484,111 @@ def hermes_executor(repo: Path, state_dir: Path, iteration: int, timeout: float 
     process: subprocess.Popen[str] | None = None
     with log_path.open("w", encoding="utf-8") as log:
         command = build_hermes_command(repo, iteration, prompt)
+        if lifecycle is not None:
+            lifecycle.emit(
+                "root_launch_start",
+                iteration=iteration,
+                controller_pid=os.getpid(),
+                parent_pid=os.getppid(),
+                root_executable=command[0],
+                root_profile=ROOT_PROFILE,
+                root_model=ROOT_MODEL,
+                root_provider=ROOT_PROVIDER,
+                iteration_log=str(log_path),
+            )
         log.write(json.dumps({"iteration": iteration, "command": command}, ensure_ascii=False) + "\n")
         log.flush()
         process = subprocess.Popen(command, cwd=repo, stdout=log, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
-        state.current_iteration = iteration
-        state.current_root_pid = getattr(process, "pid", None)
-        save_controller_state(state_dir, state)
-        def assess() -> bool:
-            output, path = run_readonly_assessor(repo, state_dir, health_prompt(state), assessor_timeout, "assessment", iteration)
-            state.assessment_log = str(path)
-            save_controller_state(state_dir, state)
-            if output is None:
-                return False
-            try:
-                return parse_health_response(output)
-            except ValueError:
-                return False
+        primary_exception = False
         try:
-            code = supervise_process(process, lease_seconds=timeout, assessment_seconds=assessment_threshold, state=state, assess_fn=assess, persist_fn=lambda value: save_controller_state(state_dir, value), completion_or_stop_fn=lambda: read_completion_signal(repo) or _hard_stop_present(repo))
+            if lifecycle is not None:
+                lifecycle.emit(
+                    "root_launched",
+                    iteration=iteration,
+                    controller_pid=os.getpid(),
+                    root_pid=getattr(process, "pid", None),
+                    root_executable=command[0],
+                    root_profile=ROOT_PROFILE,
+                    root_model=ROOT_MODEL,
+                    root_provider=ROOT_PROVIDER,
+                )
+            state.current_iteration = iteration
+            state.current_root_pid = getattr(process, "pid", None)
+            save_controller_state(state_dir, state, lifecycle, reason="root_pid_set")
+
+            def assess() -> bool:
+                output, path = run_readonly_assessor(repo, state_dir, health_prompt(state), assessor_timeout, "assessment", iteration)
+                state.assessment_log = str(path)
+                save_controller_state(state_dir, state, lifecycle, reason="assessment_log_set")
+                if output is None:
+                    return False
+                try:
+                    return parse_health_response(output)
+                except ValueError:
+                    return False
+
+            code = supervise_process(
+                process,
+                lease_seconds=timeout,
+                assessment_seconds=assessment_threshold,
+                state=state,
+                assess_fn=assess,
+                persist_fn=lambda value: save_controller_state(state_dir, value, lifecycle, reason="lease_extension"),
+                completion_or_stop_fn=lambda: read_completion_signal(repo) or _hard_stop_present(repo),
+                event_fn=(lambda event, fields: lifecycle.emit(event, iteration=iteration, **fields)) if lifecycle is not None else None,
+            )
+            if lifecycle is not None:
+                lifecycle.emit(
+                    "root_poll_result",
+                    iteration=iteration,
+                    root_pid=getattr(process, "pid", None),
+                    poll_result=process.poll(),
+                    supervised_return_code=code,
+                )
         except IterationTimeout as exc:
+            primary_exception = True
+            if lifecycle is not None:
+                lifecycle.emit("executor_exception", iteration=iteration, exception_type=type(exc).__name__, root_pid=getattr(process, "pid", None), poll_result=process.poll())
             if process.poll() is None:
-                terminate_process_tree(process)
+                try:
+                    terminate_process_tree(process)
+                except BaseException as cleanup_exc:
+                    exc.add_note(f"root cleanup also failed: {type(cleanup_exc).__name__}: {cleanup_exc}")
+                    if lifecycle is not None:
+                        lifecycle.emit("root_cleanup_failed", iteration=iteration, exception_type=type(cleanup_exc).__name__, root_pid=getattr(process, "pid", None))
             raise IterationTimeout(
                 f"Ralph iteration {iteration} timed out; log: {log_path}"
             ) from exc
-        except BaseException:
+        except BaseException as exc:
+            primary_exception = True
+            if lifecycle is not None:
+                lifecycle.emit("executor_exception", iteration=iteration, exception_type=type(exc).__name__, root_pid=getattr(process, "pid", None), poll_result=process.poll())
             if process.poll() is None:
-                terminate_process_tree(process)
+                try:
+                    terminate_process_tree(process)
+                except BaseException as cleanup_exc:
+                    exc.add_note(f"root cleanup also failed: {type(cleanup_exc).__name__}: {cleanup_exc}")
+                    if lifecycle is not None:
+                        lifecycle.emit("root_cleanup_failed", iteration=iteration, exception_type=type(cleanup_exc).__name__, root_pid=getattr(process, "pid", None))
             raise
         finally:
+            if lifecycle is not None:
+                lifecycle.emit("executor_finally_enter", iteration=iteration, root_pid=getattr(process, "pid", None), poll_result=process.poll())
+                lifecycle.emit("root_pid_clear_start", iteration=iteration, root_pid=state.current_root_pid)
             state.current_root_pid = None
-            save_controller_state(state_dir, state)
+            clear_error: BaseException | None = None
+            try:
+                save_controller_state(state_dir, state, lifecycle, reason="root_pid_clear")
+            except BaseException as exc:
+                clear_error = exc
+                if lifecycle is not None:
+                    lifecycle.emit("root_pid_clear_failed", iteration=iteration, exception_type=type(exc).__name__)
+            if lifecycle is not None:
+                if clear_error is None:
+                    lifecycle.emit("root_pid_clear_complete", iteration=iteration, root_pid=None)
+                lifecycle.emit("executor_finally_exit", iteration=iteration, root_pid=None, poll_result=process.poll())
+            if clear_error is not None and not primary_exception:
+                raise clear_error
     if code != 0:
         raise HermesProcessError(f"Hermes iteration {iteration} exited {code}; log: {log_path}")
     return log_path
@@ -438,29 +618,45 @@ def run_loop(repo: Path, *, max_iterations: int | None = None, iteration_timeout
         raise ValueError("assessment threshold must be positive and less than timeout")
     repo = repo.resolve(); state_dir = (state_dir or default_state_dir()).resolve()
     read_signal_fn = read_signal_fn or read_completion_signal
-    lock = _acquire_lock(state_dir)
+    lifecycle = LifecycleLogger(_lifecycle_log(state_dir), campaign_id, task_id, resolved_tier)
+    lifecycle.emit(
+        "controller_start",
+        controller_pid=os.getpid(),
+        parent_pid=os.getppid(),
+        repo=str(repo),
+        state_dir=str(state_dir),
+        max_iterations=max_iterations,
+    )
+    lock: Path | None = None
     try:
-        state = load_controller_state(state_dir, campaign_id, task_id, resolved_tier)
+        lock = _acquire_lock(state_dir, lifecycle)
+        state = load_controller_state(state_dir, campaign_id, task_id, resolved_tier, lifecycle)
         iteration = 0
         retry_prompt: str | None = None
         while True:
             if read_signal_fn(repo):
+                lifecycle.emit("loop_return", outcome=LoopOutcome.COMPLETE.value, reason="completion_signal_true", iteration=iteration)
                 return LoopOutcome.COMPLETE
             if max_iterations is not None and iteration >= max_iterations:
+                lifecycle.emit("loop_return", outcome=LoopOutcome.LIMIT_REACHED.value, reason="iteration_limit", iteration=iteration)
                 return LoopOutcome.LIMIT_REACHED
             iteration += 1
-            executor = execute_fn or (lambda number, lease: hermes_executor(repo, state_dir, number, lease, assessment_threshold=assessment_threshold, assessor_timeout=assessor_timeout, state=state, prompt=retry_prompt))
+            lifecycle.emit("iteration_start", iteration=iteration, controller_pid=os.getpid())
+            executor = execute_fn or (lambda number, lease: hermes_executor(repo, state_dir, number, lease, assessment_threshold=assessment_threshold, assessor_timeout=assessor_timeout, state=state, prompt=retry_prompt, lifecycle=lifecycle))
             try:
                 executor(iteration, iteration_timeout)
+                lifecycle.emit("iteration_executor_return", iteration=iteration)
                 retry_prompt = None
             except IterationTimeout:
+                lifecycle.emit("iteration_timeout", iteration=iteration, current_root_pid=state.current_root_pid)
                 if read_signal_fn(repo):
+                    lifecycle.emit("loop_return", outcome=LoopOutcome.COMPLETE.value, reason="completion_after_timeout", iteration=iteration)
                     return LoopOutcome.COMPLETE
                 if state.timeout_retries >= MAX_TIMEOUT_RETRIES:
                     raise HardStop("Second timeout for the task; automatic retry denied")
                 if diagnosis_fn is None:
                     output, path = run_readonly_assessor(repo, state_dir, diagnosis_prompt(state), assessor_timeout, "diagnosis", iteration)
-                    state.diagnosis_log = str(path); save_controller_state(state_dir, state)
+                    state.diagnosis_log = str(path); save_controller_state(state_dir, state, lifecycle, reason="diagnosis_log_set")
                     try:
                         diagnosis = parse_diagnosis(output) if output is not None else None
                     except ValueError:
@@ -471,12 +667,19 @@ def run_loop(repo: Path, *, max_iterations: int | None = None, iteration_timeout
                     raise HardStop("Timeout diagnosis did not authorize a safe retry")
                 if not (preflight_fn or (lambda: run_preflight(repo, task_id)))():
                     raise HardStop("Mandatory preflight failed; retry denied")
-                state.timeout_retries += 1; save_controller_state(state_dir, state)
+                state.timeout_retries += 1; save_controller_state(state_dir, state, lifecycle, reason="timeout_retry_increment")
                 retry_prompt = build_retry_prompt(state, diagnosis.steering or "", evidence_summary)
                 if max_iterations is not None:
                     max_iterations += 1
+    except BaseException as exc:
+        lifecycle.emit("controller_exception", controller_pid=os.getpid(), exception_type=type(exc).__name__)
+        raise
     finally:
-        lock.unlink(missing_ok=True)
+        if lock is not None:
+            lifecycle.emit("lock_release_start", lock_path=str(lock), controller_pid=os.getpid())
+            lock.unlink(missing_ok=True)
+            lifecycle.emit("lock_release_complete", lock_path=str(lock), controller_pid=os.getpid(), lock_exists=lock.exists())
+        lifecycle.emit("controller_exit", controller_pid=os.getpid(), parent_pid=os.getppid(), lock_acquired=lock is not None)
 
 
 def _print_error(outcome: str, error: BaseException) -> None:
@@ -499,7 +702,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.dry_run:
             done = read_completion_signal(args.repo)
-            print(json.dumps({"completion_signal": {"isEverythingDone": done}, "command": build_hermes_command(args.repo, 1), "supervision": {"assessment_threshold": args.assessment_threshold, "iteration_timeout": args.iteration_timeout, "max_extensions": MAX_EXTENSIONS, "max_timeout_retries": MAX_TIMEOUT_RETRIES}}, indent=2, ensure_ascii=False))
+            print(json.dumps({"completion_signal": {"isEverythingDone": done}, "command": build_hermes_command(args.repo, 1), "supervision": {"assessment_threshold": args.assessment_threshold, "assessor_timeout": args.assessor_timeout, "iteration_timeout": args.iteration_timeout, "max_extensions": MAX_EXTENSIONS, "max_timeout_retries": MAX_TIMEOUT_RETRIES}}, indent=2, ensure_ascii=False))
             return 0
         outcome = run_loop(args.repo, max_iterations=args.max_iterations, iteration_timeout=args.iteration_timeout, state_dir=args.state_dir, campaign_id=args.campaign_id, task_id=args.task_id, resolved_tier=args.resolved_tier, assessment_threshold=args.assessment_threshold, assessor_timeout=args.assessor_timeout)
         print(json.dumps({"outcome": outcome.value}, indent=2))
