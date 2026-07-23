@@ -1,4 +1,4 @@
-export default {
+const unlighthouseConfig = {
   site: "http://127.0.0.1:3101/en",
   outputPath: ".artifacts/bootstrap/unlighthouse",
   scanner: {
@@ -21,3 +21,5 @@ export default {
     },
   },
 }
+
+export default unlighthouseConfig
