@@ -22,7 +22,6 @@ Files existing on disk do not prove provenance, discovery, or correct use.
 
 - Record source, revision, command, date, license, included/excluded files, modifications, and update procedure.
 - Run each documented controlled prompt in Codex and record evidence.
-- Record Kimi as blocked because the executable/authentication is unavailable.
 - Do not create duplicated skill copies to simulate compatibility.
 
 ## Required reading
@@ -38,4 +37,4 @@ Apply verification row B01-07 and all relevant locked defaults from [the Bootstr
 
 ## Acceptance
 
-Codex discovery and controlled use pass for all five skills, while Kimi is explicitly and honestly recorded as an external blocker.
+Codex discovery and controlled use pass for all five skills. Historical second-agent probe results remain outside the current acceptance contract.

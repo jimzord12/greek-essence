@@ -47,7 +47,7 @@ Before delegated work, briefly report the reconciliation result, selected/resume
 - Do not install packages, skills, or tools unless the selected task explicitly requires them.
 - Do not weaken acceptance criteria, fabricate evidence, claim unrun validation, or conceal failures, deviations, or external blockers.
 - Keep generated runtime artifacts under `.artifacts/bootstrap/` when that boundary exists; tracked evidence records commands, exit codes, concise results, and artifact paths without secrets or personal data.
-- Respect locked exclusions and decisions. Kimi Code validation remains an external blocker until it is actually run successfully.
+- Respect locked exclusions and decisions. Historical compatibility probes are records only and do not block current local bootstrap readiness.
 - In Ralph-loop execution, do not return early after implementation or a failed review. Keep Blocking/High correction cycles inside this root session using the original implementer and same reviewer. Return only after the task is committed, genuinely `Blocked`, or cannot continue safely.
 
 ## Completion handoff

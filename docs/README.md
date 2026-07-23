@@ -69,10 +69,27 @@ When two documents appear to conflict, follow the higher-ranked source and recor
 | Prototype Specification | Complete first draft; approvals pending |
 | Technical Design | Prototype-build design; implementation pending |
 | Design System | Complete first draft; visual and product review pending |
-| Agent skills and tooling | Baseline approved; installation pending |
-| Application | Not yet implemented |
+| Agent skills and tooling | Bootstrap tooling complete; ongoing maintenance follows the approved baseline |
+| Bilingual fixture scaffold | Complete |
+| Product application | Not yet implemented |
 
-The private prototype and the later production MVP have different readiness requirements. A successful prototype review does not authorize public commercial launch. The unresolved production requirements remain recorded in the [production-readiness gap register](03_technical_design/22_production_readiness_gap_register.md).
+The private prototype and the later production MVP have different readiness requirements. Bootstrap tooling and the bilingual fixture scaffold are complete, but product prototype implementation remains pending. A successful prototype review does not authorize public commercial launch. The unresolved production requirements remain recorded in the [production-readiness gap register](03_technical_design/22_production_readiness_gap_register.md).
+
+## Development package manager
+
+Use standalone pnpm `11.17.0` directly:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+On Windows, install the repository-pinned version with the official PowerShell installer, then open a refreshed terminal:
+
+```powershell
+$env:PNPM_VERSION = "11.17.0"
+irm https://get.pnpm.io/install.ps1 | iex
+```
 
 ## Contributor rules
 

@@ -5,7 +5,7 @@
 **Completed:** 2026-07-23
 **Resolved implementation depth:** Tier 2 — Prototype
 **Root integrator:** `20260723_132446_29d092`
-**Readiness verdict:** All recorded local bootstrap gates are green; independent B07-03 task review and final Phase 07 review approved the report and exit gate. Cross-agent compatibility is not fully green because Kimi Code remains unavailable. This report does not approve production promotion.
+**Readiness verdict:** All recorded local bootstrap gates are green; independent B07-03 task review and final Phase 07 review approved the report and exit gate. This historical report does not approve production promotion. Its original runtime and compatibility observations below are non-normative records; the current development contract is maintained by `package.json` and current repository guidance.
 
 ## Scope delivered
 
@@ -56,10 +56,10 @@ Installer output was normalized only where recorded: CRLF-to-LF for copied upstr
 - `playwright-cli install --skills` — original global generation path recorded by B01-05; the current canonical project-local path `pnpm exec playwright-cli install --skills=agents` passed during B06-02.
 - Project-owned skills were authored in-repository; no installer command applies.
 
-## Codex and Kimi compatibility
+## Historical compatibility record (non-normative)
 
 - Codex: B01-07 explicitly loaded all five approved baseline skills with `codex exec --skip-git-repo-check ...`; each command exited `0`. The exact responses are recorded under `.artifacts/bootstrap/B01-07/`. Current `codex --version` exited `0` with `codex-cli 0.145.0`.
-- Kimi Code: `command -v kimi` exited `1` and no `kimi` executable was found; no Kimi usage test could run. Kimi authentication/availability is therefore an external blocker. Kimi is not green, cross-agent compatibility is not claimed, and no substitute tool was used.
+- A second-agent probe was not available during bootstrap: `command -v kimi` exited `1` and no executable was found. No usage test ran. This is retained as factual historical evidence only; it is not a current requirement, blocker, compatibility claim, or acceptance gate, and no substitute tool was introduced.
 
 ## Playwright CLI and quality results
 
@@ -83,10 +83,10 @@ There are exactly `28` unique tasks. Current counts are `28/28 Done` overall:
 
 ## Deviations, unresolved issues, and excluded future work
 
-- Kimi Code availability/authentication is the only accepted external compatibility blocker; it prevents a fully green cross-agent claim.
+- Historical bootstrap compatibility evidence is retained above for auditability and is not a current project blocker.
 - The global Playwright CLI remains `0.1.14`, while the project-local canonical CLI is `0.1.17`; all project verification uses the pinned local CLI.
 - The first standalone Unlighthouse attempt and the first B07-01 browser-download attempt failed transiently and are retained as superseded evidence; successful retries are not concealed.
 - No deviation from the Tier 2 task contract is claimed. Independent B07-03 task review and Phase 07 review approved the records and final exit gate. No push, deploy, remote/history change, or production promotion was performed.
 - Production launch remains explicitly deferred until the gaps in the [production-readiness gap register](../../docs/03_technical_design/22_production_readiness_gap_register.md) are resolved, including commercial hosting, durable lead records, delivery recovery, retention/DSR, ownership, analytics, observability, spam resilience, legal pages, trust assets, final content/media, browser support, and production email operations.
 
-Bootstrap work is complete. Product implementation may begin from this documented baseline, subject to the explicit production-readiness gaps and the unresolved Kimi compatibility blocker.
+Bootstrap work is complete. Product implementation may begin from this documented baseline only when separately authorized, subject to the explicit production-readiness gaps.

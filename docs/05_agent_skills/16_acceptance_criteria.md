@@ -32,10 +32,9 @@ The agent-tooling setup is complete only when all applicable criteria pass.
 - [ ] update procedures are documented.
 - [ ] Node.js, package-manager, and Playwright CLI setup versions are recorded.
 
-### 16.4 Cross-agent compatibility
+### 16.4 Agent compatibility
 
 - [ ] Codex CLI can identify or explicitly load every approved skill.
-- [ ] Kimi Code can identify or explicitly load every approved skill.
 - [ ] any required wrappers point to canonical repository-local files.
 - [ ] no undocumented duplicate skill copies exist.
 
@@ -56,7 +55,7 @@ The agent-tooling setup is complete only when all applicable criteria pass.
 - [ ] it covers visual, responsive, accessibility, localization, trust, SEO-presentation, and form quality.
 - [ ] it distinguishes defects from subjective suggestions.
 - [ ] it requires route, locale, viewport, evidence, and reproduction steps.
-- [ ] it works in Codex CLI and Kimi Code.
+- [ ] it works in Codex CLI.
 
 ### 16.7 Repository integrity
 

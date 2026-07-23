@@ -172,7 +172,7 @@ Root integrator may mark `Done` only when records are complete, required checks 
 - Record the condition, investigation, required decision, and affected tasks.
 - A deviation names the original rule, reason, impact, approval owner, and replacement verification.
 - Ralph execution has standing authorization for task-owned repository-local edits, overwrites, and deletions explicitly required by the active contract or reviewer findings. Stop and request explicit approval for unrelated deletion, out-of-repository changes, credentials, system changes, pushes, deployments, remotes, or history rewriting.
-- Kimi Code remains an external blocker; full cross-agent compatibility cannot be claimed until its controlled validations actually pass.
+- Historical compatibility checks remain factual records only; they are not a current acceptance gate or blocker.
 
 ## Status integrity
 

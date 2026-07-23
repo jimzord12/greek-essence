@@ -7,13 +7,14 @@ Produce a reproducible, bilingual Next.js foundation whose application, automate
 ## Success conditions
 
 - Node 24 and pnpm 10 are verified and pinned.
+- Supersession (2026-07-23): the pnpm 10 value above records the historical bootstrap baseline. The current contributor contract is standalone pnpm `11.17.0`, declared in [`package.json`](../../package.json), with engines `>=11 <12`.
 - The project is generated with `pnpm dlx shadcn@latest init --preset b27GcrRo --template next --pointer`.
 - Exact dependencies, strict TypeScript, ESLint, Prettier, Husky, lint-staged, and Conventional Commits are configured.
 - Minimal `/en`, `/el`, and localized `quality-lab` fixtures prove App Router, `next-intl`, shadcn/Base UI, metadata, responsiveness, and interaction.
 - Unit tests, Playwright E2E, axe, Unlighthouse, and production build pass.
 - Approved repository-local skills and Playwright CLI are installed and documented.
 - Codex and the Greek Essence Reviewer Skill are green against real rendered fixtures.
-- Kimi validation is reported as blocked until the external CLI/authentication becomes available.
+- Current local-tool validation is recorded; no second-agent compatibility requirement is introduced.
 
 ## Explicit exclusions
 

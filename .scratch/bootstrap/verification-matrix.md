@@ -4,7 +4,7 @@ This matrix is authoritative for task-level verification. Tasks may add narrower
 
 | Task | Required verification |
 |---|---|
-| B00-01 | `node --version`; `pnpm --version`; `corepack --version`; `git --version`; `git status --short`; `git remote -v`; `codex --version`; `playwright-cli --version`; command lookup for `kimi` |
+| B00-01 | `node --version`; `pnpm --version`; `git --version`; `git status --short`; `git remote -v`; `codex --version`; `playwright-cli --version` |
 | B00-02 | Validate 28 unique task IDs, required task headings, an acyclic dependency chain, and all relative Markdown links under `.scratch/bootstrap`. |
 | B01-01 | Validate all links in `AGENTS.md`; search it for required package, locale, skill, browser, architecture, checks, and Definition-of-Done statements. |
 | B01-02 | Inspect `npx modern-web-guidance@latest --help`; expected install entry is `npx modern-web-guidance@latest install`; verify canonical `SKILL.md` and recorded revision/license. |
@@ -12,7 +12,7 @@ This matrix is authoritative for task-level verification. Tasks may add narrower
 | B01-04 | Expected install entry is `npx skills add vercel-labs/agent-skills --skill vercel-react-best-practices`; verify only the requested canonical skill. |
 | B01-05 | `playwright-cli --version`; `playwright-cli --help`; expected generation entry is `playwright-cli install --skills`; verify canonical skill and absence of prohibited browser tools. |
 | B01-06 | Verify the project skill has one `SKILL.md`, five required references, required output ordering, and exact modular documentation links. |
-| B01-07 | Run and record each controlled Codex prompt; confirm Kimi lookup fails and is recorded as blocked. |
+| B01-07 | Run and record each controlled Codex prompt; confirm every approved skill is explicitly loadable by the supported agent. |
 | B02-01 | Run the exact prescribed shadcn command; then `pnpm dev` smoke and inspect the complete repository diff. |
 | B02-02 | `node --version`; `pnpm --version`; `pnpm exec tsc --version`; `pnpm list --depth 0`; `pnpm install --frozen-lockfile`. |
 | B02-03 | `pnpm dev` smoke; `pnpm build`; verify root `app/`, absence of `src/app`, and resolution of `@/*`; inspect the pinned Next.js version's `next/dist/docs/` and validate its applicable generated agent-rule integration (or the documented older-version codemod path). |
@@ -31,7 +31,7 @@ This matrix is authoritative for task-level verification. Tasks may add narrower
 | B06-03 | Run the canonical quality-review skill in a fresh Codex subagent; complete response/re-review until no blockers/high findings remain. |
 | B07-01 | In a fresh isolated copy with no `node_modules` or `.next`: `pnpm install --frozen-lockfile`; verify the lockfile is unchanged; run `pnpm check:all`. Normal pnpm content-addressed cache reuse is allowed because lockfile versions and integrity remain authoritative. |
 | B07-02 | Run frozen install, format, lint, typecheck, unit, build, E2E, axe, Unlighthouse, and aggregate gates; all exit zero. |
-| B07-03 | Validate every completion-report field, all links, exact task counts, and explicit Kimi blocker wording. |
+| B07-03 | Validate every completion-report field, all links, and exact task counts. |
 
 ## Locked package-script composition
 

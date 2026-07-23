@@ -13,12 +13,13 @@
 ## Integration checks
 
 Phase review 01 ran one consolidated integration check from the repository root.
+The command results below are historical Phase 01 execution records and are non-normative; they do not define current requirements, blockers, or gates.
 
 | Command or assertion | Exit code | Result |
 |---|---:|---|
 | Canonical skill, prohibited-path, provenance, Codex-artifact, task/review/status, B02-03 handoff, and future-readiness assertions | 0 | 13 passed; 0 failed. |
 | `python -B .scratch/bootstrap/tools/validate_workspace.py` | 0 | 28 unique task IDs, required sections, acyclic dependencies, Markdown links, status views, and dashboard counts passed (`9/28`). |
-| `command -v kimi` | 1 | Expected external blocker confirmed; no Kimi executable is available. |
+| `command -v kimi` | 1 | Historical Phase 01 result: expected external blocker confirmed; no Kimi executable was available. This is non-normative. |
 | `git diff --check` | 0 | No whitespace errors. |
 
 After the dedicated B01-07 task commit and machine-readable review correction, phase re-review 02 ran the affected deterministic check once:
@@ -37,8 +38,9 @@ Fresh phase reviewer Hermes `greekreview` session `20260722_043629_ab7fa8` compl
 
 - No phase-level deviation was approved or required.
 - BD-015 remains the authoritative replacement for the retired Next.js reference skill; B02-03 owns installed-version `next/dist/docs/` and generated-rule validation after Next.js is pinned.
-- Kimi Code remains an explicit external blocker under BD-012; compatibility was not claimed or simulated with duplicate skills.
+- Historical Phase 01 record: Kimi Code was an explicit external blocker under BD-012 at that time; compatibility was not claimed or simulated with duplicate skills. This observation is non-normative.
+- Supersession (2026-07-23): the former Kimi requirement and BD-012 blocker are retired by current operator decision. The Kimi observations above remain factual historical records only and are non-normative; they are not a current requirement, blocker, or gate.
 
 ## Readiness for next phase
 
-The Phase 01 exit gate passed: the four approved repository-local tooling skills exist, the retired Next.js reference skill and prohibited alternatives are absent, provenance is complete, all five controlled Codex checks passed, Kimi is honestly blocked, and the B02-03 runtime handoff is preserved. `B02-01` is the next dependency-satisfied task and may be marked `Ready`; it has not been started.
+The historical Phase 01 exit-gate record states that the four approved repository-local tooling skills existed, the retired Next.js reference skill and prohibited alternatives were absent, provenance was complete, all five controlled Codex checks passed, and Kimi was honestly blocked at that time. Those observations are non-normative and do not define a current requirement, blocker, or gate; the B02-03 runtime handoff was preserved. `B02-01` was the next dependency-satisfied task and could be marked `Ready`; it had not been started.

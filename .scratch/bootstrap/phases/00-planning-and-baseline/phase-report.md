@@ -29,6 +29,7 @@ Phase review 01 was completed by the fresh `greekreview` Hermes session `2026072
 - B00-01 recorded that the task prose incorrectly described `docs/` as untracked; the repository showed it was tracked and preserved, and task review approved that evidence-based reconciliation.
 - B00-02 used explicit operator authorization to remove the 33 future Phase 01–07 review directories that had been created before execution. Its second task review approved the exact deletion scope.
 - Kimi Code remains the known external cross-agent validation blocker, but it does not prevent the Phase 00 planning/baseline exit gate.
+- Supersession (2026-07-23): the former Kimi requirement and BD-012 blocker are retired by current operator decision. The Kimi observation above remains a factual historical record only and is non-normative; it is not a current requirement, blocker, or gate.
 
 ## Readiness for next phase
 

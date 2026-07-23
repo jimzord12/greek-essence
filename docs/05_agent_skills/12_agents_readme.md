@@ -21,7 +21,6 @@ Each skill entry must include:
 - excluded optional disciplines;
 - local modifications;
 - Codex validation result;
-- Kimi validation result;
 - update procedure.
 
 ### 12.3 Dependency and runtime records

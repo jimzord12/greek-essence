@@ -1,6 +1,6 @@
 # AI Agent Skills and Browser Tooling
 
-This documentation family defines the approved repository-local AI agent skills, browser-quality tooling, installation and maintenance procedures, and cross-agent compatibility requirements for Greek Essence.
+This documentation family defines the approved repository-local AI agent skills, browser-quality tooling, installation and maintenance procedures, and supported-agent compatibility requirements for Greek Essence.
 
 ## Authority and baseline
 

@@ -10,7 +10,7 @@ Read [the documentation entry point](docs/README.md) and [the bootstrap workspac
 
 ## Architecture
 
-Use `pnpm` through Corepack; follow the repository `packageManager` version when it exists and do not substitute another package manager. Keep TypeScript strict. Build a static-first Next.js App Router prototype: local, schema-validated JSON content renders public pages at build time; the form-submission Route Handler is the sole server-side dynamic boundary. Prefer Server Components and add Client Components only for necessary interaction and minimal JavaScript.
+Use standalone `pnpm` `11.17.0` directly; follow the repository `packageManager` version and do not substitute another package manager. Keep TypeScript strict. Build a static-first Next.js App Router prototype: local, schema-validated JSON content renders public pages at build time; the form-submission Route Handler is the sole server-side dynamic boundary. Prefer Server Components and add Client Components only for necessary interaction and minimal JavaScript.
 
 Support explicit English and Greek routes. Follow the modular [prototype specification](docs/02_prototype_specification/index.md) for UX, accessibility, responsiveness, content, and form behavior, and the modular [technical design](docs/03_technical_design/index.md), including [testing and quality gates](docs/03_technical_design/18_testing_and_quality_gates.md). Prefer simple, maintainable, battle-tested solutions.
 

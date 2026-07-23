@@ -63,7 +63,7 @@ Record in `.agents/README.md`:
 
 ### 6.6 Validation
 
-Confirm that both Codex CLI and Kimi Code can identify or explicitly read the local skill.
+Confirm that Codex CLI can identify or explicitly read the local skill.
 
 Use a controlled prompt such as:
 

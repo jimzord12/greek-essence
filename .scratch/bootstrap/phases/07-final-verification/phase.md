@@ -12,5 +12,5 @@ Prove clean-room reproducibility, run every integrated gate, and publish an evid
 
 ## Exit gate
 
-Every applicable local gate is green, documentation is current, and Kimi is the only explicitly accepted external blocker.
+Every applicable local gate is green and documentation is current. Historical compatibility evidence is non-normative and is not a phase gate.
 
