@@ -51,9 +51,9 @@ Current implementation status on branch `fix/ralph-controller-pid-logging`:
 
 Implementation and handoff are committed as `d2b14ad` (`fix(ralph): add controller lifecycle diagnostics`).
 
-### Recommended next action: one controlled B07-01 reproduction
+### Controlled B07-01 reproduction result
 
-This action requires separate operator authorization. Do not treat this handoff as authorization to launch it.
+The separately authorized reproduction ran once on 2026-07-23 and must not be repeated automatically.
 
 1. Stay on `fix/ralph-controller-pid-logging`; do not merge to `main` first.
 2. Preserve the existing B07-01 task-owned modification and use exactly one iteration with:
@@ -70,14 +70,22 @@ This action requires separate operator authorization. Do not treat this handoff 
 4. Do not trust outer exit code `0` by itself. Confirm the root exited and lock/state cleanup completed.
 5. If controller heartbeats stop while the root survives, stop fail-closed: identity-check and terminate only the controller-owned root tree, archive the runtime evidence, and do not retry.
 
-The reproduction passes only if all of these are true:
+Lifecycle result:
 
-- The controller remains alive until the Hermes root exits.
-- The lifecycle log reaches `executor_finally_exit` and `controller_exit`.
-- `current_root_pid` is cleared and `ralph.lock` is removed.
-- No controller-owned Hermes process survives.
-- Any B07-01 repository changes are attributable and reviewable.
+- The controller remained alive for the full 3600-second root lease; the prior abrupt controller-death/orphan pattern did not recur.
+- At lease expiry, controller PID `34460` terminated its owned Hermes root PID `29168`; the root poll result was `1`.
+- The lifecycle log reached `executor_finally_exit`, cleared `current_root_pid`, released `ralph.lock`, and reached `controller_exit`.
+- Live process reconciliation found no surviving controller, root, or B07-01 child process.
+- The controller then exited `7` with `HARD_STOP` because the read-only timeout diagnosis itself exceeded its 180-second budget and did not authorize a retry. This is not a lifecycle-cleanup failure, and no retry is authorized.
 
-Do not include the existing B07-01 task-status modification in unrelated follow-up commits, and do not claim the underlying lifecycle defect fixed until this controlled reproduction supplies live evidence.
+### Recommended next action: manually reconcile B07-01
+
+1. Do not launch another Ralph controller for this reproduction.
+2. Preserve the current attributable B07-01 worktree changes and review records.
+3. Correct the narrow Windows/MSYS path issue in the final clean-room pre-install absence/EOL evidence probe, rerun only the missing evidence procedure, then obtain same-reviewer re-review.
+4. If approved, synchronize B07-01 tracking and create its dedicated local task commit. Do not begin B07-02 before B07-01 closure.
+5. Treat the abrupt controller-death/orphan defect as not reproduced in this controlled run. The instrumentation and timeout cleanup path behaved correctly, but this single successful lifecycle run does not prove that an unknown external abrupt-kill cause can never recur.
+
+Do not include the existing B07-01 task-status modification in unrelated follow-up commits. Report the controlled run precisely: the prior orphan pattern was not reproduced and normal timeout cleanup succeeded, but the unknown external abrupt-termination cause is not proven eliminated.
 
 Keep this file current with review findings, commits, decisive live evidence, remaining uncertainty, and exact next action. Do not delete or empty project handoff context unless the operator explicitly requests it or all recorded work has been durably reconciled elsewhere.

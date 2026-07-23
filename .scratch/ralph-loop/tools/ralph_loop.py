@@ -26,7 +26,7 @@ HANDOFF = Path(".scratch") / "ralph-loop" / "HANDOFF.md"
 PREFLIGHT = Path(".agents") / "skills" / "ralph-loop-manager" / "scripts" / "preflight.py"
 DEFAULT_ITERATION_TIMEOUT = 3600.0
 DEFAULT_ASSESSMENT_THRESHOLD = 2700.0
-DEFAULT_ASSESSOR_TIMEOUT = 180.0
+DEFAULT_ASSESSOR_TIMEOUT = 1200.0
 MAX_EXTENSIONS = 3
 MAX_TIMEOUT_RETRIES = 1
 
@@ -278,7 +278,9 @@ def build_hermes_command(repo: Path, iteration: int, prompt: str | None = None) 
 
 
 def _readonly_command(prompt: str) -> list[str]:
-    return ["hermes", "-p", ASSESSOR_PROFILE, "chat", "-Q", "--pass-session-id", "--source", "ralph-supervisor", "-m", ASSESSOR_MODEL, "--provider", ROOT_PROVIDER, "-q", prompt]
+    # The strict parser consumes stdout verbatim. Do not request a session-id
+    # trailer here because it would make an otherwise valid JSON decision fail.
+    return ["hermes", "-p", ASSESSOR_PROFILE, "chat", "-Q", "--source", "ralph-supervisor", "-m", ASSESSOR_MODEL, "--provider", ROOT_PROVIDER, "-q", prompt]
 
 
 def health_prompt(state: ControllerState) -> str:
@@ -289,7 +291,9 @@ Resolved engineering tier: {state.resolved_tier}
 
 Inspect repository evidence only: the active task contract/status and task-owned diff; report/evidence; review and correction state; recent Ralph/root/child activity; unresolved acceptance criteria, required gates, Blocking/High findings, handoff, dedicated commit, and completion reconciliation. Healthy means recent durable task-attributable progress on necessary unresolved work, including a finite changed recovery strategy or required closure. Evidence against extension includes optional/repeated tests, untied research, repeated reads or failed calls, unnecessary refactoring, speculative abstractions, enterprise-depth expansion, implausible edges, unrelated docs, scope expansion, claimed effort without durable evidence, accepted work with stalled closure, or work beyond the resolved tier.
 
-Do not modify files, implement, create review files, commit, email, or control processes. Return exactly one JSON object and no prose: {{"should_extend": true}} or {{"should_extend": false}}. Uncertainty means false."""
+Do not perform broad repository exploration. Read the smallest authoritative evidence set needed for this decision, prioritize current task status, latest review/evidence, HANDOFF, relevant diff/commit state, and recent runtime events, and avoid repeating searches or checks. Decide promptly once the decisive evidence is clear.
+
+Do not modify files, implement, create review files, commit, email, or control processes. Return exactly one JSON object and no prose, markdown, session ID, or explanation: {{"should_extend": true}} or {{"should_extend": false}}. Uncertainty means false."""
 
 
 def diagnosis_prompt(state: ControllerState) -> str:
@@ -301,7 +305,9 @@ Health renewal already existed, so timeout is evidence that the root exceeded it
 
 Inspect what is already complete in task status, diff, evidence/reports, reviews, HANDOFF, completion signal, commits, and runtime logs before recommending repetition. Classify closure incomplete, overengineering, review correction incomplete, tool/process stall, scope conflict, human decision required, or unknown failure. Recommend at most one same-task retry only when a narrow safe remaining action exists. Prefer the smallest recovery; preserve task and tier; do not rerun approved implementation/review. Human decision, conflict, or uncertainty means no retry.
 
-Do not mutate files, implement, create reviews, commit, email, or control processes. Return only exactly one of:
+Do not perform broad repository exploration. Read the smallest authoritative evidence set needed for this decision, prioritize current task status, latest review/evidence, HANDOFF, relevant diff/commit state, and recent runtime events, and avoid repeating searches or checks. Decide promptly once the decisive evidence is clear.
+
+Do not mutate files, implement, create reviews, commit, email, or control processes. Return only exactly one JSON object with no prose, markdown, session ID, or explanation:
 {{"should_retry": true, "steering": "Non-empty bounded instruction."}}
 {{"should_retry": false, "steering": null}}"""
 
@@ -696,7 +702,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.dry_run:
             done = read_completion_signal(args.repo)
-            print(json.dumps({"completion_signal": {"isEverythingDone": done}, "command": build_hermes_command(args.repo, 1), "supervision": {"assessment_threshold": args.assessment_threshold, "iteration_timeout": args.iteration_timeout, "max_extensions": MAX_EXTENSIONS, "max_timeout_retries": MAX_TIMEOUT_RETRIES}}, indent=2, ensure_ascii=False))
+            print(json.dumps({"completion_signal": {"isEverythingDone": done}, "command": build_hermes_command(args.repo, 1), "supervision": {"assessment_threshold": args.assessment_threshold, "assessor_timeout": args.assessor_timeout, "iteration_timeout": args.iteration_timeout, "max_extensions": MAX_EXTENSIONS, "max_timeout_retries": MAX_TIMEOUT_RETRIES}}, indent=2, ensure_ascii=False))
             return 0
         outcome = run_loop(args.repo, max_iterations=args.max_iterations, iteration_timeout=args.iteration_timeout, state_dir=args.state_dir, campaign_id=args.campaign_id, task_id=args.task_id, resolved_tier=args.resolved_tier, assessment_threshold=args.assessment_threshold, assessor_timeout=args.assessor_timeout)
         print(json.dumps({"outcome": outcome.value}, indent=2))

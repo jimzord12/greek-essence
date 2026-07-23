@@ -13,6 +13,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 from ralph_loop import (  # noqa: E402
+    DEFAULT_ASSESSOR_TIMEOUT,
     ControllerState,
     Diagnosis,
     HardStop,
@@ -21,6 +22,8 @@ from ralph_loop import (  # noqa: E402
     LoopOutcome,
     ProcessTreeError,
     build_retry_prompt,
+    diagnosis_prompt,
+    health_prompt,
     load_controller_state,
     parse_diagnosis,
     parse_health_response,
@@ -71,6 +74,17 @@ class StrictResponseTests(unittest.TestCase):
 
 
 class StateAndPromptTests(unittest.TestCase):
+    def test_readonly_checks_have_twenty_minute_default_budget(self) -> None:
+        self.assertEqual(20 * 60, DEFAULT_ASSESSOR_TIMEOUT)
+
+    def test_readonly_prompts_require_bounded_evidence_review_and_json_only(self) -> None:
+        state = ControllerState("campaign", "task", "Tier 2 — Prototype")
+        for prompt in (health_prompt(state), diagnosis_prompt(state)):
+            with self.subTest(prompt=prompt[:40]):
+                self.assertIn("Do not perform broad repository exploration", prompt)
+                self.assertIn("Decide promptly once the decisive evidence is clear", prompt)
+                self.assertIn("JSON", prompt)
+
     def test_state_is_atomic_persistent_and_identity_bound(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             state_dir = Path(temp)
@@ -391,6 +405,18 @@ class RetryBehaviorTests(unittest.TestCase):
                     response, log = run_readonly_assessor(root, root / "runtime", "prompt", 1, "assessment", 1)
                 self.assertIsNone(response)
                 self.assertTrue(log.is_file())
+
+    def test_readonly_assessor_stdout_contains_only_model_response(self) -> None:
+        completed = subprocess.CompletedProcess([], 0, stdout='{"should_extend": true}')
+        with tempfile.TemporaryDirectory() as temp, patch(
+            "ralph_loop.subprocess.run", return_value=completed
+        ) as run:
+            response, _ = run_readonly_assessor(
+                Path(temp), Path(temp) / "runtime", "prompt", 1200, "assessment", 1
+            )
+        self.assertEqual('{"should_extend": true}', response)
+        command = run.call_args.args[0]
+        self.assertNotIn("--pass-session-id", command)
 
 
 if __name__ == "__main__":
