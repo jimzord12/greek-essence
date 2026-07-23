@@ -36,8 +36,9 @@ Completed and removed or reconciled into durable project history
 
 ## Planned
 
-- [ ] Turn the Terra prototype asset report into a reviewed, sequential ChatGPT image-generation prompt pack for manual use.
-  - **Depends on:** Deterministic Ralph campaign transition.
+- [ ] Complete operator visual-direction review and finalize the reviewed sequential ChatGPT image-generation prompt pack.
+  - **Current checkpoint:** The reviewed JSON contains all 18 must-have records; four test-set prompts are ready for manual ChatGPT generation, while the other 14 remain `draft_pending_test_feedback`.
+  - **Depends on:** Operator feedback on the four-image visual-direction test set.
   - **Source:** `C:\Users\jimzord12\Documents\greek-essence-prototype-asset-plan.md`
   - **Desired outcome:** One self-contained, copy-ready prompt per must-have image, ordered so the operator can paste prompts manually into the ChatGPT app one by one.
   - **Prompt contents:** Asset ID, subject/location, photographic direction, composition and text-safe area, aspect ratio and target dimensions, responsive crop intent, EN/EL text-overlay prohibition, accessibility intent, geographic/brand accuracy constraints, negative prompt, and any continuity instructions shared with the asset family.
@@ -66,7 +67,7 @@ Authoritative documentation review and update
 P1 visual and content foundation planning
 ```
 
-The deterministic transition node is complete. The reviewed sequential asset prompt pack is the next planned node, but it is not active or authorized until the operator explicitly promotes it through `NEXT.md`. Completion of one node never authorizes its successor automatically.
+The deterministic transition node is complete. The reviewed sequential asset prompt pack has reached its operator visual-direction checkpoint: four test prompts are ready for manual generation and review, while the remaining 14 records stay draft pending that feedback. Completion of this checkpoint does not authorize the subsequent documentation-review node.
 
 <!-- Agreed and prioritized work that is not active yet. Link its plan/task when available. -->
 
