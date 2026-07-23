@@ -27,7 +27,9 @@ B06-03 implementation and evidence were completed by greekimpl session `20260722
 
 ## Next required action
 
-Run the Ralph manager structural preflight and semantic compatibility gate for campaign B07-01. If every gate passes, launch one normal bounded root iteration with explicit `--campaign-id bootstrap-b07-01`, `--task-id B07-01`, and `--resolved-tier 2`. Independently reconcile repository progress after the iteration. Do not reset `completion-signal.json` automatically and do not begin B07-02 before B07-01 is approved, closed, and committed.
+B07-01 is approved and reconciled under the operator-clarified Tier 2 contract. The fresh isolated copy had no `node_modules` or `.next`, installed with `pnpm install --frozen-lockfile`, preserved the exact lockfile SHA-256, and passed `pnpm check:all`. Normal pnpm content-addressed cache reuse was explicitly allowed; proving network redownload or an empty user cache was removed as disproportionate scope. Same reviewer `20260723_013332_c5307d` approved `reviews/04-review.md` with no findings.
+
+Create the dedicated B07-01 local task commit containing only its route corrections, task/evidence/report/review records, verification-matrix clarification, synchronized bootstrap tracking, and this handoff. Preserve unrelated Ralph supervisor, lifecycle-handoff, NEXT.md, and other user-owned changes outside that commit. After the commit is verified, B07-02 is the sole dependency-ready next task; do not start it as part of B07-01 closure.
 
 ## Child session IDs
 

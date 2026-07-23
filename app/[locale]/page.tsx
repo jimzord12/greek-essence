@@ -3,9 +3,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { Link } from "@/i18n/navigation"
 
+type LocalePageProps = {
+  params: Promise<{ locale: string }>
+}
+
 export async function generateMetadata({
   params,
-}: PageProps<"/[locale]">): Promise<Metadata> {
+}: LocalePageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "Fixture" })
 
@@ -24,9 +28,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function LocaleFixturePage({
-  params,
-}: PageProps<"/[locale]">) {
+export default async function LocaleFixturePage({ params }: LocalePageProps) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: "Fixture" })

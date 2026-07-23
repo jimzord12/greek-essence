@@ -4,9 +4,13 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { QualityLabToggle } from "@/components/quality-lab-toggle"
 import { Link } from "@/i18n/navigation"
 
+type LocaleQualityLabPageProps = {
+  params: Promise<{ locale: string }>
+}
+
 export async function generateMetadata({
   params,
-}: PageProps<"/[locale]/quality-lab">): Promise<Metadata> {
+}: LocaleQualityLabPageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "Fixture" })
 
@@ -27,7 +31,7 @@ export async function generateMetadata({
 
 export default async function QualityLabPage({
   params,
-}: PageProps<"/[locale]/quality-lab">) {
+}: LocaleQualityLabPageProps) {
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: "Fixture" })

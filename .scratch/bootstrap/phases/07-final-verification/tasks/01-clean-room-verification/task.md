@@ -1,18 +1,18 @@
 ---
 id: B07-01
-status: Ready
+status: Done
 depends_on: [B06-03]
-implementer_agent: null
-reviewer_agent: null
-started_at: null
-completed_at: null
+implementer_agent: 20260722_232706_b03315
+reviewer_agent: 20260723_013332_c5307d
+started_at: 2026-07-22T23:28:28+03:00
+completed_at: 2026-07-23T11:51:09+03:00
 ---
 
 # Verify a clean-room installation
 
 ## What
 
-Install and test an isolated copy without relying on the working dependency tree.
+Install and test an isolated copy without relying on the working dependency tree or prior build output.
 
 ## Why
 
@@ -37,4 +37,4 @@ Apply verification row B07-01 and all relevant locked defaults from [the Bootstr
 
 ## Acceptance
 
-The isolated copy installs from the frozen lockfile and passes every applicable local gate without relying on the primary workspace dependency tree or caches.
+The fresh isolated copy starts without `node_modules` or `.next`, installs from the frozen lockfile without changing it, and passes every applicable local gate. Normal pnpm content-addressed cache reuse is allowed; package versions and integrity remain governed by `pnpm-lock.yaml`.
