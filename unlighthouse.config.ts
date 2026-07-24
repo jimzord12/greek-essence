@@ -11,6 +11,11 @@ const unlighthouseConfig = {
   },
   lighthouseOptions: {
     skipAudits: ["is-crawlable"],
+    // Lighthouse's Lantern simulator currently inflates text LCP from ~150 ms
+    // observed to ~4.9 s on Windows/Chrome 150, including on the unchanged
+    // quality-lab route. DevTools throttling preserves the mobile profile while
+    // measuring the actual throttled browser timeline.
+    throttlingMethod: "devtools",
   },
   ci: {
     budget: {

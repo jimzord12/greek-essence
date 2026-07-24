@@ -30,6 +30,31 @@
 - Avoid rare edge-case branches unless they protect correctness, privacy, security, or recoverability.
 - Follow the live `features-cli` frontier and the active issue/change contract. Do not continue into a successor workflow or issue without explicit authorization.
 
+## Orchestrator / Overseer Ownership
+
+For this feature, the main agent is the workflow orchestrator and overseer. It owns live repository and frontier verification, issue selection, contract enforcement, role briefing, delegation, progress monitoring, quality-gate routing, review routing, lifecycle transitions, evidence reconciliation, and final completion judgment. Its responsibility is to keep authorized work moving until the accepted stopping point rather than stopping at ordinary implementation or verification failures.
+
+### Role separation
+
+- Delegate substantive implementation to a dedicated implementation subagent with the full `SPEC.md`, `issue.md`, and `change-contract.md` context. This feature-local rule overrides a generic workflow topology that would otherwise make the main orchestrator the `tdd-solo` implementer; the delegated implementer still follows the issue's carried `Method` and required RED → GREEN discipline.
+- Delegate every required code review to a fresh independent review agent. The orchestrator must not review its own work or substitute implementation judgment for the required review verdict.
+- Delegate the mandatory visual review to a fresh independent visual-review agent after code review passes. The implementation agent and code reviewer must not self-certify the visual gate.
+- Do not use the orchestrator as the default implementation or review worker merely because it can edit files or run tests.
+
+### Permitted orchestrator actions
+
+The orchestrator may perform repository surveys, preflight and frontier checks, inspect evidence, run or rerun verification, monitor agents, steer or re-brief a role, reconcile reports and status, and make small obvious fixes when spawning or resuming an implementation agent would be clearly disproportionate. Examples include a typo, a deterministic one-line wiring correction, formatting, or another low-risk fix whose behavior and scope are already locked by the contract.
+
+A small orchestrator-owned fix does not waive verification or independent review. Record it in the implementation evidence, rerun the affected checks, and obtain a fresh review when the workflow requires one. If a review finding needs substantive logic, design, architecture, broad test changes, or multiple coordinated edits, route it back to an implementation agent rather than absorbing it into orchestration.
+
+### Keep-running and escalation policy
+
+- A failed test, lint, typecheck, build, accessibility, browser, visual, performance, or other required quality gate is ordinary implementation work—not a stopping condition. Keep the issue `in-progress`, diagnose it, route it to the implementation agent (or make a permitted small fix), and rerun the failed and affected gates until they pass.
+- A failed code or visual review is ordinary repair/re-review work when its findings remain inside the accepted contract. Preserve immutable review evidence, route substantive findings to implementation, rerun affected gates, and dispatch the required fresh review attempt.
+- Continue autonomously through in-contract implementation, repair, verification, and re-review. Do not ask the operator to coordinate routine agent handoffs or approve ordinary fixes.
+- Stop and escalate only for a genuine blocker: a contract hard wall or architectural scope expansion, conflicting authority that cannot be reconciled, destructive or out-of-repository action requiring approval, unavailable credentials or required human input, an external dependency that cannot be bypassed safely, or repeated agent/tool failure after reasonable recovery attempts.
+- When escalating, report the exact blocker, evidence, attempted recovery, bounded options, and a recommendation. Do not use escalation as a substitute for diagnosis or workflow ownership.
+
 ## Mandatory Visual Review Gate
 
 For any issue that creates or changes a user-visible surface, visual review is part of the Definition of Done. User-visible work includes pages, components, layout, typography, color, spacing, responsive behavior, media, localized-copy presentation, navigation, forms, and loading, validation, pending, error, success, focus, or reduced-motion states.

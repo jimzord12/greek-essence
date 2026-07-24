@@ -2,17 +2,19 @@
   "featureId": 1,
   "featureSlug": "greek-essence-showcase",
   "featureStatus": "in-progress",
-  "lastUpdated": "2026-07-24T11:32:19.088Z",
+  "lastUpdated": "2026-07-24T15:34:25.103Z",
   "issues": [
     {
       "id": 1,
       "title": "Browse a complete bilingual Home through the shared showcase foundation",
-      "status": "ready-for-agent",
+      "status": "done",
       "method": "tdd-solo",
       "complexity": 5,
       "blockedBy": [],
       "filePath": ".scratch/features/001-greek-essence-showcase/issues/01-browse-bilingual-home/issue.md",
-      "milestone": "explore-bilingual-showcase"
+      "milestone": "explore-bilingual-showcase",
+      "phase": "green",
+      "reopens": 3
     },
     {
       "id": 2,
