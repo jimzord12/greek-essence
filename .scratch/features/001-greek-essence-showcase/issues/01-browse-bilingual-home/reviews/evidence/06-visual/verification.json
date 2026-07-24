@@ -1,0 +1,292 @@
+[
+  {
+    "locale": "en",
+    "viewport": "195x844",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "en",
+    "title": "Greek Essence | Thoughtful journeys through Greece",
+    "doc": {
+      "sw": 195,
+      "cw": 195
+    },
+    "body": {
+      "sw": 195,
+      "cw": 195
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Greece, experienced with intention"
+      },
+      {
+        "id": "",
+        "heading": "More than a list of places"
+      },
+      {
+        "id": "",
+        "heading": "Paros & Antiparos"
+      },
+      {
+        "id": "",
+        "heading": "How it works"
+      },
+      {
+        "id": "",
+        "heading": "A closer relationship with Greece"
+      },
+      {
+        "id": "",
+        "heading": "Your journey can begin here"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  },
+  {
+    "locale": "el",
+    "viewport": "195x844",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "el",
+    "title": "Greek Essence | Ταξίδια στην Ελλάδα με ουσία",
+    "doc": {
+      "sw": 195,
+      "cw": 195
+    },
+    "body": {
+      "sw": 195,
+      "cw": 195
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Η Ελλάδα, όπως αξίζει να τη ζήσετε"
+      },
+      {
+        "id": "",
+        "heading": "Περισσότερο από μια λίστα προορισμών"
+      },
+      {
+        "id": "",
+        "heading": "Πάρος & Αντίπαρος"
+      },
+      {
+        "id": "",
+        "heading": "Πώς λειτουργεί"
+      },
+      {
+        "id": "",
+        "heading": "Μια πιο ουσιαστική σχέση με την Ελλάδα"
+      },
+      {
+        "id": "",
+        "heading": "Το ταξίδι σας μπορεί να ξεκινήσει εδώ"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  },
+  {
+    "locale": "en",
+    "viewport": "390x844",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "en",
+    "title": "Greek Essence | Thoughtful journeys through Greece",
+    "doc": {
+      "sw": 390,
+      "cw": 390
+    },
+    "body": {
+      "sw": 390,
+      "cw": 390
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Greece, experienced with intention"
+      },
+      {
+        "id": "",
+        "heading": "More than a list of places"
+      },
+      {
+        "id": "",
+        "heading": "Paros & Antiparos"
+      },
+      {
+        "id": "",
+        "heading": "How it works"
+      },
+      {
+        "id": "",
+        "heading": "A closer relationship with Greece"
+      },
+      {
+        "id": "",
+        "heading": "Your journey can begin here"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  },
+  {
+    "interaction": "compact-menu-focus-escape",
+    "focused": {
+      "text": "Home",
+      "tag": "A",
+      "outline": "rgb(52, 118, 122) solid 2px",
+      "expanded": "true"
+    },
+    "escaped": {
+      "text": "Menu",
+      "expanded": "false",
+      "outline": "rgb(52, 118, 122) solid 2px"
+    }
+  },
+  {
+    "locale": "el",
+    "viewport": "390x844",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "el",
+    "title": "Greek Essence | Ταξίδια στην Ελλάδα με ουσία",
+    "doc": {
+      "sw": 390,
+      "cw": 390
+    },
+    "body": {
+      "sw": 390,
+      "cw": 390
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Η Ελλάδα, όπως αξίζει να τη ζήσετε"
+      },
+      {
+        "id": "",
+        "heading": "Περισσότερο από μια λίστα προορισμών"
+      },
+      {
+        "id": "",
+        "heading": "Πάρος & Αντίπαρος"
+      },
+      {
+        "id": "",
+        "heading": "Πώς λειτουργεί"
+      },
+      {
+        "id": "",
+        "heading": "Μια πιο ουσιαστική σχέση με την Ελλάδα"
+      },
+      {
+        "id": "",
+        "heading": "Το ταξίδι σας μπορεί να ξεκινήσει εδώ"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  },
+  {
+    "locale": "en",
+    "viewport": "1440x1024",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "en",
+    "title": "Greek Essence | Thoughtful journeys through Greece",
+    "doc": {
+      "sw": 1440,
+      "cw": 1440
+    },
+    "body": {
+      "sw": 1440,
+      "cw": 1440
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Greece, experienced with intention"
+      },
+      {
+        "id": "",
+        "heading": "More than a list of places"
+      },
+      {
+        "id": "",
+        "heading": "Paros & Antiparos"
+      },
+      {
+        "id": "",
+        "heading": "How it works"
+      },
+      {
+        "id": "",
+        "heading": "A closer relationship with Greece"
+      },
+      {
+        "id": "",
+        "heading": "Your journey can begin here"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  },
+  {
+    "locale": "el",
+    "viewport": "1440x1024",
+    "status": 200,
+    "errors": [],
+    "badRequests": [],
+    "lang": "el",
+    "title": "Greek Essence | Ταξίδια στην Ελλάδα με ουσία",
+    "doc": {
+      "sw": 1440,
+      "cw": 1440
+    },
+    "body": {
+      "sw": 1440,
+      "cw": 1440
+    },
+    "over": [],
+    "sections": [
+      {
+        "id": "",
+        "heading": "Η Ελλάδα, όπως αξίζει να τη ζήσετε"
+      },
+      {
+        "id": "",
+        "heading": "Περισσότερο από μια λίστα προορισμών"
+      },
+      {
+        "id": "",
+        "heading": "Πάρος & Αντίπαρος"
+      },
+      {
+        "id": "",
+        "heading": "Πώς λειτουργεί"
+      },
+      {
+        "id": "",
+        "heading": "Μια πιο ουσιαστική σχέση με την Ελλάδα"
+      },
+      {
+        "id": "",
+        "heading": "Το ταξίδι σας μπορεί να ξεκινήσει εδώ"
+      }
+    ],
+    "footer": true,
+    "fallbacks": 0
+  }
+]

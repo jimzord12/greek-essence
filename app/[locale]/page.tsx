@@ -1,79 +1,52 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 
-import { Link } from "@/i18n/navigation"
+import { SiteFooter } from "@/components/layout/site-footer"
+import { SiteHeader } from "@/components/layout/site-header"
+import { HomeSections } from "@/components/sections/home-sections"
+import { routing, type Locale } from "@/i18n/routing"
+import { getShowcaseContent, resolveMedia } from "@/lib/content"
+import { getLocalizedHref } from "@/lib/routes"
 
-type LocalePageProps = {
-  params: Promise<{ locale: string }>
-}
+type LocalePageProps = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({
   params,
 }: LocalePageProps): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "Fixture" })
-
+  const { locale: rawLocale } = await params
+  const locale = rawLocale as Locale
+  const { metadata } = getShowcaseContent(locale).home
   return {
-    title: t("metadataHomeTitle"),
-    description: t("metadataHomeDescription"),
+    title: metadata.title,
+    description: metadata.description,
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        en: "/en",
-        el: "/el",
-        "x-default": "/en",
-      },
+      canonical: getLocalizedHref("home", locale),
+      languages: { en: "/en", el: "/el", "x-default": "/en" },
     },
     robots: { index: false, follow: false },
   }
 }
 
-export default async function LocaleFixturePage({ params }: LocalePageProps) {
-  const { locale } = await params
+export default async function HomePage({ params }: LocalePageProps) {
+  const { locale: rawLocale } = await params
+  const locale = routing.locales.includes(rawLocale as Locale)
+    ? (rawLocale as Locale)
+    : "en"
   setRequestLocale(locale)
-  const t = await getTranslations({ locale, namespace: "Fixture" })
-
+  const content = getShowcaseContent(locale).home
   return (
     <>
-      <a
-        className="sr-only min-h-11 items-center rounded px-4 py-3 font-medium focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-10 focus:inline-flex focus:bg-background focus:outline-2 focus:outline-offset-2 focus:outline-teal-700"
-        href="#main-content"
-      >
-        {t("skipToContent")}
+      <a className="skip-link" href="#main-content">
+        {locale === "en" ? "Skip to content" : "Μετάβαση στο περιεχόμενο"}
       </a>
-      <header className="border-b border-border">
-        <nav
-          aria-label={t("languageNavigation")}
-          className="mx-auto flex max-w-3xl flex-wrap gap-3 px-4 py-4"
-        >
-          <Link
-            className="inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-            href="/"
-            locale="en"
-          >
-            {t("english")}
-          </Link>
-          <Link
-            className="inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-            href="/"
-            locale="el"
-          >
-            {t("greek")}
-          </Link>
-        </nav>
-      </header>
-      <main className="mx-auto max-w-3xl px-4 py-12" id="main-content">
-        <h1 className="text-3xl font-semibold tracking-tight break-words">
-          {t("title")}
-        </h1>
-        <p className="mt-4 text-muted-foreground">{t("status")}</p>
-        <Link
-          className="mt-8 inline-flex min-h-11 items-center rounded px-3 py-2 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-          href="/quality-lab"
-        >
-          {t("labLink")}
-        </Link>
-      </main>
+      <SiteHeader locale={locale} />
+      <HomeSections
+        content={content}
+        heroMedia={resolveMedia(content.hero.mediaId!, locale)}
+        locale={locale}
+        parosMedia={resolveMedia(content.parosFeature.mediaId, locale)}
+      />
+      <SiteFooter locale={locale} />
     </>
   )
 }

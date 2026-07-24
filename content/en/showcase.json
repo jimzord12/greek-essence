@@ -1,0 +1,75 @@
+{
+  "home": {
+    "metadata": {
+      "title": "Greek Essence | Thoughtful journeys through Greece",
+      "description": "Discover a more personal way to explore Greece, shaped around place, pace, and meaningful local moments."
+    },
+    "hero": {
+      "eyebrow": "Travel, thoughtfully arranged",
+      "title": "Greece, experienced with intention",
+      "summary": "Slow down, look closer, and discover an island journey shaped around the way you want to travel.",
+      "mediaId": "home-aegean-human-arrival-01",
+      "primaryCta": {
+        "label": "Plan my trip",
+        "routeId": "plan-my-trip",
+        "destinationContext": null
+      },
+      "secondaryCta": {
+        "label": "Explore Paros & Antiparos",
+        "routeId": "paros",
+        "destinationContext": null
+      }
+    },
+    "promise": {
+      "eyebrow": "A personal approach",
+      "heading": "More than a list of places",
+      "body": [
+        "Greek Essence brings together considered routes, a feeling for place, and room to travel at your own rhythm.",
+        "Every journey begins with what matters to you, not with a fixed package."
+      ],
+      "mediaId": null
+    },
+    "parosFeature": {
+      "id": "paros-antiparos",
+      "title": "Paros & Antiparos",
+      "summary": "Whitewashed villages, clear coves, generous tables, and two islands with distinct but complementary rhythms.",
+      "mediaId": "destination-paros-antiparos-primary-01",
+      "cta": {
+        "label": "Discover the islands",
+        "routeId": "paros",
+        "destinationContext": null
+      }
+    },
+    "howItWorks": {
+      "heading": "How it works",
+      "steps": [
+        {
+          "title": "Share your ideas",
+          "summary": "Tell us where your curiosity leads and how you like to travel."
+        },
+        {
+          "title": "Shape the journey",
+          "summary": "Your interests become the starting point for a thoughtful route."
+        },
+        {
+          "title": "Travel with clarity",
+          "summary": "Review a coherent plan designed around your pace and priorities."
+        }
+      ]
+    },
+    "trustStory": {
+      "eyebrow": "Rooted in curiosity",
+      "heading": "A closer relationship with Greece",
+      "body": [
+        "We believe the most memorable journeys leave space for character: a quiet harbour, an unhurried meal, a conversation that changes the day.",
+        "Our role is to connect those moments into a journey that feels considered and genuinely yours."
+      ],
+      "mediaId": null
+    },
+    "finalCta": {
+      "label": "Start planning",
+      "routeId": "plan-my-trip",
+      "destinationContext": null
+    }
+  }
+}
