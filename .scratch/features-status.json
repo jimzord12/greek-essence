@@ -1,0 +1,16 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "slug": "greek-essence-showcase",
+      "status": "in-progress",
+      "phase": "implementation",
+      "focusPath": null,
+      "lastUpdated": "2026-07-24T10:43:32.514Z",
+      "finalStatus": null
+    }
+  ],
+  "lastUpdated": "2026-07-24T10:43:32.514Z",
+  "nextFeatureId": 2,
+  "version": "2"
+}
