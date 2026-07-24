@@ -8,6 +8,7 @@ Greek Essence is currently specified as a private, bilingual client-review proto
 
 | Area | Owns | Start here |
 |---|---|---|
+| Master Git workflow | Mandatory branch/worktree isolation, ownership, staging, PR, merge verification, conflict handling, and cleanup | [`GIT_WORKFLOW.md`](GIT_WORKFLOW.md) |
 | Project protocol | Documentation governance, responsibilities, and conflict resolution | [`00_project_protocol/index.md`](00_project_protocol/index.md) |
 | Product requirements | Product intent, audience, offer, scope, business rules, and MVP acceptance | [`01_prd/index.md`](01_prd/index.md) |
 | Prototype specification | Information architecture, page composition, interactions, responsive behavior, and prototype flows | [`02_prototype_specification/index.md`](02_prototype_specification/index.md) |
@@ -51,14 +52,15 @@ When two documents appear to conflict, follow the higher-ranked source and recor
 
 ### Implementation work
 
-1. Read the product and prototype sources relevant to the task.
-2. [`03_technical_design/document_purpose_authority_and_scope.md`](03_technical_design/document_purpose_authority_and_scope.md)
-3. [`03_technical_design/01_confirmed_technical_decisions.md`](03_technical_design/01_confirmed_technical_decisions.md)
-4. [`03_technical_design/04_project_and_file_architecture.md`](03_technical_design/04_project_and_file_architecture.md)
-5. [`03_technical_design/18_testing_and_quality_gates.md`](03_technical_design/18_testing_and_quality_gates.md)
-6. [`03_technical_design/22_production_readiness_gap_register.md`](03_technical_design/22_production_readiness_gap_register.md)
-7. [`03_technical_design/25_prototype_definition_of_done.md`](03_technical_design/25_prototype_definition_of_done.md)
-8. Read the relevant Design System sections and the agent-tooling instructions before making changes.
+1. Read the mandatory master [`GIT_WORKFLOW.md`](GIT_WORKFLOW.md) before modifying files or Git state.
+2. Read the product and prototype sources relevant to the task.
+3. [`03_technical_design/document_purpose_authority_and_scope.md`](03_technical_design/document_purpose_authority_and_scope.md)
+4. [`03_technical_design/01_confirmed_technical_decisions.md`](03_technical_design/01_confirmed_technical_decisions.md)
+5. [`03_technical_design/04_project_and_file_architecture.md`](03_technical_design/04_project_and_file_architecture.md)
+6. [`03_technical_design/18_testing_and_quality_gates.md`](03_technical_design/18_testing_and_quality_gates.md)
+7. [`03_technical_design/22_production_readiness_gap_register.md`](03_technical_design/22_production_readiness_gap_register.md)
+8. [`03_technical_design/25_prototype_definition_of_done.md`](03_technical_design/25_prototype_definition_of_done.md)
+9. Read the relevant Design System sections and the agent-tooling instructions before making changes.
 
 ## Current status
 
