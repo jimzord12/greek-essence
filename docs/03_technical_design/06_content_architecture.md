@@ -11,7 +11,7 @@ Core types:
 - `Hero`, `EditorialSection`, `Gallery`, `Quote`, `RouteStop`, `RelatedContent`;
 - `TrustCredential`, `PersonProfile`, `FaqItem`, `ContactChannel`, `Cta`.
 
-Entities carry an immutable `id`, locale-specific `slug`, `title`, `summary`, `body`, SEO fields, image references, publication flag, and relationship IDs. A journey includes duration, route, mood, traveller fit, highlights, and explicit customizable wording; it never contains booking price, availability, or inventory fields.
+Entities carry an immutable `id`, locale-specific `slug`, `title`, `summary`, `body`, SEO fields, image references, publication flag, and relationship IDs. Image references are stable IDs from `content/shared/media.json`, never physical paths; the manifest owns file selection, intrinsic dimensions, crop/focal metadata, source/rights status, and localized media text. A journey includes duration, route, mood, traveller fit, highlights, and explicit customizable wording; it never contains booking price, availability, or inventory fields.
 
 ### 6.2 Content validation
 

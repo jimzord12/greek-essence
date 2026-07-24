@@ -22,6 +22,12 @@ content/shared/
 
 ### 39.1 File naming
 
+``media.json`` is the sole mapping from a stable asset ID to a physical source
+file and its media metadata. Page content and components reference the stable
+ID only. Replacing an image therefore changes one manifest record rather than
+every content record that presents it.
+
+
 Use lowercase kebab-case:
 
 ```text
@@ -56,6 +62,13 @@ Each asset record should include:
 - expiry/review date where applicable.
 
 ### 39.3 Decorative SVG
+
+Generated prototype media may enter the manifest with a pending approval
+status, but it must not be rendered until its focal point, localized alt text,
+source/rights record, and visual review are complete. Keep prompt-planning
+records separate from this runtime-facing manifest so their historic planning
+status remains intact.
+
 
 - optimized;
 - `currentColor` where possible;

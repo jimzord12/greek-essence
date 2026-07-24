@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Stable media IDs for the operator-generated Greek Essence prototype asset set. Page content references an asset ID, never a physical file path.",
+  "assetRoot": "assets/imgs",
+  "setStatus": "generated_pending_visual_and_operator_approval",
+  "defaults": {
+    "source": "operator-generated in ChatGPT",
+    "rightsStatus": "operator-record-pending",
+    "approvalStatus": "pending-visual-and-operator-approval",
+    "provisional": true,
+    "focalPoint": null,
+    "alt": {
+      "en": null,
+      "el": null
+    },
+    "caption": {
+      "en": null,
+      "el": null
+    }
+  },
+  "assets": [
+    {
+      "id": "home-aegean-human-arrival-01",
+      "intendedUse": "/en and /el Home immersive hero",
+      "locationContext": "Greece/Aegean context; exact island, venue, and property are intentionally unspecified pending approval.",
+      "files": [
+        {
+          "path": "01-home-aegean-human-arrival-01-image-set/01-home-aegean-human-arrival-01-master-16x9.png",
+          "width": 2560,
+          "height": 1440,
+          "role": "master"
+        },
+        {
+          "path": "01-home-aegean-human-arrival-01-image-set/01-home-aegean-human-arrival-01-4x5.jpg",
+          "width": 1600,
+          "height": 2000,
+          "role": "crop-4x5"
+        },
+        {
+          "path": "01-home-aegean-human-arrival-01-image-set/01-home-aegean-human-arrival-01-3x2.jpg",
+          "width": 2400,
+          "height": 1600,
+          "role": "crop-3x2"
+        }
+      ]
+    },
+    {
+      "id": "destination-athens-primary-01",
+      "intendedUse": "Home featured destination and Destinations index card",
+      "locationContext": "Athens, Greece; exact neighbourhood, street, venue, and property require verification.",
+      "files": [
+        {
+          "path": "02-destination-athens-primary-01-image-set/destination-athens-primary-01-master-4x3.png",
+          "width": 2400,
+          "height": 1800,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "destination-paros-antiparos-primary-01",
+      "intendedUse": "Home and Destinations cards; Paros and Antiparos detail hero",
+      "locationContext": "Paros or Antiparos, Cyclades, Greece; choose one geographically coherent context, but exact village, harbour, venue, and property remain pending verification.",
+      "files": [
+        {
+          "path": "03-destination-paros-antiparos-primary-01-image-set/03-destination-paros-antiparos-primary-01-master-4x3.png",
+          "width": 2400,
+          "height": 1800,
+          "role": "master"
+        },
+        {
+          "path": "03-destination-paros-antiparos-primary-01-image-set/03-destination-paros-antiparos-primary-01-16x9.jpg",
+          "width": 2400,
+          "height": 1350,
+          "role": "crop-16x9"
+        },
+        {
+          "path": "03-destination-paros-antiparos-primary-01-image-set/03-destination-paros-antiparos-primary-01-3x2.jpg",
+          "width": 2400,
+          "height": 1600,
+          "role": "crop-3x2"
+        },
+        {
+          "path": "03-destination-paros-antiparos-primary-01-image-set/03-destination-paros-antiparos-primary-01-3x4.jpg",
+          "width": 1350,
+          "height": 1800,
+          "role": "crop-3x4"
+        },
+        {
+          "path": "03-destination-paros-antiparos-primary-01-image-set/03-destination-paros-antiparos-primary-01-4x5.jpg",
+          "width": 1440,
+          "height": 1800,
+          "role": "crop-4x5"
+        }
+      ]
+    },
+    {
+      "id": "destination-mykonos-primary-01",
+      "intendedUse": "Home featured destination and Destinations index card",
+      "locationContext": "Mykonos, Cyclades, Greece; exact settlement, street, venue, and property require verification.",
+      "files": [
+        {
+          "path": "04-destination-mykonos-primary-01-image-set/04-destination-mykonos-primary-01-master-4x3.png",
+          "width": 2400,
+          "height": 1800,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "destination-santorini-primary-01",
+      "intendedUse": "Home featured destination and Destinations index card",
+      "locationContext": "Santorini, Cyclades, Greece; exact settlement, caldera viewpoint, venue, and property require verification.",
+      "files": [
+        {
+          "path": "05-destination-santorini-primary-01-image-set/05-destination-santorini-primary-01-master-4x3.png",
+          "width": 2400,
+          "height": 1800,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "paros-antiparos-editorial-culture-food-01",
+      "intendedUse": "Paros and Antiparos detail rich-story section and gallery",
+      "locationContext": "Paros or Antiparos, Greece; exact island, village, maker, kitchen, venue, dish, and property require verification and approval.",
+      "files": [
+        {
+          "path": "06-paros-antiparos-editorial-culture-food-01-image-set/06-paros-antiparos-editorial-culture-food-01-master-4x5.png",
+          "width": 1800,
+          "height": 2250,
+          "role": "master"
+        },
+        {
+          "path": "06-paros-antiparos-editorial-culture-food-01-image-set/06-paros-antiparos-editorial-culture-food-01-3x4.jpg",
+          "width": 1800,
+          "height": 2400,
+          "role": "crop-3x4"
+        },
+        {
+          "path": "06-paros-antiparos-editorial-culture-food-01-image-set/06-paros-antiparos-editorial-culture-food-01-3x2.jpg",
+          "width": 2250,
+          "height": 1500,
+          "role": "crop-3x2"
+        }
+      ]
+    },
+    {
+      "id": "paros-antiparos-editorial-hospitality-01",
+      "intendedUse": "Paros and Antiparos detail rich-story section and gallery",
+      "locationContext": "Paros or Antiparos, Greece; exact island, building, room, venue, designer, and property remain unspecified pending verification.",
+      "files": [
+        {
+          "path": "07-paros-antiparos-editorial-hospitality-01-image-set/07-paros-antiparos-editorial-hospitality-01-master-4x5.png",
+          "width": 1800,
+          "height": 2250,
+          "role": "master"
+        },
+        {
+          "path": "07-paros-antiparos-editorial-hospitality-01-image-set/07-paros-antiparos-editorial-hospitality-01-3x4.jpg",
+          "width": 1800,
+          "height": 2400,
+          "role": "crop-3x4"
+        },
+        {
+          "path": "07-paros-antiparos-editorial-hospitality-01-image-set/07-paros-antiparos-editorial-hospitality-01-3x2.jpg",
+          "width": 2400,
+          "height": 1600,
+          "role": "crop-3x2"
+        }
+      ]
+    },
+    {
+      "id": "paros-antiparos-editorial-local-moment-01",
+      "intendedUse": "Paros and Antiparos detail rich-story section and gallery",
+      "locationContext": "Paros or Antiparos, Greece; exact island, village, harbour, people, venue, and property require verification.",
+      "files": [
+        {
+          "path": "08-paros-antiparos-editorial-local-moment-01-image-set/08-paros-antiparos-editorial-local-moment-01-master-3x2.png",
+          "width": 2400,
+          "height": 1600,
+          "role": "master"
+        },
+        {
+          "path": "08-paros-antiparos-editorial-local-moment-01-image-set/08-paros-antiparos-editorial-local-moment-01-4x5.jpg",
+          "width": 1600,
+          "height": 2000,
+          "role": "crop-4x5"
+        },
+        {
+          "path": "08-paros-antiparos-editorial-local-moment-01-image-set/08-paros-antiparos-editorial-local-moment-01-3x4.jpg",
+          "width": 1600,
+          "height": 2133,
+          "role": "crop-3x4"
+        }
+      ]
+    },
+    {
+      "id": "experience-tailor-made-01",
+      "intendedUse": "Experiences index card",
+      "locationContext": "Greece-oriented planning context; exact city, office, people, maps, documents, and property are unspecified pending approval.",
+      "files": [
+        {
+          "path": "09-experience-tailor-made-01-image-set/09-experience-tailor-made-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "experience-island-hopping-01",
+      "intendedUse": "Experiences index card",
+      "locationContext": "Greek island transport context; exact island, port, ferry operator, vessel, route, and timetable require verification.",
+      "files": [
+        {
+          "path": "10-experience-island-hopping-01-image-set/10-experience-island-hopping-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "experience-local-experiences-01",
+      "intendedUse": "Experiences index card",
+      "locationContext": "Greece; exact region, island, workshop, maker, dish, venue, and participants require verification.",
+      "files": [
+        {
+          "path": "11-experience-local-experiences-01-image-set/11-experience-local-experiences-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "experience-multi-destination-01",
+      "intendedUse": "Experiences index card",
+      "locationContext": "Greece; exact origin, destination, transport mode, route, and stops are pending approved itinerary data.",
+      "files": [
+        {
+          "path": "12-experience-multi-destination-01-image-set/12-experience-multi-destination-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "experience-vip-planning-01",
+      "intendedUse": "Experiences index card",
+      "locationContext": "Greece-oriented hospitality context; exact place, staff role, client identity, venue, and property are unspecified pending approval.",
+      "files": [
+        {
+          "path": "13-experience-vip-planning-01-image-set/13-experience-vip-planning-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "experience-family-01",
+      "intendedUse": "Experiences card and mobile Family Travel detail hero in Flow B",
+      "locationContext": "Greece; exact island or mainland place, activity, venue, accommodation, and property require verification.",
+      "files": [
+        {
+          "path": "14-experience-family-01-image-set/14-experience-family-01-master-3x2.png",
+          "width": 2100,
+          "height": 1400,
+          "role": "master"
+        },
+        {
+          "path": "14-experience-family-01-image-set/14-experience-family-01-16x9.jpg",
+          "width": 1920,
+          "height": 1080,
+          "role": "crop-16x9"
+        },
+        {
+          "path": "14-experience-family-01-image-set/14-experience-family-01-3x4.jpg",
+          "width": 1050,
+          "height": 1400,
+          "role": "crop-3x4"
+        },
+        {
+          "path": "14-experience-family-01-image-set/14-experience-family-01-4x5.jpg",
+          "width": 1120,
+          "height": 1400,
+          "role": "crop-4x5"
+        }
+      ]
+    },
+    {
+      "id": "journey-cyclades-romance-01",
+      "intendedUse": "Journey card and selected provisional journey detail-hero candidate",
+      "locationContext": "Cyclades, Greece; exact island, route, stop, venue, and property await approved itinerary data and geographic verification.",
+      "files": [
+        {
+          "path": "15-journey-cyclades-romance-01-image-set/15-journey-cyclades-romance-01-master-3x2.png",
+          "width": 2400,
+          "height": 1600,
+          "role": "master"
+        },
+        {
+          "path": "15-journey-cyclades-romance-01-image-set/15-journey-cyclades-romance-01-16x9.jpg",
+          "width": 2400,
+          "height": 1350,
+          "role": "crop-16x9"
+        },
+        {
+          "path": "15-journey-cyclades-romance-01-image-set/15-journey-cyclades-romance-01-3x4.jpg",
+          "width": 1600,
+          "height": 2133,
+          "role": "crop-3x4"
+        },
+        {
+          "path": "15-journey-cyclades-romance-01-image-set/15-journey-cyclades-romance-01-4x5.jpg",
+          "width": 1600,
+          "height": 2000,
+          "role": "crop-4x5"
+        }
+      ]
+    },
+    {
+      "id": "journey-athens-islands-01",
+      "intendedUse": "Journey card",
+      "locationContext": "Athens or a Greek island transport context; exact origin, destination, port, route, stops, and property await approved itinerary data.",
+      "files": [
+        {
+          "path": "16-journey-athens-islands-01-image-set/16-journey-athens-islands-01-master-3x2.png",
+          "width": 2400,
+          "height": 1600,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "journey-culture-gastronomy-01",
+      "intendedUse": "Journey card",
+      "locationContext": "Greece; exact region, island, market, maker, restaurant, dish, route, and stops require approved itinerary data and verification.",
+      "files": [
+        {
+          "path": "17-journey-culture-gastronomy-01-image-set/17-journey-culture-gastronomy-01-master-3x2.png",
+          "width": 2400,
+          "height": 1600,
+          "role": "master"
+        }
+      ]
+    },
+    {
+      "id": "person-founder-profile-01",
+      "intendedUse": "About founder/team profile and Home trust narrative",
+      "locationContext": "Greece-oriented hospitality/planning context; exact person, setting, workplace, venue, and property are pending explicit approval.",
+      "files": [
+        {
+          "path": "18-person-founder-profile-01-image-set/18-person-founder-profile-01-master-4x5.png",
+          "width": 1600,
+          "height": 2000,
+          "role": "master"
+        }
+      ]
+    }
+  ]
+}
